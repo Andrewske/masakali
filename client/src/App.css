@@ -315,7 +315,7 @@ button {
 
 /* Landing Page */
 .landing {
-  width: 100%;
+  max-width: 100%;
   height: 100vh;
   padding-top: 20px;
   position: relative;
@@ -342,6 +342,7 @@ button {
 }
 
 .landing-images {
+  width: auto;
   margin: auto;
   height: 100%;
   display: flex;
@@ -367,9 +368,11 @@ button {
 }
 
 .landing-images img {
-  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: cover;
   max-height: 80vh;
-  display: none;
+  overflow: hidden;
   box-shadow: 10px 10px 20px 0 rgba(94, 47, 59, 0.2);
 }
 
