@@ -1,14 +1,23 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import masakaliView2 from '../../img/masakali_view2.jpeg';
+import masakaliBed from '../../img/masakali_bed.jpeg';
 import masakaliView from '../../img/masakali_view.jpeg';
 import masakaliJoglo from '../../img/masakali_joglo.jpeg';
+import masakaliJoglo2 from '../../img/masakali_joglo2.jpeg';
+import masakaliGarden from '../../img/masakali_garden.jpeg';
+
 import { useHotkeys } from 'react-hotkeys-hook';
 import LoginPopup from '../auth/LoginPopup';
 import RegisterPopup from '../auth/RegisterPopup';
 
 const Landing = () => {
   const [imgs, setImgs] = useState([
-    { id: 1, src: masakaliView },
-    { id: 2, src: masakaliJoglo },
+    { id: 1, src: masakaliView2 },
+    { id: 2, src: masakaliBed },
+    { id: 3, src: masakaliJoglo2 },
+    { id: 4, src: masakaliView },
+    { id: 5, src: masakaliJoglo },
+    { id: 6, src: masakaliGarden },
   ]);
   const [count, setCount] = useState(0);
   const [activeItem, setActiveItem] = useState(imgs[count]);
