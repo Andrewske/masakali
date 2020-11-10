@@ -25,6 +25,7 @@ const Landing = () => {
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
 
   useEffect(() => {
+    console.log(`count: ${count}`);
     setActiveItem(imgs[count]);
   }, [imgs, count]);
 
@@ -35,9 +36,18 @@ const Landing = () => {
     setShowLoginPopup((showLoginPopup) => false);
     setShowRegisterPopup((showRegisterPopup) => false);
   });
+  useHotkeys('left', (e) =>
+    setCount((prevCount) => (prevCount > 0 ? prevCount - 1 : imgs.length - 1))
+  );
+  useHotkeys('right', (e) =>
+    setCount((prevCount) => (prevCount < imgs.length - 1 ? prevCount + 1 : 0))
+  );
 
   const nextImg = (e) => {
+    console.log(count);
+    console.log(imgs.length);
     if (count < imgs.length - 1) {
+      console.log('here');
       setCount(count + 1);
     } else {
       setCount(0);
@@ -45,6 +55,8 @@ const Landing = () => {
   };
 
   const prevImg = (e) => {
+    console.log(count);
+    console.log(imgs.length);
     if (count > 0) {
       setCount(count - 1);
     } else {
