@@ -70,35 +70,30 @@ const Landing = () => {
         <div className='landing-text'>
           <h1 className='x-large'>Masakali Retreat</h1>
           <p className='lead'>Coming Soon</p>
+          <p>
+            Location:{' '}
+            <a href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
+              Tengallalang, Bali
+            </a>
+            . Only 10 min north of Ubud
+          </p>
         </div>
         <div className='landing-images'>
-          <div className='slider'>
-            <img
-              className='active'
-              src={activeItem.src}
-              alt={`Default ${activeItem.id}`}
-            />
-            {/* <img className='active' src={masakaliView} />
-            <img src={masakaliJoglo} /> */}
-          </div>
-          <div className='slider-nav'>
-            <ul>
-              <li className='arrow'>
-                <button className='previous' onClick={(e) => prevImg(e)}>
-                  <span>
-                    <i className='fas fa-angle-left'></i>
-                  </span>
-                </button>
-              </li>
-              <li className='arrow'>
-                <button className='next' onClick={(e) => nextImg(e)}>
-                  <span>
-                    <i className='fas fa-angle-right'></i>
-                  </span>
-                </button>
-              </li>
-            </ul>
-          </div>
+          <button className='previous' onClick={(e) => prevImg(e)}>
+            <span>
+              <i className='fas fa-angle-left'></i>
+            </span>
+          </button>
+          <img
+            className='active'
+            src={activeItem.src}
+            alt={`Default ${activeItem.id}`}
+          />
+          <button className='next' onClick={(e) => nextImg(e)}>
+            <span>
+              <i className='fas fa-angle-right'></i>
+            </span>
+          </button>
         </div>
       </div>
     </Fragment>

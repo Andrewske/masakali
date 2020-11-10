@@ -1,11 +1,18 @@
 import React, { Fragment, useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 
-const RegisterPopup = ({ setAlert, togglePopup }) => {
+const RegisterPopup = ({
+  setAlert,
+  togglePopup,
+  register,
+  isAuthenticated,
+}) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,28 +47,14 @@ const RegisterPopup = ({ setAlert, togglePopup }) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      //   const newUser = {
-      //     name,
-      //     email,
-      //     password,
-      //   };
-
-      //   try {
-      //     const config = {
-      //       headers: {
-      //         'Content-Type': 'application/json',
-      //       },
-      //     };
-      //     const body = JSON.stringify(newUser);
-
-      //     const res = await axios.post('/api/users', body, config);
-      //     console.log(res.data);
-      //   } catch (err) {
-      //     console.error(err.response.data);
-      //   }
-      console.log('SUCCESS');
+      register({ name, email, password });
     }
   };
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
+
   return (
     <Fragment>
       <div className='popup'>
@@ -131,6 +124,12 @@ const RegisterPopup = ({ setAlert, togglePopup }) => {
 RegisterPopup.propTypes = {
   setAlert: PropTypes.func.isRequired,
   togglePopup: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert })(RegisterPopup);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(RegisterPopup);

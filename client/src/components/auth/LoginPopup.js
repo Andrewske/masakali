@@ -1,10 +1,12 @@
 import React, { Fragment, useRef, useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setAlert } from '../../actions/alert';
-import Alert from '../layout/Alert';
 
-const LoginPopup = ({ togglePopup }) => {
+import Alert from '../layout/Alert';
+import { login } from '../../actions/auth';
+
+const LoginPopup = ({ login, togglePopup, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -34,8 +36,12 @@ const LoginPopup = ({ togglePopup }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    login(email, password);
   };
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     <Fragment>
@@ -68,7 +74,12 @@ const LoginPopup = ({ togglePopup }) => {
           </form>
           <p className='my-1'>
             Don't have an account?{' '}
-            <button onClick={() => togglePopup('register')}>Sign Up</button>
+            <button
+              className='btn-sm btn-dark'
+              onClick={() => togglePopup('register')}
+            >
+              Sign Up
+            </button>
           </p>
         </div>
       </div>
@@ -78,6 +89,12 @@ const LoginPopup = ({ togglePopup }) => {
 
 LoginPopup.propTypes = {
   togglePopup: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert })(LoginPopup);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(LoginPopup);
