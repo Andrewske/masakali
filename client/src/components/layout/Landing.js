@@ -94,7 +94,7 @@ const Landing = () => {
           <p>
             Location:{' '}
             <a href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
-              Tengallalang, Bali
+              Kelusa, Payangan, Bali
             </a>
             . Only 10 min north of Ubud
           </p>
