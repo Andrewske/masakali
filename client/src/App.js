@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './components/layout/Landing';
+import Gallery from './components/layout/Gallery/Gallery';
 import Navbar from './components/layout/Navbar';
 import Sidebar from './components/layout/Sidebar/Sidebar';
 import './App.css';
@@ -10,6 +11,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
+
+//imageKitId = 4kpopox69zpcd
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -23,11 +26,12 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <Fragment className='app'>
+        <Fragment>
           {/* <Navbar /> */}
           <Sidebar />
           <Switch>
             <Route exact path='/' component={Landing} />
+            <Route exact path='/gallery' component={Gallery} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
           </Switch>
         </Fragment>

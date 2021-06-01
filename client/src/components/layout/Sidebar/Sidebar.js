@@ -8,6 +8,7 @@ const Container = styled.div`
   min-height: 100vh;
   background-color: white;
   position: fixed;
+  z-index: 100;
 `;
 
 const Sidebar = () => {

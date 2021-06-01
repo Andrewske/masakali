@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
 
-import masakaliMain from '../../img/masakali_joglo_1_main_small.jpg';
+//import masakaliMain from '../../img/masakali_joglo_1_main_small.jpg';
+
+import ImageContext from '../../utils/ImageContext';
+import { IKImage } from 'imagekitio-react';
 
 //accommodation_photos
 import Accommodations from './Landing/Accommodations';
@@ -33,6 +36,9 @@ import LoginPopup from '../auth/LoginPopup';
 import RegisterPopup from '../auth/RegisterPopup';
 
 const color = `#3a1b49`;
+
+const MasakaliMain =
+  'https://ik.imagekit.io/4kpopox69zp//masakali_joglo_1_main_Cpampp_Mv.jpg';
 
 const Landing = () => {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -72,12 +78,20 @@ const Landing = () => {
         <section
           id='home'
           className='section-column'
-          style={{
-            backgroundImage: `url(${masakaliMain})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-          }}
+          // style={{
+          //   backgroundImage: `url(${MasakaliMain})`,
+          //   backgroundRepeat: 'no-repeat',
+          //   backgroundSize: 'cover',
+          // }}
         >
+          <ImageContext>
+            <IKImage
+              className='background-image'
+              path='/masakali_joglo_1_main_Cpampp_Mv.jpg'
+              transformation={[{ width: 'auto', dpr: 'auto' }]}
+              loading='lazy'
+            />
+          </ImageContext>
           <div className='landing-text'>
             <h1 className='x-large'>Masakali Retreat</h1>
           </div>
@@ -119,12 +133,21 @@ const Landing = () => {
         <section id='location' className='section-row'>
           <div
             className='section-row-img'
-            style={{
-              backgroundImage: `url(${masakaliMain})`,
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-            }}
-          ></div>
+            // style={{
+            //   // backgroundImage: `url(${MasakaliMain})`,
+            //   backgroundRepeat: 'no-repeat',
+            //   backgroundSize: 'cover',
+            // }}
+          >
+            <ImageContext>
+              <IKImage
+                className='section-row-img'
+                path='/masakali_joglo_1_main_Cpampp_Mv.jpg'
+                transformation={[{ width: 'auto', dpr: 'auto' }]}
+                loading='lazy'
+              />
+            </ImageContext>
+          </div>
           <div className='section-row-text'>
             <div className='section-header'>
               <h1>Location</h1>

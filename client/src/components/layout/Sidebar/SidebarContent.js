@@ -61,6 +61,7 @@ const SidebarContent = ({ isOpen, handleClick }) => {
       offset={0}
       duration={linkDuration}
       onClick={handleClick}
+      key={d.id}
     >
       {d.name}
     </Link>
