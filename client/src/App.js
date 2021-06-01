@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
+import Sidebar from './components/layout/Sidebar/Sidebar';
 import './App.css';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -22,8 +23,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <Fragment>
-          <Navbar />
+        <Fragment className='app'>
+          {/* <Navbar /> */}
+          <Sidebar />
           <Switch>
             <Route exact path='/' component={Landing} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />

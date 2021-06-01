@@ -23,7 +23,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <h1>
         <a href='index.html'>Masakali</a>
       </h1>
-      <ul>
+      <ul style={{ listStyleType: 'none' }}>
         <li>
           <a href='https://www.instagram.com/masakaliretreat'>
             <i className='fa fa-instagram fa-lg icon' aria-hidden='true'></i>
