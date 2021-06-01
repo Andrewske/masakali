@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 
-import masakaliMain from '../../img/masakali_joglo_1_main.jpg';
+import masakaliMain from '../../img/masakali_joglo_1_main_small.jpg';
 
 //accommodation_photos
 import Accommodations from './Landing/Accommodations';
