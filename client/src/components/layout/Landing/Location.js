@@ -39,6 +39,11 @@ const Right = styled.div`
   grid-column: 2 / 4;
 `;
 
+const List = styled.div`
+  text-align: left;
+  padding: 15px 0px 15px;
+`;
+
 const Location = (props) => {
   return (
     <Container id='accommodations'>
@@ -93,9 +98,9 @@ const Location = (props) => {
       <Box>
         <Left>
           <TextBox>
-            <h3>Facilities</h3>
-            <div>
-              <p>Phase I</p>
+            <h2>Facilities</h2>
+            <List>
+              <h3>Phase I</h3>
               <ul>
                 <li>
                   3 antique Gladak guesthouses from Java each with plunge pools
@@ -108,7 +113,9 @@ const Location = (props) => {
                   bedroom is a 10x12 antique Joglo from Java)
                 </li>
               </ul>
-              <p>Phase II</p>
+            </List>
+            <List>
+              <h3>Phase II</h3>
               <ul>
                 <li>
                   5 additional antique Gladak guesthouses from Java each with
@@ -126,7 +133,7 @@ const Location = (props) => {
                 <li>Café and Juice Bar with communal pool</li>
                 <li>Spa</li>
               </ul>
-            </div>
+            </List>
           </TextBox>
         </Left>
         <Right>
