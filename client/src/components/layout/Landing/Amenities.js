@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -11,12 +11,12 @@ import { IKImage } from 'imagekitio-react';
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 1,
+    items: 3,
     slidesToSlide: 1, // optional, default to 1.
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 1,
+    items: 2,
     slidesToSlide: 1, // optional, default to 1.
   },
   mobile: {
@@ -28,44 +28,39 @@ const responsive = {
 
 const amenities = [
   {
-    key: 'surya-gladak-lights',
-    title: 'Surya Gladak One',
-    path: '/surya-gladak-one-complete-with-lights_-U3E4CLrm.jpg',
+    key: 'retreats-and-workshops',
+    title: 'Retreats and Workshops',
+    path: '/amenities-retreats-and-workshops_RUXvKPcUY0.jpg',
   },
   {
-    key: 'surya-bedroom',
-    title: 'Surya Bedroom',
-    path: '/surya-bedroom-complete_Ub1dCPnbu.jpeg',
+    key: 'sound-healing',
+    title: 'Sound Healing',
+    path: '/amenities-sound-healing_dYzsUtxnTO.jpg',
   },
   {
-    key: 'surya-bathroom-complete',
-    title: 'Surya Bathroom',
-    path: '/surya-bathroom-complete_sqpZL2NWz.jpeg',
+    key: 'yoga-teacher-training',
+    title: 'Yoga Teacher Training',
+    path: '/amenities-yoga-teacher-training_A3h6udN9A.jpg',
   },
   {
-    key: 'surya-gladak-complete-side',
-    title: 'Surya Gladak Side',
-    path: '/surya-gladak-complete-side_sm9uZTwpN.jpg',
+    key: 'organic-beauty-products',
+    title: 'Organic Beauty Products',
+    path: '/amenities-organic-beauty-products_LF76dAzQL.jpg',
   },
   {
-    key: 'chandra-gladak-construction',
-    title: 'Chandra Gladak',
-    path: '/chandra-gladak-two-construction_gEvrp_9UB.jpeg',
+    key: 'foundation',
+    title: 'Foundation',
+    path: '/amenities-foundation_6cO3EH8iDA4.jpg',
   },
   {
-    key: 'chandra-gladak-roof',
-    title: 'Chandra Gladak Roof',
-    path: '/chandra-gladak-two-building-roof_REMtylGq3V2.JPG',
+    key: 'cafe-juice-bar',
+    title: 'Cafe Juice Bar',
+    path: '/amenities-cafe-juice-bar_x_JQWigHC.jpg',
   },
   {
-    key: 'chandra-gladak-surya',
-    title: 'Chandra Gladak Next To Surya',
-    path: '/chandra-gladak-two-with-surya_pfos3hwDZ.jpeg',
-  },
-  {
-    key: 'chandra-guesthouse-construction',
-    title: 'Jala Guesthouse',
-    path: '/jala-guesthouse-three-construction_KDk5I-Qlb.jpeg',
+    key: 'sustainable-development',
+    title: 'Sustainable Development',
+    path: '/amenities-sustainable-development_oCZGauZwv.jpg',
   },
 ];
 
@@ -75,6 +70,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #f5f5f5;
   padding: 50px;
 `;
 
@@ -93,11 +89,14 @@ const Divider = styled.div`
   margin-bottom: 15px;
 `;
 
-const Gallery = (props) => {
+const Amenities = (props) => {
   return (
-    <Container id='landing-gallery'>
+    <Container id='amenities'>
+      <Title>
+        <p>MASAKALI</p>
+      </Title>
       <Header className='sectionHeader'>
-        <h1>Gallery</h1>
+        <h1>AMENITIES</h1>
       </Header>
       <Divider />
       <Carousel
@@ -120,11 +119,11 @@ const Gallery = (props) => {
       >
         {amenities.map((i) => {
           return (
-            <div className='home-gallery-item' key={i.key}>
+            <div className='carousel-item' key={i.key}>
               <div className='carosel-overlay'>
                 <ImageContext>
                   <IKImage
-                    className='home-gallery-image'
+                    className='carousel-image'
                     path={i.path}
                     transformation={[{ width: 'auto', dpr: 'auto' }]}
                     // loading='lazy'
@@ -133,6 +132,9 @@ const Gallery = (props) => {
               </div>
               <div className='carousel-text'>
                 <h3>{i.title}</h3>
+                <p>
+                  Read More <i className='fa fa-arrow-right' />
+                </p>
               </div>
             </div>
           );
@@ -142,6 +144,6 @@ const Gallery = (props) => {
   );
 };
 
-Gallery.propTypes = {};
+Amenities.propTypes = {};
 
-export default Gallery;
+export default Amenities;

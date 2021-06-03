@@ -57,13 +57,20 @@ const HeaderLink = styled.div`
 const Gallery = (props) => {
   const [isOpen, setIsOpen] = useState(true);
   const [path, setPath] = useState(null);
+  const [key, setKey] = useState(null);
 
-  const handleClick = (direction = '', path = null) => {
+  const handleClick = (direction = '', path = null, key = 0) => {
     if (direction === 'left') {
-      alert('You Clicked Left');
+      if (key > 0) {
+        setKey((key) => key - 1);
+        alert(key);
+      } else {
+        setKey(0);
+      }
     } else if (direction === 'right') {
-      alert('You Clicked Right');
+      setKey((key) => key - 1);
     } else {
+      setKey(key);
       setPath(path);
       setIsOpen(!isOpen);
     }
@@ -72,11 +79,7 @@ const Gallery = (props) => {
 
   return (
     <Container>
-      <FullScreenImage
-        isOpen={isOpen}
-        path='/masakali_joglo_1_main_Cpampp_Mv.jpg'
-        handleClick={handleClick}
-      />
+      <FullScreenImage isOpen={isOpen} path={path} handleClick={handleClick} />
       <Header>
         <HeaderLink>Construction</HeaderLink>
         <HeaderLink>Surya Gladak</HeaderLink>
@@ -85,7 +88,7 @@ const Gallery = (props) => {
       <Images>
         {images.map((i) => {
           return (
-            <span onClick={handleClick} key={i.key}>
+            <span onClick={handleClick(null, i.path, i.key)} key={i.key}>
               <ImageContext>
                 <IKImage
                   className='gallery-image'

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './components/layout/Landing';
 import Gallery from './components/layout/Gallery/Gallery';
 import Navbar from './components/layout/Navbar';
+import Amenities from './components/layout/Landing/Amenities';
 import Sidebar from './components/layout/Sidebar/Sidebar';
 import './App.css';
 import Dashboard from './components/dashboard/Dashboard';
@@ -32,6 +33,7 @@ const App = () => {
           <Switch>
             <Route exact path='/' component={Landing} />
             <Route exact path='/gallery' component={Gallery} />
+            <Route exact path='/amenities' component={Amenities} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
           </Switch>
         </Fragment>

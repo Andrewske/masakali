@@ -28,9 +28,11 @@ import Experience from './Landing/Experience';
 import Spa from './Landing/Spa';
 import CafeJuiceBar from './Landing/CafeJuiceBar';
 
+import Location from './Landing/Location';
+import Amenities from './Landing/Amenities';
 import Gallery from './Landing/Gallery';
 import ContactForm from './ContactForm';
-
+import Footer from './Footer';
 import { useHotkeys } from 'react-hotkeys-hook';
 import LoginPopup from '../auth/LoginPopup';
 import RegisterPopup from '../auth/RegisterPopup';
@@ -87,7 +89,7 @@ const Landing = () => {
           <ImageContext>
             <IKImage
               className='background-image'
-              path='/masakali_joglo_1_main_Cpampp_Mv.jpg'
+              path='/main-photo_p9l1NRPmw.jpg'
               transformation={[{ width: 'auto', dpr: 'auto' }]}
               loading='lazy'
             />
@@ -130,55 +132,25 @@ const Landing = () => {
             </p>
           </div>
         </section>
-        <section id='location' className='section-row'>
-          <div
-            className='section-row-img'
-            // style={{
-            //   // backgroundImage: `url(${MasakaliMain})`,
-            //   backgroundRepeat: 'no-repeat',
-            //   backgroundSize: 'cover',
-            // }}
-          >
-            <ImageContext>
-              <IKImage
-                className='section-row-img'
-                path='/masakali_joglo_1_main_Cpampp_Mv.jpg'
-                transformation={[{ width: 'auto', dpr: 'auto' }]}
-                loading='lazy'
-              />
-            </ImageContext>
-          </div>
-          <div className='section-row-text'>
-            <div className='section-header'>
-              <h1>Location</h1>
-              <h3>
-                <a href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
-                  Kelusa, Payangan, Bali
-                </a>
-              </h3>
-              <div className='section-text-block'>
-                <p>
-                  Nestled in rice fields, surrounded by tropical jungle and
-                  local farms is where you find Kelusa, a small village located
-                  20 minutes outside the heart of Ubud.
-                </p>
-                <p> A place to experience your natural state of abundance.</p>
-                <p>
-                  By offering a sanctuary for holidays, retreats and a variety
-                  of workshops we are aiming to empower both individuals and the
-                  local community.
-                </p>
-                <p>
-                  Our goal is to create a space where we invite you to reconnect
-                  with yourself, others and nature
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id='phase_one' className='section-row'>
+        <Location />
+        <Gallery />
+        {/* Accomodations/Facilities with masterplan photo and text */}
+        {/* Construction Gallery Phase I Section
+            Slide show of construction photos
+        */}
+        {/* Copy Special offers from this page https://www.adiwanahotels.com/ 
+        for Ammenities include Retreats and Workshops, 
+        Sound Healing, Yoga Teacher Training, Organic Beauty Products, 
+        Foundation, Cafe Juice Bar, Sustainable Development */}
+
+        <Experience />
+        <OrganicFarm />
+        <Amenities />
+        <ContactForm />
+        <Footer />
+        {/* <section id='phase_one' className='section-row'>
           <div className='header'>
-            <h1>Phase One</h1>
+            <h1>Phase I</h1>
           </div>
           <div className='features'>
             <Accommodations />
@@ -186,18 +158,19 @@ const Landing = () => {
             <Community color={color} />
             <SoundHealing color={color} />
             <Sustainable />
-            <Experience />
+            
           </div>
         </section>
         <section id='gallery' className='section-row'>
           <div className='header'>
             <h1>Gallery</h1>
           </div>
-          <Gallery />
-        </section>
-        <section id='phase_two' className='section-row'>
+        </section> */}
+
+        {/* Phase 2 section */}
+        {/* <section id='phase_two' className='section-row'>
           <div className='header'>
-            <h1>Phase Two</h1>
+            <h1>Phase II</h1>
           </div>
           <div className='features'>
             <Additional />
@@ -206,10 +179,8 @@ const Landing = () => {
             <Foundation />
             <Spa />
             <CafeJuiceBar />
-            <OrganicFarm />
           </div>
-        </section>
-        <ContactForm />
+        </section> */}
       </div>
     </Fragment>
   );

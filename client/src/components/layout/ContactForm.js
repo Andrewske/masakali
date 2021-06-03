@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const ContactForm = (props) => {
   const Container = styled.div`
-    min-height: 25vh;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -49,7 +48,7 @@ const ContactForm = (props) => {
           name='text'
           class='contact-input'
           placeholder='Comment'
-          style={{ height: '250px' }}
+          style={{ height: '200px' }}
         ></textarea>
         <input className='contact-submit' type='submit' value='SUBMIT' />
       </ContactForm>

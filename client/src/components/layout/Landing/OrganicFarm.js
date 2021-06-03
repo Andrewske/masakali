@@ -2,81 +2,108 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import ImageContext from '../../../utils/ImageContext';
+import { IKImage } from 'imagekitio-react';
+
 import tomato from '../../../img/organic/tomato.jpg';
 import vegtable from '../../../img/organic/vegtable.jpg';
 
 const OrganicFarm = (props) => {
   const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
-    flex-grow: 1;
-    min-height: 500px;
-    min-width: 350px;
-    flex-basis: 90%;
-    flex-wrap: wrap;
-    margin: 5px;
-    color: #3a1b49;
-    border: 5px solid #3a1b49;
+    display: grid;
+    grid-template: auto 1fr;
+    min-height: 100vh;
+    padding-bottom: 50px;
   `;
-
-  const Side = styled.div`
+  const Box = styled.div`
     display: flex;
-    flex-grow: 1;
-    flex-basis: 25%;
-    min-width: 250px;
-    min-height: 250px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  `;
+  const Left = styled.div`
+    flex: 1 1 350px;
+    max-width: 500px;
+    padding: 25px;
   `;
 
   const Center = styled.div`
-    display: flex;
-    flex-grow: 2;
-    flex-basis: 40%;
-    flex-direction: column;
-    text-align: center;
-    min-width: 350px;
+    flex: 1 1 350px;
+    display: grid;
+    place-items: center;
+  `;
+
+  const Right = styled.div`
+    flex: 1 1 350px;
+    max-width: 500px;
+    padding: 25px;
+  `;
+
+  const Text = styled.div`
+    width: 75%;
+    text-align: left;
+    padding: 50px 0px 50px;
+  `;
+
+  const Item = styled.li`
+    padding-bottom: 10px;
   `;
   return (
-    <Container>
-      <Side
-        style={{
-          backgroundImage: `url(${tomato})`,
-        }}
-      />
-      <Center>
-        <div className='feature-header'>
-          <h1>Organic Farm</h1>
-        </div>
-        <div className='feature-subheader'>
-          <h3>
-            “Organic products are the best from nature, and the best for
-            nature.”
-          </h3>
-        </div>
-        <div className='feature-text'>
-          <p>
-            Organic farming practices not only reduce pollution in the air,
-            water and soil and help conserve water, reduce soil erosion and use
-            less energy, organic farming has lower input costs, food keeps
-            longer, it reduces health hazards, is more nutritious and, of
-            course, the food tastes better.
-          </p>
-          <p>
-            By offering natural and fresh food and drinks from our own organic
-            garden at our Café and Juice Bar, you will be getting nutritious and
-            great tasting food straight from the earth to your table.
-          </p>
-        </div>
-      </Center>
-      <Side
-        style={{
-          backgroundImage: `url(${vegtable})`,
-        }}
-      />
+    <Container id='organic_farm'>
+      <div className='header'>
+        <h1>Organic Farm</h1>
+      </div>
+      <Box>
+        <Left>
+          <ImageContext>
+            <IKImage
+              path='/tomato_chH8e3KPN.jpg'
+              transformation={[{ width: 'auto', dpr: 'auto' }]}
+              loading='lazy'
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+                height: '100%',
+                width: '100%',
+              }}
+            />
+          </ImageContext>
+        </Left>
+        <Center>
+          <Text>
+            <h3>
+              “Organic products are the best from nature, and the best for
+              nature.”
+            </h3>
+            <p>
+              Organic farming practices not only reduce pollution in the air,
+              water and soil and help conserve water, reduce soil erosion and
+              use less energy, organic farming has lower input costs, food keeps
+              longer, it reduces health hazards, is more nutritious and, of
+              course, the food tastes better.
+            </p>
+            <p>
+              By offering natural and fresh food and drinks from our own organic
+              garden at our Café and Juice Bar, you will be getting nutritious
+              and great tasting food straight from the earth to your table.
+            </p>
+          </Text>
+        </Center>
+        <Right>
+          <ImageContext>
+            <IKImage
+              path='/vegtable_SEHv7lswzOf.jpg'
+              transformation={[{ width: 'auto', dpr: 'auto' }]}
+              loading='lazy'
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+                height: '100%',
+                width: '100%',
+              }}
+            />
+          </ImageContext>
+        </Right>
+      </Box>
     </Container>
   );
 };
@@ -84,3 +111,10 @@ const OrganicFarm = (props) => {
 OrganicFarm.propTypes = {};
 
 export default OrganicFarm;
+
+// <div className='feature-header'>
+//           <h1>Organic Farm</h1>
+//         </div>
+//         <div className='feature-subheader'>
+
+//         </div>
