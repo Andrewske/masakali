@@ -50,9 +50,7 @@ const Community = ({ color }) => {
         <div className='feature-header'>
           <h2>Community</h2>
         </div>
-        <div className='feature-subheader'>
-          <h3>support - educate - connect</h3>
-        </div>
+        <h3>support - educate - connect</h3>
         <div className='feature-text'>
           <p>
             We Support the community by hiring local staff, using local

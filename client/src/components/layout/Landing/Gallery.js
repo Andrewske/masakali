@@ -13,6 +13,7 @@ const responsive = {
     breakpoint: { max: 3000, min: 1024 },
     items: 1,
     slidesToSlide: 1, // optional, default to 1.
+    objectFit: 'contain',
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -23,6 +24,7 @@ const responsive = {
     breakpoint: { max: 464, min: 0 },
     items: 1,
     slidesToSlide: 1, // optional, default to 1.
+    objectFit: 'cover',
   },
 };
 
@@ -75,7 +77,15 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 50px;
+  padding: 50px 0px 50px;
+  background-color: #f5f5f5;
+`;
+
+const Item = styled.div`
+  position: relative;
+  height: 600px;
+  max-width: 750px;
+  margin: 0 auto;
 `;
 
 const Title = styled.div`
@@ -112,7 +122,7 @@ const Gallery = (props) => {
         keyBoardControl={true}
         // customTransition='all .5'
         transitionDuration={1000}
-        containerClass='carousel-container'
+        containerClass='gallery-container'
         //removeArrowOnDeviceType={['tablet', 'mobile']}
         // deviceType={this.props.deviceType}
         // dotListClass='carousel-dot-list'
@@ -120,21 +130,21 @@ const Gallery = (props) => {
       >
         {amenities.map((i) => {
           return (
-            <div className='home-gallery-item' key={i.key}>
+            <Item key={i.key}>
               <div className='carosel-overlay'>
                 <ImageContext>
                   <IKImage
                     className='home-gallery-image'
                     path={i.path}
-                    transformation={[{ width: 'auto', dpr: 'auto' }]}
-                    // loading='lazy'
+                    transformation={[{ width: '750px', dpr: 'auto' }]}
+                    loading='lazy'
                   />
                 </ImageContext>
               </div>
               <div className='carousel-text'>
                 <h3>{i.title}</h3>
               </div>
-            </div>
+            </Item>
           );
         })}
       </Carousel>

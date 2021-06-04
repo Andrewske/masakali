@@ -65,13 +65,13 @@ const amenities = [
 ];
 
 const Container = styled.div`
-  height: 100%;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #f5f5f5;
-  padding: 50px;
+  // background-color: #f5f5f5;
+  padding: 50px 0px 50px;
 `;
 
 const Title = styled.div`

@@ -19,7 +19,9 @@ const Header = styled.div`
 const Box = styled.div`
   display: grid;
   grid-column: 1 / 4;
-  grid-template: 100vh / 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  min-height: 100vh;
+  margin-bottom: 25px;
 `;
 
 const TextBox = styled.div`
@@ -30,18 +32,19 @@ const TextBox = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  padding: 10px;
 `;
 
 const Left = styled.div`
-  grid-column: 1 / 2;
+  min-width: 350px;
 `;
 const Right = styled.div`
-  grid-column: 2 / 4;
+  min-width: 350px;
 `;
 
 const List = styled.div`
   text-align: left;
-  padding: 15px 0px 15px;
+  padding: 15px 15px 15px;
 `;
 
 const Location = (props) => {
@@ -69,7 +72,7 @@ const Location = (props) => {
 
         <Right>
           <TextBox>
-            <h1>Location</h1>
+            <h2>Location</h2>
             <h3>
               <a href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
                 Kelusa, Payangan, Bali
@@ -146,6 +149,7 @@ const Location = (props) => {
                 objectFit: 'contain',
                 objectPosition: 'center',
                 height: '100%',
+                maxHeight: '700px',
                 width: '100%',
               }}
             />

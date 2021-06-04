@@ -27,6 +27,7 @@ const Pages = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  padding-bottom: 10px;
 `;
 
 const LinkStyle = styled.a`

@@ -47,7 +47,6 @@ const Images = styled.div`
 `;
 
 const HeaderLink = styled.div`
-  font-size: 16px;
   color: white;
   :hover {
     cursor: pointer;

@@ -77,7 +77,6 @@ const SoundHealing = ({ color }) => {
       <Right>
         <div className='feature-text'>
           <div
-            className='split-right-img'
             style={{
               backgroundImage: `url(${shervin})`,
               backgroundSize: 'contain',

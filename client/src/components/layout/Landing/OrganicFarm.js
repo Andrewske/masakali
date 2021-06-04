@@ -5,9 +5,6 @@ import styled from 'styled-components';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
-import tomato from '../../../img/organic/tomato.jpg';
-import vegtable from '../../../img/organic/vegtable.jpg';
-
 const OrganicFarm = (props) => {
   const Container = styled.div`
     display: grid;
@@ -48,7 +45,7 @@ const OrganicFarm = (props) => {
     padding-bottom: 10px;
   `;
   return (
-    <Container id='organic_farm'>
+    <Container id='organic_farm' className='background-gray'>
       <div className='header'>
         <h1>Organic Farm</h1>
       </div>
@@ -111,10 +108,3 @@ const OrganicFarm = (props) => {
 OrganicFarm.propTypes = {};
 
 export default OrganicFarm;
-
-// <div className='feature-header'>
-//           <h1>Organic Farm</h1>
-//         </div>
-//         <div className='feature-subheader'>
-
-//         </div>

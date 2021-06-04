@@ -107,12 +107,12 @@ const SidebarContent = ({ isOpen, handleClick }) => {
   return (
     <Transition in={isOpen} timeout={duration}>
       {(state) => (
-        <div
-          className='sidebar'
+        <Sidebar
+          //className='sidebar'
           style={{ ...sidebarStyle, ...sidebarTransitionStyles[state] }}
         >
           {renderLinks(isOpen)}
-        </div>
+        </Sidebar>
       )}
     </Transition>
   );

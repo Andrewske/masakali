@@ -4,11 +4,11 @@ import styled from 'styled-components';
 
 const ContactForm = (props) => {
   const Container = styled.div`
+    min-height: 25vh;
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: #ccc;
   `;
 
   const ContactForm = styled.div`
@@ -28,29 +28,87 @@ const ContactForm = (props) => {
     min-height: 350px;
   `;
 
+  const Input = styled.input`
+    width: 80%;
+    margin: 10px auto;
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 5px;
+    background-color: transparent;
+    line-height: 22px;
+    transition: all 0.3s;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: 0;
+    font-family: inherit;
+
+    :focus {
+      border: 2px solid #cc4949;
+    }
+  `;
+  const TextInput = styled.textarea`
+    width: 80%;
+    height: 200px;
+    margin: 10px auto;
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 5px;
+    background-color: transparent;
+    line-height: 22px;
+    transition: all 0.3s;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: 0;
+    font-family: inherit;
+    resize: vertical;
+
+    :focus {
+      border: 2px solid #cc4949;
+    }
+  `;
+
+  const Submit = styled.input`
+    width: 150px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 1.25em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -4px;
+    font-weight: 700;
+    font-family: inherit;
+
+    :hover {
+      background: #cc4949;
+    }
+  `;
+
   return (
-    <section id='contact' className='contact'>
+    <Container id='contact' className='background-gray'>
       <ContactForm>
         <h1 style={{ padding: '10px' }}>Contact</h1>
-        <input
+        <Input
           name='name'
           type='text'
-          class='contact-input'
+          className='border-color'
           placeholder='Name'
         />
-        <input
+        <Input
           name='email'
           type='text'
-          class='contact-input'
+          className='border-color'
           placeholder='Email'
         />
-        <textarea
+        <TextInput
           name='text'
-          class='contact-input'
+          className='border-color'
           placeholder='Comment'
-          style={{ height: '200px' }}
-        ></textarea>
-        <input className='contact-submit' type='submit' value='SUBMIT' />
+        ></TextInput>
+        <Submit className='purple border-color' type='submit' value='SUBMIT' />
       </ContactForm>
       <Map>
         <iframe
@@ -62,7 +120,7 @@ const ContactForm = (props) => {
           }}
         ></iframe>
       </Map>
-    </section>
+    </Container>
   );
 };
 

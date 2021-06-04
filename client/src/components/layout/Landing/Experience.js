@@ -9,7 +9,6 @@ const Experience = (props) => {
   const Container = styled.div`
     display: grid;
     grid-template: auto 1fr;
-    background-color: #f5f5f5;
     padding-bottom: 50px;
   `;
   const Box = styled.div`
