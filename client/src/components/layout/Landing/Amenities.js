@@ -62,6 +62,11 @@ const amenities = [
     title: 'Sustainable Development',
     path: '/amenities-sustainable-development_oCZGauZwv.jpg',
   },
+  {
+    key: 'organic-farm',
+    title: 'Organic Farm',
+    path: '/vegtable_SEHv7lswzOf.jpg',
+  },
 ];
 
 const Container = styled.div`
@@ -95,7 +100,7 @@ const Amenities = (props) => {
       <Title>
         <p>MASAKALI</p>
       </Title>
-      <Header className='sectionHeader'>
+      <Header>
         <h1>AMENITIES</h1>
       </Header>
       <Divider />
@@ -125,7 +130,9 @@ const Amenities = (props) => {
                   <IKImage
                     className='carousel-image'
                     path={i.path}
-                    transformation={[{ width: 'auto', dpr: 'auto' }]}
+                    transformation={[
+                      { width: 'auto', height: '450px', dpr: 'auto' },
+                    ]}
                     // loading='lazy'
                   />
                 </ImageContext>

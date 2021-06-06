@@ -7,9 +7,9 @@ import { IKImage } from 'imagekitio-react';
 
 const Experience = (props) => {
   const Container = styled.div`
-    display: grid;
-    grid-template: auto 1fr;
-    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0px 50px;
   `;
   const Box = styled.div`
     display: flex;
@@ -37,16 +37,19 @@ const Experience = (props) => {
   const Text = styled.div`
     width: 75%;
     text-align: left;
-    padding: 50px 0px 50px;
+    //padding: 50px 0px 50px;
   `;
 
   const Item = styled.li`
     padding-bottom: 10px;
   `;
+
   return (
     <Container id='experience'>
       <div className='header'>
-        <h1>Experience</h1>
+        <p>MASAKALI</p>
+        <h1>EXPERIENCE</h1>
+        <div className='divider' />
       </div>
       <Box>
         <Left>

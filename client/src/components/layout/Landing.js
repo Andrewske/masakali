@@ -6,15 +6,17 @@ import { IKImage } from 'imagekitio-react';
 //sustainability
 import OrganicFarm from './Landing/OrganicFarm';
 
-//experience
-import Experience from './Landing/Experience';
-
+//Layout
 import Vision from './Landing/Vision';
 import Location from './Landing/Location';
-import Amenities from './Landing/Amenities';
+import Facilities from './Landing/Facilities';
 import Gallery from './Landing/Gallery';
+import Experience from './Landing/Experience';
+import Community from './Landing/Community';
+import Amenities from './Landing/Amenities';
 import ContactForm from './ContactForm';
 import Footer from './Footer';
+
 import { useHotkeys } from 'react-hotkeys-hook';
 import LoginPopup from '../auth/LoginPopup';
 import RegisterPopup from '../auth/RegisterPopup';
@@ -69,9 +71,11 @@ const Landing = () => {
         </section>
         <Vision />
         <Location />
+        <Facilities />
         <Gallery />
         <Experience />
-        <OrganicFarm />
+        {/* <OrganicFarm /> */}
+        <Community />
         <Amenities />
         <ContactForm />
         <Footer />

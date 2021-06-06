@@ -106,10 +106,11 @@ const Divider = styled.div`
 const Gallery = (props) => {
   return (
     <Container id='landing-gallery'>
-      <Header className='sectionHeader'>
+      <div className='header'>
+        <p>MASAKALI</p>
         <h1>Gallery</h1>
-      </Header>
-      <Divider />
+        <div className='divider' />
+      </div>
       <Carousel
         swipeable={true}
         draggable={false}

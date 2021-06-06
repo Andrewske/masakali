@@ -6,14 +6,10 @@ import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
 const Container = styled.section`
-  display: grid;
-  grid-template: auto 1fr 1fr;
-`;
-
-const Header = styled.div`
-  display: grid;
-  place-items: center;
-  grid-column: 1 / 4;
+  display: flex;
+  flex-direction: column;
+  flex-wrap;
+  padding: 50px 0px 50px;
 `;
 
 const Box = styled.div`
@@ -42,18 +38,26 @@ const Right = styled.div`
   min-width: 350px;
 `;
 
-const List = styled.div`
-  text-align: left;
-  padding: 15px 15px 15px;
+const Heading = styled.h2`
+  padding: 10px;
+`;
+const SubHeading = styled.h3`
+  padding: 10px;
+`;
+
+const Text = styled.p`
+  padding: 10px;
 `;
 
 const Location = (props) => {
   return (
-    <Container id='accommodations'>
-      <Header className='header'>
-        <h1>Accommodations</h1>
-      </Header>
-      <Box style={{ backgroundColor: '#f5f5f5' }}>
+    <Container id='accommodations' className='background-gray'>
+      <div className='header'>
+        <p>MASAKALI</p>
+        <h1>THE LAND</h1>
+        <div className='divider' />
+      </div>
+      <Box>
         <Left>
           <ImageContext>
             <IKImage
@@ -72,88 +76,23 @@ const Location = (props) => {
 
         <Right>
           <TextBox>
-            <h2>Location</h2>
-            <h3>
+            <Heading>Location</Heading>
+            <SubHeading>
               <a href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
                 Kelusa, Payangan, Bali
               </a>
-            </h3>
-            <div>
-              <p>
-                Nestled in rice fields, surrounded by tropical jungle and local
-                farms is where you find Kelusa, a small village located 20
-                minutes outside the heart of Ubud.
-              </p>
-              <p> A place to experience your natural state of abundance.</p>
-              <p>
-                By offering a sanctuary for holidays, retreats and a variety of
-                workshops we are aiming to empower both individuals and the
-                local community.
-              </p>
-              <p>
-                Our goal is to create a space where we invite you to reconnect
-                with yourself, others and nature
-              </p>
-            </div>
+            </SubHeading>
+            <Text>
+              Nestled amidst lush green hues of rolling rice fields, surrounded
+              by gardens of tropical jungle, resting poetically in the center of
+              a green zone where there can be no further construction, is where
+              you will find Masakali – a sanctuary for you to rest, rejuvenate,
+              and reconnect with yourself and nature. We are located in a small
+              village called Kelusa 20 minutes north of the center of Ubud - the
+              heart and soul of this island paradise and Bali’s center for art,
+              culture and healing.
+            </Text>
           </TextBox>
-        </Right>
-      </Box>
-      <Box>
-        <Left>
-          <TextBox>
-            <h2>Facilities</h2>
-            <List>
-              <h3>Phase I</h3>
-              <ul>
-                <li>
-                  3 antique Gladak guesthouses from Java each with plunge pools
-                  and luxury bathrooms
-                </li>
-                <li>Yoga Shala</li>
-                <li>Reception/staff area/kitchen</li>
-                <li>
-                  Luxury 2.5 story 2 bedroom 2.5 bath villa with pool (master
-                  bedroom is a 10x12 antique Joglo from Java)
-                </li>
-              </ul>
-            </List>
-            <List>
-              <h3>Phase II</h3>
-              <ul>
-                <li>
-                  5 additional antique Gladak guesthouses from Java each with
-                  plunge pools and luxury bathrooms
-                </li>
-                <li>
-                  5 antique 2 story Lumbung guesthouses popular in the rice
-                  fields of Bali with luxury bathrooms
-                </li>
-                <li>
-                  1 antique Batak Tribe guesthouse from Sumatra converted into 4
-                  bedroom villa
-                </li>
-                <li>Sound Healing Dome</li>
-                <li>Café and Juice Bar with communal pool</li>
-                <li>Spa</li>
-              </ul>
-            </List>
-          </TextBox>
-        </Left>
-        <Right>
-          <ImageContext>
-            <IKImage
-              path='/master-plan-klusa-cad-3d-skinny_Hfsk5FT_lLC.jpg'
-              transformation={[{ width: 'auto', dpr: 'auto' }]}
-              loading='lazy'
-              style={{
-                objectFit: 'contain',
-                objectPosition: 'center',
-                height: '100%',
-                maxHeight: '700px',
-                width: '100%',
-              }}
-            />
-          </ImageContext>
         </Right>
       </Box>
     </Container>

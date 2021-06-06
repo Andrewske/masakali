@@ -8,28 +8,23 @@ import soundhealing_bowl from '../../../img/retreats_and_workshops/soundhealing_
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  margin: 5px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  min-height: 500px;
   width: 100%;
-  flex-basis: 90%;
-  color: #3a1b49;
-  border: 5px solid #3a1b49;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0px 50px;
 `;
 
 const Images = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
+  width: 75%;
 `;
 
 const Image = styled.div`
   flex-grow: 1;
-  margin: 1px;
+  margin: 10px;
   min-width: 200px;
   min-height: 200px;
   background-repeat: no-repeat;
@@ -41,11 +36,27 @@ const Image = styled.div`
 const TextBox = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 25px;
+  text-align: center;
+`;
+
+const Text = styled.p`
+  padding: 5px;
 `;
 
 const Retreats = (props) => {
   return (
     <Container>
+      <div className='header'>
+        <p>MASAKALI</p>
+        <h1>RETREATS AND WORKSHOPS</h1>
+        <div className='divider' />
+      </div>
+      <TextBox>
+        <Text>Adventure into your Mind by meditation, </Text>
+        <Text>Revive your Body with yoga</Text>
+        <Text>Nourish your Spirit through healing sounds</Text>
+      </TextBox>
       <Images>
         <Image
           style={{
@@ -63,16 +74,6 @@ const Retreats = (props) => {
           }}
         />
       </Images>
-      <TextBox>
-        <div className='feature-header'>
-          <h1>Retreats and Workshops</h1>
-        </div>
-        <div className='feature-text'>
-          <p>Adventure into your Mind by meditation, </p>
-          <p>Revive your Body with yoga</p>
-          <p>Nourish your Spirit through healing sounds</p>
-        </div>
-      </TextBox>
     </Container>
   );
 };
