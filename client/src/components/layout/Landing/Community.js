@@ -44,7 +44,7 @@ const Community = ({ color }) => {
   `;
 
   return (
-    <Container>
+    <Container className='background-gray'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>COMMUNITY</h1>
