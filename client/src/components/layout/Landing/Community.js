@@ -72,7 +72,6 @@ const Community = ({ color }) => {
           </ImageContext>
         </Left>
         <Right>
-          <h3>support - educate - connect</h3>
           <TextBox>
             <Text>
               It is our goal here at Masakali to support the Balinese community

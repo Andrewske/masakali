@@ -62,7 +62,6 @@ const CafeJuiceBar = (props) => {
       <Box>
         <Left>
           <TextBox>
-            <Link to='/#landing-video'>Vision</Link>
             <Text>
               Delight your taste buds and olfactory senses with culinary
               masterpieces prepared using local ingredients in our Café and

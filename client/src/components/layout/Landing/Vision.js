@@ -34,7 +34,7 @@ const TextBox = styled.div`
   flex-direction: column;
   height: 100%;
   width: 90%;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: auto;
   padding: 15px;
 `;
