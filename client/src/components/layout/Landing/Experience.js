@@ -17,27 +17,33 @@ const Experience = (props) => {
     justify-content: center;
   `;
   const Left = styled.div`
-    flex: 1 1 350px;
+    flex: 1 1 30%;
+    min-width: 350px;
     max-width: 500px;
     padding: 25px;
   `;
 
   const Center = styled.div`
-    flex: 1 1 350px;
+    flex: 1 1 40%;
     display: grid;
+    min-width: 350px;
     place-items: center;
   `;
 
   const Right = styled.div`
-    flex: 1 1 350px;
+    flex: 1 1 30%;
     max-width: 500px;
+    min-width: 350px;
     padding: 25px;
   `;
 
   const Text = styled.div`
-    width: 75%;
-    text-align: left;
+    width: 80%;
     //padding: 50px 0px 50px;
+  `;
+
+  const List = styled.ul`
+    text-align: left;
   `;
 
   const Item = styled.li`
@@ -45,7 +51,7 @@ const Experience = (props) => {
   `;
 
   return (
-    <Container id='experience'>
+    <Container id='experience' className='background-gray'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>EXPERIENCE</h1>
@@ -69,33 +75,36 @@ const Experience = (props) => {
         </Left>
         <Center>
           <Text>
-            <ul>
+            <List>
+              <Item>Breathtaking views</Item>
+              <Item>Private plunge pools </Item>
               <Item>
                 Exemplary service from the staff to ensure our guests feel cared
-                for as part of our family.
+                for as part of our family
               </Item>
-              <Item>
-                Yoga and wellness retreats; selected weeks and weekends.
-              </Item>
+              <Item>Yoga classes in our uniquely designed yoga pavilion</Item>
+              <Item>Wellness retreats; select weeks and weekends</Item>
               <Item>
                 A variety of workshops where you can dive deep into different
-                subjects such as: beginners meditation, advanced postures,
-                self-development, healing, crafts and traditions of the local
-                community.
+                subjects such as: meditation, breathwork, intensives,
+                self-development and healing
               </Item>
               <Item>
                 Spa services to include full body massages, facials, manicures,
                 pedicures and more
               </Item>
               <Item>
-                Enjoying the Balinese flavors from organically produced fruit
-                and vegetables by local farmers
+                Café and Juice Bar using our own organically produced fruits and
+                vegetables
+              </Item>
+              <Item>
+                Sound healing in our uniquely designed sound healing dome
               </Item>
               <Item>
                 Available tailored excursions, tours and services to meet your
                 unique wishes
               </Item>
-            </ul>
+            </List>
           </Text>
         </Center>
         <Right>

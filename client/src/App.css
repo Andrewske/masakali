@@ -21,12 +21,47 @@
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'RuckSack', sans-serif;
+  font-weight: 500;
   font-size: 16px;
   line-height: 1.6;
   background-color: #fff;
   color: #333;
 }
+
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* RuckSack Light */
+/* font-family: rucksack,sans-serif;
+font-weight: 300;
+font-style: normal;
+
+**RuckSack Book**
+font-family: rucksack,sans-serif;
+font-weight: 400;
+font-style: normal;
+
+RuckSack Medium
+font-family: rucksack,sans-serif;
+font-weight: 500;
+font-style: normal;
+
+RuckSack Demi
+font-family: rucksack,sans-serif;
+font-weight: 600;
+font-style: normal;
+
+RuckSack Bold
+font-family: rucksack, sans-serif;
+font-weight: 700;
+font-style: normal; */
 
 a {
   color: var(--primary-color);
@@ -67,6 +102,10 @@ img {
 
 .background-gray {
   background-color: var(--gray-color);
+}
+.background-purple {
+  background-color: var(--purple-color);
+  color: white;
 }
 
 p {
@@ -165,6 +204,11 @@ h4 {
   font-family: 'Dancing Script', cursive;
 }
 
+.home-logo {
+  height: 300px;
+  width: auto;
+}
+
 .feature {
   display: flex;
   justify-content: space-between;
@@ -208,6 +252,24 @@ h4 {
   justify-content: center;
 }
 
+.video-responsive {
+  overflow: hidden;
+  padding: 25px;
+  /* padding-top: 25px; */
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 25px;
+  position: absolute;
+}
+
 /* Mobile Styles */
 /* @media (max-width: 700px) {
   .container {
@@ -242,6 +304,47 @@ h4 {
 
 .sidebar-link:hover {
   box-shadow: inset 5px 0px 10px var(--purple-color);
+}
+
+.sidebar-sublink {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  padding-left: 15px;
+  cursor: pointer;
+  color: black;
+  font-size: 0.75rem;
+}
+
+.sidebar-sublink:hover {
+  box-shadow: inset 5px 0px 10px var(--purple-color);
+}
+
+.sidebar-ext-icon {
+  display: grid;
+  place-items: center;
+}
+
+.sublinks-enter {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.sublinks-enter-active {
+  max-height: 100%;
+  /*Animation*/
+  transform: translateY(0);
+  transition: height 1000ms, transform 1000ms;
+}
+
+.sublinks-exit {
+  max-height: 100%;
+}
+
+.sublinks-exit-active {
+  max-height: 0;
+  /*Animation*/
+  transition: max-height 1000ms, transform 1000ms;
 }
 
 /* Popup */

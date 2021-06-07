@@ -142,9 +142,9 @@ const Gallery = (props) => {
                   />
                 </ImageContext>
               </div>
-              <div className='carousel-text'>
+              {/* <div className='carousel-text'>
                 <h3>{i.title}</h3>
-              </div>
+              </div> */}
             </Item>
           );
         })}

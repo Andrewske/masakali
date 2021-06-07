@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { HashLink as Link } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import SidebarSublinks from './SidebarSublinks';
 
 import { Transition } from 'react-transition-group';
 import styled from 'styled-components';
@@ -35,6 +37,7 @@ const linkTransitionStyles = {
 const Sidebar = styled.div`
   width: 200px;
   padding-top: 50px;
+  height: 100%;
 `;
 
 const SidebarLink = styled.a`
@@ -47,33 +50,88 @@ const Social = styled.div`
   justify-content: start;
 `;
 
+const ExtLink = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const amenities = [
+  { id: 'retreats-and-workshops', name: 'Retreats & Workshops' },
+  { id: 'sound-healing', name: 'Sound Healing' },
+  { id: 'yoga-teacher-training', name: 'Yoga Teacher Training' },
+  { id: 'organic-beauty-products', name: 'Organic Beauty Products' },
+  { id: 'foundation', name: 'Foundation' },
+  { id: 'cafe-juice-bar', name: 'Cafe Juice Bar' },
+  { id: 'sustainable-development', name: 'Sustainable Development' },
+  { id: 'organic-farm', name: 'Organic Farm' },
+];
+
 const linkData = [
   { id: 'home', name: 'Home' },
   { id: 'vision', name: 'Vision' },
-  { id: 'accommodations', name: 'Accommodations' },
+  { id: 'location', name: 'The Land' },
+  { id: 'facilities', name: 'Facilities' },
   { id: 'landing-gallery', name: 'Gallery' },
+  { id: 'landing-video', name: 'Video' },
   { id: 'experience', name: 'Experience' },
-  { id: 'organic_farm', name: 'Organic Farm' },
-  { id: 'amenities', name: 'Amenities' },
+  { id: 'community', name: 'Community' },
+  { id: 'amenities', name: 'Amenities', subLinks: amenities },
   { id: 'contact', name: 'Contact' },
 ];
 
 const SidebarContent = ({ isOpen, handleClick }) => {
-  const linkItems = linkData.map((d) => (
-    <Link
-      className='sidebar-link'
-      to={d.id}
-      spy={true}
-      smooth={true}
-      offset={0}
-      duration={linkDuration}
-      onClick={handleClick}
-      key={d.id}
-    >
-      {d.name}
-    </Link>
-  ));
-  const renderLinks = () => {
+  const [amenityIsOpen, setAmenityIsOpen] = useState(false);
+
+  const openLinks = () => {
+    setAmenityIsOpen((amenityIsOpen) => !amenityIsOpen);
+  };
+
+  const linkItems = linkData.map((d) =>
+    d?.subLinks ? (
+      <Fragment>
+        <ExtLink>
+          <Link
+            className='sidebar-link'
+            smooth
+            to={`/#${d.id}`}
+            onClick={handleClick}
+            key={d.id}
+          >
+            {d.name}
+          </Link>
+          <div style={{ padding: '15px' }} onClick={openLinks}>
+            <p>
+              {amenityIsOpen ? (
+                <FontAwesomeIcon
+                  icon={faChevronUp}
+                  size='lg'
+                  className='footer-icon'
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faChevronDown}
+                  size='lg'
+                  className='footer-icon'
+                />
+              )}
+            </p>
+          </div>
+        </ExtLink>
+        <SidebarSublinks isOpen={amenityIsOpen} data={d.subLinks} />
+      </Fragment>
+    ) : (
+      <Link
+        className='sidebar-link'
+        smooth
+        to={`/#${d.id}`}
+        onClick={handleClick}
+        key={d.id}
+      >
+        {d.name}
+      </Link>
+    )
+  );
+  const renderLinks = (isOpen) => {
     return (
       <Transition in={isOpen} timeout={duration}>
         {(state) => (

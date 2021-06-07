@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import fruit from '../../../img/organic/fruit.jpg';
 import juicebar from '../../../img/organic/juicebar.jpg';
@@ -61,6 +62,7 @@ const CafeJuiceBar = (props) => {
       <Box>
         <Left>
           <TextBox>
+            <Link to='/#landing-video'>Vision</Link>
             <Text>
               Delight your taste buds and olfactory senses with culinary
               masterpieces prepared using local ingredients in our Café and

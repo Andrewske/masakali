@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -96,7 +96,7 @@ const Divider = styled.div`
 
 const Amenities = (props) => {
   return (
-    <Container id='amenities'>
+    <Container id='amenities' className='background-gray'>
       <Title>
         <p>MASAKALI</p>
       </Title>
@@ -139,9 +139,9 @@ const Amenities = (props) => {
               </div>
               <div className='carousel-text'>
                 <h3>{i.title}</h3>
-                <p>
+                <Link to={`/${i.key}`}>
                   Read More <i className='fa fa-arrow-right' />
-                </p>
+                </Link>
               </div>
             </div>
           );

@@ -10,7 +10,7 @@ const OrganicFarm = (props) => {
     display: grid;
     grid-template: auto 1fr;
     min-height: 100vh;
-    padding-bottom: 50px;
+    padding: 50px 0px 50px;
   `;
   const Box = styled.div`
     display: flex;
@@ -47,7 +47,9 @@ const OrganicFarm = (props) => {
   return (
     <Container id='organic_farm' className='background-gray'>
       <div className='header'>
-        <h1>Organic Farm</h1>
+        <p>MASAKALI</p>
+        <h1>ORGANIC FARM</h1>
+        <div className='divider' />
       </div>
       <Box>
         <Left>

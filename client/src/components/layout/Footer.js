@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Link, animateScroll as scroll } from 'react-scroll';
+//import { Link, animateScroll as scroll } from 'react-scroll';
+import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components';
+
+import insta from '../../img/instagram-64.ico';
+import facebook from '../../img/facebook.png';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -38,27 +42,29 @@ const LinkStyle = styled.a`
   }
 `;
 
+const IconImg = styled.img`
+  margin: auto;
+  margin-right: 5px;
+  height: 20px;
+  width: 20px;
+`;
+
 const linkData = [
   { id: 'home', name: 'Home' },
   { id: 'vision', name: 'Vision' },
-  { id: 'accommodations', name: 'Accommodations' },
+  { id: 'location', name: 'The Land' },
+  { id: 'facilities', name: 'Facilities' },
   { id: 'landing-gallery', name: 'Gallery' },
+  { id: 'landing-video', name: 'Video' },
   { id: 'experience', name: 'Experience' },
-  { id: 'organic_farm', name: 'Organic Farm' },
+  { id: 'community', name: 'Community' },
   { id: 'amenities', name: 'Amenities' },
   { id: 'contact', name: 'Contact' },
 ];
 
 const Footer = (props) => {
   const linkItems = linkData.map((d) => (
-    <Link
-      className='footer-link'
-      to={d.id}
-      spy={true}
-      smooth={true}
-      offset={0}
-      key={d.id}
-    >
+    <Link className='footer-link' to={`/#${d.id}`} smooth key={d.id}>
       {d.name}
     </Link>
   ));
@@ -71,26 +77,18 @@ const Footer = (props) => {
           <p>Gianyar Bali 80572</p>
         </LinkStyle>
         <LinkStyle href='https://www.instagram.com/masakaliretreat'>
-          <p>
-            <FontAwesomeIcon
-              icon={faInstagram}
-              size='md'
-              className='footer-icon'
-            />{' '}
-            /masakaliretreat
-          </p>
+          <div style={{ display: 'flex', width: 'fit-content' }}>
+            <IconImg src={insta} />
+            <p>/masakaliretreat</p>
+          </div>
         </LinkStyle>
-        <LinkStyle href='https://www.instagram.com/masakaliretreat'>
-          <p>
-            <FontAwesomeIcon
-              icon={faFacebook}
-              size='md'
-              className='footer-icon'
-            />{' '}
-            /masakaliretreat
-          </p>
+        <LinkStyle href='https://www.facebook.com/masakaliretreat'>
+          <div style={{ display: 'flex', width: 'fit-content' }}>
+            <IconImg src={facebook} />
+            <p>/masakaliretreat</p>
+          </div>
         </LinkStyle>
-        <LinkStyle href='https://www.instagram.com/masakaliretreat'>
+        <LinkStyle href='info@masakaliretreat.com'>
           <p>
             <FontAwesomeIcon
               icon={faEnvelope}

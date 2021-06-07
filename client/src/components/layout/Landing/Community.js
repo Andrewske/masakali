@@ -26,6 +26,8 @@ const Community = ({ color }) => {
     flex-basis: 50%;
     min-width: 350px;
     max-height: 500px;
+    display: grid;
+    place-items: center;
   `;
 
   const Right = styled.div`
@@ -39,12 +41,16 @@ const Community = ({ color }) => {
   `;
 
   const TextBox = styled.div`
-    max-width: 350px;
-    text-align: center;
+    width: 90%;
+  `;
+
+  const Text = styled.div`
+    text-align: justify;
+    padding: 15px 0px 15px;
   `;
 
   return (
-    <Container className='background-gray'>
+    <Container id='community'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>COMMUNITY</h1>
@@ -55,12 +61,11 @@ const Community = ({ color }) => {
           <ImageContext>
             <IKImage
               path='/community_lpfIhHuAk.JPG'
-              transformation={[{ width: 'auto', dpr: 'auto' }]}
+              transformation={[{ height: '500px', width: 'auto', dpr: 'auto' }]}
               loading='lazy'
               style={{
                 objectFit: 'cover',
                 objectPosition: 'center',
-                height: '500px',
                 width: '100%',
               }}
             />
@@ -69,20 +74,22 @@ const Community = ({ color }) => {
         <Right>
           <h3>support - educate - connect</h3>
           <TextBox>
-            <p>
-              We Support the community by hiring local staff, using local
-              suppliers, and making donations to local charities through our
-              foundation.
-            </p>
-            <p>
-              We Educate through offering oncea-week donation based yoga classes
-              exclusively for Balinese people and hosting English/Bahasa
-              classes.
-            </p>
-            <p>
-              We Connect as we learn a new language together while sharing
-              experiences and our different cultures
-            </p>
+            <Text>
+              It is our goal here at Masakali to support the Balinese community
+              as well as to connect with their rich and unique culture. We
+              support the community by hiring local staff and contractors, using
+              local vendors and suppliers and making donations to local
+              charities through our foundation. Each guesthouse is furnished
+              with teakwood furniture handmade by the Balinese people as are the
+              statues, artwork, ceramics, bedding and other furnishings. Yes it
+              is luxurious here and yes it is local. We connect with the
+              community by participating in ceremonies, offering donation-based
+              yoga classes exclusively for Balinese people and by hosting
+              English/Bahasa classes. Additionally, we want to work together
+              with the Balinese, and particularly with the youth, to ensure
+              Kelusa will soon be rated one of the most environmentally friendly
+              and clean villages in Bali.
+            </Text>
           </TextBox>
         </Right>
       </Box>

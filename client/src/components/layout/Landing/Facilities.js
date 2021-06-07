@@ -12,29 +12,29 @@ const Container = styled.section`
 `;
 
 const Box = styled.div`
-  display: grid;
-  grid-column: 1 / 4;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   min-height: 100vh;
   margin-bottom: 25px;
 `;
 
 const TextBox = styled.div`
   height: 100%;
-  max-width: 450px;
+  width: 90%;
+  max-width: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  padding: 10px;
+  padding: 15px;
 `;
 
 const Left = styled.div`
-  min-width: 350px;
+  flex: 1 1 350px;
 `;
 const Right = styled.div`
-  min-width: 350px;
+  flex: 1 1 350px;
 `;
 
 const List = styled.div`
@@ -53,7 +53,6 @@ const Facilities = (props) => {
       <Box>
         <Left>
           <TextBox>
-            <h2>Facilities</h2>
             <List>
               <h3>Phase I</h3>
               <ul>

@@ -137,7 +137,7 @@ const ContactForm = (props) => {
   };
 
   return (
-    <Container id='contact' className='background-gray'>
+    <Container id='contact'>
       {/* <ContactForm onSubmit={onSubmit}>
         <h1 style={{ padding: '10px' }}>Contact</h1>
         {errors && (

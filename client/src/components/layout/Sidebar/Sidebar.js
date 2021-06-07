@@ -6,9 +6,11 @@ import SidebarIcon from './SidebarIcon';
 
 const Container = styled.div`
   min-height: 100vh;
+  height: 100%;
   background-color: white;
   position: fixed;
   z-index: 100;
+  overflow: scroll;
 `;
 
 const Sidebar = () => {

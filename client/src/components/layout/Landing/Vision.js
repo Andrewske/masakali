@@ -14,16 +14,18 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-  display: flexx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const Left = styled.div`
-  flex-basis: 50%;
+  flex: 1 1 40%;
   min-width: 350px;
 `;
 
 const Right = styled.div`
-  flex-basis: 50%;
+  flex: 1 1 60%;
   min-width: 350px;
 `;
 
@@ -31,23 +33,22 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: center;
+  width: 90%;
+  justify-content: space-evenly;
   margin: auto;
-  padding-top: 25px;
-  text-align: center;
-  max-width: 650px;
+  padding: 15px;
 `;
 
-const Heading = styled.h3`
-  padding: 15px;
-`;
-const SubHeading = styled.h4`
-  padding: 15px;
+const SubHeading = styled.h2`
+  font-style: italic;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 25px;
 `;
 
 const Text = styled.p`
-  padding: 15px;
-  text-align: center;
+  padding: 15px 0px 15px;
+  text-align: justify;
 `;
 
 const Vision = (props) => {
@@ -77,7 +78,6 @@ const Vision = (props) => {
         </Left>
         <Right>
           <TextBox>
-            <Heading>- Masakali -</Heading>
             <SubHeading>
               Masakali means “aspiring to fly high through peace and
               liberation”.

@@ -22,7 +22,7 @@ const Box = styled.div`
 
 const TextBox = styled.div`
   height: 100%;
-  max-width: 450px;
+  max-width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -47,11 +47,12 @@ const SubHeading = styled.h3`
 
 const Text = styled.p`
   padding: 10px;
+  text-align: justify;
 `;
 
 const Location = (props) => {
   return (
-    <Container id='accommodations' className='background-gray'>
+    <Container id='location' className='background-gray'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>THE LAND</h1>
@@ -76,7 +77,6 @@ const Location = (props) => {
 
         <Right>
           <TextBox>
-            <Heading>Location</Heading>
             <SubHeading>
               <a href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
                 Kelusa, Payangan, Bali

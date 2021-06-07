@@ -22,6 +22,7 @@ import OrganicProducts from './components/layout/Amenities/OrganicProducts';
 import Foundation from './components/layout/Amenities/Foundation';
 import CafeJuiceBar from './components/layout/Amenities/CafeJuiceBar';
 import Sustainable from './components/layout/Amenities/Sustainable';
+import OrganicFarm from './components/layout/Amenities/OrganicFarm';
 
 //imageKitId = 4kpopox69zpcd
 
@@ -30,10 +31,6 @@ if (localStorage.token) {
 }
 
 const App = () => {
-  useEffect(() => {
-    store.dispatch(loadUser());
-  }, []);
-
   return (
     <Provider store={store}>
       <Router>
@@ -44,7 +41,7 @@ const App = () => {
             <Route exact path='/' component={Landing} />
             <Route exact path='/gallery' component={Gallery} />
             <Route exact path='/amenities' component={Amenities} />
-            <Route exact path='/retreats' component={Retreats} />
+            <Route exact path='/retreats-and-workshops' component={Retreats} />
             <Route exact path='/sound-healing' component={SoundHealing} />
             <Route exact path='/yoga-teacher-training' component={YTT} />
             <Route exact path='/cafe-juice-bar' component={CafeJuiceBar} />
@@ -59,6 +56,7 @@ const App = () => {
               component={OrganicProducts}
             />
             <Route exact path='/foundation' component={Foundation} />
+            <Route exact path='/organic-farm' component={OrganicFarm} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
           </Switch>
         </Fragment>

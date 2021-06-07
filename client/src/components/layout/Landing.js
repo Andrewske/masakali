@@ -4,13 +4,14 @@ import ImageContext from '../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
 //sustainability
-import OrganicFarm from './Landing/OrganicFarm';
+import MasakaliLogo from '../../img/masakali-home-logo.png';
 
 //Layout
 import Vision from './Landing/Vision';
 import Location from './Landing/Location';
 import Facilities from './Landing/Facilities';
 import Gallery from './Landing/Gallery';
+import MasakaliVideo from './Landing/MasakaliVideo';
 import Experience from './Landing/Experience';
 import Community from './Landing/Community';
 import Amenities from './Landing/Amenities';
@@ -20,6 +21,7 @@ import Footer from './Footer';
 import { useHotkeys } from 'react-hotkeys-hook';
 import LoginPopup from '../auth/LoginPopup';
 import RegisterPopup from '../auth/RegisterPopup';
+import YoutubeEmbed from '../../utils/YoutubeEmbed';
 
 const color = `#3a1b49`;
 
@@ -66,13 +68,31 @@ const Landing = () => {
             />
           </ImageContext>
           <div className='home-text'>
-            <h1 className='x-large'>Masakali Retreat</h1>
+            <img src={MasakaliLogo} className='home-logo' />
+            {/* <h1 className='x-large'>Masakali Retreat</h1> */}
           </div>
         </section>
         <Vision />
         <Location />
         <Facilities />
         <Gallery />
+        <div
+          id='landing-video'
+          className='header'
+          style={{ paddingTop: '50px' }}
+        >
+          <p>MASAKALI</p>
+          <h1>Video</h1>
+          <div className='divider' />
+        </div>
+        <YoutubeEmbed
+          embedId={'9EfalIZ2NuA'}
+          title={'Masakali Tour Video'}
+          preview={
+            'https://ik.imagekit.io/4kpopox69zp/drone-default-masakali-video_ZmltYP6bJ.jpg'
+          }
+        />
+        {/* <MasakaliVideo /> */}
         <Experience />
         {/* <OrganicFarm /> */}
         <Community />
