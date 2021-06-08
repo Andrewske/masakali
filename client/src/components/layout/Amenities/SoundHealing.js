@@ -84,20 +84,22 @@ const SoundHealing = ({ color }) => {
         <Right>
           <TextBox style={{ maxWidth: '550px' }}>
             <Text>
-              With our sound healing center , a 12x12 square meter dome designed
-              to enhance the healing vibration of every riTextple and frequency
-              from the instruments used, we are excited to off er vibrational
-              sound therapy in bigger groups as well as private sessions.
+              With our sound healing center, a 12x12 square meter dome designed
+              specifically to enhance the healing vibration of every ripple and
+              frequency from the instruments used, we are excited to offer
+              vibrational sound therapy in bigger groups as well as private
+              sessions.
             </Text>
             <Text>
-              Partnering up with Shervin Boloorian, a world-renowned sound
-              healing therapist and artist, we will describe it using his words
+              Our goal is to partner with Shervin Boloorian, a world-renowned
+              sound healing therapist and artist, we will describe it using his
+              words:
             </Text>
           </TextBox>
           <Box>
             <TextBox>
               <Text>
-                “Vibrational sound therapy uses music and vibrational energy to
+                "Vibrational sound therapy uses music and vibrational energy to
                 support physiological, psychological and emotional well-being.
                 Throughout the world, a number of different ancient cultures
                 have turned to sound vibration as away to improve and balance

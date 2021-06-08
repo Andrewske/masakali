@@ -1,20 +1,15 @@
-import React, { Fragment, useEffect, useState } from 'react';
-
-import ImageContext from '../../utils/ImageContext';
-import { IKImage } from 'imagekitio-react';
-
-//sustainability
-import MasakaliLogo from '../../img/masakali-home-logo.png';
+import React, { Fragment, useState } from 'react';
 
 //Layout
+import Home from './Landing/Home';
 import Vision from './Landing/Vision';
 import Location from './Landing/Location';
 import Facilities from './Landing/Facilities';
 import Gallery from './Landing/Gallery';
-import MasakaliVideo from './Landing/MasakaliVideo';
 import Experience from './Landing/Experience';
 import Community from './Landing/Community';
 import Amenities from './Landing/Amenities';
+import Team from './Landing/Team';
 import ContactForm from './ContactForm';
 import Footer from './Footer';
 
@@ -58,20 +53,7 @@ const Landing = () => {
       <div className='landing'>
         {showLoginPopup ? <LoginPopup togglePopup={togglePopup} /> : null}
         {showRegisterPopup ? <RegisterPopup togglePopup={togglePopup} /> : null}
-        <section id='home' className='home'>
-          <ImageContext>
-            <IKImage
-              className='background-image'
-              path='/main-photo_p9l1NRPmw.jpg'
-              transformation={[{ width: 'auto', dpr: 'auto' }]}
-              loading='lazy'
-            />
-          </ImageContext>
-          <div className='home-text'>
-            <img src={MasakaliLogo} className='home-logo' />
-            {/* <h1 className='x-large'>Masakali Retreat</h1> */}
-          </div>
-        </section>
+        <Home />
         <Vision />
         <Location />
         <Facilities />
@@ -92,11 +74,10 @@ const Landing = () => {
             'https://ik.imagekit.io/4kpopox69zp/drone-default-masakali-video_ZmltYP6bJ.jpg'
           }
         />
-        {/* <MasakaliVideo /> */}
         <Experience />
-        {/* <OrganicFarm /> */}
         <Community />
         <Amenities />
+        {/* <Team /> */}
         <ContactForm />
         <Footer />
       </div>

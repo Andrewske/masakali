@@ -92,7 +92,7 @@ const Footer = (props) => {
           <p>
             <FontAwesomeIcon
               icon={faEnvelope}
-              size='md'
+              size='1x'
               className='footer-icon'
             />{' '}
             info@masakaliretreat.com

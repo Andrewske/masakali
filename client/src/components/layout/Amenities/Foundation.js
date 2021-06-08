@@ -91,18 +91,13 @@ const Foundation = (props) => {
           <TextBox>
             <Text>
               We believe that everyone has the right to clean water, education,
-              and the possibility to be nurtured and flourish.
-            </Text>
-            <Text>
-              Therefore, 10% of the revenue from our Organic Beauty line will go
-              to the Akasha foundation.
-            </Text>
-            <Text>
-              Whether it will be donating to local charity organizations such as
-              Yayasan Anak Anak Bali (Bali kids foundation), FNPF (Friends of
-              the Natural Park Foundation) or initiating our own projects, the
-              foundation will focus on giving back to Bali and empowering the
-              local community
+              and the possibility to be nurtured and flourish. Therefore, 10% of
+              the revenue from our organic beauty line once developed will go to
+              the Akasha Foundation. Whether it will be donating to local
+              charity organizations such as Yayasan Anak Anak Bali (Bali kids
+              foundation), FNPF (Friends of the Natural Park Foundation) or
+              initiating our own projects, the foundation will focus on giving
+              back to Bali and empowering the local community.
             </Text>
             <Text>
               "Giving is not just about making a donation. It’s about making a

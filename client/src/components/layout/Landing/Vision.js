@@ -65,7 +65,7 @@ const Vision = (props) => {
             <IKImage
               //className='carousel-image'
               path='/vision_7S69wmFLG5N.jpg'
-              transformation={[{ width: 'auto', dpr: 'auto' }]}
+              transformation={[{ height: '600px', width: 'auto', dpr: 'auto' }]}
               loading='lazy'
               style={{
                 objectFit: 'contain',
@@ -85,19 +85,21 @@ const Vision = (props) => {
             <Text>
               Masakali is the perfect romance of an extraordinary destination
               with nourishment of the mind, body and spirit, exemplary service
-              and premium, yet ecologically conscious, accommodations. Join us
-              on the Island of the Gods surrounded by serene landscape and rich
-              culture. Whether you are looking for a refreshing holiday, a
-              thrilling adventure or to immerse yourself spiritually, every
-              aspect of Bali and Masakali invites you to take a step on your
-              journey towards peace and liberation.
+              and premium, yet ecologically conscious, accommodations.
+            </Text>
+            <Text>
+              Join us on the Island of the Gods surrounded by serene landscape
+              and rich culture. Whether you are looking for a refreshing
+              holiday, a thrilling adventure or to immerse yourself spiritually,
+              every aspect of Bali and Masakali invites you to take a step on
+              your journey towards peace and liberation.
             </Text>
             <Text>
               By offering a sanctuary for holidays, retreats, a variety of
               workshops and the space to conduct yoga teacher trainings, we are
-              aiming to empower both individuals and the local community. Our
-              goal is to create a space where we invite you to reconnect with
-              yourself, others and nature.
+              aiming to empower you and enchant you. Our goal is to create a
+              space where we invite you to reconnect with yourself, others and
+              nature.
             </Text>
           </TextBox>
         </Right>

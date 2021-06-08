@@ -62,7 +62,7 @@ const Experience = (props) => {
           <ImageContext>
             <IKImage
               path='/kintamani_NMV5iIb4xC.jpg'
-              transformation={[{ width: 'auto', dpr: 'auto' }]}
+              transformation={[{ width: '500px', dpr: 'auto' }]}
               loading='lazy'
               style={{
                 objectFit: 'cover',
@@ -111,7 +111,7 @@ const Experience = (props) => {
           <ImageContext>
             <IKImage
               path='/monkey_forest_n8PAChNLgHg.jpg'
-              transformation={[{ width: 'auto', dpr: 'auto' }]}
+              transformation={[{ width: '500px', dpr: 'auto' }]}
               loading='lazy'
               style={{
                 objectFit: 'cover',

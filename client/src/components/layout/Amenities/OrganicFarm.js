@@ -74,11 +74,11 @@ const OrganicFarm = (props) => {
               nature.”
             </h3>
             <p>
-              Organic farming practices not only reduce pollution in the air,
-              water and soil and help conserve water, reduce soil erosion and
-              use less energy, organic farming has lower input costs, food keeps
-              longer, it reduces health hazards, is more nutritious and, of
-              course, the food tastes better.
+              Organic farming practices not only decrease pollution in the air,
+              water and soil and help conserve water, diminishes soil erosion
+              and use less energy, organic farming has lower input costs, food
+              keeps longer, it reduces health hazards, is more nutritious and,
+              of course, the food tastes better.
             </p>
             <p>
               By offering natural and fresh food and drinks from our own organic

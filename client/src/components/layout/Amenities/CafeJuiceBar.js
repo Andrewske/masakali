@@ -56,7 +56,7 @@ const CafeJuiceBar = (props) => {
     <Container>
       <div className='header'>
         <p>MASAKALI</p>
-        <h1>CAFE JUICE BAR</h1>
+        <h1>CAFE AND JUICE BAR</h1>
         <div className='divider' />
       </div>
       <Box>

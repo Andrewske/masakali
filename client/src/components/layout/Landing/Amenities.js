@@ -54,7 +54,7 @@ const amenities = [
   },
   {
     key: 'cafe-juice-bar',
-    title: 'Cafe Juice Bar',
+    title: 'Cafe And Juice Bar',
     path: '/amenities-cafe-juice-bar_x_JQWigHC.jpg',
   },
   {

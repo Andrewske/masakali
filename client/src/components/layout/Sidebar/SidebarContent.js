@@ -61,7 +61,7 @@ const amenities = [
   { id: 'yoga-teacher-training', name: 'Yoga Teacher Training' },
   { id: 'organic-beauty-products', name: 'Organic Beauty Products' },
   { id: 'foundation', name: 'Foundation' },
-  { id: 'cafe-juice-bar', name: 'Cafe Juice Bar' },
+  { id: 'cafe-juice-bar', name: 'Cafe And Juice Bar' },
   { id: 'sustainable-development', name: 'Sustainable Development' },
   { id: 'organic-farm', name: 'Organic Farm' },
 ];

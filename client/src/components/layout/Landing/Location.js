@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
+import useWindowSize from '../../../utils/useWindowSize';
+
 const Container = styled.section`
   display: flex;
   flex-direction: column;
@@ -19,6 +21,11 @@ const Box = styled.div`
   min-height: 100vh;
   margin-bottom: 25px;
 `;
+
+// const Box = styled.div`
+//   display: flex;
+//   flex-direction: column;
+// `;
 
 const TextBox = styled.div`
   height: 100%;
@@ -51,6 +58,7 @@ const Text = styled.p`
 `;
 
 const Location = (props) => {
+  const { width, height } = useWindowSize();
   return (
     <Container id='location' className='background-gray'>
       <div className='header'>
@@ -63,12 +71,12 @@ const Location = (props) => {
           <ImageContext>
             <IKImage
               path='/location-drone-photo_YFB6yaJzxI2.jpg'
-              transformation={[{ width: 'auto', dpr: 'auto' }]}
+              transformation={[{ height: '700px', width: `auto`, dpr: 'auto' }]}
               loading='lazy'
               style={{
                 objectFit: 'cover',
                 objectPosition: 'center',
-                height: '100%',
+                height: '700px',
                 width: '100%',
               }}
             />
