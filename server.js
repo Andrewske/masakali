@@ -6,6 +6,12 @@ const app = express();
 
 connectDB();
 
+// app.get('*.js', function (req, res, next) {
+//   req.url = req.url + '.gz';
+//   res.set('Content-Encoding', 'gzip');
+//   next();
+// });
+
 // Init Middleware
 app.use(express.json({ extended: false }));
 

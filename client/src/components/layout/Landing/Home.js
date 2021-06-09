@@ -98,7 +98,7 @@ const Home = () => {
                   transformation={[
                     { height: height, width: 'auto', dpr: 'auto' },
                   ]}
-                  //loading='lazy'
+                  loading='lazy'
                 />
               </ImageContext>
             </div>
