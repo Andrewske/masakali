@@ -8,10 +8,6 @@ import styled from 'styled-components';
 import insta from '../../img/instagram-64.ico';
 import facebook from '../../img/facebook.png';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
-
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap-reverse;
@@ -69,7 +65,7 @@ const Footer = (props) => {
     </Link>
   ));
   return (
-    <Container className='purple'>
+    <Container className='background-purple'>
       <Info>
         <LinkStyle href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
           <p>Masakali</p>
@@ -90,12 +86,7 @@ const Footer = (props) => {
         </LinkStyle>
         <LinkStyle href='info@masakaliretreat.com'>
           <p>
-            <FontAwesomeIcon
-              icon={faEnvelope}
-              size='1x'
-              className='footer-icon'
-            />{' '}
-            info@masakaliretreat.com
+            <span className='icon-email footer-icon' /> info@masakaliretreat.com
           </p>
         </LinkStyle>
       </Info>

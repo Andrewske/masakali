@@ -10,7 +10,7 @@ import Experience from './Landing/Experience';
 import Community from './Landing/Community';
 import Amenities from './Landing/Amenities';
 import Team from './Landing/Team';
-import ContactForm from './ContactForm';
+import ContactSection from './Landing/ContactSection';
 import Footer from './Footer';
 
 import { useHotkeys } from 'react-hotkeys-hook';
@@ -77,8 +77,8 @@ const Landing = () => {
         <Experience />
         <Community />
         <Amenities />
-        {/* <Team /> */}
-        <ContactForm />
+        <Team />
+        <ContactSection />
         <Footer />
       </div>
     </Fragment>

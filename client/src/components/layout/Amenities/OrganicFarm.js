@@ -1,49 +1,49 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
+const Container = styled.div`
+  display: grid;
+  grid-template: auto 1fr;
+  min-height: 100vh;
+  padding: 50px 0px 50px;
+`;
+const Box = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+const Left = styled.div`
+  flex: 1 1 350px;
+  max-width: 500px;
+  padding: 25px;
+`;
+
+const Center = styled.div`
+  flex: 1 1 350px;
+  display: grid;
+  place-items: center;
+`;
+
+const Right = styled.div`
+  flex: 1 1 350px;
+  max-width: 500px;
+  padding: 25px;
+`;
+
+const Text = styled.div`
+  width: 75%;
+  text-align: left;
+  padding: 50px 0px 50px;
+`;
+
+const Item = styled.li`
+  padding-bottom: 10px;
+`;
+
 const OrganicFarm = (props) => {
-  const Container = styled.div`
-    display: grid;
-    grid-template: auto 1fr;
-    min-height: 100vh;
-    padding: 50px 0px 50px;
-  `;
-  const Box = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  `;
-  const Left = styled.div`
-    flex: 1 1 350px;
-    max-width: 500px;
-    padding: 25px;
-  `;
-
-  const Center = styled.div`
-    flex: 1 1 350px;
-    display: grid;
-    place-items: center;
-  `;
-
-  const Right = styled.div`
-    flex: 1 1 350px;
-    max-width: 500px;
-    padding: 25px;
-  `;
-
-  const Text = styled.div`
-    width: 75%;
-    text-align: left;
-    padding: 50px 0px 50px;
-  `;
-
-  const Item = styled.li`
-    padding-bottom: 10px;
-  `;
   return (
     <Container id='organic_farm' className='background-gray'>
       <div className='header'>

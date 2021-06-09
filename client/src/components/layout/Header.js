@@ -40,7 +40,7 @@ const Header = ({ type }) => {
 
   return (
     menu && (
-      <Container className='background-purple'>
+      <Container className='bg-purple'>
         {menu.map((i) => (
           <Link to={`/${i.id}`} key={i.id} style={{ flexGrow: 1 }}>
             {i.name}

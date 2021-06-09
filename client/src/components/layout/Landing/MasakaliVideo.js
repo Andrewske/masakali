@@ -4,11 +4,11 @@ import styled from 'styled-components';
 
 import YoutubeEmbed from '../../../utils/YoutubeEmbed';
 
+const Container = styled.div`
+  padding: 50px 0px 50px;
+  display: flex;
+`;
 const MasakaliVideo = (props) => {
-  const Container = styled.div`
-    padding: 50px 0px 50px;
-    display: flex;
-  `;
   return (
     // <Container>
     //   <div className='header'>

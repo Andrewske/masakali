@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import flowers_statue from '../../../img/retreats_and_workshops/flowers_statue.jpg';
-import meditation_class from '../../../img/retreats_and_workshops/meditation_class.jpg';
-import soundhealing_bowl from '../../../img/retreats_and_workshops/soundhealing_bowl.jpg';
+//import flowers_statue from '../../../img/retreats_and_workshops/flowers_statue.jpg';
+//import meditation_class from '../../../img/retreats_and_workshops/meditation_class.jpg';
+//import soundhealing_bowl from '../../../img/retreats_and_workshops/soundhealing_bowl.jpg';
 
 const Container = styled.div`
   display: flex;
@@ -58,7 +58,7 @@ const Retreats = (props) => {
         <Text>Nourish your Spirit through healing sounds</Text>
       </TextBox>
       <Images>
-        <Image
+        {/* <Image
           style={{
             backgroundImage: `url(${flowers_statue})`,
           }}
@@ -72,7 +72,7 @@ const Retreats = (props) => {
           style={{
             backgroundImage: `url(${soundhealing_bowl})`,
           }}
-        />
+        /> */}
       </Images>
     </Container>
   );

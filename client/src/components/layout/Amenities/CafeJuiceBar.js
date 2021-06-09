@@ -1,13 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
-import fruit from '../../../img/organic/fruit.jpg';
-import juicebar from '../../../img/organic/juicebar.jpg';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
+
+import Amenities from '../Landing/Amenities';
 
 const CafeJuiceBar = (props) => {
   const Container = styled.div`
@@ -47,7 +44,7 @@ const CafeJuiceBar = (props) => {
     max-width: 550px;
     display: grid;
     place-items: center;
-    text-align: center;
+    text-align: justify;
   `;
   const Text = styled.p`
     padding: 15px;
@@ -94,6 +91,7 @@ const CafeJuiceBar = (props) => {
           </ImageContext>
         </Right>
       </Box>
+      <Amenities />
     </Container>
   );
 };

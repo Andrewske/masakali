@@ -1,54 +1,51 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-import community from '../../../img/community/community.jpg';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0px 50px;
+  min-height: 100vh;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const Left = styled.div`
+  flex-grow: 1;
+  flex-basis: 50%;
+  min-width: 350px;
+  max-height: 500px;
+  display: grid;
+  place-items: center;
+`;
+
+const Right = styled.div`
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-basis: 50%;
+  padding: 15px;
+`;
+
+const TextBox = styled.div`
+  width: 90%;
+`;
+
+const Text = styled.div`
+  text-align: justify;
+  padding: 15px 0px 15px;
+`;
+
 const Community = ({ color }) => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 50px 0px 50px;
-    min-height: 100vh;
-  `;
-
-  const Box = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  `;
-
-  const Left = styled.div`
-    flex-grow: 1;
-    flex-basis: 50%;
-    min-width: 350px;
-    max-height: 500px;
-    display: grid;
-    place-items: center;
-  `;
-
-  const Right = styled.div`
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-basis: 50%;
-    padding: 15px;
-  `;
-
-  const TextBox = styled.div`
-    width: 90%;
-  `;
-
-  const Text = styled.div`
-    text-align: justify;
-    padding: 15px 0px 15px;
-  `;
-
   return (
     <Container id='community'>
       <div className='header'>

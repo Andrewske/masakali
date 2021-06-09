@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 
 import Carousel from 'react-multi-carousel';
@@ -86,21 +85,6 @@ const Item = styled.div`
   height: 600px;
   max-width: 750px;
   margin: 0 auto;
-`;
-
-const Title = styled.div`
-  margin: 0 auto;
-`;
-
-const Header = styled.div`
-  margin: 0 auto;
-`;
-
-const Divider = styled.div`
-  margin: 0 auto;
-  border-bottom: solid black 3px;
-  width: 100px;
-  margin-bottom: 15px;
 `;
 
 const Gallery = (props) => {

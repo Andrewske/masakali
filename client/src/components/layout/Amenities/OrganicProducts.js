@@ -1,65 +1,60 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
-import almonds from '../../../img/organic/almonds.jpg';
-import coconut from '../../../img/organic/coconut.jpg';
-import flowers from '../../../img/organic/flowers.jpg';
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0px 50px;
+  min-height: 100vh;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
+
+const Left = styled.div`
+  flex-grow: 1;
+  flex-basis: 50%;
+  min-width: 350px;
+  padding: 25px;
+  //max-height: 500px;
+`;
+
+const Right = styled.div`
+  flex-grow: 1;
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 350px;
+`;
+
+const TextBox = styled.div`
+  max-width: 450px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+`;
+
+const ImageBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+const Text = styled.p`
+  padding: 5px;
+`;
 
 const OrganicProducts = (props) => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 50px 0px 50px;
-    min-height: 100vh;
-  `;
-
-  const Box = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  `;
-
-  const Left = styled.div`
-    flex-grow: 1;
-    flex-basis: 50%;
-    min-width: 350px;
-    padding: 25px;
-    //max-height: 500px;
-  `;
-
-  const Right = styled.div`
-    flex-grow: 1;
-    flex-basis: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    min-width: 350px;
-  `;
-
-  const TextBox = styled.div`
-    max-width: 450px;
-    display: grid;
-    place-items: center;
-    text-align: center;
-  `;
-
-  const ImageBox = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-  `;
-
-  const Text = styled.p`
-    padding: 5px;
-  `;
-
   //https://ik.imagekit.io/4kpopox69zp/amenities-organic-beauty-products_LF76dAzQL.jpg
   //https://ik.imagekit.io/4kpopox69zp/almonds_9SN7bxPi1.jpg
   //https://ik.imagekit.io/4kpopox69zp/flowers_84yjb02D3.jpg

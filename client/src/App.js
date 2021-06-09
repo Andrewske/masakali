@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './components/layout/Landing';
+import Financials from './components/layout/Financials';
 import Gallery from './components/layout/Gallery/Gallery';
 import Navbar from './components/layout/Navbar';
 import Amenities from './components/layout/Landing/Amenities';
@@ -39,6 +40,7 @@ const App = () => {
           <Sidebar />
           <Switch>
             <Route exact path='/' component={Landing} />
+            <Route exact path='/financials' component={Financials} />
             <Route exact path='/gallery' component={Gallery} />
             <Route exact path='/amenities' component={Amenities} />
             <Route exact path='/retreats-and-workshops' component={Retreats} />

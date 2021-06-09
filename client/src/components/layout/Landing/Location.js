@@ -48,8 +48,8 @@ const Right = styled.div`
 const Heading = styled.h2`
   padding: 10px;
 `;
-const SubHeading = styled.h3`
-  padding: 10px;
+const SubHeading = styled.h2`
+  padding: 0px;
 `;
 
 const Text = styled.p`
@@ -81,15 +81,27 @@ const Location = (props) => {
               }}
             />
           </ImageContext>
+          {/* <img
+            src='https://masakali.b-cdn.net/location-drone.jpg'
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center',
+              height: '700px',
+              width: '100%',
+            }}
+          /> */}
         </Left>
 
         <Right>
           <TextBox>
-            <SubHeading>
-              <a href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
-                Kelusa, Payangan, Bali
-              </a>
-            </SubHeading>
+            <SubHeading>Kelusa, Payangan, Bali</SubHeading>
+            <a
+              style={{ fontSize: '.75em' }}
+              className='purple'
+              href='https://goo.gl/maps/VaiXjJZuJp4stygE9'
+            >
+              Get directions
+            </a>
             <Text>
               Nestled amidst lush green hues of rolling rice fields, surrounded
               by gardens of tropical jungle, resting poetically in the center of

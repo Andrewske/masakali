@@ -1,15 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const SidebarIcon = ({ handleClick, isOpen }) => {
   return (
     <span onClick={handleClick}>
       {isOpen ? (
-        <FontAwesomeIcon icon={faTimes} size='2x' className='hamburger' />
+        <span className='icon-close sidebar-icon' />
       ) : (
-        <FontAwesomeIcon icon={faBars} size='2x' className='hamburger' />
+        <span className='icon-bars sidebar-icon' />
       )}
     </span>
   );

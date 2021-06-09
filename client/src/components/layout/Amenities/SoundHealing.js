@@ -5,46 +5,45 @@ import styled from 'styled-components';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
-const SoundHealing = ({ color }) => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 50px 0px 50px;
-    min-height: 100vh;
-  `;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0px 50px;
+  min-height: 100vh;
+`;
 
-  const Box = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  `;
+const Box = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
 
-  const Left = styled.div`
-    flex-grow: 1;
-    flex-basis: 50%;
-    min-width: 350px;
-    padding: 25px;
-    //max-height: 500px;
-  `;
+const Left = styled.div`
+  flex-grow: 1;
+  flex-basis: 50%;
+  min-width: 350px;
+  padding: 25px;
+  //max-height: 500px;
+`;
 
-  const Right = styled.div`
-    flex-grow: 1;
-    flex-basis: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    min-width: 350px;
-  `;
+const Right = styled.div`
+  flex-grow: 1;
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 350px;
+`;
 
-  const TextBox = styled.div`
-    max-width: 450px;
-    display: grid;
-    place-items: center;
-    text-align: center;
-  `;
+const TextBox = styled.div`
+  max-width: 450px;
+  display: grid;
+  place-items: center;
+  text-align: justify;
+`;
 
-  const ImageBox = styled.div`
+const ImageBox = styled.div`
     padding: 25px;
     object-fit: 'cover',
     objectPosition: 'center',
@@ -52,9 +51,11 @@ const SoundHealing = ({ color }) => {
     width: '100%',
   `;
 
-  const Text = styled.p`
-    padding: 5px;
-  `;
+const Text = styled.p`
+  padding: 5px;
+`;
+
+const SoundHealing = ({ color }) => {
   ///amenities-sound-healing_dYzsUtxnTO.jpg
   ///shervin_VewAMRrkuLI.png
   return (
@@ -105,7 +106,8 @@ const SoundHealing = ({ color }) => {
                 have turned to sound vibration as away to improve and balance
                 health. Modern science is also acknowledging soundʼs potential
                 as an alternative healing force which can complement Western
-                medical practices." -Shervin Boloorian
+                medical practices."
+                <br /> -Shervin Boloorian
               </Text>
             </TextBox>
             <ImageBox>

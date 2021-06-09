@@ -1,55 +1,54 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0px 50px;
+`;
+const Box = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+const Left = styled.div`
+  flex: 1 1 30%;
+  min-width: 350px;
+  max-width: 500px;
+  padding: 25px;
+`;
+
+const Center = styled.div`
+  flex: 1 1 40%;
+  display: grid;
+  min-width: 350px;
+  place-items: center;
+`;
+
+const Right = styled.div`
+  flex: 1 1 30%;
+  max-width: 500px;
+  min-width: 350px;
+  padding: 25px;
+`;
+
+const Text = styled.div`
+  width: 80%;
+  //padding: 50px 0px 50px;
+`;
+
+const List = styled.ul`
+  text-align: left;
+`;
+
+const Item = styled.li`
+  padding-bottom: 10px;
+`;
+
 const Experience = (props) => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 50px 0px 50px;
-  `;
-  const Box = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  `;
-  const Left = styled.div`
-    flex: 1 1 30%;
-    min-width: 350px;
-    max-width: 500px;
-    padding: 25px;
-  `;
-
-  const Center = styled.div`
-    flex: 1 1 40%;
-    display: grid;
-    min-width: 350px;
-    place-items: center;
-  `;
-
-  const Right = styled.div`
-    flex: 1 1 30%;
-    max-width: 500px;
-    min-width: 350px;
-    padding: 25px;
-  `;
-
-  const Text = styled.div`
-    width: 80%;
-    //padding: 50px 0px 50px;
-  `;
-
-  const List = styled.ul`
-    text-align: left;
-  `;
-
-  const Item = styled.li`
-    padding-bottom: 10px;
-  `;
-
   return (
     <Container id='experience' className='background-gray'>
       <div className='header'>

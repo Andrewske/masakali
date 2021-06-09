@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, createRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import ImageContext from '../../../utils/ImageContext';
@@ -51,7 +51,7 @@ const LogoContainer = styled.div`
   place-items: center;
   z-index: 3;
   position: absolute;
-  font-family: 'Dancing Script', cursive;
+  // font-family: 'Dancing Script', cursive;
 `;
 
 const Logo = styled.img`
@@ -81,6 +81,8 @@ const Home = () => {
         responsive={responsive}
         ssr={true} // means to render carousel on server-side.
         infinite={true}
+        autoplay={true}
+        autoPlaySpeed={5000}
         keyBoardControl={true}
         customTransition='all .5'
         transitionDuration={1000}

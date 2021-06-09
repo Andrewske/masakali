@@ -4,47 +4,47 @@ import styled from 'styled-components';
 
 import additional_structures from '../../../img/accommodations/additional_structures.jpeg';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: stretch;
+  justify-content: center;
+  flex-grow: 1;
+  min-height: 500px;
+  min-width: 350px;
+  flex-basis: 90%;
+  flex-wrap: wrap;
+  margin: 5px;
+  color: #3a1b49;
+  border: 5px solid #3a1b49;
+`;
+
+const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-basis: 33%;
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-width: 350px;
+  min-height: 350px;
+`;
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 2;
+  flex-basis: 33%;
+  margin: 0 auto;
+  min-width: 350px;
+`;
+
 const Additional = (props) => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    align-items: stretch;
-    justify-content: center;
-    flex-grow: 1;
-    min-height: 500px;
-    min-width: 350px;
-    flex-basis: 90%;
-    flex-wrap: wrap;
-    margin: 5px;
-    color: #3a1b49;
-    border: 5px solid #3a1b49;
-  `;
-
-  const Left = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    flex-basis: 33%;
-    color: white;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-width: 350px;
-    min-height: 350px;
-  `;
-
-  const Center = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 2;
-    flex-basis: 33%;
-    margin: 0 auto;
-    min-width: 350px;
-  `;
-
   return (
     <Container>
       <Left

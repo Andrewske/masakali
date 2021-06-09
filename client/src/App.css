@@ -22,6 +22,7 @@
 
 body {
   font-family: 'RuckSack', sans-serif;
+  font-display: auto;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.6;
@@ -74,8 +75,12 @@ img {
   width: 100%;
 }
 
+.bg-purple {
+  background-color: var(--purple-color);
+}
+
 .purple {
-  background-color: #3a1b49;
+  color: var(--purple-color);
 }
 
 /* Utilities */
@@ -272,7 +277,7 @@ h4 {
   margin: auto;
   z-index: 3;
   position: absolute;
-  font-family: 'Dancing Script', cursive;
+  /* font-family: 'Dancing Script', cursive; */
 }
 
 .home-gallery {
@@ -369,6 +374,34 @@ h4 {
   } */
 
 /* Sidebar */
+.sidebar-icon {
+  font-size: 2em;
+  position: fixed;
+  margin: 15px;
+  color: var(--purple-color);
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.sidebar-icon:hover {
+  background-color: rgba(255, 255, 255);
+}
+
+/* .hamburger {
+  position: fixed;
+  margin: 15px;
+  font-size: 2em;
+  color: #3a1b49;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.hamburger:hover {
+  background-color: rgba(255, 255, 255);
+} */
+
 .sidebar-link {
   display: flex;
   width: 100%;
@@ -555,6 +588,7 @@ h4 {
   text-align: center;
   padding: 25px;
   min-width: 350px;
+  max-width: 700px;
 }
 
 .contact-input {

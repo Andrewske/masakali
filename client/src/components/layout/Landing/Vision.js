@@ -43,6 +43,7 @@ const SubHeading = styled.h2`
   font-style: italic;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  text-align: center;
   padding: 25px;
 `;
 
@@ -64,7 +65,7 @@ const Vision = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
-              path='/vision_7S69wmFLG5N.jpg'
+              path='/vision_7S69wmFLG5N.jpg' //Balancing Rocks
               transformation={[{ height: '600px', width: 'auto', dpr: 'auto' }]}
               loading='lazy'
               style={{
@@ -79,8 +80,8 @@ const Vision = (props) => {
         <Right>
           <TextBox>
             <SubHeading>
-              Masakali means “aspiring to fly high through peace and
-              liberation”.
+              Masakali means “aspiring to fly high
+              <br /> through peace and liberation”.
             </SubHeading>
             <Text>
               Masakali is the perfect romance of an extraordinary destination

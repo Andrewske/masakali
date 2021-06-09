@@ -40,7 +40,7 @@ const amenities = [
   {
     key: 'yoga-teacher-training',
     title: 'Yoga Teacher Training',
-    path: '/amenities-yoga-teacher-training_A3h6udN9A.jpg',
+    path: '/amenities-yoga-teacher-training_A3h6udN9A.jpg', //Change to Dylan yoga photo
   },
   {
     key: 'organic-beauty-products',
@@ -111,7 +111,7 @@ const Amenities = (props) => {
         responsive={responsive}
         ssr={true} // means to render carousel on server-side.
         infinite={true}
-        autoPlay={true} //{this.props.deviceType !== 'mobile' ? true : false}
+        //autoPlay={true} //{this.props.deviceType !== 'mobile' ? true : false}
         autoPlaySpeed={3000}
         keyBoardControl={true}
         // customTransition='all .5'

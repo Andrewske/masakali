@@ -1,16 +1,11 @@
 import React, { Fragment, useState } from 'react';
-import PropTypes from 'prop-types';
 import { HashLink as Link } from 'react-router-hash-link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import SidebarSublinks from './SidebarSublinks';
 
 import { Transition } from 'react-transition-group';
 import styled from 'styled-components';
 
 const duration = 500;
-const linkDuration = 1000;
 
 const sidebarStyle = {
   transition: `width ${duration}ms`,
@@ -88,7 +83,7 @@ const SidebarContent = ({ isOpen, handleClick }) => {
 
   const linkItems = linkData.map((d) =>
     d?.subLinks ? (
-      <Fragment>
+      <Fragment key={d.id}>
         <ExtLink>
           <Link
             className='sidebar-link'
@@ -102,17 +97,9 @@ const SidebarContent = ({ isOpen, handleClick }) => {
           <div style={{ padding: '15px' }} onClick={openLinks}>
             <p>
               {amenityIsOpen ? (
-                <FontAwesomeIcon
-                  icon={faChevronUp}
-                  size='lg'
-                  className='footer-icon'
-                />
+                <span className='icon-chevron-up footer-icon' />
               ) : (
-                <FontAwesomeIcon
-                  icon={faChevronDown}
-                  size='lg'
-                  className='footer-icon'
-                />
+                <span className='icon-chevron-down footer-icon' />
               )}
             </p>
           </div>
@@ -139,22 +126,10 @@ const SidebarContent = ({ isOpen, handleClick }) => {
             {linkItems}
             <Social>
               <SidebarLink href='https://www.instagram.com/masakaliretreat'>
-                <p>
-                  <FontAwesomeIcon
-                    icon={faInstagram}
-                    size='lg'
-                    className='footer-icon'
-                  />
-                </p>
+                <span className='icon-instagram footer-icon' />
               </SidebarLink>
               <SidebarLink href='https://www.facebook.com/masakaliretreat'>
-                <p>
-                  <FontAwesomeIcon
-                    icon={faFacebook}
-                    size='lg'
-                    className='footer-icon'
-                  />
-                </p>
+                <span className='icon-facebook-square footer-icon' />
               </SidebarLink>
             </Social>
           </div>

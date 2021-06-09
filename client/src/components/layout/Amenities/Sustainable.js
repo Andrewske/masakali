@@ -1,80 +1,80 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-import eco_bags from '../../../img/sustainability/eco_bags.jpg';
-import recycle from '../../../img/sustainability/recycle.jpg';
-import solar from '../../../img/sustainability/solar.jpg';
-import composting from '../../../img/sustainability/composting.jpg';
-
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
+// import eco_bags from '../../../img/sustainability/eco_bags.jpg';
+// import recycle from '../../../img/sustainability/recycle.jpg';
+// import solar from '../../../img/sustainability/solar.jpg';
+// import composting from '../../../img/sustainability/composting.jpg';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0px 50px;
+  min-height: 100vh;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
+
+const Left = styled.div`
+  flex-grow: 1;
+  flex-basis: 50%;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+`;
+
+const Right = styled.div`
+  flex-grow: 1;
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 350px;
+`;
+
+const DoubleImage = styled.div`
+  display: flex;
+`;
+
+const TextBox = styled.div`
+  max-width: 550px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+`;
+const Text = styled.p`
+  padding: 15px 0px 15px;
+`;
+
+const List = styled.ul`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0px 15px;
+  text-align: start;
+  list-style-position: inside;
+`;
+
+const ListItem = styled.li`
+  flex-basis: 50%;
+  flex-grow: 1;
+  min-width: 200px;
+`;
+
 const Sustainable = (props) => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 50px 0px 50px;
-    min-height: 100vh;
-  `;
-
-  const Box = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  `;
-
-  const Left = styled.div`
-    flex-grow: 1;
-    flex-basis: 50%;
-    min-width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-  `;
-
-  const Right = styled.div`
-    flex-grow: 1;
-    flex-basis: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 350px;
-  `;
-
-  const DoubleImage = styled.div`
-    display: flex;
-  `;
-
-  const TextBox = styled.div`
-    max-width: 550px;
-    display: grid;
-    place-items: center;
-    text-align: center;
-  `;
-  const Text = styled.p`
-    padding: 15px 0px 15px;
-  `;
-
-  const List = styled.ul`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 0px 15px;
-    text-align: start;
-    list-style-position: inside;
-  `;
-
-  const ListItem = styled.li`
-    flex-basis: 50%;
-    flex-grow: 1;
-    min-width: 200px;
-  `;
   return (
     <Container>
       <div className='header'>
@@ -111,7 +111,7 @@ const Sustainable = (props) => {
           </TextBox>
         </Left>
         <Right>
-          <ImageContext>
+          {/* <ImageContext>
             <IKImage
               //className='carousel-image'
               path='/solar_umLO40dWN.jpg'
@@ -161,7 +161,7 @@ const Sustainable = (props) => {
                 }}
               />
             </ImageContext>
-          </DoubleImage>
+          </DoubleImage> */}
         </Right>
       </Box>
     </Container>
