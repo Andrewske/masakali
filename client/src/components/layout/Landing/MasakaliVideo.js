@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import YoutubeEmbed from '../../../utils/YoutubeEmbed';
@@ -10,20 +9,6 @@ const Container = styled.div`
 `;
 const MasakaliVideo = (props) => {
   return (
-    // <Container>
-    //   <div className='header'>
-    //     <p>MASAKALI</p>
-    //     <h1>Video</h1>
-    //     <div className='divider' />
-    //   </div>
-    //   <YoutubeEmbed
-    //     embedId={'9EfalIZ2NuA'}
-    //     title={'Masakali Tour Video'}
-    //     preview={
-    //       'https://ik.imagekit.io/4kpopox69zp/drone-default-masakali-video_ZmltYP6bJ.jpg'
-    //     }
-    //   />
-    // </Container>
     <Container>
       <div className='header'>
         <p>MASAKALI</p>
@@ -40,7 +25,5 @@ const MasakaliVideo = (props) => {
     </Container>
   );
 };
-
-MasakaliVideo.propTypes = {};
 
 export default MasakaliVideo;

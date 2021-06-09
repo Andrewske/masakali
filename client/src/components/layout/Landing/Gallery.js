@@ -87,7 +87,8 @@ const Item = styled.div`
   margin: 0 auto;
 `;
 
-const Gallery = (props) => {
+const Gallery = ({ width }) => {
+  const imgWidth = width > 750 ? 750 : width;
   return (
     <Container id='landing-gallery'>
       <div className='header'>
@@ -95,44 +96,48 @@ const Gallery = (props) => {
         <h1>Gallery</h1>
         <div className='divider' />
       </div>
-      <Carousel
-        swipeable={true}
-        draggable={false}
-        showDots={true}
-        responsive={responsive}
-        ssr={true} // means to render carousel on server-side.
-        infinite={true}
-        autoPlay={true} //{this.props.deviceType !== 'mobile' ? true : false}
-        autoPlaySpeed={3000}
-        keyBoardControl={true}
-        // customTransition='all .5'
-        transitionDuration={1000}
-        containerClass='gallery-container'
-        //removeArrowOnDeviceType={['tablet', 'mobile']}
-        // deviceType={this.props.deviceType}
-        // dotListClass='carousel-dot-list'
-        //itemClass='carousel-item-padding-40-px'
-      >
-        {amenities.map((i) => {
-          return (
-            <Item key={i.key}>
-              <div className='carosel-overlay'>
-                <ImageContext>
-                  <IKImage
-                    className='home-gallery-image'
-                    path={i.path}
-                    transformation={[{ width: '750px', dpr: 'auto' }]}
-                    loading='lazy'
-                  />
-                </ImageContext>
-              </div>
-              {/* <div className='carousel-text'>
+      {width && (
+        <Carousel
+          swipeable={true}
+          draggable={false}
+          showDots={true}
+          responsive={responsive}
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          autoPlay={true} //{this.props.deviceType !== 'mobile' ? true : false}
+          autoPlaySpeed={3000}
+          keyBoardControl={true}
+          // customTransition='all .5'
+          transitionDuration={1000}
+          containerClass='gallery-container'
+          //removeArrowOnDeviceType={['tablet', 'mobile']}
+          // deviceType={this.props.deviceType}
+          // dotListClass='carousel-dot-list'
+          //itemClass='carousel-item-padding-40-px'
+        >
+          {amenities.map((i) => {
+            return (
+              <Item key={i.key}>
+                <div className='carosel-overlay'>
+                  <ImageContext>
+                    <IKImage
+                      className='home-gallery-image'
+                      path={i.path}
+                      transformation={[
+                        { height: '600px', width: imgWidth, dpr: 'auto' },
+                      ]}
+                      loading='lazy'
+                    />
+                  </ImageContext>
+                </div>
+                {/* <div className='carousel-text'>
                 <h3>{i.title}</h3>
               </div> */}
-            </Item>
-          );
-        })}
-      </Carousel>
+              </Item>
+            );
+          })}
+        </Carousel>
+      )}
     </Container>
   );
 };

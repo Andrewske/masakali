@@ -6,51 +6,45 @@ import { IKImage } from 'imagekitio-react';
 
 import Amenities from '../Landing/Amenities';
 
+const Box = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
+
+const Left = styled.div`
+  flex-grow: 1;
+  flex-basis: 50%;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Right = styled.div`
+  flex-grow: 1;
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 350px;
+`;
+
+const TextBox = styled.div`
+  max-width: 550px;
+  display: grid;
+  place-items: center;
+  text-align: justify;
+`;
+const Text = styled.p`
+  padding: 15px;
+`;
+
 const CafeJuiceBar = (props) => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 50px 0px 50px;
-    min-height: 100vh;
-  `;
-
-  const Box = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  `;
-
-  const Left = styled.div`
-    flex-grow: 1;
-    flex-basis: 50%;
-    min-width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  `;
-
-  const Right = styled.div`
-    flex-grow: 1;
-    flex-basis: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 350px;
-  `;
-
-  const TextBox = styled.div`
-    max-width: 550px;
-    display: grid;
-    place-items: center;
-    text-align: justify;
-  `;
-  const Text = styled.p`
-    padding: 15px;
-  `;
   return (
-    <Container>
+    <section className='container'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>CAFE AND JUICE BAR</h1>
@@ -91,8 +85,8 @@ const CafeJuiceBar = (props) => {
           </ImageContext>
         </Right>
       </Box>
-      <Amenities />
-    </Container>
+      <Amenities items={{ desktop: 5, tablet: 2, mobile: 1 }} height={'100%'} />
+    </section>
   );
 };
 

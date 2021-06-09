@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import spa from '../../../img/experience/spa.jpg';
@@ -68,7 +67,5 @@ const Spa = (props) => {
     </Container>
   );
 };
-
-Spa.propTypes = {};
 
 export default Spa;

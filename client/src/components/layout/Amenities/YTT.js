@@ -1,15 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Amenities from '../Landing/Amenities';
+
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 50px 0px 50px;
-  min-height: 100vh;
-`;
 
 const Box = styled.div`
   display: flex;
@@ -39,7 +34,7 @@ const TextBox = styled.div`
   max-width: 550px;
   display: grid;
   place-items: center;
-  text-align: center;
+  text-align: justify;
 `;
 const Text = styled.p`
   padding: 5px;
@@ -47,7 +42,7 @@ const Text = styled.p`
 
 const YTT = (props) => {
   return (
-    <Container>
+    <section className='container'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>YOGA TEACHER TRAINING</h1>
@@ -84,7 +79,8 @@ const YTT = (props) => {
           </TextBox>
         </Right>
       </Box>
-    </Container>
+      <Amenities items={{ desktop: 5, tablet: 2, mobile: 1 }} height={'100%'} />
+    </section>
   );
 };
 

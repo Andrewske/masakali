@@ -1,16 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+import Amenities from '../Landing/Amenities';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 50px 0px 50px;
-  min-height: 100vh;
-`;
 
 const Box = styled.div`
   display: flex;
@@ -59,7 +53,7 @@ const SoundHealing = ({ color }) => {
   ///amenities-sound-healing_dYzsUtxnTO.jpg
   ///shervin_VewAMRrkuLI.png
   return (
-    <Container>
+    <section className='container'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>SOUND HEALING</h1>
@@ -131,7 +125,8 @@ const SoundHealing = ({ color }) => {
           </Box>
         </Right>
       </Box>
-    </Container>
+      <Amenities items={{ desktop: 5, tablet: 2, mobile: 1 }} height={'100%'} />
+    </section>
   );
 };
 

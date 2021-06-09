@@ -64,7 +64,7 @@ const Logo = styled.img`
 const images = [
   { key: 1, path: '/surya-front-night_JpkSeqJUB.jpg' },
   { key: 2, path: '/main-photo_p9l1NRPmw.jpg' },
-  { key: 3, path: '/suzanne-pool_lh-LwDdb-.jpg' },
+  { key: 3, path: '/home-suzanne-pool-view_t5w4u2g3s.jpg' },
   { key: 4, path: '/pool-view_3wQpQqYjp.jpeg' },
   { key: 5, path: '/surya-bed_lbJwR5-g9.jpg' },
 ];
@@ -81,10 +81,10 @@ const Home = () => {
         responsive={responsive}
         ssr={true} // means to render carousel on server-side.
         infinite={true}
-        autoplay={true}
+        autoPlay={true}
         autoPlaySpeed={5000}
-        keyBoardControl={true}
-        customTransition='all .5'
+        //keyBoardControl={true}
+        //customTransition='all .5'
         transitionDuration={1000}
         containerClass='home-gallery'
       >
@@ -96,9 +96,10 @@ const Home = () => {
                   className='background-image zoom'
                   path={d.path}
                   transformation={[
-                    { height: height, width: 'auto', dpr: 'auto' },
+                    { height: height, width: width, fo: 'auto', dpr: 'auto' },
                   ]}
-                  loading='lazy'
+                  lqip={{ active: true }}
+                  //loading='lazy'
                 />
               </ImageContext>
             </div>

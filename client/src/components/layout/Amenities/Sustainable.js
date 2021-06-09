@@ -1,20 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
+
+import Amenities from '../Landing/Amenities';
 
 // import eco_bags from '../../../img/sustainability/eco_bags.jpg';
 // import recycle from '../../../img/sustainability/recycle.jpg';
 // import solar from '../../../img/sustainability/solar.jpg';
 // import composting from '../../../img/sustainability/composting.jpg';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 50px 0px 50px;
-  min-height: 100vh;
-`;
 
 const Box = styled.div`
   display: flex;
@@ -51,7 +45,7 @@ const TextBox = styled.div`
   max-width: 550px;
   display: grid;
   place-items: center;
-  text-align: center;
+  text-align: justify;
 `;
 const Text = styled.p`
   padding: 15px 0px 15px;
@@ -76,7 +70,7 @@ const ListItem = styled.li`
 
 const Sustainable = (props) => {
   return (
-    <Container>
+    <section className='container'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>RESOURCE CONSERVATION & SUSTAINABLE DEVELOPMENT</h1>
@@ -111,7 +105,7 @@ const Sustainable = (props) => {
           </TextBox>
         </Left>
         <Right>
-          {/* <ImageContext>
+          <ImageContext>
             <IKImage
               //className='carousel-image'
               path='/solar_umLO40dWN.jpg'
@@ -161,10 +155,11 @@ const Sustainable = (props) => {
                 }}
               />
             </ImageContext>
-          </DoubleImage> */}
+          </DoubleImage>
         </Right>
       </Box>
-    </Container>
+      <Amenities items={{ desktop: 5, tablet: 2, mobile: 1 }} height={'100%'} />
+    </section>
   );
 };
 

@@ -55,6 +55,7 @@ const ContactForm = (props) => {
       {({ isSubmitting }) => (
         <Form className='contact-form'>
           <h1>Contact Us</h1>
+          <div className='divider' />
           <Field
             className='contact-input'
             type='input'

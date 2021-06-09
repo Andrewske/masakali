@@ -1,18 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-
-import useWindowSize from '../../../utils/useWindowSize';
-
-const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  flex-wrap;
-  padding: 50px 0px 50px;
-`;
 
 const Box = styled.div`
   display: grid;
@@ -45,9 +35,6 @@ const Right = styled.div`
   min-width: 350px;
 `;
 
-const Heading = styled.h2`
-  padding: 10px;
-`;
 const SubHeading = styled.h2`
   padding: 0px;
 `;
@@ -57,10 +44,10 @@ const Text = styled.p`
   text-align: justify;
 `;
 
-const Location = (props) => {
-  const { width, height } = useWindowSize();
+const Location = ({ width, height }) => {
+  const actualWidth = width > height ? height : width;
   return (
-    <Container id='location' className='background-gray'>
+    <section id='location' className='container background-gray'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>THE LAND</h1>
@@ -68,10 +55,17 @@ const Location = (props) => {
       </div>
       <Box>
         <Left>
-          <ImageContext>
+          {/* <ImageContext>
             <IKImage
               path='/location-drone-photo_YFB6yaJzxI2.jpg'
-              transformation={[{ height: '700px', width: `auto`, dpr: 'auto' }]}
+              transformation={[
+                {
+                  height: height,
+                  width: width,
+                  fo: 'center',
+                  dpr: 'auto',
+                },
+              ]}
               loading='lazy'
               style={{
                 objectFit: 'cover',
@@ -80,7 +74,31 @@ const Location = (props) => {
                 width: '100%',
               }}
             />
-          </ImageContext>
+          </ImageContext> */}
+
+          {height && (
+            <ImageContext>
+              <IKImage
+                path='/location-drone-photo_YFB6yaJzxI2.jpg'
+                transformation={[
+                  {
+                    height: height,
+                    width: actualWidth,
+                    fo: 'center',
+                    dpr: 'auto',
+                  },
+                ]}
+                lqip={{ active: true }}
+                loading='lazy'
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  height: '700px',
+                  width: '100%',
+                }}
+              />
+            </ImageContext>
+          )}
           {/* <img
             src='https://masakali.b-cdn.net/location-drone.jpg'
             style={{
@@ -115,10 +133,8 @@ const Location = (props) => {
           </TextBox>
         </Right>
       </Box>
-    </Container>
+    </section>
   );
 };
-
-Location.propTypes = {};
 
 export default Location;

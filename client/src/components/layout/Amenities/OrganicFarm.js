@@ -4,12 +4,8 @@ import styled from 'styled-components';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
-const Container = styled.div`
-  display: grid;
-  grid-template: auto 1fr;
-  min-height: 100vh;
-  padding: 50px 0px 50px;
-`;
+import Amenities from '../Landing/Amenities';
+
 const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -35,17 +31,13 @@ const Right = styled.div`
 
 const Text = styled.div`
   width: 75%;
-  text-align: left;
+  text-align: justify;
   padding: 50px 0px 50px;
-`;
-
-const Item = styled.li`
-  padding-bottom: 10px;
 `;
 
 const OrganicFarm = (props) => {
   return (
-    <Container id='organic_farm' className='background-gray'>
+    <section id='organic_farm' className='container'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>ORGANIC FARM</h1>
@@ -103,7 +95,8 @@ const OrganicFarm = (props) => {
           </ImageContext>
         </Right>
       </Box>
-    </Container>
+      <Amenities items={{ desktop: 5, tablet: 2, mobile: 1 }} height={'100%'} />
+    </section>
   );
 };
 

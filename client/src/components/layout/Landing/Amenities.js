@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
@@ -7,24 +6,6 @@ import 'react-multi-carousel/lib/styles.css';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 1, // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 1, // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1, // optional, default to 1.
-  },
-};
 
 const amenities = [
   {
@@ -40,7 +21,7 @@ const amenities = [
   {
     key: 'yoga-teacher-training',
     title: 'Yoga Teacher Training',
-    path: '/amenities-yoga-teacher-training_A3h6udN9A.jpg', //Change to Dylan yoga photo
+    path: '/dylan-yoga-tiny_-yFDvQrYfT1.jpg',
   },
   {
     key: 'organic-beauty-products',
@@ -94,9 +75,40 @@ const Divider = styled.div`
   margin-bottom: 15px;
 `;
 
-const Amenities = (props) => {
+const Text = styled.div`
+  display: inline;
+  color: white;
+  position: absolute;
+  bottom: 55px;
+  left: 25px;
+  //transform: translate(0px, -50%);
+  z-index: 3;
+  padding: 5px;
+  background-color: rgb(58, 27, 73, 0.5);
+  border-radius: 5px;
+`;
+
+const Amenities = ({ bg, items, height }) => {
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: items ? items.desktop : 3,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: items ? items.tablet : 2,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: items ? items.mobile : 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
+
   return (
-    <Container id='amenities' className='background-gray'>
+    <Container id='amenities' style={{ minHeight: height }} className={bg}>
       <Title>
         <p>MASAKALI</p>
       </Title>
@@ -111,7 +123,7 @@ const Amenities = (props) => {
         responsive={responsive}
         ssr={true} // means to render carousel on server-side.
         infinite={true}
-        //autoPlay={true} //{this.props.deviceType !== 'mobile' ? true : false}
+        autoPlay={true} //{this.props.deviceType !== 'mobile' ? true : false}
         autoPlaySpeed={3000}
         keyBoardControl={true}
         // customTransition='all .5'
@@ -137,12 +149,12 @@ const Amenities = (props) => {
                   />
                 </ImageContext>
               </div>
-              <div className='carousel-text'>
-                <h3>{i.title}</h3>
+              <Text>
+                <h4>{i.title}</h4>
                 <Link to={`/${i.key}`}>
                   Read More <i className='fa fa-arrow-right' />
                 </Link>
-              </div>
+              </Text>
             </div>
           );
         })}
@@ -150,7 +162,5 @@ const Amenities = (props) => {
     </Container>
   );
 };
-
-Amenities.propTypes = {};
 
 export default Amenities;

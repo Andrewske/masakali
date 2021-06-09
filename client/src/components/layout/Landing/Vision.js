@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ImageContext from '../../../utils/ImageContext';
@@ -65,7 +64,7 @@ const Vision = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
-              path='/vision_7S69wmFLG5N.jpg' //Balancing Rocks
+              path='/vision-stacked-rocks_dM2L2aeqw.jpg' //Balancing Rocks
               transformation={[{ height: '600px', width: 'auto', dpr: 'auto' }]}
               loading='lazy'
               style={{
@@ -108,7 +107,5 @@ const Vision = (props) => {
     </Container>
   );
 };
-
-Vision.propTypes = {};
 
 export default Vision;

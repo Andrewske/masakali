@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 //import { Link, animateScroll as scroll } from 'react-scroll';
 import { HashLink as Link } from 'react-router-hash-link';

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import additional_structures from '../../../img/accommodations/additional_structures.jpeg';

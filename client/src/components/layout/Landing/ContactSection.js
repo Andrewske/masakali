@@ -12,11 +12,11 @@ const Container = styled.section`
   justify-content: center;
 `;
 
-const Map = styled.div`
-  flex-grow: 1;
-  flex-basis: 50%;
-  min-height: 350px;
-`;
+// const Map = styled.div`
+//   flex-grow: 1;
+//   flex-basis: 50%;
+//   min-height: 350px;
+// `;
 
 const ContactSection = () => {
   return (

@@ -87,10 +87,10 @@ img {
 .container {
   width: 100vw;
   margin: auto;
-  overflow: hidden;
-  padding: 0 2rem;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  min-height: 100vh;
 }
 
 .border-color {
@@ -551,7 +551,7 @@ h4 {
 
 .carousel-item {
   position: relative;
-  height: 500px;
+  padding-top: 100%;
 }
 
 .carousel-image {

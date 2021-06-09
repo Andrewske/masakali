@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
 import styled from 'styled-components';
 
@@ -125,7 +124,5 @@ const FullScreenImage = ({ isOpen, handleClick, path }) => {
     </Transition>
   );
 };
-
-FullScreenImage.propTypes = {};
 
 export default FullScreenImage;

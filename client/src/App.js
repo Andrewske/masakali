@@ -1,9 +1,8 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './components/layout/Landing';
 import Financials from './components/layout/Financials';
 import Gallery from './components/layout/Gallery/Gallery';
-import Navbar from './components/layout/Navbar';
 import Amenities from './components/layout/Landing/Amenities';
 
 import Sidebar from './components/layout/Sidebar/Sidebar';
@@ -13,7 +12,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
-import { loadUser } from './actions/auth';
+//import { loadUser } from './actions/auth';
 
 //Amenities Pages
 import Retreats from './components/layout/Amenities/Retreats';
@@ -36,7 +35,6 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          {/* <Navbar /> */}
           <Sidebar />
           <Switch>
             <Route exact path='/' component={Landing} />

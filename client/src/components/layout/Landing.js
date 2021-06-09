@@ -18,12 +18,10 @@ import LoginPopup from '../auth/LoginPopup';
 import RegisterPopup from '../auth/RegisterPopup';
 import YoutubeEmbed from '../../utils/YoutubeEmbed';
 
-const color = `#3a1b49`;
-
-const MasakaliMain =
-  'https://ik.imagekit.io/4kpopox69zp//masakali_joglo_1_main_Cpampp_Mv.jpg';
+import useWindowSize from '../../utils/useWindowSize';
 
 const Landing = () => {
+  const { width, height } = useWindowSize();
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
   useHotkeys('shift+l', () =>
@@ -55,9 +53,9 @@ const Landing = () => {
         {showRegisterPopup ? <RegisterPopup togglePopup={togglePopup} /> : null}
         <Home />
         <Vision />
-        <Location />
+        <Location height={height} width={width} />
         <Facilities />
-        <Gallery />
+        <Gallery width={width} />
         <div
           id='landing-video'
           className='header'
@@ -67,17 +65,17 @@ const Landing = () => {
           <h1>Video</h1>
           <div className='divider' />
         </div>
-        <YoutubeEmbed
-          embedId={'9EfalIZ2NuA'}
-          title={'Masakali Tour Video'}
-          preview={
-            'https://ik.imagekit.io/4kpopox69zp/drone-default-masakali-video_ZmltYP6bJ.jpg'
-          }
-        />
+        {height && (
+          <YoutubeEmbed
+            embedId={'9EfalIZ2NuA'}
+            title={'Masakali Tour Video'}
+            preview={`https://ik.imagekit.io/4kpopox69zp/tr:h-${height},w-${width},c-at_max,dpr-auto/drone-default-masakali-video_ZmltYP6bJ.jpg`}
+          />
+        )}
         <Experience />
         <Community />
-        <Amenities />
-        <Team />
+        <Amenities bg={'background-gray'} />
+        {/* <Team /> */}
         <ContactSection />
         <Footer />
       </div>

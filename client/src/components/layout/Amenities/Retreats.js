@@ -1,43 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-//import flowers_statue from '../../../img/retreats_and_workshops/flowers_statue.jpg';
-//import meditation_class from '../../../img/retreats_and_workshops/meditation_class.jpg';
-//import soundhealing_bowl from '../../../img/retreats_and_workshops/soundhealing_bowl.jpg';
+import Amenities from '../Landing/Amenities';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100vh;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 0px 50px;
-`;
+import ImageContext from '../../../utils/ImageContext';
+import { IKImage } from 'imagekitio-react';
 
 const Images = styled.div`
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
   width: 75%;
 `;
 
 const Image = styled.div`
-  flex-grow: 1;
+  height: 200px;
+  width: 300px;
   margin: 10px;
-  min-width: 200px;
-  min-height: 200px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.1);
 `;
 
 const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 25px;
-  text-align: center;
+  text-align: justify;
 `;
 
 const Text = styled.p`
@@ -46,7 +34,7 @@ const Text = styled.p`
 
 const Retreats = (props) => {
   return (
-    <Container>
+    <section className='container'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>RETREATS AND WORKSHOPS</h1>
@@ -58,23 +46,51 @@ const Retreats = (props) => {
         <Text>Nourish your Spirit through healing sounds</Text>
       </TextBox>
       <Images>
-        {/* <Image
-          style={{
-            backgroundImage: `url(${flowers_statue})`,
-          }}
-        />
-        <Image
-          style={{
-            backgroundImage: `url(${meditation_class})`,
-          }}
-        />
-        <Image
-          style={{
-            backgroundImage: `url(${soundhealing_bowl})`,
-          }}
-        /> */}
+        <Image>
+          <ImageContext>
+            <IKImage
+              //className='carousel-image'
+              path='/retreats-flowers-statue_J88f247-Y.jpg'
+              transformation={[{ width: 'auto', height: '200px', dpr: 'auto' }]}
+              loading='lazy'
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
+            />
+          </ImageContext>
+        </Image>
+        <Image>
+          <ImageContext>
+            <IKImage
+              //className='carousel-image'
+              path='/amenities-retreats-and-workshops_RUXvKPcUY0.jpg'
+              transformation={[{ width: 'auto', height: '200px', dpr: 'auto' }]}
+              loading='lazy'
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
+            />
+          </ImageContext>
+        </Image>
+        <Image>
+          <ImageContext>
+            <IKImage
+              //className='carousel-image'
+              path='/retreats-sound-bowl_Pv1fWtGA6.jpg'
+              transformation={[{ width: 'auto', height: '200px', dpr: 'auto' }]}
+              loading='lazy'
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
+            />
+          </ImageContext>
+        </Image>
       </Images>
-    </Container>
+      <Amenities items={{ desktop: 5, tablet: 2, mobile: 1 }} height={'100%'} />
+    </section>
   );
 };
 
