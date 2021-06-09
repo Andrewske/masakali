@@ -1,4 +1,5 @@
 const express = require('express');
+var compression = require('compression');
 const connectDB = require('./config/db');
 const path = require('path');
 
@@ -11,6 +12,8 @@ connectDB();
 //   res.set('Content-Encoding', 'gzip');
 //   next();
 // });
+
+app.use(compression());
 
 // Init Middleware
 app.use(express.json({ extended: false }));
