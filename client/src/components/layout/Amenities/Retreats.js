@@ -25,6 +25,7 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 25px;
+  margin: 0 auto;
   text-align: justify;
 `;
 
@@ -41,7 +42,7 @@ const Retreats = (props) => {
         <div className='divider' />
       </div>
       <TextBox>
-        <Text>Adventure into your Mind by meditation, </Text>
+        <Text>Adventure into your Mind by meditation</Text>
         <Text>Revive your Body with yoga</Text>
         <Text>Nourish your Spirit through healing sounds</Text>
       </TextBox>

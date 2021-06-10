@@ -93,8 +93,8 @@ const Facilities = (props) => {
         <Right>
           <ImageContext>
             <IKImage
-              path='/master-plan-klusa-cad-3d-skinny_Hfsk5FT_lLC.jpg'
-              transformation={[{ height: '700px', width: 'auto', dpr: 'auto' }]}
+              path='/Master-Plan-Klusa-Cad-3H-tiny_G1TDmR5W_.jpg'
+              transformation={[{ dpr: 'auto' }]}
               loading='lazy'
               style={{
                 objectFit: 'contain',

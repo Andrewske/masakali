@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ScrollToTop from './components/routing/ScrollToTop';
 import Landing from './components/layout/Landing';
 import Financials from './components/layout/Financials';
 import Gallery from './components/layout/Gallery/Gallery';
@@ -34,6 +35,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
+        <ScrollToTop />
         <Fragment>
           <Sidebar />
           <Switch>
