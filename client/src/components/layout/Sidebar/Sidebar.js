@@ -21,10 +21,12 @@ const Sidebar = () => {
   };
 
   return (
-    <Container>
+    <>
       <SidebarIcon isOpen={isOpen} handleClick={toggleSidebar} />
-      <SidebarContent isOpen={isOpen} handleClick={toggleSidebar} />
-    </Container>
+      <Container>
+        <SidebarContent isOpen={isOpen} handleClick={toggleSidebar} />
+      </Container>
+    </>
   );
 };
 
