@@ -2,20 +2,24 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import FullScreenImage from './FullScreenImage';
 
+import { underConstructionImages } from './galleryImages';
+import { completedImages } from './galleryImages';
+import { viewsImages } from './galleryImages';
+
+import UnderConstruction from './UnderConstruction';
+import Completed from './Completed';
+import Views from './Views';
+
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
+import FullScreenCarousel from './FullScreenCarousel';
 
-const images = [
-  { key: 0, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
-  { key: 1, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
-  { key: 2, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
-  { key: 3, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
-  { key: 4, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
-  { key: 5, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
-  { key: 6, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
-  { key: 7, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
-  { key: 8, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
-  { key: 9, path: '/masakali_joglo_1_main_Cpampp_Mv.jpg' },
+import { SortCarousel } from './SortCarousel';
+
+const imageSets = [
+  { id: 'underConstruction', images: underConstructionImages },
+  { id: 'completed', images: completedImages },
+  { id: 'views', images: viewsImages },
 ];
 
 const Container = styled.div`
@@ -53,52 +57,62 @@ const HeaderLink = styled.div`
   }
 `;
 const Gallery = (props) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [path, setPath] = useState(null);
   const [key, setKey] = useState(null);
+  const [images, setImages] = useState(imageSets[0].images);
+  const [carousel, setCarousel] = useState(null);
+  const [type, setType] = useState('under-construction');
 
-  const handleClick = (direction = '', path = null, key = 0) => {
-    if (direction === 'left') {
-      if (key > 0) {
-        setKey((key) => key - 1);
-        alert(key);
-      } else {
-        setKey(0);
-      }
-    } else if (direction === 'right') {
-      setKey((key) => key - 1);
-    } else {
-      setKey(key);
-      setPath(path);
-      setIsOpen(!isOpen);
+  const closeCarousel = () => {
+    setIsOpen(false);
+  };
+
+  const changeImages = ({ type }) => {
+    setType(type);
+    //console.log(imageSets.filter((i) => i.id === type)[0].images);
+    //setImages(imageSets.filter((i) => i.id === type)[0].images);
+  };
+
+  const handleClick = (key) => {
+    setCarousel(SortCarousel(images, key));
+    setIsOpen(true);
+  };
+
+  const loadImages = () => {
+    switch (type) {
+      case 'under-construction':
+        return <UnderConstruction handleClick={handleClick} />;
+      case 'completed':
+        return <Completed handleClick={handleClick} />;
+      case 'views':
+        return <Views handleClick={handleClick} />;
+      default:
+        return <div>No Images</div>;
     }
-    return;
   };
 
   return (
     <Container>
-      <FullScreenImage isOpen={isOpen} path={path} handleClick={handleClick} />
+      {/* <FullScreenImage isOpen={isOpen} path={path} handleClick={handleClick} /> */}
       <Header>
-        <HeaderLink>Construction</HeaderLink>
-        <HeaderLink>Surya Gladak</HeaderLink>
-        <HeaderLink>Views</HeaderLink>
+        <HeaderLink
+          onClick={() => changeImages({ type: 'under-construction' })}
+        >
+          Under Construction
+        </HeaderLink>
+        <HeaderLink onClick={() => changeImages({ type: 'completed' })}>
+          Completed
+        </HeaderLink>
+        <HeaderLink onClick={() => changeImages({ type: 'views' })}>
+          Views
+        </HeaderLink>
       </Header>
-      <Images>
-        {images.map((i) => {
-          return (
-            <span onClick={handleClick(null, i.path, i.key)} key={i.key}>
-              <ImageContext>
-                <IKImage
-                  className='gallery-image'
-                  path={i.path}
-                  transformation={[{ width: 'auto', dpr: 'auto' }]}
-                  loading='lazy'
-                />
-              </ImageContext>
-            </span>
-          );
-        })}
-      </Images>
+      {isOpen ? (
+        <FullScreenCarousel images={carousel} close={closeCarousel} />
+      ) : (
+        <Images>{loadImages()}</Images>
+      )}
     </Container>
   );
 };

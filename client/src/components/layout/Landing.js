@@ -75,7 +75,7 @@ const Landing = () => {
         <Experience />
         <Community />
         <Amenities bg={'background-gray'} />
-        {/* <Team /> */}
+        <Team />
         <ContactSection />
         <Footer />
       </div>

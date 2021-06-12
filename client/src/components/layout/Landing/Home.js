@@ -66,7 +66,7 @@ const images = [
   { key: 2, path: '/main-photo_p9l1NRPmw.jpg' },
   { key: 3, path: '/home-suzanne-pool-view_t5w4u2g3s.jpg' },
   { key: 4, path: '/pool-view_3wQpQqYjp.jpeg' },
-  { key: 5, path: '/surya-bed_lbJwR5-g9.jpg' },
+  { key: 5, path: '/Home/home-surya-bed_rqQoKi6or.jpg' },
 ];
 
 const Home = () => {

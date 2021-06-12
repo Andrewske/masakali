@@ -93,7 +93,7 @@ const Facilities = (props) => {
         <Right>
           <ImageContext>
             <IKImage
-              path='/Master-Plan-Klusa-Cad-3H-tiny_G1TDmR5W_.jpg'
+              path='/Master-Plan-Klusa-Cad-3H-tiny_G1TDmR5W_.jpg' // Add a download link pdf version
               transformation={[{ dpr: 'auto' }]}
               loading='lazy'
               style={{

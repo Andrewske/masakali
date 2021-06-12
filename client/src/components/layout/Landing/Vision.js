@@ -21,6 +21,8 @@ const Box = styled.div`
 const Left = styled.div`
   flex: 1 1 40%;
   min-width: 350px;
+  display: flex;
+  align-content: center;
 `;
 
 const Right = styled.div`
@@ -64,14 +66,16 @@ const Vision = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
-              path='/vision-stacked-rocks_dM2L2aeqw.jpg' //Balancing Rocks
-              transformation={[{ height: '600px', width: 'auto', dpr: 'auto' }]}
+              path='/vision-purple_GTMPlqNE-.jpg' //Balancing Rocks
+              transformation={[{ height: '650px', width: 'auto', dpr: 'auto' }]}
               loading='lazy'
               style={{
                 objectFit: 'contain',
                 objectPosition: 'center',
-                maxHeight: '600px',
-                width: '100%',
+                maxHeight: '650px',
+                width: 'auto',
+                margin: '0 auto',
+                //border: '25px solid #372137',
               }}
             />
           </ImageContext>

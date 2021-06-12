@@ -77,7 +77,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 50px 0px 50px;
-  background-color: #f5f5f5;
 `;
 
 const Item = styled.div`
@@ -90,7 +89,7 @@ const Item = styled.div`
 const Gallery = ({ width }) => {
   const imgWidth = width > 750 ? 750 : width;
   return (
-    <Container id='landing-gallery'>
+    <Container id='landing-gallery' className='background-gray'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>Gallery</h1>
