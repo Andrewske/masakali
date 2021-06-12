@@ -9,7 +9,7 @@ const Container = styled.div`
   height: 100%;
   background-color: white;
   position: fixed;
-  z-index: 100;
+  z-index: 10000;
   overflow: scroll;
 `;
 
