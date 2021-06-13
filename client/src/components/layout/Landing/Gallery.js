@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -114,14 +114,17 @@ const Gallery = ({ width }) => {
                     />
                   </ImageContext>
                 </div>
-                {/* <div className='carousel-text'>
-                <h3>{i.title}</h3>
-              </div> */}
               </Item>
             );
           })}
         </Carousel>
       )}
+      <Link
+        to='/gallery'
+        style={{ color: 'black', margin: '0 auto', padding: '5px' }}
+      >
+        View Full Gallery
+      </Link>
     </Container>
   );
 };

@@ -67,7 +67,7 @@ const Landing = () => {
         </div>
         {height && (
           <YoutubeEmbed
-            embedId={'9EfalIZ2NuA'}
+            embedId={'BWsCsF1PLhI'}
             title={'Masakali Tour Video'}
             preview={`https://ik.imagekit.io/4kpopox69zp/tr:h-${height},w-${width},c-at_max,dpr-auto/Gallery/Completed/video-cover-photo_cKqFn4GOi.jpg`}
           />

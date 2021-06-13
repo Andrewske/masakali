@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
 import ContactForm from './ContactForm';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100vw;
@@ -21,6 +22,12 @@ const CodeForm = styled.form`
 
 const Text = styled.p`
   padding: 10px;
+`;
+
+const Links = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Financials = () => {
@@ -44,7 +51,56 @@ const Financials = () => {
       ) : (
         <Fragment>
           {isAuthenticated ? (
-            <div>Yes</div>
+            <Links>
+              <div className='header'>
+                <p>MASAKALI</p>
+                <h1>INVESTORS</h1>
+                <div className='divider' />
+              </div>
+              <p style={{ textAlign: 'center', padding: '5px' }}>
+                Click to download pdf or visit our financial spreadsheet
+              </p>
+              <Link
+                to='../../files/investors/21-06-08 Class B Preferred Financing Term Sheet for Phase I investors.pdf'
+                target='_blank'
+                download
+                className='investor-link'
+              >
+                Class B Preferred Financing Term Sheet for Phase I investors.pdf
+              </Link>
+              <Link
+                to='../../files/investors/21-06-08 Class B Preferred Financing Term Sheet for Phase II investors.pdf'
+                target='_blank'
+                download
+                className='investor-link'
+              >
+                Class B Preferred Financing Term Sheet for Phase II
+                investors.pdf
+              </Link>
+              <Link
+                to='../../files/investors/First Amended Operating Agreement for Akasha Holdings LLC.pdf'
+                target='_blank'
+                download
+                className='investor-link'
+              >
+                First Amended Operating Agreement for Akasha Holdings LLC.pdf
+              </Link>
+              <Link
+                to='../../files/investors/Land Acquisition Disclosure Statement.pdf'
+                target='_blank'
+                download
+                className='investor-link'
+              >
+                Land Acquisition Disclosure Statement.pdf
+              </Link>
+              <a
+                href='https://docs.google.com/spreadsheets/d/1d_nDERIyOM4SP8U7-SGR7gFrWR1LFIt4kuhLzL3QzXA/edit?usp=sharing'
+                target='_blank'
+                className='investor-link'
+              >
+                Akasha Financial Spreadsheet Google Sheets
+              </a>
+            </Links>
           ) : (
             <CodeForm onSubmit={handleSubmit}>
               <div className='header'>

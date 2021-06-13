@@ -71,7 +71,7 @@ const Gallery = (props) => {
   const changeImages = ({ type }) => {
     setType(type);
     //console.log(imageSets.filter((i) => i.id === type)[0].images);
-    //setImages(imageSets.filter((i) => i.id === type)[0].images);
+    setImages(imageSets.filter((i) => i.id === type)[0].images);
   };
 
   const handleClick = (key) => {

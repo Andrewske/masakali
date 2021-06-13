@@ -67,30 +67,44 @@ const Footer = (props) => {
   return (
     <Container className='background-purple'>
       <Info>
-        <LinkStyle href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
+        <a className='footer-link' href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
           <p>Masakali</p>
           <p>Br. Ayah Kelusa Payangan</p>
           <p>Gianyar Bali 80572</p>
-        </LinkStyle>
-        <LinkStyle href='https://www.instagram.com/masakaliretreat'>
+        </a>
+        <a
+          className='footer-link'
+          href='https://www.instagram.com/masakaliretreat'
+        >
           <div style={{ display: 'flex', width: 'fit-content' }}>
             <IconImg src={insta} />
             <p>/masakaliretreat</p>
           </div>
-        </LinkStyle>
-        <LinkStyle href='https://www.facebook.com/masakaliretreat'>
+        </a>
+        <a
+          className='footer-link'
+          href='https://www.facebook.com/masakaliretreat'
+        >
           <div style={{ display: 'flex', width: 'fit-content' }}>
             <IconImg src={facebook} />
             <p>/masakaliretreat</p>
           </div>
-        </LinkStyle>
-        <LinkStyle href='info@masakaliretreat.com'>
+        </a>
+        <a className='footer-link' href='info@masakaliretreat.com'>
           <p>
             <span className='icon-email footer-icon' /> info@masakaliretreat.com
           </p>
-        </LinkStyle>
+        </a>
       </Info>
-      <Pages>{linkItems}</Pages>
+      <Pages>
+        {linkItems}
+        <Link to='/gallery' className='footer-link'>
+          Full Gallery
+        </Link>
+        <Link to='/investors' className='footer-link'>
+          Investors
+        </Link>
+      </Pages>
     </Container>
   );
 };

@@ -375,6 +375,15 @@ h4 {
     font-size: 1rem;
   } */
 
+.investor-link {
+  color: var(--purple-color);
+  padding: 5px;
+}
+
+.investor-link:hover {
+  color: var(--secondary-color);
+}
+
 /* Sidebar */
 .sidebar-icon {
   font-size: 2em;
@@ -691,5 +700,5 @@ h4 {
 }
 
 .footer-link:hover {
-  text-shadow: 1px 1px 1px yellow;
+  text-shadow: 1px 1px 1px var(--secondary-color);
 }

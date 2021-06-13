@@ -78,6 +78,7 @@ const FullScreenCarousel = ({ images, close }) => {
                     transformation={[
                       { width: 'auto', height: '600px', dpr: 'auto' },
                     ]}
+                    lqip={{ active: true }}
                     loading='lazy'
                   />
                 </ImageContext>
