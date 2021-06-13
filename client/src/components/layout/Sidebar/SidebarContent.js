@@ -71,6 +71,7 @@ const linkData = [
   { id: 'experience', name: 'Experience' },
   { id: 'community', name: 'Community' },
   { id: 'amenities', name: 'Amenities', subLinks: amenities },
+  { id: 'team', name: 'Team' },
   { id: 'contact', name: 'Contact' },
 ];
 
@@ -124,6 +125,12 @@ const SidebarContent = ({ isOpen, handleClick }) => {
         {(state) => (
           <div style={{ ...linkStyle, ...linkTransitionStyles[state] }}>
             {linkItems}
+            <ExtLink>
+              <Link to={'/investors'} className='sidebar-link'>
+                Investors
+              </Link>
+            </ExtLink>
+
             <Social>
               <SidebarLink href='https://www.instagram.com/masakaliretreat'>
                 <span className='icon-instagram footer-icon' />

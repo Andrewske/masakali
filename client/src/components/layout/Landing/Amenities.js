@@ -36,17 +36,22 @@ const amenities = [
   {
     key: 'cafe-juice-bar',
     title: 'Cafe And Juice Bar',
-    path: '/amenities-cafe-juice-bar_x_JQWigHC.jpg',
+    path: '/Amenities/cafe-juice-bar/zlatko-duric-juicebar_75hF_5zIp.jpg',
   },
   {
     key: 'sustainable-development',
     title: 'Sustainable Development',
-    path: '/amenities-sustainable-development_oCZGauZwv.jpg',
+    path: '/Amenities/sustainable-development/heart-dirt-in-hands_Li4DSMK5r.jpg',
   },
   {
     key: 'organic-farm',
     title: 'Organic Farm',
     path: '/vegtable_SEHv7lswzOf.jpg',
+  },
+  {
+    key: 'spa',
+    title: 'Spa',
+    path: '/Amenities/spa/spa-rocks_pRnvaEgfs.jpg',
   },
 ];
 

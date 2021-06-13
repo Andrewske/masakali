@@ -24,6 +24,7 @@ import Foundation from './components/layout/Amenities/Foundation';
 import CafeJuiceBar from './components/layout/Amenities/CafeJuiceBar';
 import Sustainable from './components/layout/Amenities/Sustainable';
 import OrganicFarm from './components/layout/Amenities/OrganicFarm';
+import Spa from './components/layout/Amenities/Spa';
 
 //imageKitId = 4kpopox69zpcd
 
@@ -40,13 +41,14 @@ const App = () => {
           <Sidebar />
           <Switch>
             <Route exact path='/' component={Landing} />
-            <Route exact path='/financials' component={Financials} />
+            <Route exact path='/investors' component={Financials} />
             <Route exact path='/gallery' component={Gallery} />
             <Route exact path='/amenities' component={Amenities} />
             <Route exact path='/retreats-and-workshops' component={Retreats} />
             <Route exact path='/sound-healing' component={SoundHealing} />
             <Route exact path='/yoga-teacher-training' component={YTT} />
             <Route exact path='/cafe-juice-bar' component={CafeJuiceBar} />
+            <Route exact path='/spa' component={Spa} />
             <Route
               exact
               path='/sustainable-development'

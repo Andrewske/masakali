@@ -29,44 +29,29 @@ const responsive = {
 
 const amenities = [
   {
-    key: 'surya-gladak-lights',
-    title: 'Surya Gladak One',
-    path: '/surya-gladak-one-complete-with-lights_-U3E4CLrm.jpg',
+    key: 'garden-path',
+    title: 'Garden Path',
+    path: '/Home_Gallery/home-gallery-garden-path_KCq3C0ym9.jpg',
   },
   {
-    key: 'surya-bedroom',
-    title: 'Surya Bedroom',
-    path: '/surya-bedroom-complete_Ub1dCPnbu.jpeg',
+    key: 'surya-bed',
+    title: 'Surya Bed',
+    path: '/Home_Gallery/home-gallery-surya-bed_61qeDhIpP.jpg',
   },
   {
     key: 'surya-bathroom-complete',
     title: 'Surya Bathroom',
-    path: '/surya-bathroom-complete_sqpZL2NWz.jpeg',
+    path: '/Home_Gallery/home-gallery-surya-front_MSOIxOpuzC.jpg',
   },
   {
-    key: 'surya-gladak-complete-side',
-    title: 'Surya Gladak Side',
-    path: '/surya-gladak-complete-side_sm9uZTwpN.jpg',
+    key: 'surya-porch',
+    title: 'Surya Porch',
+    path: '/Home_Gallery/home-gallery-surya-porch_UQMgyTGhub.jpg',
   },
   {
-    key: 'chandra-gladak-construction',
-    title: 'Chandra Gladak',
-    path: '/chandra-gladak-two-construction_gEvrp_9UB.jpeg',
-  },
-  {
-    key: 'chandra-gladak-roof',
-    title: 'Chandra Gladak Roof',
-    path: '/chandra-gladak-two-building-roof_REMtylGq3V2.JPG',
-  },
-  {
-    key: 'chandra-gladak-surya',
-    title: 'Chandra Gladak Next To Surya',
-    path: '/chandra-gladak-two-with-surya_pfos3hwDZ.jpeg',
-  },
-  {
-    key: 'chandra-guesthouse-construction',
-    title: 'Jala Guesthouse',
-    path: '/jala-guesthouse-three-construction_KDk5I-Qlb.jpeg',
+    key: 'surya-side',
+    title: 'Surya Side',
+    path: '/Home_Gallery/home-gallery-surya-side_S-U2y7f90Z.jpg',
   },
 ];
 

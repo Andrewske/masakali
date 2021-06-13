@@ -79,7 +79,7 @@ const OrganicProducts = (props) => {
               We are working with the local farms to grow organic coconut,
               cacao, healing plants and herbs. Our own products will not only be
               used for the treatments in the Spa, they are also provided in the
-              rooms and available for purchase in our new on-site shop
+              rooms and available for purchase in our new on-site shop.
             </p>
           </TextBox>
           <ImageBox>

@@ -69,7 +69,7 @@ const Landing = () => {
           <YoutubeEmbed
             embedId={'9EfalIZ2NuA'}
             title={'Masakali Tour Video'}
-            preview={`https://ik.imagekit.io/4kpopox69zp/tr:h-${height},w-${width},c-at_max,dpr-auto/drone-default-masakali-video_ZmltYP6bJ.jpg`}
+            preview={`https://ik.imagekit.io/4kpopox69zp/tr:h-${height},w-${width},c-at_max,dpr-auto/Gallery/Completed/video-cover-photo_cKqFn4GOi.jpg`}
           />
         )}
         <Experience />

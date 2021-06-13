@@ -49,7 +49,7 @@ const Financials = () => {
             <CodeForm onSubmit={handleSubmit}>
               <div className='header'>
                 <p>MASAKALI</p>
-                <h1>FINANCIALS</h1>
+                <h1>INVESTORS</h1>
                 <div className='divider' />
               </div>
               <Text>

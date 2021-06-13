@@ -108,7 +108,7 @@ const Sustainable = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
-              path='/solar_umLO40dWN.jpg'
+              path='/Amenities/sustainable-development/gogreen_mII8MZ6q1.jpg'
               transformation={[{ width: '400px', height: 'auto', dpr: 'auto' }]}
               loading='lazy'
               style={{
@@ -124,7 +124,7 @@ const Sustainable = (props) => {
             <ImageContext>
               <IKImage
                 //className='carousel-image'
-                path='//composting_i9TWzjICC.jpg'
+                path='/Amenities/sustainable-development/solar_U5xbovxihS.jpg'
                 transformation={[
                   { width: 'auto', height: '200px', dpr: 'auto' },
                 ]}
@@ -141,7 +141,7 @@ const Sustainable = (props) => {
             <ImageContext>
               <IKImage
                 //className='carousel-image'
-                path='/recycle_S75L1XvzWmD.jpg'
+                path='/Amenities/sustainable-development/heart-dirt-in-hands_Li4DSMK5r.jpg'
                 transformation={[
                   { width: 'auto', height: '200px', dpr: 'auto' },
                 ]}

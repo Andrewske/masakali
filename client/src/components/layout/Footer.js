@@ -54,6 +54,7 @@ const linkData = [
   { id: 'experience', name: 'Experience' },
   { id: 'community', name: 'Community' },
   { id: 'amenities', name: 'Amenities' },
+  { id: 'team', name: 'Team' },
   { id: 'contact', name: 'Contact' },
 ];
 
@@ -68,7 +69,7 @@ const Footer = (props) => {
       <Info>
         <LinkStyle href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
           <p>Masakali</p>
-          <p>Br. Ayah Kelusa Village Payangan</p>
+          <p>Br. Ayah Kelusa Payangan</p>
           <p>Gianyar Bali 80572</p>
         </LinkStyle>
         <LinkStyle href='https://www.instagram.com/masakaliretreat'>

@@ -16,9 +16,10 @@ const Images = styled.div`
 `;
 
 const Image = styled.div`
-  height: 200px;
-  width: 300px;
+  max-height: 300px;
+  max-width: 300px;
   margin: 10px;
+  overflow: hidden;
 `;
 
 const TextBox = styled.div`
@@ -51,8 +52,10 @@ const Retreats = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
-              path='/retreats-flowers-statue_J88f247-Y.jpg'
-              transformation={[{ width: 'auto', height: '200px', dpr: 'auto' }]}
+              path='/Amenities/retreats-and-workshops/flower-statue_AIqrhVUzd.jpg'
+              transformation={[
+                { height: '300px', width: '300px', dpr: 'auto' },
+              ]}
               loading='lazy'
               style={{
                 objectFit: 'cover',
@@ -65,8 +68,10 @@ const Retreats = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
-              path='/amenities-retreats-and-workshops_RUXvKPcUY0.jpg'
-              transformation={[{ width: 'auto', height: '200px', dpr: 'auto' }]}
+              path='/Amenities/retreats-and-workshops/yoga_WXAePzCE7H.jpg'
+              transformation={[
+                { width: '300px', height: '300px', dpr: 'auto' },
+              ]}
               loading='lazy'
               style={{
                 objectFit: 'cover',
@@ -79,8 +84,10 @@ const Retreats = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
-              path='/retreats-sound-bowl_Pv1fWtGA6.jpg'
-              transformation={[{ width: 'auto', height: '200px', dpr: 'auto' }]}
+              path='/Amenities/retreats-and-workshops/sound-bowl_OdjExtuv1.jpg'
+              transformation={[
+                { width: '300px', height: '300px', dpr: 'auto' },
+              ]}
               loading='lazy'
               style={{
                 objectFit: 'cover',

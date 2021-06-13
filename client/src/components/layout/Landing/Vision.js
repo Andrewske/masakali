@@ -15,29 +15,32 @@ const Container = styled.div`
 const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 
 const Left = styled.div`
-  flex: 1 1 40%;
+  //flex: 1 1 40%;
   min-width: 350px;
   display: flex;
   align-content: center;
 `;
 
 const Right = styled.div`
-  flex: 1 1 60%;
+  //flex: 1 1 60%;
   min-width: 350px;
+  max-width: 750px;
 `;
 
 const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 90%;
+  width: 100%;
   justify-content: center;
-  margin: auto;
-  padding: 15px;
+  margin: 0 auto;
+  @media (max-width: 786px) {
+    width: 90%;
+  }
 `;
 
 const SubHeading = styled.h2`

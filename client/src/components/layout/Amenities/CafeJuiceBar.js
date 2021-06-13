@@ -71,7 +71,7 @@ const CafeJuiceBar = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
-              path='/amenities-cafe-juice-bar_x_JQWigHC.jpg'
+              path='/Amenities/cafe-juice-bar/raimond-klavins-cafe_wXLd4Uhuh.jpg'
               transformation={[{ width: 'auto', height: '500px', dpr: 'auto' }]}
               loading='lazy'
               style={{

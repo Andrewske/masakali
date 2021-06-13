@@ -21,8 +21,9 @@ const Box = styled.div`
 `;
 
 const Member = styled.div`
-  width: 300px;
+  width: 350px;
   display: flex;
+  flex: 1 1 30%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -45,6 +46,7 @@ const Title = styled.p`
 const Text = styled.p`
   font-size: 12px;
   text-align: justify;
+  max-width: 300px;
 `;
 
 const members = [
@@ -56,14 +58,14 @@ const members = [
       'Suzanne has been practicing law for 17 years specializing in construction, real estate and business litigation.  She has traveled all over the world to find the perfect location to develop land and build a retreat center. With her strong business and legal background in construction and real estate development, it was time to follow her passion and build her dream – a dream she could share with others – and that is Masakali.',
     path: '/Team/Suzanne_DcVVCDtJl.jpg',
   },
-  {
-    key: 'doug',
-    name: 'Douglas W. Turner',
-    title: 'Co-Founder, Investor',
-    description:
-      'Doug is in public relations and represents numerous clients in real estate, energy, healthcare, education, finance as well non-profits and government organizations including NATO. He has extensive experience in marketing, business, real estate development and investment. He is a serial entrepreneur and the founder of various ventures including Agenda-Global, LLC, Rutherford Homes and Heritage Driven.',
-    path: '/Team/Doug_QUFbLswfq.jpg',
-  },
+  // {
+  //   key: 'doug',
+  //   name: 'Douglas W. Turner',
+  //   title: 'Co-Founder, Investor',
+  //   description:
+  //     'Doug is in public relations and represents numerous clients in real estate, energy, healthcare, education, finance as well non-profits and government organizations including NATO. He has extensive experience in marketing, business, real estate development and investment. He is a serial entrepreneur and the founder of various ventures including Agenda-Global, LLC, Rutherford Homes and Heritage Driven.',
+  //   path: '/Team/Doug_QUFbLswfq.jpg',
+  // },
   {
     key: 'kevin',
     name: 'Kevin Andrews',
@@ -108,31 +110,31 @@ const members = [
     key: 'alexis',
     name: 'Alexis Coates',
     title: 'Marketing/Advertising/Graphic Designer',
-    description:
-      'With 30 plus years in construction and project management, Ardana ensures that every step taken during the construction process meets industry standard and ensures the safety and comfort of our guests.',
+    //description:
+    //  'With 30 plus years in construction and project management, Ardana ensures that every step taken during the construction process meets industry standard and ensures the safety and comfort of our guests.',
     path: '/Team/Alexis_Jl4Daw7T3.jpg',
   },
   {
     key: 'raluca',
     name: 'Raluca',
     title: 'Social Media Manager',
-    description:
-      'With 30 plus years in construction and project management, Ardana ensures that every step taken during the construction process meets industry standard and ensures the safety and comfort of our guests.',
+    //description:
+    //  'With 30 plus years in construction and project management, Ardana ensures that every step taken during the construction process meets industry standard and ensures the safety and comfort of our guests.',
     path: '/Team/raluca_wKkrgOAMK.jpg',
   },
   {
     key: 'shervin',
     name: 'Shervin',
     title: 'Sound Healing Therapist',
-    description:
-      'With 30 plus years in construction and project management, Ardana ensures that every step taken during the construction process meets industry standard and ensures the safety and comfort of our guests.',
+    //description:
+    //  'With 30 plus years in construction and project management, Ardana ensures that every step taken during the construction process meets industry standard and ensures the safety and comfort of our guests.',
     path: '/Team/shervin_6ujLpoYFh.jpg',
   },
 ];
 
 const Team = () => {
   return (
-    <Container>
+    <Container id='team'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>Team</h1>
@@ -160,7 +162,7 @@ const Team = () => {
             </ImageContext>
             <Name>{m.name}</Name>
             <Title>{m.title}</Title>
-            {/* <Text>{m.description}</Text> */}
+            {m.description ? <Text>{m.description}</Text> : null}
           </Member>
         ))}
       </Box>

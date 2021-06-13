@@ -76,7 +76,7 @@ const FullScreenCarousel = ({ images, close }) => {
                     className='fs-carousel-image'
                     path={i.path}
                     transformation={[
-                      { width: 'auto', height: '450px', dpr: 'auto' },
+                      { width: 'auto', height: '600px', dpr: 'auto' },
                     ]}
                     loading='lazy'
                   />

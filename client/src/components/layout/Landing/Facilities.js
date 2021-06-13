@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
@@ -41,7 +42,7 @@ const List = styled.div`
   text-align: left;
   padding: 15px 15px 15px;
 `;
-
+//Call this Invest
 const Facilities = (props) => {
   return (
     <Container id='facilities'>
@@ -88,6 +89,14 @@ const Facilities = (props) => {
                 <li>Spa</li>
               </ul>
             </List>
+            <Link
+              to='../../files/Master Plan Klusa-Cad-3H.pdf'
+              target='_blank'
+              download
+              style={{ color: 'black' }}
+            >
+              Download Full Master Plan
+            </Link>
           </TextBox>
         </Left>
         <Right>
