@@ -53,7 +53,7 @@ const members = [
   {
     key: 'suzanne',
     name: 'Suzanne DuBose',
-    title: 'Founder, Developer and Managing Partner',
+    title: 'Founder, Developer and CEO',
     description:
       'Suzanne has been practicing law for 17 years specializing in construction, real estate and business litigation.  She has traveled all over the world to find the perfect location to develop land and build a retreat center. With her strong business and legal background in construction and real estate development, it was time to follow her passion and build her dream – a dream she could share with others – and that is Masakali.',
     path: '/Team/Suzanne_DcVVCDtJl.jpg',
@@ -69,9 +69,9 @@ const members = [
   {
     key: 'kevin',
     name: 'Kevin Andrews',
-    title: 'Co-Founder, Manager, Web Developer',
+    title: 'Co-Founder, CFO, Web Developer',
     description:
-      'Doug is in public relations and represents numerous clients in real estate, energy, healthcare, education, finance as well non-profits and government organizations including NATO. He has extensive experience in marketing, business, real estate development and investment. He is a serial entrepreneur and the founder of various ventures including Agenda-Global, LLC, Rutherford Homes and Heritage Driven.',
+      'Kevin is from Seattle but is a lifetime traveler who has found a second home in Bali. He has worked in the tech industry for over 5 years. He began in marketing but has extended his skills to include project management, data analysis and web development.',
     path: '/Team/kevin_P-pAeg65N.jpg',
   },
   {

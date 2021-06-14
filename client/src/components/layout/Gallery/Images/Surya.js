@@ -1,10 +1,10 @@
 import React from 'react';
-import ImageContext from '../../../utils/ImageContext';
+import ImageContext from '../../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-import { viewsImages } from './galleryImages';
+import { suryaImages } from '../galleryImages';
 
-const Views = ({ handleClick }) => {
-  return viewsImages.map((i) => (
+const Surya = ({ handleClick }) => {
+  return suryaImages.map((i) => (
     <span onClick={() => handleClick(i.key)} key={i.key}>
       <ImageContext>
         <IKImage
@@ -18,4 +18,4 @@ const Views = ({ handleClick }) => {
   ));
 };
 
-export default Views;
+export default Surya;

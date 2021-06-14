@@ -114,13 +114,11 @@ const Amenities = ({ bg, items, height }) => {
 
   return (
     <Container id='amenities' style={{ minHeight: height }} className={bg}>
-      <Title>
+      <div className='header'>
         <p>MASAKALI</p>
-      </Title>
-      <Header>
         <h1>AMENITIES</h1>
-      </Header>
-      <Divider />
+        <div className='divider' />
+      </div>
       <Carousel
         swipeable={true}
         draggable={false}

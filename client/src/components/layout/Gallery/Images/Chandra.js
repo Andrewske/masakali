@@ -1,10 +1,10 @@
 import React from 'react';
-import ImageContext from '../../../utils/ImageContext';
+import ImageContext from '../../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-import { completedImages } from './galleryImages';
+import { chandraImages } from '../galleryImages';
 
-const Completed = ({ handleClick }) => {
-  return completedImages.map((i) => (
+const Chandra = ({ handleClick }) => {
+  return chandraImages.map((i) => (
     <span onClick={() => handleClick(i.key)} key={i.key}>
       <ImageContext>
         <IKImage
@@ -18,4 +18,4 @@ const Completed = ({ handleClick }) => {
   ));
 };
 
-export default Completed;
+export default Chandra;

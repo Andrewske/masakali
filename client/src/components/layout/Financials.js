@@ -58,33 +58,8 @@ const Financials = () => {
                 <div className='divider' />
               </div>
               <p style={{ textAlign: 'center', padding: '5px' }}>
-                Click to download pdf or visit our financial spreadsheet
+                Click below to download documents.
               </p>
-              <Link
-                to='../../files/investors/21-06-08 Class B Preferred Financing Term Sheet for Phase I investors.pdf'
-                target='_blank'
-                download
-                className='investor-link'
-              >
-                Class B Preferred Financing Term Sheet for Phase I investors.pdf
-              </Link>
-              <Link
-                to='../../files/investors/21-06-08 Class B Preferred Financing Term Sheet for Phase II investors.pdf'
-                target='_blank'
-                download
-                className='investor-link'
-              >
-                Class B Preferred Financing Term Sheet for Phase II
-                investors.pdf
-              </Link>
-              <Link
-                to='../../files/investors/First Amended Operating Agreement for Akasha Holdings LLC.pdf'
-                target='_blank'
-                download
-                className='investor-link'
-              >
-                First Amended Operating Agreement for Akasha Holdings LLC.pdf
-              </Link>
               <Link
                 to='../../files/investors/Land Acquisition Disclosure Statement.pdf'
                 target='_blank'
@@ -109,13 +84,14 @@ const Financials = () => {
                 <div className='divider' />
               </div>
               <Text>
-                Looking to invest in Masakali? We have prepared the relevant
-                financials, which are available to approved parites.
+                Looking to invest in Masakali? We have prepared a pitch deck and
+                the relevant financials, which are available to approved
+                parties.
               </Text>
               <Text>
-                If you have the required code please enter it below to view our
-                financial documents. Otherwise please contact us to receive your
-                code.
+                If you have the required code, please enter it below to view
+                additional documents. Otherwise, please contact us to receive
+                your code.
               </Text>
               <input
                 className='contact-input'

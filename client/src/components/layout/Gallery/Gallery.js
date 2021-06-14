@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import FullScreenImage from './FullScreenImage';
 
-import { underConstructionImages } from './galleryImages';
-import { completedImages } from './galleryImages';
+import { chandraImages } from './galleryImages';
+import { jalaImages } from './galleryImages';
+import { suryaImages } from './galleryImages';
 import { viewsImages } from './galleryImages';
 
-import UnderConstruction from './UnderConstruction';
-import Completed from './Completed';
-import Views from './Views';
+import Chandra from './Images/Chandra';
+import Jala from './Images/Jala';
+import Surya from './Images/Surya';
+import Views from './Images/Views';
 
-import ImageContext from '../../../utils/ImageContext';
-import { IKImage } from 'imagekitio-react';
 import FullScreenCarousel from './FullScreenCarousel';
-
+import Header from './Header';
 import { SortCarousel } from './SortCarousel';
 
 const imageSets = [
-  { id: 'underConstruction', images: underConstructionImages },
-  { id: 'completed', images: completedImages },
+  { id: 'chandra', images: chandraImages },
+  { id: 'jala', images: jalaImages },
+  { id: 'surya', images: suryaImages },
   { id: 'views', images: viewsImages },
 ];
 
@@ -30,18 +30,6 @@ const Container = styled.div`
   width: 90vw;
 `;
 
-const Header = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  height: 65px;
-  width: 100vw;
-  background-color: #3a1b49;
-  z-index: 1;
-`;
-
 const Images = styled.div`
   margin-top: 100px;
   display: flex;
@@ -49,29 +37,19 @@ const Images = styled.div`
   justify-content: center;
 `;
 
-const HeaderLink = styled.div`
-  color: white;
-  :hover {
-    cursor: pointer;
-    font-weight: bold;
-  }
-`;
 const Gallery = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [path, setPath] = useState(null);
-  const [key, setKey] = useState(null);
   const [images, setImages] = useState(imageSets[0].images);
   const [carousel, setCarousel] = useState(null);
-  const [type, setType] = useState('under-construction');
+  const [type, setType] = useState('views');
 
   const closeCarousel = () => {
     setIsOpen(false);
   };
 
   const changeImages = ({ type }) => {
+    console.log('setType', type);
     setType(type);
-    //console.log(imageSets.filter((i) => i.id === type)[0].images);
-    setImages(imageSets.filter((i) => i.id === type)[0].images);
   };
 
   const handleClick = (key) => {
@@ -80,11 +58,14 @@ const Gallery = (props) => {
   };
 
   const loadImages = () => {
+    console.log(type);
     switch (type) {
-      case 'under-construction':
-        return <UnderConstruction handleClick={handleClick} />;
-      case 'completed':
-        return <Completed handleClick={handleClick} />;
+      case 'chandra':
+        return <Chandra handleClick={handleClick} />;
+      case 'jala':
+        return <Jala handleClick={handleClick} />;
+      case 'surya':
+        return <Surya handleClick={handleClick} />;
       case 'views':
         return <Views handleClick={handleClick} />;
       default:
@@ -94,24 +75,20 @@ const Gallery = (props) => {
 
   return (
     <Container>
-      {/* <FullScreenImage isOpen={isOpen} path={path} handleClick={handleClick} /> */}
-      <Header>
-        <HeaderLink
-          onClick={() => changeImages({ type: 'under-construction' })}
-        >
-          Under Construction
-        </HeaderLink>
-        <HeaderLink onClick={() => changeImages({ type: 'completed' })}>
-          Completed
-        </HeaderLink>
-        <HeaderLink onClick={() => changeImages({ type: 'views' })}>
-          Views
-        </HeaderLink>
-      </Header>
+      <Header changeImages={changeImages} />
       {isOpen ? (
         <FullScreenCarousel images={carousel} close={closeCarousel} />
       ) : (
-        <Images>{loadImages()}</Images>
+        <>
+          <Images>
+            <div className='header'>
+              <p>MASAKALI</p>
+              <h1>{type.toUpperCase()}</h1>
+              <div className='divider' />
+            </div>
+            {loadImages()}
+          </Images>
+        </>
       )}
     </Container>
   );

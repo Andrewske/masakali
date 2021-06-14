@@ -1,97 +1,12 @@
-waiting on Lexi for the logo
-
-//put quotes around meaning
-
-//remove accommodations header
-//Add The Land bannder instead of Locationban
-//Add Facilities Banner
-
-Code for and economics site
-- Get financial spreadsheet on Google Sheets
-- Disclosure Statement
-- Operating Agreement
-- Class B Financial Term Sheet
-
-
-//move organic farm to amenities
-//add community instead of organic farm
-//change headers to be like amenities
-
-
-//Fix Instagram and Facebook Icons to Logos
-//Add Video under Gallery
-
-
-Notes Round 2
-
-VISION:
-//Can remove -Masakali- I think on vision page and just start with definition.
-
-//Was trying to do definition of Masakali in larger italicized or different font and also with two border lines on top and bottom like in the attached vision page if possible but only if it still looks good on phone app of course.  Sorry because I don’t think I was very clear in my email re: what I was trying to do there.  
-//Is it possible to fix the written content at Vision so the word “liberating” isn’t a lone word by itself. Is it possible to put text in full justification or something to ensure that doesn’t happen anywhere on any page?
-//And on the mobile friendly app, in the vision section, the written content didn’t show up for some reason
- 
-
-THE LAND
-
-//You can remove the word Location. Lexi will probably want to change the color of the Kelusa, Payangan, Bali from blue to our purple color but other than that it looks great
- 
-
-FACILITIES
-
-//You can remove the second “Facilities”.  Leave the one in the header of course but don’t need it twice as it would be redundant but otherwise thumbs up (although I realized the architect didn’t make the changes I requested to location of lumbungs or spelling of café like I asked so I’m hoping we will get updated one soon)
- 
-
-GALLERY
-
-//Looks good – Lexi will let us know what photos to put there.  I think for the home page we should just put the best ones we have of some of the views, the Surya Guesthouse, pool, landscaping, water fountains, etc. and remove the labels on the photos that identify what you are looking at since you will make an actual link to a separate gallery page with “Complete” and “Under Construction” links and include “Surya”, “Chandra”, “Jala”, “Yoga Shala” and “Luxury Villa”.  Will definitely get Lexi’s feedback on photo content as she is the best at this stuff as you can see from her power point presentation from last year.
- 
-
-//ADD VIDEO
-
- 
-
-EXPERIENCE:
-
-//See attached updated content
- 
-
-COMMUNITY
-
-//Community needs the gray background or whatever color comes next after we insert/upload video under gallery. Adding that video page will throw stuff off your flipping between white and gray colors of course. But love the flipping between gray and white background.  Really works well.
-//Attached is updated content.
-//On mobile friendly app (which is almost perfect by the way), the photo of the kids isn’t fitting properly.
- 
-
-AMENITIES PERFECT
-
-//I love it so much the way you did this and look forward to seeing the separate pages you create from Lexi’s powerpoint.
- 
-
-TEAM
-
-Added photo of me
-Attached is draft content, need to revise and add your blurb and Raluca’s last name
-Working on photos  
- 
-
-INVESTOR PORTAL ??/ECONOMICS (PASSWORD PROTECTED – JUST USE – MASAKALI2020)
-
-Love the google share financial spreadsheet – hopefully will have revised by tomorrow
-Will give you Land Disclosure Statement and perhaps term sheet
-Turns out Doug is actually looking for a 3-5 page powerpoint deck with offering, ask, etc. so will talk to Lexi re: same (in essence it will be short/dirty version of the big spreadsheet I think…more work for me….ugh)
- 
-
-CONTACT DONE UNLESS LEXI HAS ANY COMMENTS
-
- 
-
-MAP
-
-Still need to figure out how to get address right; need to see what Lexi found out
- 
-
-FOOTER
-
-//Just add the colorful little symbols next to Instagram and facebook
-//Update the list with our new headers
+DONE 1. Fix my team description
+DONE 2. Fix Home Gallery
+DONE 3. Add drop down to completed with surya
+DONE 4. Fix error clicking on construction
+DONE 5. Update Organic Beauty Products photos
+DONE 6. Update Foundation Photos
+DONE 7. Add second cafe juice bar photo
+DONE 8. Update Spa photo
+9. Add pitchdeck to investors page
+DONE 10. Update Gallery Photo keys
+DONE 11. Add property views
+DONE 12. Add pool at night

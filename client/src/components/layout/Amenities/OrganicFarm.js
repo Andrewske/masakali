@@ -61,10 +61,10 @@ const OrganicFarm = (props) => {
         </Left>
         <Center>
           <Text>
-            <h3>
+            <p style={{ paddingBottom: '15px' }}>
               “Organic products are the best from nature, and the best for
               nature.”
-            </h3>
+            </p>
             <p>
               Organic farming practices not only decrease pollution in the air,
               water and soil and help conserve water, diminishes soil erosion

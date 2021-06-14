@@ -17,7 +17,7 @@ const Left = styled.div`
   //flex-basis: 50%;
   min-width: 350px;
   padding: 25px;
-  //max-height: 500px;
+  max-width: 550px;
 `;
 
 const Right = styled.div`
@@ -53,8 +53,7 @@ const Spa = () => {
         <Left>
           <ImageContext>
             <IKImage
-              //className='carousel-image'
-              path='/Amenities/retreats-and-workshops/Spa_C1HUMjdjh.jpg'
+              path='/Amenities/spa/spa-head-massage_J21akigAg.jpg'
               transformation={[{ width: 'auto', height: '500px', dpr: 'auto' }]}
               loading='lazy'
               style={{

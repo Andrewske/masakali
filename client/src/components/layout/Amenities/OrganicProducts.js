@@ -9,32 +9,33 @@ import Amenities from '../Landing/Amenities';
 const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 
 const Left = styled.div`
-  flex-grow: 1;
-  flex-basis: 50%;
   min-width: 350px;
-  padding: 25px;
-  //max-height: 500px;
+  display: flex;
+  justify-content: center;
+  margin: 25px;
 `;
 
 const Right = styled.div`
-  flex-grow: 1;
-  flex-basis: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   min-width: 350px;
+  min-height: 500px;
+  margin: 25px;
 `;
 
 const TextBox = styled.div`
+  flex-grow: 1;
   max-width: 450px;
   display: grid;
   place-items: center;
   text-align: justify;
+  padding-bottom: 50px;
 `;
 
 const ImageBox = styled.div`
@@ -46,9 +47,6 @@ const ImageBox = styled.div`
 `;
 
 const OrganicProducts = (props) => {
-  //https://ik.imagekit.io/4kpopox69zp/amenities-organic-beauty-products_LF76dAzQL.jpg
-  //https://ik.imagekit.io/4kpopox69zp/almonds_9SN7bxPi1.jpg
-  //https://ik.imagekit.io/4kpopox69zp/flowers_84yjb02D3.jpg
   return (
     <section className='container'>
       <div className='header'>
@@ -61,14 +59,14 @@ const OrganicProducts = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
-              path='/amenities-organic-beauty-products_LF76dAzQL.jpg'
+              path='/Amenities/organic-beauty-products/Masakali-Vision-PowerPoint5_8SFdMIjUS.jpg'
               transformation={[{ width: 'auto', height: '500px', dpr: 'auto' }]}
               loading='lazy'
               style={{
                 objectFit: 'cover',
                 objectPosition: 'center',
-                height: '450px',
-                width: '100%',
+                height: '500px',
+                width: 'auto',
               }}
             />
           </ImageContext>
@@ -86,32 +84,16 @@ const OrganicProducts = (props) => {
             <ImageContext>
               <IKImage
                 //className='carousel-image'
-                path='/almonds_9SN7bxPi1.jpg'
+                path='/Amenities/organic-beauty-products/mockuporganicbeautyline_xRfpZKAwD.jpg'
                 transformation={[
-                  { width: 'auto', height: '200px', dpr: 'auto' },
+                  { width: 'auto', height: '300px', dpr: 'auto' },
                 ]}
                 loading='lazy'
                 style={{
                   objectFit: 'cover',
                   objectPosition: 'center',
-                  height: '200px',
-                  width: '200px',
-                }}
-              />
-            </ImageContext>
-            <ImageContext>
-              <IKImage
-                //className='carousel-image'
-                path='/flowers_84yjb02D3.jpg'
-                transformation={[
-                  { width: 'auto', height: '500px', dpr: 'auto' },
-                ]}
-                loading='lazy'
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                  height: '200px',
-                  width: '200px',
+                  height: 'auto',
+                  width: 'auto',
                 }}
               />
             </ImageContext>

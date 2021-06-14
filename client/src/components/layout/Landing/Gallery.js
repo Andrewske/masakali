@@ -36,7 +36,7 @@ const amenities = [
   {
     key: 'surya-bed',
     title: 'Surya Bed',
-    path: '/Home_Gallery/home-gallery-surya-bed_61qeDhIpP.jpg',
+    path: '/Home_Gallery/home-gallery-surya-bed_3A6qt08Qgi.jpg',
   },
   {
     key: 'surya-bathroom-complete',
@@ -52,6 +52,21 @@ const amenities = [
     key: 'surya-side',
     title: 'Surya Side',
     path: '/Home_Gallery/home-gallery-surya-side_S-U2y7f90Z.jpg',
+  },
+  {
+    key: 'suzanne-yoge',
+    title: 'Suzanne Yoga',
+    path: '/Home_Gallery/home-gallery-yoga_zeQu8yjzv.jpg',
+  },
+  {
+    key: 'surya-bathroom',
+    title: 'Surya Bathroom',
+    path: '/Home_Gallery/home-gallery-bathroom_EMae8Viz4.jpg',
+  },
+  {
+    key: 'surya-pool-view',
+    title: 'Surya Pool View',
+    path: '/Home_Gallery/home-gallery-pool-view_7SXB4hff2j.jpg',
   },
 ];
 

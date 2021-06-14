@@ -1,10 +1,10 @@
 import React from 'react';
-import ImageContext from '../../../utils/ImageContext';
+import ImageContext from '../../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-import { underConstructionImages } from './galleryImages';
+import { viewsImages } from '../galleryImages';
 
-const UnderConstruction = ({ handleClick }) => {
-  return underConstructionImages.map((i) => (
+const Views = ({ handleClick }) => {
+  return viewsImages.map((i) => (
     <span onClick={() => handleClick(i.key)} key={i.key}>
       <ImageContext>
         <IKImage
@@ -18,4 +18,4 @@ const UnderConstruction = ({ handleClick }) => {
   ));
 };
 
-export default UnderConstruction;
+export default Views;

@@ -71,6 +71,21 @@ const CafeJuiceBar = (props) => {
           <ImageContext>
             <IKImage
               //className='carousel-image'
+              path='/Amenities/cafe-juice-bar/jonas-kakaroto-fruit_5zRuCXivd.jpg'
+              transformation={[{ width: 'auto', height: '500px', dpr: 'auto' }]}
+              loading='lazy'
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+                height: '300px',
+                maxWidth: '600px',
+                padding: '5px',
+              }}
+            />
+          </ImageContext>
+          <ImageContext>
+            <IKImage
+              //className='carousel-image'
               path='/Amenities/cafe-juice-bar/raimond-klavins-cafe_wXLd4Uhuh.jpg'
               transformation={[{ width: 'auto', height: '500px', dpr: 'auto' }]}
               loading='lazy'

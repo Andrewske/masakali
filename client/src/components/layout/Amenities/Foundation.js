@@ -68,8 +68,7 @@ const Foundation = (props) => {
           </ImageContext>
           <ImageContext>
             <IKImage
-              //className='carousel-image'
-              path='/amenities-foundation_6cO3EH8iDA4.jpg'
+              path='/Amenities/foundation/kids-in-water_nYQ2fvKXz.jpg'
               transformation={[{ width: 'auto', height: '500px', dpr: 'auto' }]}
               loading='lazy'
               style={{
