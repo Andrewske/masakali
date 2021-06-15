@@ -60,14 +60,13 @@ const Financials = () => {
               <p style={{ textAlign: 'center', padding: '5px' }}>
                 Click below to download documents.
               </p>
-              <Link
-                to='../../files/investors/Land Acquisition Disclosure Statement.pdf'
+              <a
+                href='https://ik.imagekit.io/4kpopox69zp/Files/Land_Acquisition_Disclosure_Statement_iATNJ_w924f.pdf'
                 target='_blank'
-                download
                 className='investor-link'
               >
                 Land Acquisition Disclosure Statement.pdf
-              </Link>
+              </a>
               <a
                 href='https://docs.google.com/spreadsheets/d/1d_nDERIyOM4SP8U7-SGR7gFrWR1LFIt4kuhLzL3QzXA/edit?usp=sharing'
                 target='_blank'

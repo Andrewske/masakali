@@ -54,8 +54,11 @@ const ContactForm = (props) => {
     >
       {({ isSubmitting }) => (
         <Form className='contact-form'>
-          <h1>Contact Us</h1>
-          <div className='divider' />
+          <div className='purple'>
+            <h1>Contact Us</h1>
+            <div className='divider' />
+          </div>
+
           <Field
             className='contact-input'
             type='input'

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
@@ -89,14 +88,14 @@ const Facilities = (props) => {
                 <li>Spa</li>
               </ul>
             </List>
-            <Link
-              to='../../files/Master Plan Klusa-Cad-3H.pdf'
+            <a
+              href='https://ik.imagekit.io/4kpopox69zp/Files/Master_Plan_Klusa-Cad-3H_kz-CaAsxw.pdf'
               target='_blank'
-              download
-              style={{ color: 'black' }}
+              className='purple'
+              style={{ textDecoration: 'underline' }}
             >
               Download Full Master Plan
-            </Link>
+            </a>
           </TextBox>
         </Left>
         <Right>

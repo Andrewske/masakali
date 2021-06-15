@@ -136,7 +136,12 @@ const Gallery = ({ width }) => {
       )}
       <Link
         to='/gallery'
-        style={{ color: 'black', margin: '0 auto', padding: '5px' }}
+        style={{
+          color: 'black',
+          margin: '0 auto',
+          padding: '5px',
+          textDecoration: 'underline',
+        }}
       >
         View Full Gallery
       </Link>
