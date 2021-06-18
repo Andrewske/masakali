@@ -19,14 +19,13 @@ const Info = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 1rem;
 `;
 
 const Pages = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding-bottom: 10px;
 `;
 
 const LinkStyle = styled.a`
@@ -76,7 +75,7 @@ const Footer = (props) => {
           className='footer-link'
           href='https://www.instagram.com/masakaliretreat'
         >
-          <div style={{ display: 'flex', width: 'fit-content' }}>
+          <div style={{ display: 'flex', width: 'max-content' }}>
             <IconImg src={insta} />
             <p>/masakaliretreat</p>
           </div>
@@ -85,7 +84,12 @@ const Footer = (props) => {
           className='footer-link'
           href='https://www.facebook.com/masakaliretreat'
         >
-          <div style={{ display: 'flex', width: 'fit-content' }}>
+          <div
+            style={{
+              display: 'flex',
+              width: 'max-content',
+            }}
+          >
             <IconImg src={facebook} />
             <p>/masakaliretreat</p>
           </div>
