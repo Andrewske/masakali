@@ -5,17 +5,9 @@ import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
 const Box = styled.div`
-  display: grid;
-  grid-column: 1 / 4;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  min-height: 100vh;
-  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
 `;
-
-// const Box = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `;
 
 const TextBox = styled.div`
   height: 100%;
@@ -29,10 +21,14 @@ const TextBox = styled.div`
 `;
 
 const Left = styled.div`
-  min-width: 350px;
+  flex-grow: 1;
+  flex-basis: 50%;
 `;
 const Right = styled.div`
-  min-width: 350px;
+  flex-grow: 1;
+  flex-basis: 50%;
+  width: 90%;
+  min-width: 300px;
 `;
 
 const SubHeading = styled.h2`
@@ -55,27 +51,6 @@ const Location = ({ width, height }) => {
       </div>
       <Box>
         <Left>
-          {/* <ImageContext>
-            <IKImage
-              path='/location-drone-photo_YFB6yaJzxI2.jpg'
-              transformation={[
-                {
-                  height: height,
-                  width: width,
-                  fo: 'center',
-                  dpr: 'auto',
-                },
-              ]}
-              loading='lazy'
-              style={{
-                objectFit: 'cover',
-                objectPosition: 'center',
-                height: '700px',
-                width: '100%',
-              }}
-            />
-          </ImageContext> */}
-
           {height && (
             <ImageContext>
               <IKImage
@@ -99,15 +74,6 @@ const Location = ({ width, height }) => {
               />
             </ImageContext>
           )}
-          {/* <img
-            src='https://masakali.b-cdn.net/location-drone.jpg'
-            style={{
-              objectFit: 'cover',
-              objectPosition: 'center',
-              height: '700px',
-              width: '100%',
-            }}
-          /> */}
         </Left>
 
         <Right>

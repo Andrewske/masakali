@@ -10,6 +10,7 @@ const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 100%;
 `;
 
 const Left = styled.div`

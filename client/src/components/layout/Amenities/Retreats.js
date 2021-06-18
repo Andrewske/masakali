@@ -10,9 +10,10 @@ const Images = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  width: 75%;
+  align-items: center;
+  width: 100%;
 `;
 
 const Image = styled.div`
@@ -28,6 +29,7 @@ const TextBox = styled.div`
   padding-bottom: 25px;
   margin: 0 auto;
   text-align: justify;
+  width: min(350px, 90%);
 `;
 
 const Text = styled.p`

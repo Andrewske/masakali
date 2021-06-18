@@ -9,11 +9,8 @@ const Container = styled.div`
   text-align: center;
   align-items: stretch;
   justify-content: center;
-  flex-grow: 1;
-  min-height: 500px;
-  min-width: 350px;
-  flex-basis: 90%;
   flex-wrap: wrap;
+  width: 100%;
   margin: 5px;
   color: #3a1b49;
   border: 5px solid #3a1b49;

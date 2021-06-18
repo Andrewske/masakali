@@ -5,8 +5,7 @@ import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
 const Container = styled.div`
-  min-height: 100vh;
-  max-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 50px 0px 50px;
@@ -19,28 +18,32 @@ const Box = styled.div`
 `;
 
 const Left = styled.div`
-  //flex: 1 1 40%;
+  flex-grow: 1;
+  flex-basis: 40%;
   min-width: 350px;
   display: flex;
   align-content: center;
+  padding: 25px;
 `;
 
 const Right = styled.div`
-  //flex: 1 1 60%;
-  min-width: 350px;
-  max-width: 750px;
+  flex-grow: 1;
+  flex-basis: 60%;
+  width: min(700px, 90%);
+  display: flex;
+  align-content: center;
+  padding: 25px;
 `;
 
 const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100%;
   justify-content: center;
   margin: 0 auto;
-  @media (max-width: 786px) {
-    width: 90%;
-  }
+  // @media (max-width: 786px) {
+  //   width: 90%;
+  // }
 `;
 
 const SubHeading = styled.h2`
@@ -76,7 +79,7 @@ const Vision = (props) => {
                 objectFit: 'contain',
                 objectPosition: 'center',
                 maxHeight: '650px',
-                width: 'auto',
+                maxWidth: '100%',
                 margin: '0 auto',
                 //border: '25px solid #372137',
               }}

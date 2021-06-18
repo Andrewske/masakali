@@ -14,8 +14,6 @@ const Container = styled.section`
 const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
-  min-height: 100vh;
-  margin-bottom: 25px;
 `;
 
 const TextBox = styled.div`
@@ -32,9 +30,11 @@ const TextBox = styled.div`
 
 const Left = styled.div`
   flex: 1 1 350px;
+  width: 100%;
 `;
 const Right = styled.div`
   flex: 1 1 350px;
+  width: 100%;
 `;
 
 const List = styled.div`

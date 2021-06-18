@@ -11,6 +11,7 @@ const Container = styled.div`
   position: fixed;
   z-index: 10000;
   overflow: scroll;
+  scrollbar-width: none;
 `;
 
 const Sidebar = () => {

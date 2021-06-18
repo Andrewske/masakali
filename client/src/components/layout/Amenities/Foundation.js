@@ -28,11 +28,12 @@ const Right = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 350px;
+  width: min(350px, 90%);
 `;
 
 const TextBox = styled.div`
   max-width: 550px;
+  width: 90%;
   display: grid;
   place-items: center;
   text-align: justify;

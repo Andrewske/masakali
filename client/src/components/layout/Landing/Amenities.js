@@ -31,7 +31,7 @@ const amenities = [
   {
     key: 'foundation',
     title: 'Foundation',
-    path: '/amenities-foundation_6cO3EH8iDA4.jpg',
+    path: '/Amenities/foundation/kids-in-water_nYQ2fvKXz.jpg',
   },
   {
     key: 'cafe-juice-bar',
@@ -56,7 +56,6 @@ const amenities = [
 ];
 
 const Container = styled.div`
-  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;

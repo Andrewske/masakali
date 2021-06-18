@@ -34,7 +34,7 @@ const Right = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 350px;
+  width: min(350px, 100%);
 `;
 
 const DoubleImage = styled.div`
@@ -46,6 +46,7 @@ const TextBox = styled.div`
   display: grid;
   place-items: center;
   text-align: justify;
+  width: min(700px, 90%);
 `;
 const Text = styled.p`
   padding: 15px 0px 15px;

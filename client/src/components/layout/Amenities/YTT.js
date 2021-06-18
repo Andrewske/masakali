@@ -31,10 +31,10 @@ const Right = styled.div`
 `;
 
 const TextBox = styled.div`
-  max-width: 550px;
   display: grid;
   place-items: center;
   text-align: justify;
+  width: min(550px, 90%);
 `;
 const Text = styled.p`
   padding: 5px;

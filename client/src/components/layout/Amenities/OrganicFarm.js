@@ -10,6 +10,7 @@ const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 `;
 const Left = styled.div`
   flex: 1 1 350px;
@@ -30,7 +31,7 @@ const Right = styled.div`
 `;
 
 const Text = styled.div`
-  width: 75%;
+  width: 90%;
   text-align: justify;
   padding: 50px 0px 50px;
 `;
@@ -65,7 +66,7 @@ const OrganicFarm = (props) => {
               “Organic products are the best from nature, and the best for
               nature.”
             </p>
-            <p>
+            <p style={{ paddingBottom: '15px' }}>
               Organic farming practices not only decrease pollution in the air,
               water and soil and help conserve water, diminishes soil erosion
               and use less energy, organic farming has lower input costs, food

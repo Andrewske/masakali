@@ -61,11 +61,18 @@ const Financials = () => {
                 Click below to download documents.
               </p>
               <a
-                href='https://ik.imagekit.io/4kpopox69zp/Files/Land_Acquisition_Disclosure_Statement_iATNJ_w924f.pdf'
+                href='https://ik.imagekit.io/4kpopox69zp/Files/Land_Acquisition_Disclosure_Statement_qRNq2W9A7.pdf'
                 target='_blank'
                 className='investor-link'
               >
                 Land Acquisition Disclosure Statement.pdf
+              </a>
+              <a
+                href='https://ik.imagekit.io/4kpopox69zp/Files/Masakali_Pitchdeck__rUTIud2XF.pdf'
+                target='_blank'
+                className='investor-link'
+              >
+                Pitch Deck.pdf
               </a>
               <a
                 href='https://docs.google.com/spreadsheets/d/1d_nDERIyOM4SP8U7-SGR7gFrWR1LFIt4kuhLzL3QzXA/edit?usp=sharing'

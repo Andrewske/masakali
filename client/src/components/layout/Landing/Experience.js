@@ -33,6 +33,7 @@ const Right = styled.div`
   max-width: 500px;
   min-width: 350px;
   padding: 25px;
+  margin: 0 auto;
 `;
 
 const Text = styled.div`

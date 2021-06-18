@@ -15,7 +15,7 @@ const Box = styled.div`
 const Left = styled.div`
   flex-grow: 1;
   flex-basis: 50%;
-  min-width: 350px;
+  width: min(350px, 90%);
   display: flex;
   flex-direction: column;
   align-items: center;

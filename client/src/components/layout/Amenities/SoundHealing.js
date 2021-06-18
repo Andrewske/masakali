@@ -27,7 +27,12 @@ const Right = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  min-width: 350px;
+`;
+
+const TopTextBox = styled.div`
+  text-align: justify;
+  width: 100%;
+  width: min(600px, 90%);
 `;
 
 const TextBox = styled.div`
@@ -35,6 +40,7 @@ const TextBox = styled.div`
   display: grid;
   place-items: center;
   text-align: justify;
+  width: min(350px, 90%);
 `;
 
 const ImageBox = styled.div`
@@ -47,6 +53,7 @@ const ImageBox = styled.div`
 
 const Text = styled.p`
   padding: 5px;
+  width: 100%;
 `;
 
 const SoundHealing = ({ color }) => {
@@ -77,7 +84,7 @@ const SoundHealing = ({ color }) => {
           </ImageContext>
         </Left>
         <Right>
-          <TextBox style={{ maxWidth: '550px' }}>
+          <TopTextBox>
             <Text>
               With our sound healing center, a 12x12 square meter dome designed
               specifically to enhance the healing vibration of every ripple and
@@ -90,7 +97,7 @@ const SoundHealing = ({ color }) => {
               sound healing therapist and artist, we will describe it using his
               words:
             </Text>
-          </TextBox>
+          </TopTextBox>
           <Box>
             <TextBox>
               <Text>

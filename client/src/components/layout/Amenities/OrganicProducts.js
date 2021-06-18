@@ -10,23 +10,27 @@ const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 `;
 
 const Left = styled.div`
-  min-width: 350px;
+  width: min(350px, 100%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 25px;
+  align-items: center;
+  height: 500px;
+  margin: 10px;
 `;
 
 const Right = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  min-width: 350px;
+  width: min(350px, 90%);
   min-height: 500px;
-  margin: 25px;
+  margin: 10px;
 `;
 
 const TextBox = styled.div`
@@ -35,13 +39,13 @@ const TextBox = styled.div`
   display: grid;
   place-items: center;
   text-align: justify;
-  padding-bottom: 50px;
+  padding: 15px;
 `;
 
 const ImageBox = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  max-width: 100%;
   justify-content: space-evenly;
   align-items: center;
 `;
@@ -66,7 +70,7 @@ const OrganicProducts = (props) => {
                 objectFit: 'cover',
                 objectPosition: 'center',
                 height: '500px',
-                width: 'auto',
+                width: '100%',
               }}
             />
           </ImageContext>
@@ -93,7 +97,7 @@ const OrganicProducts = (props) => {
                   objectFit: 'cover',
                   objectPosition: 'center',
                   height: 'auto',
-                  width: 'auto',
+                  width: '100%',
                 }}
               />
             </ImageContext>
