@@ -11,7 +11,6 @@ const Box = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  gap: 1rem;
 `;
 
 const Left = styled.div`
@@ -21,6 +20,7 @@ const Left = styled.div`
   justify-content: center;
   align-items: center;
   height: 500px;
+  margin: 10px;
 `;
 
 const Right = styled.div`
@@ -29,17 +29,25 @@ const Right = styled.div`
   justify-content: space-between;
   align-items: center;
   width: min(350px, 90%);
-  height: 500px;
-  gap: 1rem;
+  min-height: 500px;
+  margin: 10px;
 `;
 
 const TextBox = styled.div`
   flex-grow: 1;
+  max-width: 450px;
   display: grid;
   place-items: center;
-  max-width: 40ch;
-  margin: auto;
   text-align: justify;
+  padding: 15px;
+`;
+
+const ImageBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
 const OrganicProducts = (props) => {
@@ -76,14 +84,24 @@ const OrganicProducts = (props) => {
               rooms and available for purchase in our new on-site shop.
             </p>
           </TextBox>
-          <ImageContext>
-            <IKImage
-              //className='carousel-image'
-              path='/Amenities/organic-beauty-products/mockuporganicbeautyline_xRfpZKAwD.jpg'
-              transformation={[{ width: 'auto', height: '300px', dpr: 'auto' }]}
-              loading='lazy'
-            />
-          </ImageContext>
+          <ImageBox>
+            <ImageContext>
+              <IKImage
+                //className='carousel-image'
+                path='/Amenities/organic-beauty-products/mockuporganicbeautyline_xRfpZKAwD.jpg'
+                transformation={[
+                  { width: 'auto', height: '300px', dpr: 'auto' },
+                ]}
+                loading='lazy'
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  height: 'auto',
+                  width: '100%',
+                }}
+              />
+            </ImageContext>
+          </ImageBox>
         </Right>
       </Box>
       <Amenities items={{ desktop: 5, tablet: 2, mobile: 1 }} height={'100%'} />
