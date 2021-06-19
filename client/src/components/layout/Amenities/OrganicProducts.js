@@ -40,6 +40,8 @@ const TextBox = styled.div`
   max-width: 40ch;
   margin: auto;
   text-align: justify;
+  -webkit-flex: 0;
+  flex-shrink: 0;
 `;
 
 const OrganicProducts = (props) => {
@@ -82,6 +84,9 @@ const OrganicProducts = (props) => {
               path='/Amenities/organic-beauty-products/mockuporganicbeautyline_xRfpZKAwD.jpg'
               transformation={[{ width: 'auto', height: '300px', dpr: 'auto' }]}
               loading='lazy'
+              style={{
+                maxHeight: '300px',
+              }}
             />
           </ImageContext>
         </Right>

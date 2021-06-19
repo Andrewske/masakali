@@ -1,8 +1,8 @@
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
+  --primary-color: #372137;
   --dark-color: #343a40;
-  --light-color: #f4f4f4;
+  --white-color: #ffffff;
   --danger-color: #dc3545;
   --success-color: #28a745;
   --purple-color: #372137;
@@ -425,10 +425,12 @@ h4 {
   padding: 15px;
   cursor: pointer;
   color: black;
+  transition: all 0.4s ease-in-out;
 }
 
 .sidebar-link:hover {
-  box-shadow: inset 5px 0px 10px var(--purple-color);
+  background-color: var(--purple-color);
+  color: var(--white-color);
 }
 
 .sidebar-sublink {
@@ -439,10 +441,12 @@ h4 {
   cursor: pointer;
   color: black;
   font-size: 0.75rem;
+  transition: all 0.4s ease-in-out;
 }
 
 .sidebar-sublink:hover {
-  box-shadow: inset 5px 0px 10px var(--purple-color);
+  background-color: var(--purple-color);
+  color: var(--white-color);
 }
 
 .sidebar-ext-icon {
@@ -644,7 +648,7 @@ h4 {
 }
 
 .contact-input:focus {
-  border: 2px solid #cc4949;
+  border: 2px solid var(--secondary-color);
 }
 
 .contact-textarea {
@@ -665,7 +669,7 @@ h4 {
 }
 
 .contact-textarea:focus {
-  border: 2px solid #cc4949;
+  border: 2px solid var(--secondary-color);
 }
 
 .contact-submit {
@@ -686,12 +690,12 @@ h4 {
 }
 
 .contact-submit:hover {
-  background: #cc4949;
+  background: var(--secondary-color);
 }
 
 .contact-error {
   font-size: 0.75rem;
-  color: red;
+  color: var(--primary-color);
 }
 
 /*Footer*/
