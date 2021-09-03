@@ -46,7 +46,7 @@ export const suryaImages = [
 ];
 
 export const viewsImages = [
-  { key: 1, path: '/Gallery/Views/2_nab70nffM.jpg' },
+  //{ key: 1, path: '/Gallery/Views/2_nab70nffM.jpg' },
   { key: 2, path: '/Gallery/Views/3_Az2kDo7f_d.jpg' },
   { key: 3, path: '/Gallery/Views/5_nORAe1_lv.jpg' },
   { key: 4, path: '/Gallery/Views/6_RUnMTxIbQ.jpg' },
