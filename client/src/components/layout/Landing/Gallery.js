@@ -46,7 +46,7 @@ const amenities = [
   {
     key: 'surya-porch',
     title: 'Surya Porch',
-    path: '/Home_Gallery/home-gallery-surya-porch_UQMgyTGhub.jpg',
+    path: '/Home/sylvia_chandra_lounge_dtb2iTh1wy.jpg', //'/Home_Gallery/home-gallery-surya-porch_UQMgyTGhub.jpg',
   },
   {
     key: 'surya-side',
@@ -64,10 +64,20 @@ const amenities = [
     path: '/Home_Gallery/home-gallery-bathroom_EMae8Viz4.jpg',
   },
   {
-    key: 'surya-pool-view',
-    title: 'Surya Pool View',
-    path: '/Home_Gallery/home-gallery-pool-view_7SXB4hff2j.jpg',
+    key: 'chandra-hammock',
+    title: 'Chandra Hammock',
+    path: '/Home/navita_chandra_hammock_fa0eox1V8N.jpg',
   },
+  {
+    key: 'chandra-pool-view',
+    title: 'Chandra Pool',
+    path: '/Home/chandra_pool_green_j_GGxyNZBCD.jpg',
+  },
+  // {
+  //   key: 'surya-pool-view',
+  //   title: 'Surya Pool View',
+  //   path: '/Home_Gallery/home-gallery-pool-view_7SXB4hff2j.jpg',
+  // },
 ];
 
 const Container = styled.div`
@@ -104,10 +114,10 @@ const Gallery = ({ width }) => {
           ssr={true} // means to render carousel on server-side.
           infinite={true}
           autoPlay={true} //{this.props.deviceType !== 'mobile' ? true : false}
-          autoPlaySpeed={3000}
+          autoPlaySpeed={5000}
           keyBoardControl={true}
           // customTransition='all .5'
-          transitionDuration={1000}
+          transitionDuration={2000}
           containerClass='gallery-container'
           //removeArrowOnDeviceType={['tablet', 'mobile']}
           // deviceType={this.props.deviceType}

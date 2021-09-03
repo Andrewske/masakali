@@ -162,7 +162,7 @@ h4 {
 
 .background-image {
   position: absolute;
-  width: 100%;
+  width: auto;
   max-width: 100vw;
   object-fit: cover;
   height: 100%;
@@ -170,8 +170,8 @@ h4 {
 }
 
 .zoom {
-  -webkit-animation: zoomin 20s ease-in infinite;
-  animation: zoomin 20s ease-in infinite;
+  -webkit-animation: zoomin 10s ease-in infinite;
+  animation: zoomin 10s ease-in infinite;
   transition: all 2s ease-in-out;
 }
 
@@ -193,7 +193,7 @@ h4 {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   100% {
     transform: scale(1);
@@ -204,7 +204,7 @@ h4 {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   100% {
     transform: scale(1);
