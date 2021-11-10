@@ -1,4 +1,24 @@
 export const chandraImages = [
+  { key: 0, path: '/Gallery/Completed/Chandra/chandra_front_angle_zbJoQvUry-.jpg' },
+  { key: 1, path: '/Gallery/Completed/Chandra/chandra_bed_right_qEiZ_-Kll.jpg' },
+  { key: 2, path: '/Gallery/Completed/Chandra/chandra_bed_left_JVdgUKVR1Fp3.jpg'},
+  { key: 3, path: '/Gallery/Completed/Chandra/chandra_desk_Qnze0psowuT.jpg' },
+  { key: 4, path: '/Gallery/Completed/Chandra/chandra_bathroom_1_QhGUo7tBsnd.jpg'},
+  { key: 5, path: '/Gallery/Completed/Chandra/chandra_bath_HMF3on06L.jpg'},
+  { key: 6, path: '/Gallery/Completed/Chandra/chandra_sink_sVz0xA2yaVE.jpg'},
+  { key: 7, path: '/Gallery/Completed/Chandra/chandra_shower_EFiLzQjw4.jpg'},
+  { key: 8, path: '/Gallery/Completed/Chandra/chandra_kitchen_XUypI8FC-vq1.jpg'},
+  { key: 9, path: '/Gallery/Completed/Chandra/chandra_porch_Vz1wl1R_JQje.jpg'},
+  { key: 10, path: '/Gallery/Completed/Chandra/chandra_pool_view_NU64EYmorm.jpg' },
+  { key: 11, path: '/Gallery/Completed/Chandra/navita_chair_orU5w7bYa.jpg' },
+  { key: 12, path: '/Gallery/Completed/Chandra/pool_view_night_S4OA-hbOB.jpg'},
+  { key: 13, path: '/Gallery/Completed/Chandra/sylvia_door_TVmxJMIw_Ij.jpg' },
+  { key: 14, path: '/Gallery/Completed/Chandra/navita_puppy_CMK4i2imI.jpg'},
+  { key: 15, path: '/Gallery/Completed/Chandra/sylvia_chair_IzyR69YoNo.jpg'},
+  { key: 16, path: '/Gallery/Completed/Chandra/chandra_walkway_Ll7TY_QIKKR.jpg'},
+];
+
+export const chandraConstructionImages = [
   { key: 0, path: '/Gallery/under-construction/Chandra/1_OYVoNgsomC.jpg' },
   { key: 1, path: '/Gallery/under-construction/Chandra/2_z2DGAt3COZ.jpg' },
   { key: 2, path: '/Gallery/under-construction/Chandra/3_SSUdPJVP-2.jpg' },
@@ -72,6 +92,19 @@ export const viewsImages = [
 ];
 
 export const jalaImages = [
+  { key: 1, path: '/Gallery/Completed/Jala/jala_front_angle_HtBbZj5NqF.jpg' },
+  { key: 2, path: '/Gallery/Completed/Jala/jala_pool_view_kfBDGoBopP.jpg' },
+  { key: 3, path: '/Gallery/Completed/Jala/jala_kitchen__KKcB0JDA_yo.jpg' },
+  { key: 4, path: '/Gallery/Completed/Jala/jala-bed_y5SYVh-BqN.jpg' },
+  { key: 5, path: '/Gallery/Completed/Jala/jala_desk_WJlcbCMU2.jpg' },
+  { key: 6, path: '/Gallery/Completed/Jala/jala_bathroom_1_1_DMQzpWOaf.jpg' },
+  { key: 7, path: '/Gallery/Completed/Jala/jala_bathroom_2_ovheSPmJ-.jpg' },
+  { key: 8, path: '/Gallery/Completed/Jala/jala_walkway_XDkMC2Da4xFy.jpg' },
+  { key: 9, path: '/Gallery/Completed/Jala/jala_front_SawRpJqG1tW.jpg' },
+];
+
+export const jalaConstructionImages = [
+
   { key: 1, path: '/Gallery/under-construction/Jala/1_F1SJLpvViM.jpg' },
   { key: 2, path: '/Gallery/under-construction/Jala/2_YIeWz0J_pw.jpg' },
   { key: 3, path: '/Gallery/under-construction/Jala/3_d1EimqTpW.jpg' },
@@ -81,4 +114,5 @@ export const jalaImages = [
   { key: 7, path: '/Gallery/under-construction/Jala/7_pGbrQHEZMU.jpg' },
   { key: 8, path: '/Gallery/under-construction/Jala/8_r9dhLOVTEP.jpg' },
   { key: 9, path: '/Gallery/under-construction/Jala/9_asv647_QfR.jpg' },
-];
+]
+

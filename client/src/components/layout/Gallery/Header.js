@@ -42,21 +42,20 @@ const Header = ({ changeImages }) => {
 
   return (
     <Container>
-      <HeaderLink
+      {/* <HeaderLink
         onMouseEnter={() => setConstructionIsOpen(true)}
         onMouseLeave={() => setConstructionIsOpen(false)}
       >
-        {/* onClick={() => changeImages({ type: 'under-construction' })} */}
         <Link>Under Construction</Link>
         <HeaderDropDown
           isOpen={constructionIsOpen}
           data={[
-            { type: 'chandra', name: 'Chandra' },
-            { type: 'jala', name: 'Jala' },
+            { type: 'chandraConstruction', name: 'Chandra' },
+            { type: 'jalaConstruction', name: 'Jala' },
           ]}
           changeImages={changeImages}
         />
-      </HeaderLink>
+      </HeaderLink> */}
 
       <HeaderLink
         onMouseEnter={() => setCompletedIsOpen(true)}
@@ -65,7 +64,11 @@ const Header = ({ changeImages }) => {
         <Link>Completed</Link>
         <HeaderDropDown
           isOpen={completedIsOpen}
-          data={[{ type: 'surya', name: 'Surya' }]}
+          data={[
+            { type: 'surya', name: 'Surya' },
+            { type: 'jala', name: 'Jala' },
+            { type: 'chandra', name: 'Chandra' },
+          ]}
           changeImages={changeImages}
         />
       </HeaderLink>

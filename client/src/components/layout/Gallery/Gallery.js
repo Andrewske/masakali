@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { chandraImages } from './galleryImages';
-import { jalaImages } from './galleryImages';
-import { suryaImages } from './galleryImages';
-import { viewsImages } from './galleryImages';
+import {
+  chandraImages,
+  jalaImages,
+  suryaImages,
+  viewsImages,
+  chandraConstructionImages,
+  jalaConstructionImages,
+} from './galleryImages';
 
 import Chandra from './Images/Chandra';
 import Jala from './Images/Jala';
