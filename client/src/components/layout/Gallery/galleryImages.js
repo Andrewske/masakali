@@ -66,32 +66,33 @@ export const suryaImages = [
 ];
 
 export const viewsImages = [
-  //{ key: 1, path: '/Gallery/Views/2_nab70nffM.jpg' },
-  { key: 2, path: '/Gallery/Views/3_Az2kDo7f_d.jpg' },
-  { key: 3, path: '/Gallery/Views/5_nORAe1_lv.jpg' },
-  { key: 4, path: '/Gallery/Views/6_RUnMTxIbQ.jpg' },
-  { key: 5, path: '/Gallery/Views/7_lsPB4beRYp.jpg' },
-  { key: 6, path: '/Gallery/Views/8_i6Ia3gcGHT.jpg' },
-  { key: 7, path: '/Gallery/Views/9_kukrsV7WYi.jpg' },
-  { key: 8, path: '/Gallery/Views/10_wx0UJ16_S8.jpg' },
-  { key: 9, path: '/Gallery/Views/14__ZzTLyFuI.jpg' },
-  { key: 10, path: '/Gallery/Views/15_5c0-NbpO6i.jpg' },
-  { key: 11, path: '/Gallery/Views/16_wm1TsmnyA.jpg' },
-  { key: 12, path: '/Gallery/Views/17_CboXZsbHe.jpg' },
-  { key: 13, path: '/Gallery/Views/18_PyZ7ps04Zd.jpg' },
-  { key: 14, path: '/Gallery/Views/19_HANC59WD_.jpg' },
-  { key: 15, path: '/Gallery/Views/20_W84DaS4xWY.jpg' },
-  { key: 16, path: '/Gallery/Views/21_al98srg90.jpg' },
-  { key: 17, path: '/Gallery/Views/22_Y43L9snhZ.jpg' },
-  { key: 18, path: '/Gallery/Views/23_V18EiaOvm.jpg' },
-  { key: 19, path: '/Gallery/Views/24_9C2VQyyUV.jpg' },
-  { key: 20, path: '/Gallery/Views/25_7Wr_YaXKg.jpg' },
-  { key: 21, path: '/Gallery/Views/26_E4yYhcka8.jpg' },
-  { key: 22, path: '/Gallery/Views/27_epDVW5gV4y.jpg' },
-  { key: 23, path: '/Gallery/Views/28_w3NmA8syi-.jpg' },
+  //{ key: 0, path: '/Gallery/Views/2_nab70nffM.jpg' },
+  { key: 0, path: '/Gallery/Views/3_Az2kDo7f_d.jpg' },
+  { key: 1, path: '/Gallery/Views/5_nORAe1_lv.jpg' },
+  { key: 2, path: '/Gallery/Views/6_RUnMTxIbQ.jpg' },
+  { key: 3, path: '/Gallery/Views/7_lsPB4beRYp.jpg' },
+  { key: 4, path: '/Gallery/Views/8_i6Ia3gcGHT.jpg' },
+  { key: 5, path: '/Gallery/Views/9_kukrsV7WYi.jpg' },
+  { key: 6, path: '/Gallery/Views/10_wx0UJ16_S8.jpg' },
+  { key: 7, path: '/Gallery/Views/14__ZzTLyFuI.jpg' },
+  { key: 8, path: '/Gallery/Views/15_5c0-NbpO6i.jpg' },
+  { key: 9, path: '/Gallery/Views/16_wm1TsmnyA.jpg' },
+  { key: 10, path: '/Gallery/Views/17_CboXZsbHe.jpg' },
+  { key: 11, path: '/Gallery/Views/18_PyZ7ps04Zd.jpg' },
+  { key: 12, path: '/Gallery/Views/19_HANC59WD_.jpg' },
+  { key: 13, path: '/Gallery/Views/20_W84DaS4xWY.jpg' },
+  { key: 14, path: '/Gallery/Views/21_al98srg90.jpg' },
+  { key: 15, path: '/Gallery/Views/22_Y43L9snhZ.jpg' },
+  { key: 16, path: '/Gallery/Views/23_V18EiaOvm.jpg' },
+  { key: 17, path: '/Gallery/Views/24_9C2VQyyUV.jpg' },
+  { key: 18, path: '/Gallery/Views/25_7Wr_YaXKg.jpg' },
+  { key: 19, path: '/Gallery/Views/26_E4yYhcka8.jpg' },
+  { key: 20, path: '/Gallery/Views/27_epDVW5gV4y.jpg' },
+  { key: 21, path: '/Gallery/Views/28_w3NmA8syi-.jpg' },
 ];
 
 export const jalaImages = [
+  { key: 0, path: '/Gallery/Completed/Jala/jala_front_SawRpJqG1tW.jpg' },
   { key: 1, path: '/Gallery/Completed/Jala/jala_front_angle_HtBbZj5NqF.jpg' },
   { key: 2, path: '/Gallery/Completed/Jala/jala_pool_view_kfBDGoBopP.jpg' },
   { key: 3, path: '/Gallery/Completed/Jala/jala_kitchen__KKcB0JDA_yo.jpg' },
@@ -100,11 +101,11 @@ export const jalaImages = [
   { key: 6, path: '/Gallery/Completed/Jala/jala_bathroom_1_1_DMQzpWOaf.jpg' },
   { key: 7, path: '/Gallery/Completed/Jala/jala_bathroom_2_ovheSPmJ-.jpg' },
   { key: 8, path: '/Gallery/Completed/Jala/jala_walkway_XDkMC2Da4xFy.jpg' },
-  { key: 9, path: '/Gallery/Completed/Jala/jala_front_SawRpJqG1tW.jpg' },
 ];
 
 export const jalaConstructionImages = [
-
+  
+  { key: 0, path: '/Gallery/under-construction/Jala/9_asv647_QfR.jpg' },
   { key: 1, path: '/Gallery/under-construction/Jala/1_F1SJLpvViM.jpg' },
   { key: 2, path: '/Gallery/under-construction/Jala/2_YIeWz0J_pw.jpg' },
   { key: 3, path: '/Gallery/under-construction/Jala/3_d1EimqTpW.jpg' },
@@ -113,6 +114,5 @@ export const jalaConstructionImages = [
   { key: 6, path: '/Gallery/under-construction/Jala/6_bH5jEKi0Wf.jpg' },
   { key: 7, path: '/Gallery/under-construction/Jala/7_pGbrQHEZMU.jpg' },
   { key: 8, path: '/Gallery/under-construction/Jala/8_r9dhLOVTEP.jpg' },
-  { key: 9, path: '/Gallery/under-construction/Jala/9_asv647_QfR.jpg' },
 ]
 

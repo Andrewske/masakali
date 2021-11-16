@@ -20,10 +20,10 @@ import Header from './Header';
 import { SortCarousel } from './SortCarousel';
 
 const imageSets = [
+  { id: 'views', images: viewsImages },
   { id: 'chandra', images: chandraImages },
   { id: 'jala', images: jalaImages },
   { id: 'surya', images: suryaImages },
-  { id: 'views', images: viewsImages },
 ];
 
 const Container = styled.div`
@@ -43,9 +43,11 @@ const Images = styled.div`
 
 const Gallery = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [images, setImages] = useState(imageSets[0].images);
   const [carousel, setCarousel] = useState(null);
   const [type, setType] = useState('views');
+  const [images, setImages] = useState(
+    imageSets.filter((set) => set.id == type)[0].images
+  );
 
   const closeCarousel = () => {
     setIsOpen(false);
@@ -53,10 +55,15 @@ const Gallery = (props) => {
 
   const changeImages = ({ type }) => {
     console.log('setType', type);
+    let set = imageSets.filter((set) => set.id == type)[0].images;
+    console.log('imageSet', set);
     setType(type);
+    setImages(set);
   };
 
   const handleClick = (key) => {
+    console.log('key:', key);
+    console.log(images);
     setCarousel(SortCarousel(images, key));
     setIsOpen(true);
   };

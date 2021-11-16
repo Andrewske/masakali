@@ -1,4 +1,5 @@
 export const SortCarousel = (list, key) => {
+  console.log(list, key);
   const l = list.length;
   let start = [];
   let end = [];
