@@ -116,3 +116,9 @@ export const jalaConstructionImages = [
   { key: 8, path: '/Gallery/under-construction/Jala/8_r9dhLOVTEP.jpg' },
 ]
 
+
+export const yogaShalaConstructionImages = [
+  {key: 0, path: '/Gallery/under-construction/yoga_shala/yoga_shala_1_Wsr0CHhQn.jpg'},
+  {key: 1, path: '/Gallery/under-construction/yoga_shala/yoga_shala_2_quafLsm7k.jpg'},
+  {key: 2, path: '/Gallery/under-construction/yoga_shala/yoga_shala_3_yoOApzTq9.jpg'}
+]

@@ -16,10 +16,10 @@ const MasakaliVideo = (props) => {
         <div className='divider' />
       </div>
       <YoutubeEmbed
-        embedId={'9EfalIZ2NuA'}
+        embedId={'in8GqtSGIJ0'}
         title={'Masakali Tour Video'}
         preview={
-          'https://ik.imagekit.io/4kpopox69zp/drone-default-masakali-video_ZmltYP6bJ.jpg'
+          'https://ik.imagekit.io/4kpopox69zp/masakali-tour-video-thumbnail_UOIa12ChI.png'
         }
       />
     </Container>

@@ -6,14 +6,14 @@ import {
   jalaImages,
   suryaImages,
   viewsImages,
-  chandraConstructionImages,
-  jalaConstructionImages,
+  yogaShalaConstructionImages,
 } from './galleryImages';
 
 import Chandra from './Images/Chandra';
 import Jala from './Images/Jala';
 import Surya from './Images/Surya';
 import Views from './Images/Views';
+import YogaShala from './Images/YogaShala';
 
 import FullScreenCarousel from './FullScreenCarousel';
 import Header from './Header';
@@ -24,6 +24,7 @@ const imageSets = [
   { id: 'chandra', images: chandraImages },
   { id: 'jala', images: jalaImages },
   { id: 'surya', images: suryaImages },
+  { id: 'yogaShala', images: yogaShalaConstructionImages },
 ];
 
 const Container = styled.div`
@@ -79,6 +80,8 @@ const Gallery = (props) => {
         return <Surya handleClick={handleClick} />;
       case 'views':
         return <Views handleClick={handleClick} />;
+      case 'yogaShala':
+        return <YogaShala handleClick={handleClick} />;
       default:
         return <div>No Images</div>;
     }
