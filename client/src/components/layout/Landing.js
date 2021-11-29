@@ -5,6 +5,7 @@ import Home from './Landing/Home';
 import Vision from './Landing/Vision';
 import Location from './Landing/Location';
 import Facilities from './Landing/Facilities';
+import Booking from './Landing/Booking';
 import Gallery from './Landing/Gallery';
 import Experience from './Landing/Experience';
 import Community from './Landing/Community';
@@ -55,6 +56,7 @@ const Landing = () => {
         <Vision />
         <Location height={height} width={width} />
         <Facilities />
+        <Booking />
         <Gallery width={width} />
         <div
           id='landing-video'

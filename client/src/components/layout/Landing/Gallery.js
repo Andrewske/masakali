@@ -99,7 +99,7 @@ const Item = styled.div`
 const Gallery = ({ width }) => {
   const imgWidth = width > 750 ? 750 : width;
   return (
-    <Container id='landing-gallery' className='background-gray'>
+    <section id='landing-gallery' className='container'>
       <div className='header'>
         <p>MASAKALI</p>
         <h1>Gallery</h1>
@@ -155,7 +155,7 @@ const Gallery = ({ width }) => {
       >
         View Full Gallery
       </Link>
-    </Container>
+    </section>
   );
 };
 

@@ -8,6 +8,8 @@
   --purple-color: #372137;
   --secondary-color: #a38f9f;
   --gray-color: #ddd3e0;
+  --booking-com-color: #003580;
+  --airbnb-color: #ff5a5f;
 }
 
 * {
@@ -82,6 +84,26 @@ img {
 
 .purple {
   color: var(--purple-color);
+}
+
+.booking-com {
+  color: white !important;
+  background-color: var(--booking-com-color) !important;
+}
+
+.booking-com:hover {
+  color: var(--booking-com-color) !important;
+  background-color: white !important;
+}
+
+.airbnb {
+  color: white !important;
+  background-color: var(--airbnb-color) !important;
+}
+
+.airbnb:hover {
+  color: var(--airbnb-color) !important;
+  background-color: white !important;
 }
 
 /* Utilities */
@@ -707,4 +729,14 @@ h4 {
 
 .footer-link:hover {
   text-shadow: 1px 1px 1px var(--secondary-color);
+}
+
+.booking-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.2);
 }
