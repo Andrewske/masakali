@@ -160,7 +160,7 @@ img {
 
 .background-gray {
   /* background-color: var(--gray-color); */
-  background-color: rgb(221, 211, 224, 0.3);
+  background-color: rgba(221, 211, 224, 0.3);
 }
 .background-purple {
   background-color: var(--purple-color);
@@ -644,7 +644,7 @@ h4 {
   transform: translate(0px, -50%);
   z-index: 3;
   padding: 5px;
-  background-color: rgb(58, 27, 73, 0.5);
+  background-color: rgba(58, 27, 73, 0.5);
   border-radius: 5px;
 }
 
