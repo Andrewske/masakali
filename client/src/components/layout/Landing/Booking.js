@@ -144,8 +144,8 @@ const Booking = () => {
               <li>Spa services and meals available</li>
             </ul>
             <Prices>
-              <Price>$150</Price>
-              <p>$84/night</p>
+              <Price>$100</Price>
+              <p>$85/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -188,8 +188,8 @@ const Booking = () => {
               <li>Spa services and meals available</li>
             </ul>
             <Prices>
-              <Price>$150</Price>
-              <p>$84/night</p>
+              <Price>$85</Price>
+              <p>$72/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -232,8 +232,8 @@ const Booking = () => {
               <li>Spa services and meals available</li>
             </ul>
             <Prices>
-              <Price>$150</Price>
-              <p>$84/night</p>
+              <Price>$70</Price>
+              <p>$60/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -248,7 +248,9 @@ const Booking = () => {
             >
               Booking.com
             </Link>
-            <Link className='email booking-page-link'>Email Us</Link>
+            <Link className='email booking-page-link' to={`/#contact`}>
+              Email Us
+            </Link>
             <Link
               className='airbnb booking-page-link'
               onClick={() =>
@@ -260,7 +262,7 @@ const Booking = () => {
           </Links>
         </Card>
         <SubText>
-          Save by booking with us directly.{' '}
+          Save 15% by booking with us directly.{' '}
           <Link to={'/#contact'}>Click here to send us an email</Link>.
         </SubText>
       </Box>
