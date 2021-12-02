@@ -117,7 +117,9 @@ const Links = styled.div`
 // `;
 
 const SubText = styled.p`
-  padding-sop: 25px;
+  width: 100%;
+  text-align: center;
+  padding-top: 25px;
 `;
 
 const Booking = () => {
