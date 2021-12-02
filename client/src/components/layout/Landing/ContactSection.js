@@ -1,7 +1,6 @@
 import React from 'react';
 import ContactForm from '../ContactForm';
 import styled from 'styled-components';
-import map from '../../../img/Masakali-Retreat-Google-Maps-tiny2.png';
 
 const Container = styled.section`
   min-height: 25vh;
@@ -30,6 +29,7 @@ const ContactSection = () => {
             height: '100%',
             loading: 'lazy',
           }}
+          title='Google Maps Masakali'
         ></iframe>
         {/* <img
           style={{ maxWidth: '500px', maxHeight: '500px', imageFit: 'contain' }}

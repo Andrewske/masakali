@@ -91,6 +91,7 @@ const Facilities = (props) => {
             <a
               href='https://ik.imagekit.io/4kpopox69zp/Files/Master_Plan_Klusa-Cad-3H_kz-CaAsxw.pdf'
               target='_blank'
+              rel='noopener noreferrer'
               className='purple'
               style={{ textDecoration: 'underline' }}
             >

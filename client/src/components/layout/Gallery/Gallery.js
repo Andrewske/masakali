@@ -47,7 +47,7 @@ const Gallery = (props) => {
   const [carousel, setCarousel] = useState(null);
   const [type, setType] = useState('views');
   const [images, setImages] = useState(
-    imageSets.filter((set) => set.id == type)[0].images
+    imageSets.filter((set) => set.id === type)[0].images
   );
 
   const closeCarousel = () => {
@@ -56,7 +56,7 @@ const Gallery = (props) => {
 
   const changeImages = ({ type }) => {
     console.log('setType', type);
-    let set = imageSets.filter((set) => set.id == type)[0].images;
+    let set = imageSets.filter((set) => set.id === type)[0].images;
     console.log('imageSet', set);
     setType(type);
     setImages(set);

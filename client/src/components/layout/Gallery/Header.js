@@ -40,10 +40,6 @@ const Header = ({ changeImages }) => {
 
   const point = useBreakpoint();
 
-  const handleClick = (type) => {
-    console.log(type);
-  };
-
   return (
     <Container
       className={point === 'sm' || point === 'xs' ? 'padding-left-60' : ''}

@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
 import ContactForm from './ContactForm';
-import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100vw;
@@ -63,6 +62,7 @@ const Financials = () => {
               <a
                 href='https://ik.imagekit.io/4kpopox69zp/Files/Land_Acquisition_Disclosure_Statement_qRNq2W9A7.pdf'
                 target='_blank'
+                rel='noopener noreferrer'
                 className='investor-link'
               >
                 Land Acquisition Disclosure Statement.pdf
@@ -70,6 +70,7 @@ const Financials = () => {
               <a
                 href='https://ik.imagekit.io/4kpopox69zp/Files/Masakali_Pitchdeck__rUTIud2XF.pdf'
                 target='_blank'
+                rel='noopener noreferrer'
                 className='investor-link'
               >
                 Pitch Deck.pdf
@@ -77,6 +78,7 @@ const Financials = () => {
               <a
                 href='https://docs.google.com/spreadsheets/d/1d_nDERIyOM4SP8U7-SGR7gFrWR1LFIt4kuhLzL3QzXA/edit?usp=sharing'
                 target='_blank'
+                rel='noopener noreferrer'
                 className='investor-link'
               >
                 Akasha Financial Spreadsheet Google Sheets
@@ -105,12 +107,16 @@ const Financials = () => {
                 placeholder='Enter Code'
               />
               <button className='contact-submit'>Submit</button>
-              <a
-                style={{ textAlign: 'center', padding: '5px' }}
+              <span
+                style={{
+                  textAlign: 'center',
+                  padding: '5px',
+                  cursor: 'pointer',
+                }}
                 onClick={handleClick}
               >
                 Request a Code
-              </a>
+              </span>
             </CodeForm>
           )}{' '}
         </Fragment>

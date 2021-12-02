@@ -64,28 +64,12 @@ const Container = styled.div`
   padding: 50px 0px 50px;
 `;
 
-const Title = styled.div`
-  margin: 0 auto;
-`;
-
-const Header = styled.div`
-  margin: 0 auto;
-`;
-
-const Divider = styled.div`
-  margin: 0 auto;
-  border-bottom: solid black 3px;
-  width: 100px;
-  margin-bottom: 15px;
-`;
-
 const Text = styled.div`
   display: inline;
   color: white;
   position: absolute;
   bottom: 55px;
   left: 25px;
-  //transform: translate(0px, -50%);
   z-index: 3;
   padding: 5px;
   background-color: rgb(58, 27, 73, 0.5);

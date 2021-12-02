@@ -2,24 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { HashLink as Link } from 'react-router-hash-link';
 
-import ImageContext from '../../../utils/ImageContext';
-import { IKImage } from 'imagekitio-react';
-import { url } from 'gravatar';
-
 const suryaImage =
   'https://ik.imagekit.io/4kpopox69zp/tr:w-auto,h-500px,dpr-auto/Gallery/Completed/17_SQWp4aL7p.jpg?ik-sdk-version=react-1.0.9';
 const chandraImage =
   'https://ik.imagekit.io/4kpopox69zp/tr:w-auto,h-500px,dpr-auto/Gallery/Completed/Chandra/chandra_bathroom_1_QhGUo7tBsnd.jpg?ik-sdk-version=react-1.0.9';
 const jalaImage =
   'https://ik.imagekit.io/4kpopox69zp/tr:w-auto,h-500px,dpr-auto/Gallery/Completed/Jala/jala_front_angle_HtBbZj5NqF.jpg?ik-sdk-version=react-1.0.9';
-
-const Container = styled.section`
-    display: flex;
-    flex-direction: column;
-    flex-wrap;
-    padding: 50px 0 50px 0;
-
-`;
 
 const Box = styled.div`
   display: flex;

@@ -28,14 +28,6 @@ const Pages = styled.div`
   flex-direction: column;
 `;
 
-const LinkStyle = styled.a`
-  color: white;
-
-  :hover {
-    text-shadow: 1px 1px 1px yellow;
-  }
-`;
-
 const IconImg = styled.img`
   margin: auto;
   margin-right: 5px;

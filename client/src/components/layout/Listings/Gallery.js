@@ -2,7 +2,6 @@ import React from 'react';
 import useBreakpoint from '../../../utils/useBreakpoint';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-import { suryaImages } from '../Gallery/galleryImages';
 
 const Gallery = ({ images }) => {
   const point = useBreakpoint();
