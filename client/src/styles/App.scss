@@ -678,7 +678,7 @@ h4 {
   justify-content: center;
   text-align: center;
   min-width: 350px;
-  width: min(700px, 90%);
+  width: calc(min(700px, 90%));
   padding: 50px 0px 50px 0px;
 }
 
@@ -772,7 +772,6 @@ h4 {
 /* Listing Pages */
 
 .listing-page {
-  //width: calc(max(80%, 350px));
   padding-top: 75px;
 }
 
