@@ -13,7 +13,7 @@
     "formik": "^2.2.9",
     "imagekitio-react": "^1.0.9",
     "moment": "^2.29.1",
-    "node-sass": "^6.0.1",
+    "node-sass": "^4.14.1",
     "react": "^16.14.0",
     "react-dates": "^21.8.0",
     "react-dom": "^16.14.0",
