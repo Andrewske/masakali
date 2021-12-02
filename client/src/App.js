@@ -1,5 +1,10 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import './styles/App.scss';
+import './styles/react_dates_overrides.scss';
+
 import ScrollToTop from './components/routing/ScrollToTop';
 import Landing from './components/layout/Landing';
 import Financials from './components/layout/Financials';
@@ -7,7 +12,6 @@ import Gallery from './components/layout/Gallery/Gallery';
 import Amenities from './components/layout/Landing/Amenities';
 
 import Sidebar from './components/layout/Sidebar/Sidebar';
-import './App.css';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { Provider } from 'react-redux';
@@ -25,6 +29,9 @@ import CafeJuiceBar from './components/layout/Amenities/CafeJuiceBar';
 import Sustainable from './components/layout/Amenities/Sustainable';
 import OrganicFarm from './components/layout/Amenities/OrganicFarm';
 import Spa from './components/layout/Amenities/Spa';
+
+// Listing Pages
+import Surya from './components/layout/Listings/Surya';
 
 //imageKitId = 4kpopox69zpcd
 
@@ -61,6 +68,7 @@ const App = () => {
             />
             <Route exact path='/foundation' component={Foundation} />
             <Route exact path='/organic-farm' component={OrganicFarm} />
+            <Route exact path='/listings/surya' component={Surya} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
           </Switch>
         </Fragment>

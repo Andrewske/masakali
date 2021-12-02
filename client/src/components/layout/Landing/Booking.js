@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { HashLink as Link } from 'react-router-hash-link';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
@@ -106,13 +107,17 @@ const Links = styled.div`
   justify-content: space-evenly;
 `;
 
-const Link = styled.span`
-  height: 50px;
-  width: 50%;
-  display: grid;
-  place-items: center;
-  color: white;
-  cursor: pointer;
+// const Link = styled.span`
+//   height: 50px;
+//   width: 50%;
+//   display: grid;
+//   place-items: center;
+//   color: white;
+//   cursor: pointer;
+// `;
+
+const SubText = styled.p`
+  padding-sop: 25px;
 `;
 
 const Booking = () => {
@@ -144,8 +149,28 @@ const Booking = () => {
             </Prices>
           </TextBox>
           <Links>
-            <Link className='booking-com'>Booking.com</Link>
-            <Link className='airbnb'>AirBnb</Link>
+            <Link
+              className='booking-com booking-page-link'
+              onClick={() =>
+                window.open(
+                  'https://www.booking.com/hotel/id/masakali-retreat-gianyar.html',
+                  '_blank'
+                )
+              }
+            >
+              Booking.com
+            </Link>
+            <Link className='email booking-page-link' to={`/#contact`}>
+              Email Us
+            </Link>
+            <Link
+              className='airbnb booking-page-link'
+              onClick={() =>
+                window.open('https://www.airbnb.com/rooms/53234674', '_blank')
+              }
+            >
+              AirBnb
+            </Link>
           </Links>
         </Card>
         <Card>
@@ -168,8 +193,28 @@ const Booking = () => {
             </Prices>
           </TextBox>
           <Links>
-            <Link className='booking-com'>Booking.com</Link>
-            <Link className='airbnb'>AirBnb</Link>
+            <Link
+              className='booking-com booking-page-link'
+              onClick={() =>
+                window.open(
+                  'https://www.booking.com/hotel/id/masakali-retreat-gianyar.html',
+                  '_blank'
+                )
+              }
+            >
+              Booking.com
+            </Link>
+            <Link className='email booking-page-link' to={`/#contact`}>
+              Email Us
+            </Link>
+            <Link
+              className='airbnb booking-page-link'
+              onClick={() =>
+                window.open('https://www.airbnb.com/rooms/53609606', '_blank')
+              }
+            >
+              AirBnb
+            </Link>
           </Links>
         </Card>
         <Card>
@@ -192,10 +237,32 @@ const Booking = () => {
             </Prices>
           </TextBox>
           <Links>
-            <Link className='booking-com'>Booking.com</Link>
-            <Link className='airbnb'>AirBnb</Link>
+            <Link
+              className='booking-com booking-page-link'
+              onClick={() =>
+                window.open(
+                  'https://www.booking.com/hotel/id/masakali-retreat-gianyar.html',
+                  '_blank'
+                )
+              }
+            >
+              Booking.com
+            </Link>
+            <Link className='email booking-page-link'>Email Us</Link>
+            <Link
+              className='airbnb booking-page-link'
+              onClick={() =>
+                window.open('https://www.airbnb.com/rooms/53395669', '_blank')
+              }
+            >
+              AirBnb
+            </Link>
           </Links>
         </Card>
+        <SubText>
+          Save by booking with us directly.{' '}
+          <Link to={'/#contact'}>Click here to send us an email</Link>.
+        </SubText>
       </Box>
     </section>
   );

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import HeaderDropDown from './HeaderDropDown';
+import useBreakpoint from '../../../utils/useBreakpoint';
+
 const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -36,12 +38,16 @@ const Header = ({ changeImages }) => {
   const [constructionIsOpen, setConstructionIsOpen] = useState(false);
   const [completedIsOpen, setCompletedIsOpen] = useState(false);
 
+  const point = useBreakpoint();
+
   const handleClick = (type) => {
     console.log(type);
   };
 
   return (
-    <Container>
+    <Container
+      className={point === 'sm' || point === 'xs' ? 'padding-left-60' : ''}
+    >
       <HeaderLink
         onMouseEnter={() => setConstructionIsOpen(true)}
         onMouseLeave={() => setConstructionIsOpen(false)}

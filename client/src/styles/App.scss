@@ -12,6 +12,8 @@
   --airbnb-color: #ff5a5f;
 }
 
+$light-purple-5: rgba(163, 143, 159, 0.5);
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -91,6 +93,16 @@ img {
   background-color: var(--booking-com-color) !important;
 }
 
+.email {
+  background: white !important;
+  color: black !important;
+
+  &:hover {
+    color: white !important;
+    background: black !important;
+  }
+}
+
 .booking-com:hover {
   color: var(--booking-com-color) !important;
   background-color: white !important;
@@ -118,6 +130,22 @@ img {
 
 .border-color {
   border: 2px solid var(--purple-color);
+}
+
+.padding-left-60 {
+  padding-left: 60px;
+}
+
+.btn {
+  display: grid;
+  place-items: center;
+  width: 200px;
+  height: 50px;
+  border-radius: 0.5rem;
+  background: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* Text Styles*/
@@ -739,4 +767,313 @@ h4 {
   bottom: 50%;
   z-index: 2;
   background: rgba(0, 0, 0, 0.2);
+}
+
+/* Listing Pages */
+
+.listing-page {
+  //width: calc(max(80%, 350px));
+  padding-top: 75px;
+}
+
+.listing-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  //padding-top: 50px;
+
+  .large-img {
+    height: 500px;
+    grid-column: span 2;
+    grid-row: span 2;
+    object-fit: cover;
+  }
+
+  .small-img {
+    height: calc(250px - 0.25rem);
+    object-fit: cover;
+  }
+}
+
+.listing-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  padding-top: 50px;
+  //position: relative;
+
+  .listing-details {
+    flex: 1 1 50%;
+    padding: 2rem;
+
+    .line {
+      width: 100%;
+      border-bottom: 1px solid black;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      padding-bottom: 5px;
+    }
+
+    p {
+      padding-bottom: 5px;
+    }
+  }
+
+  .booking-card {
+    $margin: 1.5rem;
+    $outline: 1px solid rgb(221, 221, 221);
+
+    flex: 1 1 30%;
+    width: 90%;
+    height: max-content;
+    margin-left: auto;
+    margin-right: 2rem;
+    border: $outline;
+    border-radius: 0.75rem;
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.12);
+    padding: $margin;
+    position: sticky;
+    top: 50px;
+    overflow: visible;
+
+    .price {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: $margin;
+      flex-wrap: wrap;
+
+      .break {
+        flex-basis: 100%;
+        height: 0;
+      }
+
+      .subtext {
+        white-space: wrap;
+        font-size: 0.75rem;
+        color: var(--airbnb-color);
+      }
+    }
+
+    .form-box {
+      display: flex;
+      flex-wrap: wrap;
+      outline: $outline;
+      border-radius: 0.5rem;
+      overflow: visible !important;
+
+      .title {
+        font-size: 0.65rem;
+        font-weight: bold;
+      }
+
+      // .check-in {
+      //   cursor: pointer;
+      //   grid-column: span 2;
+      //   padding: $margin / 2;
+      //   //outline: $outline;
+      // }
+
+      .inputs {
+        flex: 1 1 100%;
+      }
+
+      .inputs input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-top: $outline;
+        // outline: $outline;
+        // border-radius: 0.5rem;
+        box-shadow: none !important;
+        font-size: 1rem;
+
+        &:focus {
+          outline: inherit;
+          box-shadow: none !important;
+        }
+      }
+    }
+
+    .DateRangePicker {
+      grid-column: span 4;
+      border: none;
+      width: 100%;
+      // outline: $outline;
+      // border-radius: 0.5rem;
+      position: relative;
+
+      .DateRangePickerInput {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        border: none !important;
+        border-radius: 0.5rem;
+        overflow: hidden;
+      }
+
+      .DateInput {
+        grid-column: span 3;
+        flex: 2 2 45%;
+      }
+
+      .DateInput_input {
+        font-size: 1rem;
+      }
+
+      .DateRangePickerInput_arrow {
+        flex: 1 1 10%;
+        display: grid;
+        place-items: center;
+        width: auto;
+      }
+
+      .DateRangePicker_picker {
+        position: absolute;
+        top: 50px !important;
+        left: auto !important;
+        right: 0px;
+      }
+
+      // .DateRangePicker_picker {
+      //   right: 50px;
+      // }
+
+      // .DayPicker {
+      //   right: 50px;
+      // }
+    }
+
+    .btn {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 50px;
+      border-radius: 0.5rem;
+      background: var(--primary-color);
+      color: white;
+      font-weight: bold;
+      margin-top: $margin;
+      cursor: pointer;
+    }
+
+    // .calendar-box {
+    //   position: absolute;
+    //   right: 20px;
+    //   transform: scale(0);
+    //   transition: all 0.5s ease-in-out;
+    //   transform-origin: top right;
+
+    //   &.open {
+    //     transform: scale(1);
+    //   }
+
+    //   .cld_container {
+    //     padding: 10px;
+    //     border-radius: 0.5rem;
+    //   }
+
+    //   .cld_btnAlign button {
+    //     background: transparent;
+    //     box-shadow: none;
+    //     color: black;
+    //   }
+    // }
+  }
+
+  .booking-card-sm {
+    $margin: 20px;
+    $outline: 1px solid rgb(221, 221, 221);
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    .btn {
+      @extend .btn;
+    }
+
+    .bottom-bar {
+      width: 100%;
+      height: 5rem;
+      outline: $outline;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 1rem 0px 1rem;
+    }
+
+    .date-picker-container {
+      position: fixed;
+      bottom: 5rem;
+      left: 0;
+      right: 0;
+      height: 0%;
+      background: white;
+      border-radius: 0.75rem;
+      transition: height 0.5s ease-in-out;
+
+      z-index: -1; //overflow-y: scroll;
+      &.active {
+        height: calc(90% - 5rem);
+      }
+
+      .date-picker-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+
+        i {
+          font-size: 1.5rem;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          margin-top: auto;
+          margin-bottom: auto;
+
+          &:hover {
+            background: $light-purple-5;
+          }
+        }
+
+        .clear-dates {
+          text-decoration: underline;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          cursor: pointer;
+
+          &:hover {
+            background: $light-purple-5;
+          }
+        }
+      }
+
+      .date-picker-info {
+        width: 100%;
+        padding: 0 1.5rem 0.5rem 1.5rem;
+        display: flex;
+      }
+
+      .load-more {
+        @extend .btn;
+        width: 80%;
+        margin: 1rem auto;
+      }
+    }
+  }
+}
+
+.booking-page-link {
+  height: 50px;
+  width: 50%;
+  display: grid;
+  place-items: center;
+  color: white;
+  cursor: pointer;
 }

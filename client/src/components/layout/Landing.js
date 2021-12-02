@@ -14,7 +14,7 @@ import Team from './Landing/Team';
 import ContactSection from './Landing/ContactSection';
 import Footer from './Footer';
 
-import { useHotkeys } from 'react-hotkeys-hook';
+//import { useHotkeys } from 'react-hotkeys-hook';
 import LoginPopup from '../auth/LoginPopup';
 import RegisterPopup from '../auth/RegisterPopup';
 import YoutubeEmbed from '../../utils/YoutubeEmbed';
@@ -25,13 +25,14 @@ const Landing = () => {
   const { width, height } = useWindowSize();
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
-  useHotkeys('shift+l', () =>
-    setShowLoginPopup((showLoginPopup) => !showLoginPopup)
-  );
-  useHotkeys('esc', () => {
-    setShowLoginPopup((showLoginPopup) => false);
-    setShowRegisterPopup((showRegisterPopup) => false);
-  });
+
+  // useHotkeys('shift+l', () =>
+  //   setShowLoginPopup((showLoginPopup) => !showLoginPopup)
+  // );
+  // useHotkeys('esc', () => {
+  //   setShowLoginPopup((showLoginPopup) => false);
+  //   setShowRegisterPopup((showRegisterPopup) => false);
+  // });
 
   const togglePopup = (type) => {
     if (type === 'login') {
