@@ -139,15 +139,15 @@ img {
 .btn {
   display: grid;
   place-items: center;
-  width: 200px;
-  height: 50px;
+  width: max-content;
+  font-size: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 0.5rem;
   background: var(--primary-color);
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
-
 /* Text Styles*/
 
 .text-primary {
@@ -772,16 +772,95 @@ h4 {
 /* Listing Pages */
 
 .listing-page {
-  padding-top: 75px;
+  padding: 2rem;
+  padding-top: 4rem;
+  //width: calc(max(70%, 700px));
+
+  &.hidden {
+    max-height: 100vh;
+    overflow-y: hidden !important;
+  }
+}
+
+.full-screen-gallery {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 0;
+  z-index: 11000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: height 0.5s ease-in-out;
+
+  &.active {
+    overflow-y: auto;
+    height: 100% !important;
+  }
+
+  .fs-gallery-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: white;
+
+    i {
+      font-size: 2rem;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .fs-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    padding-top: 4rem;
+    gap: 2rem;
+    justify-content: center;
+
+    .img {
+      max-width: 350px;
+      border-radius: 0.5rem;
+      box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.12);
+    }
+  }
 }
 
 .listing-gallery-grid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
   border-radius: 0.75rem;
   overflow: hidden;
   //padding-top: 50px;
+
+  .btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.12);
+  }
 
   .large-img {
     height: 500px;
@@ -796,12 +875,23 @@ h4 {
   }
 }
 
+.listing-gallery-single {
+  cursor: pointer;
+  overflow: hidden;
+  padding: 1rem;
+
+  .large-img {
+    border-radius: 0.5rem;
+  }
+}
+
 .listing-body {
   display: flex;
   flex-wrap: wrap;
   gap: 5%;
-  padding-top: 50px;
-  //position: relative;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  margin: 0 auto;
 
   .listing-details {
     flex: 1 1 50%;
@@ -859,10 +949,13 @@ h4 {
       }
     }
 
+    &.sm {
+      display: flex;
+    }
+
     .form-box {
       display: flex;
       flex-wrap: wrap;
-      outline: $outline;
       border-radius: 0.5rem;
       overflow: visible !important;
 
@@ -871,31 +964,31 @@ h4 {
         font-weight: bold;
       }
 
-      // .check-in {
-      //   cursor: pointer;
-      //   grid-column: span 2;
-      //   padding: $margin / 2;
-      //   //outline: $outline;
-      // }
-
       .inputs {
         flex: 1 1 100%;
+
+        .error {
+          font-size: 0.75rem;
+          color: var(--airbnb-color);
+          padding: 0.5rem;
+        }
+      }
+
+      .inputs button {
+        border: none !important;
+        margin-top: 0.5rem;
       }
 
       .inputs input {
         width: 100%;
-        padding: 10px;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
         border: none;
-        border-top: $outline;
-        // outline: $outline;
-        // border-radius: 0.5rem;
+        outline: $outline;
+        border-radius: 0.25rem;
         box-shadow: none !important;
         font-size: 1rem;
-
-        &:focus {
-          outline: inherit;
-          box-shadow: none !important;
-        }
+        line-height: 1.5rem;
       }
     }
 
@@ -912,8 +1005,10 @@ h4 {
         display: flex;
         flex-wrap: wrap;
         border: none !important;
-        border-radius: 0.5rem;
+        outline: $outline;
+        border-radius: 0.25rem;
         overflow: hidden;
+        line-height: 1.5rem;
       }
 
       .DateInput {
@@ -949,16 +1044,9 @@ h4 {
     }
 
     .btn {
-      display: grid;
-      place-items: center;
       width: 100%;
-      height: 50px;
-      border-radius: 0.5rem;
       background: var(--primary-color);
       color: white;
-      font-weight: bold;
-      margin-top: $margin;
-      cursor: pointer;
     }
 
     // .calendar-box {
@@ -991,11 +1079,8 @@ h4 {
 
     position: fixed;
     bottom: 0;
-    width: 100%;
-
-    .btn {
-      @extend .btn;
-    }
+    left: 0;
+    right: 0;
 
     .bottom-bar {
       width: 100%;

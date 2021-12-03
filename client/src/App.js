@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import './styles/App.scss';
-import './styles/react_dates_overrides.scss';
+import './styles/slideTransition.scss';
 
 import ScrollToTop from './components/routing/ScrollToTop';
 import Landing from './components/layout/Landing';
