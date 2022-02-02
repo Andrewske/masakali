@@ -86,7 +86,7 @@ const Footer = (props) => {
             <p>/masakaliretreat</p>
           </div>
         </a>
-        <a className='footer-link' href='info@masakaliretreat.com'>
+        <a className='footer-link' href='admin@masakaliretreat.com'>
           <p>
             <span className='icon-email footer-icon' /> info@masakaliretreat.com
           </p>
