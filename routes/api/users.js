@@ -13,6 +13,7 @@ const User = require('../../models/User');
 // @access  Public
 router.post(
   '/',
+  express.json(),
   [
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include valid email').isEmail(),
@@ -23,6 +24,7 @@ router.post(
   ],
   async (req, res) => {
     const errors = validationResult(req);
+
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
@@ -31,23 +33,15 @@ router.post(
 
     try {
       let user = await User.findOne({ email });
-
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'User already exists' }] });
+          .json({ errors: [{ msg: 'User already exists, please login' }] });
       }
-
-      const avatar = gravatar.url(email, {
-        s: '200',
-        r: 'pg',
-        d: 'mm',
-      });
 
       user = new User({
         name,
         email,
-        avatar,
         password,
       });
 
@@ -78,5 +72,28 @@ router.post(
     }
   }
 );
+
+router.post('/update', express.json(), async (req, res) => {
+  try {
+    console.log({ body: req.body, address: req.body.billingDetails.address });
+    const { userId, billingDetails, isDefault } = req.body;
+
+    const user = await User.findOne({ _id: userId });
+
+    if (user?.address?.city) {
+      if (isDefault) {
+        user.address = billingDetails.address;
+      }
+    } else {
+      user.address = billingDetails.address;
+    }
+
+    user.save();
+    res.status(200).json(user);
+  } catch (err) {
+    console.error({ err });
+    res.status(500).send({ err });
+  }
+});
 
 module.exports = router;

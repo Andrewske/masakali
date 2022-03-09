@@ -134,8 +134,8 @@ const Booking = () => {
               <li>Spa services and meals available</li>
             </ul>
             <Prices>
-              <Price>$100</Price>
-              <p>$85/night</p>
+              <Price>$150</Price>
+              <p>$70/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -178,8 +178,8 @@ const Booking = () => {
               <li>Spa services and meals available</li>
             </ul>
             <Prices>
-              <Price>$85</Price>
-              <p>$72/night</p>
+              <Price>$125</Price>
+              <p>$60/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -222,8 +222,8 @@ const Booking = () => {
               <li>Spa services and meals available</li>
             </ul>
             <Prices>
-              <Price>$70</Price>
-              <p>$60/night</p>
+              <Price>$100</Price>
+              <p>$50/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -254,6 +254,9 @@ const Booking = () => {
         <SubText>
           Save 15% by booking with us directly.{' '}
           <Link to={'/#contact'}>Click here to send us an email</Link>.
+        </SubText>
+        <SubText>
+          Masakali is still in development. Some amenities may not be available.
         </SubText>
       </Box>
     </section>

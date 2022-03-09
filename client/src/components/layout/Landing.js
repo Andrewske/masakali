@@ -15,16 +15,12 @@ import ContactSection from './Landing/ContactSection';
 import Footer from './Footer';
 
 //import { useHotkeys } from 'react-hotkeys-hook';
-import LoginPopup from '../auth/LoginPopup';
-import RegisterPopup from '../auth/RegisterPopup';
 import YoutubeEmbed from '../../utils/YoutubeEmbed';
 
 import useWindowSize from '../../utils/useWindowSize';
 
 const Landing = () => {
   const { width, height } = useWindowSize();
-  const [showLoginPopup, setShowLoginPopup] = useState(false);
-  const [showRegisterPopup, setShowRegisterPopup] = useState(false);
 
   // useHotkeys('shift+l', () =>
   //   setShowLoginPopup((showLoginPopup) => !showLoginPopup)
@@ -34,25 +30,11 @@ const Landing = () => {
   //   setShowRegisterPopup((showRegisterPopup) => false);
   // });
 
-  const togglePopup = (type) => {
-    if (type === 'login') {
-      setShowRegisterPopup(false);
-      setShowLoginPopup((showLoginPopup) => !showLoginPopup);
-    } else if (type === 'register') {
-      console.log('type = register');
-      setShowLoginPopup(false);
-      setShowRegisterPopup((showRegisterPopup) => !showRegisterPopup);
-    } else {
-      setShowLoginPopup(false);
-      setShowRegisterPopup(false);
-    }
-  };
-
   return (
     <Fragment>
       <div className='landing'>
-        {showLoginPopup ? <LoginPopup togglePopup={togglePopup} /> : null}
-        {showRegisterPopup ? <RegisterPopup togglePopup={togglePopup} /> : null}
+        {/* {showLoginPopup ? <LoginPopup togglePopup={togglePopup} /> : null}
+        {showRegisterPopup ? <RegisterPopup togglePopup={togglePopup} /> : null} */}
         <Home />
         <Vision />
         <Location height={height} width={width} />
@@ -80,7 +62,6 @@ const Landing = () => {
         <Amenities bg={'background-gray'} />
         <Team />
         <ContactSection />
-        <Footer />
       </div>
     </Fragment>
   );

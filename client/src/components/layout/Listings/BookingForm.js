@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DateRangePicker } from 'react-dates';
 import { validation, submitForm } from '../../../utils/emailForm';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import moment from 'moment';
 
-const BookingForm = ({ startDate, setStartDate, endDate, setEndDate }) => {
+const BookingForm = ({
+  startDate,
+  setStartDate,
+  endDate,
+  setEndDate,
+  isBlocked,
+  renderDayContents,
+}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [focusedInput, setFocusedInput] = useState(null);
   const [numDays, setNumDays] = useState('Select check-in date');
+  const [checkoutDate, setCheckoutDate] = useState(false);
 
   const handleDateChange = (dateObj) => {
     let { startDate, endDate } = dateObj;
@@ -25,18 +33,6 @@ const BookingForm = ({ startDate, setStartDate, endDate, setEndDate }) => {
     }
   };
 
-  const handleFormChange = (e) => {
-    e.preventDefault();
-
-    if (e.target.id === 'name') {
-      setName(e.target.value);
-    }
-
-    if (e.target.id === 'email') {
-      setEmail(e.target.value);
-    }
-  };
-
   return (
     <div className='form-box'>
       <DateRangePicker
@@ -48,6 +44,10 @@ const BookingForm = ({ startDate, setStartDate, endDate, setEndDate }) => {
         focusedInput={focusedInput}
         onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
         orientation={'vertical'}
+        //initialVisibleMonth={() => moment()}
+        //numberOfMonths={2}
+        isDayBlocked={(day) => isBlocked(day)}
+        renderDayContents={(day) => renderDayContents(day)}
       />
       <Formik
         initialValues={{
@@ -86,20 +86,6 @@ const BookingForm = ({ startDate, setStartDate, endDate, setEndDate }) => {
           </Form>
         )}
       </Formik>
-      {/* <span className='inputs'>
-        <input
-          type='text'
-          placeholder='Name'
-          id='name'
-          onChange={(e) => handleFormChange(e)}
-        />
-        <input
-          type='text'
-          placeholder='Email'
-          id='email'
-          onChange={(e) => handleFormChange(e)}
-        />
-      </span> */}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import insta from '../../img/instagram-64.ico';
 import facebook from '../../img/facebook.png';
+import CountryPicker from './CountryPicker';
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +27,8 @@ const Pages = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  height: 200px;
 `;
 
 const IconImg = styled.img`
@@ -86,10 +89,9 @@ const Footer = (props) => {
             <p>/masakaliretreat</p>
           </div>
         </a>
-        <a className='footer-link' href='mailto: admin@masakaliretreat.com'>
+        <a className='footer-link' href='mailto: info@masakaliretreat.com'>
           <p>
-            <span className='icon-email footer-icon' />{' '}
-            admin@masakaliretreat.com
+            <span className='icon-email footer-icon' /> info@masakaliretreat.com
           </p>
         </a>
       </Info>
@@ -101,6 +103,7 @@ const Footer = (props) => {
         <Link to='/investors' className='footer-link'>
           Investors
         </Link>
+        {/* <CountryPicker /> */}
       </Pages>
     </Container>
   );

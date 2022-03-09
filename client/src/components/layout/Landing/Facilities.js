@@ -57,13 +57,15 @@ const Facilities = (props) => {
               <h3>Phase I</h3>
               <ul>
                 <li>
-                  3 antique Gladak guesthouses from Java each with plunge pools
+                  3 antique Joglo guesthouses from Java each with plunge pools
                   and luxury bathrooms
                 </li>
+                <li>2 Lumbungs</li>
+                <li>Spa</li>
                 <li>Yoga Shala</li>
                 <li>Reception/staff area/kitchen</li>
                 <li>
-                  Luxury 2.5 story 2 bedroom 2.5 bath villa with pool (master
+                  Luxury 2.5 story 3 bedroom 3.5 bath villa with pool (master
                   bedroom is a 10x12 antique Joglo from Java)
                 </li>
               </ul>

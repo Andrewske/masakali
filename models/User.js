@@ -12,18 +12,25 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: false,
   },
-  avatar: {
+  image: {
     type: String,
   },
-  date: {
-    type: Date,
-    default: Date.now(),
+  googleId: {
+    type: String,
+    required: false,
   },
   admin: {
     type: Boolean,
     default: false,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  address: {
+    type: Object,
   },
 });
 

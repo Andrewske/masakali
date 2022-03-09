@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../../middleware/auth');
+const url = require('url');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
-
+const passport = require('passport');
+const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 
 // @route   GET api/auth
@@ -26,6 +27,7 @@ router.get('/', auth, async (req, res) => {
 // @access  Public
 router.post(
   '/',
+  express.json(),
   [
     check('email', 'Please include valid email').isEmail(),
     check('password', 'Please is required').exists(),
@@ -74,6 +76,55 @@ router.post(
       console.error(err.message);
       res.status(500).send('Server error');
     }
+  }
+);
+
+router.get('/login/success', express.json(), (req, res) => {
+  if (req.user) {
+    res.status(200).json({
+      user: req.user,
+    });
+  } else {
+    res.status(422).json({
+      error: 'Login failed',
+    });
+  }
+});
+
+router.get('/google', (req, res, next) => {
+  const returnTo = url.parse(req.url, true).query.redirect;
+  const state = returnTo
+    ? Buffer.from(JSON.stringify({ returnTo })).toString('base64')
+    : undefined;
+
+  const authenticator = passport.authenticate('google', {
+    scope: ['profile', 'email'],
+    state,
+  });
+
+  authenticator(req, res, next);
+});
+
+router.get(
+  '/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: 'http://localhost:3000/',
+  }),
+  (req, res) => {
+    try {
+      const { state } = req.query;
+      const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());
+      if (typeof returnTo === 'string') {
+        return res.redirect(
+          'http://localhost:3000/' + returnTo //+ `?userId=${req.user._id}`
+        );
+      }
+    } catch {
+      // just redirect normally below
+      console.log('error');
+    }
+    //res.cookie('userId', 1);
+    res.redirect('http://localhost:3000/');
   }
 );
 

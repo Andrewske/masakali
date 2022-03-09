@@ -26,48 +26,48 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-bars:before {
-  content: '\e900';
-}
-.icon-navicon:before {
-  content: '\e900';
-}
-.icon-reorder:before {
-  content: '\e900';
-}
-.icon-close:before {
-  content: '\e901';
-}
-.icon-remove:before {
-  content: '\e901';
-}
-.icon-times:before {
-  content: '\e901';
-}
-.icon-facebook-square:before {
-  content: '\e902';
-}
-.icon-instagram:before {
-  content: '\e903';
-}
-.icon-chevron-down:before {
+.icon-mail:before {
   content: '\e904';
 }
-.icon-chevron-up:before {
+.icon-email:before {
+  content: '\e904';
+}
+.icon-letter:before {
+  content: '\e904';
+}
+.icon-envelope:before {
+  content: '\e904';
+}
+.icon-contact:before {
+  content: '\e904';
+}
+.icon-chevron-right:before {
   content: '\e905';
 }
-.icon-email:before {
+.icon-chevron-left:before {
   content: '\e906';
 }
-.icon-mail:before {
-  content: '\e906';
+.icon-chevron-down:before {
+  content: '\e907';
 }
-.icon-markunread:before {
-  content: '\e906';
+.icon-chevron-up:before {
+  content: '\e908';
 }
-.icon-local_post_office:before {
-  content: '\e906';
+.icon-close:before {
+  content: '\e903';
 }
-.icon-envelop:before {
-  content: '\e945';
+.icon-bars:before {
+  content: '\e902';
+}
+.icon-minus-outline:before {
+  content: '\e901';
+}
+.icon-add-outline:before {
+  content: '\e900';
+}
+.icon-facebook2:before {
+  content: '\ea91';
+}
+.icon-instagram:before {
+  content: '\ea92';
 }
