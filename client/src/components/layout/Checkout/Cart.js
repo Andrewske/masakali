@@ -35,7 +35,6 @@ const Cart = ({
   const elements = useElements();
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_API_URL);
     if (reservations.new.length > 0) {
       setPrice(
         reservations?.new
@@ -99,7 +98,7 @@ const Cart = ({
       const {
         data: { error: backendError, clientSecret },
       } = await axios.post(
-        process.env.REACT_APP_API_URL + '/stripe/payment/create-payment-intent',
+        serverUrl + '/stripe/payment/create-payment-intent',
         {
           amount: price * 100,
         }
