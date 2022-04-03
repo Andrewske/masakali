@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-const config = require('config');
 
 (async () => {
   let stripePromise;
