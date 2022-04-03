@@ -6,8 +6,8 @@ const connectDB = require('./config/db');
 const cors = require('cors');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
-require('dotenv').config({ path: './.env' });
-
+const config = require('config');
+const clientUrl = config.get('clientUrl');
 const path = require('path');
 
 const app = express();
@@ -23,6 +23,16 @@ connectDB();
 //     cookie: { secure: true },
 //   })
 // );
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+} else {
+  require('dotenv').config({ path: './.env' });
+}
 
 app.use(
   cookieSession({
@@ -40,7 +50,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: clientUrl,
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
     credentials: true,
   })
@@ -60,14 +70,6 @@ app.use('/api/reservations', require('./routes/api/reservations'));
 app.use('/api/stripe/customer', require('./routes/api/stripe/customer'));
 app.use('/api/stripe/payment', require('./routes/api/stripe/payment'));
 app.use('/api/stripe/webhook', require('./routes/api/stripe/webhook'));
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
 
 const PORT = process.env.PORT || 5000;
 

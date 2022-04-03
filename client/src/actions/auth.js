@@ -11,6 +11,7 @@ import {
   LOAD_USER,
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
+import { serverUrl } from '../config';
 
 // Load User
 export const loadUser =
@@ -21,8 +22,8 @@ export const loadUser =
     }
     try {
       const url = userId
-        ? `http://localhost:5000/api/auth?userId=${userId}`
-        : `http://localhost:5000/api/auth`;
+        ? serverUrl + `/auth?userId=${userId}`
+        : serverUrl + `/auth`;
       const res = await axios.get(url);
       dispatch({
         type: USER_LOADED,
@@ -53,11 +54,7 @@ export const register =
     const body = JSON.stringify({ name, email, password });
 
     try {
-      const res = await axios.post(
-        'http://localhost:5000/api/users',
-        body,
-        config
-      );
+      const res = await axios.post(serverUrl + '/users', body, config);
 
       console.log(res.data);
 
@@ -91,11 +88,7 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post(
-      'http://localhost:5000/api/auth',
-      body,
-      config
-    );
+    const res = await axios.post(serverUrl + '/auth', body, config);
 
     dispatch({
       type: LOGIN_SUCCESS,

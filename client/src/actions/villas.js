@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { LOAD_VILLAS } from './types';
+import { serverUrl } from '../config';
 
 export const loadVillas = () => async (dispatch) => {
   try {
-    let res = await axios.get('http://localhost:5000/api/villas');
+    let res = await axios.get(serverUrl + '/villas');
 
     let data = res.data.reduce((acc, villa) => {
       acc[villa.name] = villa;

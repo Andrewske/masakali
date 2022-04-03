@@ -14,6 +14,7 @@ import {
   updateUser,
   updateReservation,
 } from '../../../actions/user';
+import { serverUrl } from '../../../config';
 
 const Cart = ({
   isAuthenticated,
@@ -54,8 +55,9 @@ const Cart = ({
           'Access-Control-Allow-Credentials': true,
         },
       };
+      console.log('loginSuccess', serverUrl);
       const response = await axios.get(
-        'http://localhost:5000/api/auth/login/success',
+        serverUrl + '/auth/login/success',
         config
       );
       console.log({ res: response.data });

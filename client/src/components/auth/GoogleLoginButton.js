@@ -1,9 +1,9 @@
 import React from 'react';
-const API_URL = 'http://localhost:5000/api';
+import { serverUrl } from '../../config';
 
 const GoogleLoginButton = () => {
   const handleClick = () => {
-    window.open(`${API_URL}/auth/google?redirect=cart`, '_self');
+    window.open(`${serverUrl}/auth/google?redirect=cart`, '_self');
   };
   return (
     <div className='google-btn' onClick={handleClick}>

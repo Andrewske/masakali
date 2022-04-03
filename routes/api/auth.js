@@ -4,6 +4,7 @@ const url = require('url');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const clientUrl = config.get('clientUrl');
 const { check, validationResult } = require('express-validator');
 const passport = require('passport');
 const auth = require('../../middleware/auth');
@@ -108,23 +109,20 @@ router.get('/google', (req, res, next) => {
 router.get(
   '/google/callback',
   passport.authenticate('google', {
-    failureRedirect: 'http://localhost:3000/',
+    failureRedirect: clientUrl,
   }),
   (req, res) => {
     try {
       const { state } = req.query;
       const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());
       if (typeof returnTo === 'string') {
-        return res.redirect(
-          'http://localhost:3000/' + returnTo //+ `?userId=${req.user._id}`
-        );
+        return res.redirect(clientUrl + '/' + returnTo);
       }
     } catch {
       // just redirect normally below
       console.log('error');
     }
-    //res.cookie('userId', 1);
-    res.redirect('http://localhost:3000/');
+    res.redirect(clientUrl);
   }
 );
 

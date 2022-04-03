@@ -135,7 +135,7 @@ const Booking = () => {
             </ul>
             <Prices>
               <Price>$150</Price>
-              <p>$70/night</p>
+              <p>$91/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -179,7 +179,7 @@ const Booking = () => {
             </ul>
             <Prices>
               <Price>$125</Price>
-              <p>$60/night</p>
+              <p>$91/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -223,7 +223,7 @@ const Booking = () => {
             </ul>
             <Prices>
               <Price>$100</Price>
-              <p>$50/night</p>
+              <p>$70/night</p>
             </Prices>
           </TextBox>
           <Links>

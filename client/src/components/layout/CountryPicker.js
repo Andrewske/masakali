@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { SET_RATES, SET_COUNTRY } from '../../actions/types';
 import axios from 'axios';
+import { serverUrl } from '../../config';
 
 const CountryPicker = ({ country, setRates, setCountry }) => {
   let { name, currency, rates, flag } = country;
@@ -27,7 +28,7 @@ const CountryPicker = ({ country, setRates, setCountry }) => {
 
   useEffect(() => {
     const getRates = async () => {
-      let res = await axios.get('http://localhost:5000/api/currency');
+      let res = await axios.get(serverUrl + '/currency');
       console.log({ res });
       setRates(res.data);
     };
