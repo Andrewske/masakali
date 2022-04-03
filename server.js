@@ -14,7 +14,7 @@ const path = require('path');
 const app = express();
 
 connectDB();
-
+app.options('*', cors());
 app.use(
   cors({
     origin: ['https://www.masakaliretreat.com', 'http://localhost:3000'],
@@ -23,8 +23,6 @@ app.use(
     allowedHeaders: ['Content-Type'],
   })
 );
-
-app.options('*', cors());
 
 // Sessions
 // app.use(
