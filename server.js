@@ -8,6 +8,7 @@ const session = require('express-session');
 const cookieSession = require('cookie-session');
 const config = require('config');
 const clientUrl = config.get('clientUrl');
+console.log({ clientUrl: clientUrl });
 const path = require('path');
 
 const app = express();
