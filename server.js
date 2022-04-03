@@ -15,7 +15,14 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ['https://www.masakaliretreat.com', 'http://localhost:3000'],
+    credentials: true,
+    methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
+    allowedHeaders: ['Content-Type'],
+  })
+);
 
 // Sessions
 // app.use(
@@ -50,6 +57,8 @@ require('./config/passport')(passport);
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 app.use(compression());
 
