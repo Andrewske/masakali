@@ -51,9 +51,10 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: clientUrl,
-    methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
+    origin: ['https://www.masakaliretreat.com', 'http://localhost:3000'],
     credentials: true,
+    methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
+    allowedHeaders: ['Content-Type'],
   })
 );
 
