@@ -14,7 +14,7 @@ const path = require('path');
 const app = express();
 
 connectDB();
-app.options('*', cors());
+//app.options('*', cors());
 app.use(
   cors({
     origin: ['https://www.masakaliretreat.com', 'http://localhost:3000'],
@@ -72,6 +72,7 @@ app.use('/api/reservations', require('./routes/api/reservations'));
 app.use('/api/stripe/customer', require('./routes/api/stripe/customer'));
 app.use('/api/stripe/payment', require('./routes/api/stripe/payment'));
 app.use('/api/stripe/webhook', require('./routes/api/stripe/webhook'));
+app.use('/api/smoobu', require('./routes/api/smoobu'));
 
 const PORT = process.env.PORT || 5000;
 

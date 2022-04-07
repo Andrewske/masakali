@@ -4,6 +4,7 @@ import { START_DATE } from 'react-dates/constants';
 import moment from 'moment';
 import guestsDropdown from './GuestsDropdown';
 import GuestsDropdown from './GuestsDropdown';
+import getDaysBetweenDates from '../../../utils/getDaysBetweenDates';
 
 const BookingCardSm = ({
   price,
@@ -17,6 +18,7 @@ const BookingCardSm = ({
   reserveDates,
   guests,
   setGuests,
+  clearDates,
 }) => {
   const [focusedInput, setFocusedInput] = useState(null);
   const [datePickerActive, setDatePickerActive] = useState(false);
@@ -34,9 +36,12 @@ const BookingCardSm = ({
           </p>
         )}
         {datePickerActive ? (
-          <span className='btn' onClick={reserveDates}>
-            Reserve
-          </span>
+          startDate &&
+          endDate && (
+            <span className='btn' onClick={reserveDates}>
+              Reserve
+            </span>
+          )
         ) : (
           <span className='btn' onClick={() => setDatePickerActive(true)}>
             Choose Dates
@@ -52,6 +57,9 @@ const BookingCardSm = ({
             className='icon-close'
             onClick={() => setDatePickerActive(false)}
           />
+          <span className='btn' onClick={() => clearDates()}>
+            Clear Dates
+          </span>
           <div className='form-box'>
             <GuestsDropdown guests={guests} setGuests={setGuests} />
           </div>
@@ -60,11 +68,8 @@ const BookingCardSm = ({
           <h2>{numDays}</h2>
         </span> */}
         <DayPickerRangeController
-          date={moment()}
           startDate={startDate}
-          startDateId='startDate'
           endDate={endDate}
-          endDateId='endDate'
           onDatesChange={(dates) => handleDateChange(dates)}
           focusedInput={focusedInput || START_DATE}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
@@ -73,7 +78,6 @@ const BookingCardSm = ({
           orientation={'verticalScrollable'}
           navPrev={<Fragment />}
           navNext={<span className='load-more'>Load More Months</span>}
-          isOutsideRange={(day) => moment(day) < moment()}
           isDayBlocked={(day) => isBlocked(day)}
           renderDayContents={(day) => renderDayContents(day)}
         />

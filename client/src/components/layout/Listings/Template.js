@@ -9,7 +9,10 @@ import useBreakpoint from '../../../utils/useBreakpoint';
 import useFormatCurrency from '../../../utils/useFormatCurrency';
 import moment from 'moment';
 
-const Template = ({ listing, createReservation }) => {
+import { getBlockedDates } from '../../../actions/smoobu';
+import getDaysBetweenDates from '../../../utils/getDaysBetweenDates';
+
+const Template = ({ listing, createReservation, handleSmoobu }) => {
   let {
     name,
     title,
@@ -34,8 +37,21 @@ const Template = ({ listing, createReservation }) => {
 
   const { amount, total } = useFormatCurrency(price, numDays);
 
-  const isBlocked = (day) =>
-    blockedDates && blockedDates.has(moment(day).format('YYYY-MM-DD'));
+  const isBlocked = (day) => {
+    if (startDate) {
+      let afterDates = [...blockedDates].filter((date) =>
+        moment(date).isAfter(startDate)
+      );
+      if (afterDates.length > 0) {
+        return (
+          moment(day).isBefore(moment(startDate).subtract(1, 'days')) ||
+          moment(day).format('YYYY-MM-DD') >=
+            afterDates.sort((a, b) => new Date(a) - new Date(b))[0]
+        );
+      }
+    }
+    return blockedDates && blockedDates.has(moment(day).format('YYYY-MM-DD'));
+  };
 
   const renderDayContents = (day) => {
     if (checkInDates && checkInDates.has(moment(day).format('YYYY-MM-DD'))) {
@@ -73,6 +89,11 @@ const Template = ({ listing, createReservation }) => {
     history.push('/cart');
   };
 
+  const clearDates = () => {
+    setStartDate(null);
+    setEndDate(null);
+  };
+
   return (
     <div
       className={`container listing-page ${
@@ -93,6 +114,9 @@ const Template = ({ listing, createReservation }) => {
         </div>
       </span>
       <span className='listing-body'>
+        <span className='btn' onClick={() => handleSmoobu()}>
+          Smoobu
+        </span>
         <span className='listing-details'>
           <h1>{title}</h1>
           <p>Tegallalang, Bali, Indonesia</p>
@@ -126,6 +150,7 @@ const Template = ({ listing, createReservation }) => {
             handleDateChange={handleDateChange}
             guests={guests}
             setGuests={setGuests}
+            clearDates={clearDates}
           />
         )}
       </span>
@@ -135,6 +160,7 @@ const Template = ({ listing, createReservation }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    handleSmoobu: () => dispatch(getBlockedDates()),
     createReservation: (payload) =>
       dispatch({ type: 'CREATE_RESERVATION', payload }),
   };

@@ -15,6 +15,11 @@ const Surya = ({ loadVillas, surya }) => {
   useEffect(() => {
     if (surya?.datesReserved) {
       let dates = [];
+      let startDates = surya.datesReserved.map((d) => d.startDate);
+      let endDates = surya.datesReserved.map((d) => d.endDate);
+
+      dates = endDates.filter((d) => startDates.includes(d));
+
       surya.datesReserved.forEach((d) => {
         dates = [...dates, ...getDaysBetweenDates(d)];
       });

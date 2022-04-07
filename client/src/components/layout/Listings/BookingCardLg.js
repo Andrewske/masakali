@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-dates';
+import { START_DATE, END_DATE } from 'react-dates/constants';
 import GuestsDropdown from './GuestsDropdown';
+import moment from 'moment';
+import getDaysBetweenDates from '../../../utils/getDaysBetweenDates';
 
 const BookingCardLg = ({
   price,
@@ -16,6 +19,19 @@ const BookingCardLg = ({
   setGuests,
 }) => {
   const [focusedInput, setFocusedInput] = useState(null);
+
+  // const notBlocked = (dates) => {
+  //   let { startDate, endDate } = dates;
+  //   let range = getDaysBetweenDates({ startDate, endDate });
+
+  //   if (range.some((day) => isBlocked(day))) {
+  //     handleDateChange({ startDate: null, endDate: null });
+  //     //setFocusedInput('endDate');
+  //     return false;
+  //   }
+
+  //   return true;
+  // };
 
   return (
     <div className='booking-card'>
@@ -41,6 +57,8 @@ const BookingCardLg = ({
           onDatesChange={(dates) => handleDateChange(dates)}
           focusedInput={focusedInput}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+          //keepOpenOnDateSelect={() => startDate && !endDate}
+          showClearDates={true}
           orientation={'vertical'}
           isDayBlocked={(day) => isBlocked(day)}
           renderDayContents={(day) => renderDayContents(day)}
