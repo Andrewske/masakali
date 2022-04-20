@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { HashLink as Link } from 'react-router-hash-link';
 
 import { getVillaRates } from '../../../actions/smoobu';
+import useFormatCurrency from '../../../utils/useFormatCurrency';
+import moment from 'moment';
 
 const suryaImage =
   'https://ik.imagekit.io/4kpopox69zp/tr:w-auto,h-500px,dpr-auto/Gallery/Completed/17_SQWp4aL7p.jpg?ik-sdk-version=react-1.0.9';
@@ -113,11 +115,25 @@ const SubText = styled.p`
   padding-top: 25px;
 `;
 
-const Booking = ({ getVillaRates, villas }) => {
-  let [rates, setRates] = useState({ surya: 1, chandra: 1, jala: 1 });
+const Booking = ({ getVillaRates, villas, rates }) => {
+  let [price, setPrice] = useState({ surya: 150, chandra: 150, jala: 100 });
+
   useEffect(() => {
     getVillaRates();
   }, []);
+
+  useEffect(() => {
+    let today = moment().format('YYYY-MM-D');
+    if (!villas.surya.rates) return;
+
+    let prices = { ...price };
+
+    for (let [key, value] of Object.entries(price)) {
+      prices[key] = Math.round(villas[key].rates[today].price);
+    }
+
+    setPrice(prices);
+  }, [rates, villas]);
 
   return (
     <section id='booking' className='container background-gray'>
@@ -143,7 +159,7 @@ const Booking = ({ getVillaRates, villas }) => {
             </ul>
             <Prices>
               <Price>$150</Price>
-              <p>$91/night</p>
+              <p>${price.surya}/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -187,7 +203,7 @@ const Booking = ({ getVillaRates, villas }) => {
             </ul>
             <Prices>
               <Price>$150</Price>
-              <p>$105/night</p>
+              <p>${price.chandra}/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -231,7 +247,7 @@ const Booking = ({ getVillaRates, villas }) => {
             </ul>
             <Prices>
               <Price>$100</Price>
-              <p>$70/night</p>
+              <p>${price.jala}/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -273,6 +289,7 @@ const Booking = ({ getVillaRates, villas }) => {
 
 const mapStateToProps = (state) => ({
   villas: state.villas,
+  rates: state.country.rates,
 });
 
 export default connect(mapStateToProps, { getVillaRates })(Booking);

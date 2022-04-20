@@ -11,8 +11,6 @@ export const loadVillas = () => async (dispatch) => {
       return acc;
     }, {});
 
-    console.log({ data });
-
     dispatch({ type: LOAD_VILLAS, payload: data });
   } catch (err) {
     console.log({ err });

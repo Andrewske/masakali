@@ -4,13 +4,16 @@ import { suryaImages } from '../Gallery/galleryImages';
 import Template from './Template';
 import { loadVillas } from '../../../actions/villas';
 import getDaysBetweenDates from '../../../utils/getDaysBetweenDates';
+import { getVillaRates } from '../../../actions/smoobu';
+import useFormatCurrency from '../../../utils/useFormatCurrency';
 import moment from 'moment';
 
 const imageSelection = [10, 0, 1, 4, 5];
 
-const Surya = ({ loadVillas, surya }) => {
+const Surya = ({ loadVillas, surya, getVillaRates, currency }) => {
   const [blockedDates, setBlockedDates] = useState(null);
   const [checkInDates, setCheckInDates] = useState(null);
+  const [reducedPrice, setReducedPrice] = useState(100);
 
   useEffect(() => {
     if (surya?.datesReserved) {
@@ -30,12 +33,20 @@ const Surya = ({ loadVillas, surya }) => {
     }
   }, [surya]);
 
+  useEffect(() => {
+    if (!surya.rates) {
+      getVillaRates();
+    } else {
+      setReducedPrice(surya.rates[moment().format('YYYY-MM-D')].price);
+    }
+  }, [surya.rates]);
+
   const listing = {
     name: surya.name,
     title: surya.title,
     description: surya.description,
     images: suryaImages,
-    price: surya.reducedPrice,
+    price: reducedPrice,
     imageSelection,
     blockedDates,
     checkInDates,
@@ -50,6 +61,7 @@ const Surya = ({ loadVillas, surya }) => {
 
 const mapStateToProps = (state) => ({
   surya: state.villas.surya,
+  currency: state.country.currency,
 });
 
-export default connect(mapStateToProps, { loadVillas })(Surya);
+export default connect(mapStateToProps, { loadVillas, getVillaRates })(Surya);

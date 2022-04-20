@@ -17,7 +17,6 @@ let reqConfig = {
 };
 router.get('/rates', async (req, res) => {
   let { startDate = null, endDate = null } = req.query;
-  console.log(req.query);
   try {
     reqConfig.params = {
       start_date: startDate || moment().format('YYYY-MM-D'),
@@ -37,9 +36,21 @@ router.get('/rates', async (req, res) => {
     delete data[chandraId];
     delete data[jalaId];
 
+    let response = await axios.get(
+      `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=IDR`
+    );
+
+    let USD = response.data.data.USD;
+
+    for (const [key, value] of Object.entries(data)) {
+      Object.keys(value).map((d, i) => {
+        value[d].price *= USD;
+      });
+    }
+
     res.status(200).send(data);
-  } catch (error) {
-    res.status(422).send({ error });
+  } catch (err) {
+    res.status(422).send(err.message);
   }
 });
 
