@@ -3,7 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const config = require('config');
-const apiKey = config.get('SMOOBU_API_KEY');
+const apiKey = provess.env.SMOOBU_API_KEY;
 const suryaId = config.get('SMOOBU_SURYA_ID');
 const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
@@ -13,6 +13,10 @@ let reqConfig = {
     'Api-Key': apiKey,
   },
 };
+router.get('/rates', async (req, res) => {
+  try {
+  } catch (error) {}
+});
 
 router.get('/bookings/bookedDates', async (req, res) => {
   try {

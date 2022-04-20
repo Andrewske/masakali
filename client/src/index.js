@@ -27,17 +27,17 @@ import axios from 'axios';
     }
   } else {
     try {
-      const config = {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        method: 'GET',
-        url: `${serverUrl}/stripe/payment/config`,
-        withCredentials: true,
-      };
-      const { publishableKey } = await axios(config).then((r) => r.data);
-      stripePromise = loadStripe(publishableKey);
+      // const config = {
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //   },
+      //   method: 'GET',
+      //   url: `${serverUrl}/stripe/payment/config`,
+      //   withCredentials: true,
+      // };
+      // const { publishableKey } = await axios(config).then((r) => r.data);
+      stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
     } catch (error) {
       console.log('Could not load stripe: ', error.message);
     }
