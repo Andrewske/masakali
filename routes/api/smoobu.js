@@ -52,18 +52,58 @@ router.get('/bookings/bookedDates', async (req, res) => {
   }
 });
 
+/*
+Add a booking
+Example Body
+{
+  "arrivalDate": "2023-06-12",
+  "departureDate": "2023-06-20",
+  "channelId": 1466467,
+  "apartmentId": 1115674,
+  "arrivalTime": "14:00",
+  "departureTime": "11:00",
+  "firstName": "Test",
+  "lastName": "123",
+  "notes": "",
+  "adults": 1,
+  "children": 0,
+  "price": 2200000,
+  "priceStatus": 1,
+  "address": {
+    "street": "123 test rd",
+    "postalCode": "98208",
+    "location": "Seattle, WA"
+  },
+  "country": "US",
+  "email": "andrewskevin92@gmail.com",
+  "phone": "",
+  "language": "en",
+  "priceElement": [
+    {
+      "type": "basePrice",
+      "name": "Base Price",
+      "amount": 153.02,
+      "currencyCode": "USD"
+    }
+  ]
+}
+*/
+
 router.post('/bookings/add', express.json(), async (req, res) => {
   try {
     reqConfig.headers = {
       ...reqConfig.headers,
       'Content-Type': 'application/json',
     };
+    let data = req.body;
 
-    let { data } = await axios.post(
-      'https://login.smoobu.com/api/reservations',
-      req.body,
-      reqConfig
-    );
+    console.log(data);
+
+    // let { data } = await axios.post(
+    //   'https://login.smoobu.com/api/reservations',
+    //   req.body,
+    //   reqConfig
+    // );
 
     res.send(data);
   } catch (error) {

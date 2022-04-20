@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Gallery from './Gallery';
@@ -10,7 +10,6 @@ import useFormatCurrency from '../../../utils/useFormatCurrency';
 import moment from 'moment';
 
 import { getBlockedDates } from '../../../actions/smoobu';
-import getDaysBetweenDates from '../../../utils/getDaysBetweenDates';
 
 const Template = ({ listing, createReservation, handleSmoobu }) => {
   let {
@@ -36,6 +35,10 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
   );
 
   const { amount, total } = useFormatCurrency(price, numDays);
+
+  useEffect(() => {
+    handleSmoobu();
+  }, []);
 
   const isBlocked = (day) => {
     if (startDate) {
@@ -114,9 +117,6 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
         </div>
       </span>
       <span className='listing-body'>
-        <span className='btn' onClick={() => handleSmoobu()}>
-          Smoobu
-        </span>
         <span className='listing-details'>
           <h1>{title}</h1>
           <p>Tegallalang, Bali, Indonesia</p>

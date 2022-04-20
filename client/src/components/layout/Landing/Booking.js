@@ -139,7 +139,7 @@ const Booking = () => {
             </Prices>
           </TextBox>
           <Links>
-            <Link
+            <a
               className='booking-com booking-page-link'
               onClick={() =>
                 window.open(
@@ -149,18 +149,18 @@ const Booking = () => {
               }
             >
               Booking.com
-            </Link>
+            </a>
             <Link className='email booking-page-link' to={`/#contact`}>
               Email Us
             </Link>
-            <Link
+            <a
               className='airbnb booking-page-link'
               onClick={() =>
                 window.open('https://www.airbnb.com/rooms/53234674', '_blank')
               }
             >
               AirBnb
-            </Link>
+            </a>
           </Links>
         </Card>
         <Card>
@@ -178,12 +178,12 @@ const Booking = () => {
               <li>Spa services and meals available</li>
             </ul>
             <Prices>
-              <Price>$125</Price>
-              <p>$91/night</p>
+              <Price>$150</Price>
+              <p>$105/night</p>
             </Prices>
           </TextBox>
           <Links>
-            <Link
+            <a
               className='booking-com booking-page-link'
               onClick={() =>
                 window.open(
@@ -193,18 +193,18 @@ const Booking = () => {
               }
             >
               Booking.com
-            </Link>
+            </a>
             <Link className='email booking-page-link' to={`/#contact`}>
               Email Us
             </Link>
-            <Link
+            <a
               className='airbnb booking-page-link'
               onClick={() =>
                 window.open('https://www.airbnb.com/rooms/53609606', '_blank')
               }
             >
               AirBnb
-            </Link>
+            </a>
           </Links>
         </Card>
         <Card>
@@ -227,7 +227,7 @@ const Booking = () => {
             </Prices>
           </TextBox>
           <Links>
-            <Link
+            <a
               className='booking-com booking-page-link'
               onClick={() =>
                 window.open(
@@ -237,22 +237,22 @@ const Booking = () => {
               }
             >
               Booking.com
-            </Link>
+            </a>
             <Link className='email booking-page-link' to={`/#contact`}>
               Email Us
             </Link>
-            <Link
+            <a
               className='airbnb booking-page-link'
               onClick={() =>
                 window.open('https://www.airbnb.com/rooms/53395669', '_blank')
               }
             >
               AirBnb
-            </Link>
+            </a>
           </Links>
         </Card>
         <SubText>
-          Save 15% by booking with us directly.{' '}
+          Save 10% by booking with us directly.{' '}
           <Link to={'/#contact'}>Click here to send us an email</Link>.
         </SubText>
         <SubText>

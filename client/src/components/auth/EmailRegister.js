@@ -54,6 +54,7 @@ const EmailRegister = ({ setAlert, setToggle, register }) => {
         name='password'
         minLength='6'
         value={password}
+        autocomplete='new-password'
         onChange={(e) => onChange(e)}
       />
       <input

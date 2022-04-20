@@ -10,7 +10,7 @@ const FormField = ({
   initialValue,
 }) => {
   const [errors, setErrors] = useState(null);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     if (initialValue) {

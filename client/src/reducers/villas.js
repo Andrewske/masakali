@@ -24,6 +24,14 @@ export default function (state = initialState, action) {
           ...state.surya,
           datesReserved: payload.surya,
         },
+        chandra: {
+          ...state.chandra,
+          datesReserved: payload.chandra,
+        },
+        jala: {
+          ...state.jala,
+          datesReserved: payload.jala,
+        },
       };
     default:
       return state;

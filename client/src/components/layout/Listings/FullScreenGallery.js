@@ -23,7 +23,7 @@ const FullScreenGallery = ({
         className={`fs-gallery ${point === 'xs' || point === 'sm' ? 'sm' : ''}`}
       >
         {images.map((i) => (
-          <ImageContext>
+          <ImageContext key={i.key}>
             <IKImage
               className='img'
               path={i.path}

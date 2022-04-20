@@ -2,9 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { DayPickerRangeController } from 'react-dates';
 import { START_DATE } from 'react-dates/constants';
 import moment from 'moment';
-import guestsDropdown from './GuestsDropdown';
 import GuestsDropdown from './GuestsDropdown';
-import getDaysBetweenDates from '../../../utils/getDaysBetweenDates';
 
 const BookingCardSm = ({
   price,

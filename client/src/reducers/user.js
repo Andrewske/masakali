@@ -11,7 +11,7 @@ const initialState = {
   address: {},
   admin: false,
   reservations: {
-    new: [],
+    new: null,
     past: [],
   },
 };
@@ -34,7 +34,7 @@ export default function (state = initialState, action) {
         ...state,
         reservations: {
           ...state.reservations,
-          new: [...state.reservations.new, payload],
+          new: payload,
         },
       };
     case UPDATE_RESERVATION:
@@ -42,12 +42,7 @@ export default function (state = initialState, action) {
         ...state,
         reservations: {
           ...state.reservations,
-          new: state.reservations.new.filter(
-            (res) =>
-              res.startDate !== payload.startDate &&
-              res.endDate !== payload.endDate &&
-              res.name !== payload.name
-          ),
+          new: null,
           past: [...state.reservations.past, payload],
         },
       };
@@ -57,12 +52,7 @@ export default function (state = initialState, action) {
         ...state,
         reservations: {
           ...state.reservations,
-          new: state.reservations.new.filter(
-            (res) =>
-              res.startDate !== payload.startDate &&
-              res.endDate !== payload.endDate &&
-              res.name !== payload.name
-          ),
+          new: null,
         },
       };
     default:

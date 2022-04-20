@@ -27,7 +27,6 @@ import axios from 'axios';
     }
   } else {
     try {
-      console.log(process.env.STRIPE_PUBLISHABLE_KEY);
       const config = {
         headers: {
           Accept: 'application/json',

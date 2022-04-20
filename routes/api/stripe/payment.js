@@ -20,8 +20,6 @@ router.post('/create-payment-intent', bodyParser.json(), async (req, res) => {
 });
 
 router.get('/config', async (req, res) => {
-  console.log('config');
-  console.log({ publishableKey: process.env.STRIPE_PUBLISHABLE_KEY });
   res.send({ publishableKey: process.env.STRIPE_PUBLISHABLE_KEY });
 });
 

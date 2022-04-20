@@ -3,36 +3,24 @@ const express = require('express');
 var compression = require('compression');
 const passport = require('passport');
 const connectDB = require('./config/db');
-const cors = require('cors');
+
 const session = require('express-session');
 const cookieSession = require('cookie-session');
 const config = require('config');
 const clientUrl = config.get('clientUrl');
-console.log({ clientUrl: clientUrl });
 const path = require('path');
 
 const app = express();
 
-connectDB();
-//app.options('*', cors());
+const cors = require('cors');
 app.use(
   cors({
     origin: ['https://www.masakaliretreat.com', 'http://localhost:3000'],
     credentials: true,
-    methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
-    allowedHeaders: ['Content-Type'],
   })
 );
 
-// Sessions
-// app.use(
-//   session({
-//     secret: 'bali is fun',
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: { secure: true },
-//   })
-// );
+connectDB();
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

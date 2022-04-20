@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-dates';
-import { START_DATE, END_DATE } from 'react-dates/constants';
+import { START_DATE } from 'react-dates/constants';
 import GuestsDropdown from './GuestsDropdown';
 import moment from 'moment';
-import getDaysBetweenDates from '../../../utils/getDaysBetweenDates';
 
 const BookingCardLg = ({
   price,
@@ -12,41 +11,30 @@ const BookingCardLg = ({
   endDate,
   numDays,
   renderDayContents,
-  isBlocked,
   handleDateChange,
   reserveDates,
   guests,
   setGuests,
+  isBlocked,
 }) => {
   const [focusedInput, setFocusedInput] = useState(null);
-
-  // const notBlocked = (dates) => {
-  //   let { startDate, endDate } = dates;
-  //   let range = getDaysBetweenDates({ startDate, endDate });
-
-  //   if (range.some((day) => isBlocked(day))) {
-  //     handleDateChange({ startDate: null, endDate: null });
-  //     //setFocusedInput('endDate');
-  //     return false;
-  //   }
-
-  //   return true;
-  // };
 
   return (
     <div className='booking-card'>
       <div className='price'>
         {numDays > 0 ? (
-          <p>
-            <span style={{ fontSize: '1.5rem' }}>{total} total</span>
-          </p>
+          <span>
+            <p style={{ fontSize: '1.5rem' }}>{total} total</p>
+            <p>
+              {price} X {numDays} {numDays > 1 ? 'nights' : 'night'}
+            </p>
+          </span>
         ) : (
           <p>
             <span style={{ fontSize: '1.5rem' }}>{price}</span> / night
           </p>
         )}
         <span className='break'></span>
-        <p className='subtext'>Save 15% by booking directly with us</p>
       </div>
       <div className='form-box'>
         <DateRangePicker
@@ -55,9 +43,9 @@ const BookingCardLg = ({
           endDate={endDate}
           endDateId='endDate'
           onDatesChange={(dates) => handleDateChange(dates)}
-          focusedInput={focusedInput}
+          focusedInput={focusedInput || (null && START_DATE)}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
-          //keepOpenOnDateSelect={() => startDate && !endDate}
+          initialVisibleMonth={() => moment()}
           showClearDates={true}
           orientation={'vertical'}
           isDayBlocked={(day) => isBlocked(day)}
@@ -65,6 +53,7 @@ const BookingCardLg = ({
         />
         <GuestsDropdown guests={guests} setGuests={setGuests} />
       </div>
+      <p className='subtext'>Save 15% by booking directly with us</p>
       {startDate && endDate && (
         <span>
           <span className='btn' onClick={reserveDates}>
@@ -74,7 +63,6 @@ const BookingCardLg = ({
             <p>
               {price} X {numDays} {numDays > 1 ? 'nights' : 'night'}
             </p>
-            <p>{total}</p>
           </span>
         </span>
       )}

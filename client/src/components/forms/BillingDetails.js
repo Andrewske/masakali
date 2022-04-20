@@ -5,11 +5,19 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
   return (
     <>
       <FormField
-        name='name'
-        label='Name'
+        name='firstName'
+        label='First Name'
         type='text'
-        placeholder='Jane Doe'
-        initialValue={user?.name}
+        placeholder='Jane'
+        initialValue={user?.firstName}
+        required
+      />
+      <FormField
+        name='lastName'
+        label='Last Name'
+        type='text'
+        placeholder='Doe'
+        initialValue={user?.lastName}
         required
       />
       <FormField

@@ -15,6 +15,7 @@ import {
   updateReservation,
 } from '../../../actions/user';
 import { serverUrl } from '../../../config';
+import { createPaymentIntent } from '../../../utils/stripe';
 
 const Cart = ({
   isAuthenticated,
@@ -24,6 +25,7 @@ const Cart = ({
   createReservation,
   updateUser,
   updateReservation,
+  createPaymentIntent,
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState();
@@ -35,32 +37,33 @@ const Cart = ({
   const elements = useElements();
 
   useEffect(() => {
-    if (reservations.new.length > 0) {
-      setPrice(
-        reservations?.new
-          .map((r) => r.price * r.numDays)
-          .reduce((a, b) => a + b)
-      );
-    }
+    reservations.new &&
+      setPrice(reservations.new.price * reservations.new.numDays);
   }, [reservations]);
 
   useEffect(() => {
     async function loginSuccess() {
+      console.log(user);
       const config = {
+        params: {
+          user: user,
+        },
         withCredentials: true,
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': true,
         },
       };
-      console.log('loginSuccess', serverUrl);
-      const response = await axios.get(
-        serverUrl + '/auth/login/success',
-        config
-      );
-      console.log({ res: response.data });
-      loadUser(response.data.user._id);
+      try {
+        const response = await axios.get(
+          serverUrl + '/auth/login/success',
+          config
+        );
+        console.log({ res: response.data });
+        loadUser(response.data.user._id);
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     loginSuccess();
@@ -74,7 +77,8 @@ const Cart = ({
     e.preventDefault();
 
     const billingDetails = {
-      name: e.target.name.value,
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
       email: e.target.email.value,
       address: {
         city: e.target.city.value,
@@ -83,32 +87,42 @@ const Cart = ({
         country: e.target.country.value,
         postal_code: e.target.zip.value,
       },
+      phone: e.target.phone?.value,
     };
     //setIsProcessing(true);
-    updateUser({ userId: user._id, billingDetails, isDefault });
-    const { reservationId = null } = await createReservation({
-      userId: user._id,
-      reservation: reservations.new[0],
-    });
 
-    console.log(reservationId);
+    updateUser({ userId: user._id, billingDetails, isDefault });
+
+    // const { reservationId = null } = await createReservation({
+    //   userId: user._id,
+    //   reservation: reservations.new[0],
+    // });
+
+    // console.log(reservationId);
+
     const cardElement = elements.getElement(CardElement);
 
     try {
-      const {
-        data: { error: backendError, clientSecret },
-      } = await axios.post(
-        serverUrl + '/stripe/payment/create-payment-intent',
-        {
-          amount: price * 100,
-        }
-      );
+      // const {
+      //   data: { error: backendError, clientSecret },
+      // } = await axios.post(
+      //   serverUrl + '/stripe/payment/create-payment-intent',
+      //   {
+      //     amount: price * 100,
+      //   }
+      // );
 
-      if (backendError) {
-        setCheckoutError(backendError.message);
-        setIsProcessing(false);
-        return;
-      }
+      // if (backendError) {
+      //   setCheckoutError(backendError.message);
+      //   setIsProcessing(false);
+      //   return;
+      // }
+
+      const clientSecret = await createPaymentIntent({
+        price,
+        setCheckoutError,
+        setIsProcessing,
+      });
 
       const paymentMethodReq = await stripe.createPaymentMethod({
         type: 'card',
@@ -139,9 +153,9 @@ const Cart = ({
         return;
       } else {
         console.log('no error');
-        if (reservationId && paymentIntent?.id) {
-          updateReservation({ reservationId, stripeId: paymentIntent.id });
-        }
+        // if (reservationId && paymentIntent?.id) {
+        //   updateReservation({ reservationId, stripeId: paymentIntent.id });
+        // }
       }
 
       setIsProcessing(false);
@@ -160,14 +174,10 @@ const Cart = ({
       <header>
         <h1>Cart</h1>
       </header>
-      {reservations?.new.length > 0 ? (
-        reservations?.new.map((reservation) => (
-          <div className='row'>
-            <CartDetails reservation={reservation} />
-          </div>
-        ))
-      ) : (
-        <></>
+      {reservations?.new && (
+        <div className='row'>
+          <CartDetails reservation={reservations.new} />
+        </div>
       )}
 
       {isAuthenticated ? (
@@ -213,4 +223,5 @@ export default connect(mapStateToProps, {
   createReservation,
   updateReservation,
   updateUser,
+  createPaymentIntent,
 })(Cart);
