@@ -15,7 +15,11 @@ const app = express();
 const cors = require('cors');
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: [
+      'http://localhost:3000',
+      'https://www.masakaliretreat.com',
+      'https://masakaliretreat.com',
+    ],
     credentials: true,
   })
 );

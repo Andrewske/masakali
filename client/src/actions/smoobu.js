@@ -6,6 +6,8 @@ export const getVillaRates = () => async (dispatch) => {
   try {
     let { data } = await axios.get(serverUrl + '/smoobu/rates');
 
+    console.log({ data });
+
     dispatch({
       type: SET_VILLA_RATES,
       payload: data,
