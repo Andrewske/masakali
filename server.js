@@ -13,7 +13,13 @@ const path = require('path');
 const app = express();
 
 const cors = require('cors');
-app.options('*', cors());
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    credentials: true,
+  })
+);
+//app.options('*', cors());
 
 connectDB();
 
