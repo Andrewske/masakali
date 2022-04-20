@@ -28,16 +28,17 @@ const CountryPicker = ({ country, setRates, setCountry }) => {
 
   useEffect(() => {
     const getRates = async () => {
-      //let res = await axios.get(serverUrl + '/currency');
-      let res = await axios
-        .get(
-          `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=USD`
-        )
-        .then((r) => r.data);
-      console.log({ res });
+      let res = await axios.get(serverUrl + '/currency');
+      // let res = await axios
+      //   .get(
+      //     `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.REACT_APP_CURRENCY_API_KEY}&base_currency=USD`
+      //   )
+      //   .then((r) => r.data);
+      // console.log({ res });
       setRates(res.data);
     };
     if (!rates) {
+      console.log('no rates');
       getRates();
     }
   }, []);

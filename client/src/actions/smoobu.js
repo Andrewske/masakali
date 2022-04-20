@@ -1,6 +1,19 @@
 import axios from 'axios';
-import { SET_BLOCKED_DATES } from './types';
+import { SET_BLOCKED_DATES, SET_VILLA_RATES } from './types';
 import { serverUrl } from '../config';
+
+export const getVillaRates = () => async (dispatch) => {
+  try {
+    let { data } = await axios.get(serverUrl + '/smoobu/rates');
+
+    dispatch({
+      type: SET_VILLA_RATES,
+      payload: data,
+    });
+  } catch (err) {
+    console.error({ location: 'getRates', err });
+  }
+};
 
 export const getBlockedDates = () => async (dispatch) => {
   try {

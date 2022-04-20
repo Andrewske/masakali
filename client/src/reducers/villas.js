@@ -1,4 +1,8 @@
-import { LOAD_VILLAS, SET_BLOCKED_DATES } from '../actions/types';
+import {
+  LOAD_VILLAS,
+  SET_BLOCKED_DATES,
+  SET_VILLA_RATES,
+} from '../actions/types';
 
 const initialState = {
   surya: {},
@@ -31,6 +35,22 @@ export default function (state = initialState, action) {
         jala: {
           ...state.jala,
           datesReserved: payload.jala,
+        },
+      };
+    case SET_VILLA_RATES:
+      return {
+        ...state,
+        surya: {
+          ...state.surya,
+          rates: payload.surya,
+        },
+        chandra: {
+          ...state.chandra,
+          rates: payload.chandra,
+        },
+        jala: {
+          ...state.jala,
+          rates: payload.jala,
         },
       };
     default:

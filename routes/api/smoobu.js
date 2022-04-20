@@ -7,6 +7,8 @@ const apiKey = process.env.SMOOBU_API_KEY;
 const suryaId = config.get('SMOOBU_SURYA_ID');
 const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
+const moment = require('moment');
+const qs = require('qs');
 
 let reqConfig = {
   headers: {
@@ -14,8 +16,31 @@ let reqConfig = {
   },
 };
 router.get('/rates', async (req, res) => {
+  let { startDate = null, endDate = null } = req.query;
+  console.log(req.query);
   try {
-  } catch (error) {}
+    reqConfig.params = {
+      start_date: startDate || moment().format('YYYY-MM-D'),
+      end_date: endDate || moment().add(1, 'years').format('YYYY-MM-D'),
+      apartments: [suryaId, chandraId, jalaId],
+    };
+
+    let {
+      data: { data },
+    } = await axios.get('https://login.smoobu.com/api/rates', reqConfig);
+
+    data['surya'] = data[suryaId];
+    data['chandra'] = data[chandraId];
+    data['jala'] = data[jalaId];
+
+    delete data[suryaId];
+    delete data[chandraId];
+    delete data[jalaId];
+
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(422).send({ error });
+  }
 });
 
 router.get('/bookings/bookedDates', async (req, res) => {

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { HashLink as Link } from 'react-router-hash-link';
+
+import { getVillaRates } from '../../../actions/smoobu';
 
 const suryaImage =
   'https://ik.imagekit.io/4kpopox69zp/tr:w-auto,h-500px,dpr-auto/Gallery/Completed/17_SQWp4aL7p.jpg?ik-sdk-version=react-1.0.9';
@@ -110,7 +113,12 @@ const SubText = styled.p`
   padding-top: 25px;
 `;
 
-const Booking = () => {
+const Booking = ({ getVillaRates, villas }) => {
+  let [rates, setRates] = useState({ surya: 1, chandra: 1, jala: 1 });
+  useEffect(() => {
+    getVillaRates();
+  }, []);
+
   return (
     <section id='booking' className='container background-gray'>
       <div className='header'>
@@ -263,4 +271,8 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+const mapStateToProps = (state) => ({
+  villas: state.villas,
+});
+
+export default connect(mapStateToProps, { getVillaRates })(Booking);
