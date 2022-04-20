@@ -13,7 +13,7 @@ const path = require('path');
 const app = express();
 
 const cors = require('cors');
-app.use(cors());
+app.options('*', cors());
 
 connectDB();
 
