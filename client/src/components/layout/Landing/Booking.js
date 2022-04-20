@@ -159,7 +159,8 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             </ul>
             <Prices>
               <Price>$150</Price>
-              <p>${price.surya}/night</p>
+              {/* <p>${price.surya}/night</p> */}
+              <p>$92/night</p>
             </Prices>
           </TextBox>
           <Links>
@@ -203,7 +204,8 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             </ul>
             <Prices>
               <Price>$150</Price>
-              <p>${price.chandra}/night</p>
+              <p>$105/night</p>
+              {/* <p>${price.chandra}/night</p> */}
             </Prices>
           </TextBox>
           <Links>
@@ -247,7 +249,8 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             </ul>
             <Prices>
               <Price>$100</Price>
-              <p>${price.jala}/night</p>
+              <p>$70/night</p>
+              {/* <p>${price.jala}/night</p> */}
             </Prices>
           </TextBox>
           <Links>
