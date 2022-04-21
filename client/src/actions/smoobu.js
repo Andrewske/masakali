@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { SET_BLOCKED_DATES, SET_VILLA_RATES } from './types';
 import { serverUrl } from '../config';
+import moment from 'moment';
 
 export const getVillaRates = () => async (dispatch) => {
   try {
-    let { data } = await axios.get(serverUrl + '/smoobu/rates');
-
-    console.log({ data });
+    let { data } = await axios.get(serverUrl + '/smoobu/rates', {
+      params: { startDate: moment().format('YYYY-MM-D') },
+    });
 
     dispatch({
       type: SET_VILLA_RATES,
