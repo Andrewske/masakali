@@ -36,8 +36,6 @@ router.get('/rates', async (req, res) => {
     delete data[chandraId];
     delete data[jalaId];
 
-    console.log(data);
-
     let response = await axios.get(
       `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=IDR`
     );

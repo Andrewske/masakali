@@ -10,6 +10,10 @@ const config = require('config');
 const clientUrl = config.get('clientUrl');
 const path = require('path');
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({ path: './.env' });
+}
+
 const app = express();
 
 const cors = require('cors');
@@ -63,8 +67,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
-} else {
-  require('dotenv').config({ path: './.env' });
 }
 
 const PORT = process.env.PORT || 5000;
