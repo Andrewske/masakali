@@ -130,7 +130,9 @@ const Booking = ({ getVillaRates, villas, rates }) => {
 
     for (let [key, value] of Object.entries(price)) {
       let newPrice = Math.round(villas[key]?.rates[today]?.price) || null;
-      console.log({ newPrice });
+      let data = villas[key];
+      console.log({ today, newPrice, data });
+      console.log(data?.rates[today]);
       prices[key] = newPrice || prices[key];
     }
 
