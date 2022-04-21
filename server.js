@@ -27,16 +27,6 @@ app.use(
 
 connectDB();
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-} else {
-  require('dotenv').config({ path: './.env' });
-}
-
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
@@ -66,6 +56,16 @@ app.use('/api/stripe/customer', require('./routes/api/stripe/customer'));
 app.use('/api/stripe/payment', require('./routes/api/stripe/payment'));
 app.use('/api/stripe/webhook', require('./routes/api/stripe/webhook'));
 app.use('/api/smoobu', require('./routes/api/smoobu'));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+} else {
+  require('dotenv').config({ path: './.env' });
+}
 
 const PORT = process.env.PORT || 5000;
 
