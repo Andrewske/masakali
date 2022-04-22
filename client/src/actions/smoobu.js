@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { SET_BLOCKED_DATES, SET_VILLA_RATES } from './types';
+import {
+  SET_BLOCKED_DATES,
+  SET_VILLA_RATES,
+  UPDATE_RESERVATION,
+} from './types';
 import { serverUrl } from '../config';
 import moment from 'moment';
 
@@ -77,10 +81,15 @@ export const makeReservation =
         phone: phone,
         language: language,
       };
-      let { data } = await axios.post(serverUrl + '/smoobu/bookings/add', {
-        body,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      // let { data } = await axios.post(
+      //   serverUrl + '/smoobu/bookings/add',
+      //   body,
+      //   { headers: { 'Content-Type': 'application/json' } }
+      // );
+
+      // return { smoobuId: data.id };
+
+      return { smoobuId: 21976543 };
     } catch (err) {
       console.error({ location: 'makeReservation', err });
     }

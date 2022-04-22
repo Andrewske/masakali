@@ -5,6 +5,8 @@ import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 import startCase from 'lodash/startCase';
 import useFormatCurrency from '../../../utils/useFormatCurrency';
+import useCurrencyFormat from '../../../utils/useCurrencyFormat';
+import { percDiscount } from '../../../config';
 
 const CartDetails = ({
   reservation,
@@ -39,7 +41,11 @@ const CartDetails = ({
   //   }
   // }, [reservation, country]);
 
-  let { amount, total } = useFormatCurrency(price, numDays);
+  //let { amount, total, discount } = useFormatCurrency(price, numDays);
+
+  const discount = useCurrencyFormat(price * percDiscount * numDays);
+  const total = useCurrencyFormat(price * (1 - percDiscount) * numDays);
+  const amount = useCurrencyFormat(price);
 
   return (
     <div className='cart-details'>
@@ -67,7 +73,8 @@ const CartDetails = ({
         <p>Number of guests: {guests}</p>
         <p>Total nights: {numDays}</p>
         <p>Price: {amount}/night</p>
-        <p>Total: {total}</p>
+        <p>Discount: {discount}</p>
+        <p className='total'>Total: {total}</p>
       </span>
     </div>
   );

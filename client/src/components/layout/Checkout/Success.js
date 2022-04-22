@@ -21,7 +21,6 @@ const Success = ({ reservations, country }) => {
     res.numDays =
       (moment(res.endDate) - moment(res.startDate)) / (60 * 60 * 24 * 1000);
     setReservation(res);
-    console.log(res);
     setAmounts([res.amount / res.numDays, res.numDays]);
   }, [reservations]);
 
@@ -45,12 +44,14 @@ const Success = ({ reservations, country }) => {
             <div className='dates'>
               <div className='date'>
                 <p className='title'>Check in</p>
-                <p>{moment(reservation.startDate).format('MMM DD YYYY')}</p>
+                <p>
+                  {moment(reservation.startDate).utc().format('MMM DD YYYY')}
+                </p>
                 <p>2:00 PM</p>
               </div>
               <div className='date'>
                 <p className='title'>Check out</p>
-                <p>{moment(reservation.startDate).format('MMM DD YYYY')}</p>
+                <p>{moment(reservation.endDate).utc().format('MMM DD YYYY')}</p>
                 <p>11:00 AM</p>
               </div>
             </div>

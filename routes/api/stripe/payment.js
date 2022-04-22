@@ -9,7 +9,7 @@ router.post('/create-payment-intent', bodyParser.json(), async (req, res) => {
 
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount,
+      amount: parseInt(amount),
       currency,
       payment_method_types: [paymentMethodType],
     });

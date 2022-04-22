@@ -1,0 +1,53 @@
+{
+  "arrivalDate": "2023-01-01",
+  "departureDate": "2023-01-06",
+  "channelId": 1466467,
+  "apartmentId": 1115674,
+  "arrivalTime": "14:00",
+  "departureTime": "11:00",
+  "firstName": "Kevin Andrews",
+  "lastName": "",
+  "adults": 1,
+  "price": 409,
+  "priceStatus": 1,
+  "address": {
+    "street": "123 my place",
+    "postalCode": "99205",
+    "location": "Seattle, WA"
+  },
+  "country": "US",
+  "email": "kevinbigfoot13@gmail.com",
+  "phone": "",
+  "language": "en",
+
+  "arrivalDate": "2023-06-12",
+  "departureDate": "2023-06-20",
+  "channelId": 1466467,
+  "apartmentId": 1115674,
+  "arrivalTime": "14:00",
+  "departureTime": "11:00",
+  "firstName": "Test",
+  "lastName": "123",
+  "notes": "",
+  "adults": 1,
+  "children": 0,
+  "price": 2200000,
+  "priceStatus": 1,
+  "address": {
+    "street": "123 test rd",
+    "postalCode": "98208",
+    "location": "Seattle, WA"
+  },
+  "country": "US",
+  "email": "andrewskevin92@gmail.com",
+  "phone": "",
+  "language": "en",
+  "priceElement": [
+    {
+      "type": "basePrice",
+      "name": "Base Price",
+      "amount": 153.02,
+      "currencyCode": "USD"
+    }
+  ]
+}

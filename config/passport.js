@@ -18,9 +18,13 @@ module.exports = function (passport) {
           const newUser = {
             googleId: profile.id,
             name: profile.displayName,
+            firstName: profile.name?.givenName,
+            lastName: profile.name?.familyName,
             email: profile.emails[0].value || null,
             image: profile.photos[0].value || null,
           };
+
+          console.log(profile);
 
           let user = await User.findOne({ googleId: profile.id });
 

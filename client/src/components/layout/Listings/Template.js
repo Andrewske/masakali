@@ -7,9 +7,12 @@ import BookingCardLg from './BookingCardLg';
 import BookingCardSm from './BookingCardSm';
 import useBreakpoint from '../../../utils/useBreakpoint';
 import useFormatCurrency from '../../../utils/useFormatCurrency';
+import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import moment from 'moment';
 
 import { getBlockedDates } from '../../../actions/smoobu';
+
+const percDiscount = 0.1;
 
 const Template = ({ listing, createReservation, handleSmoobu }) => {
   let {
@@ -34,7 +37,10 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
     imageSelection.map((a) => a.key === i)
   );
 
-  const { amount, total } = useFormatCurrency(price, numDays);
+  //const { total, discount } = useFormatCurrency(price, numDays);
+  const discount = useCurrencyFormat(price * percDiscount * numDays);
+  const total = useCurrencyFormat(price * (1 - percDiscount) * numDays);
+  const amount = useCurrencyFormat(price);
 
   useEffect(() => {
     handleSmoobu();
@@ -122,11 +128,13 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
           <p>Tegallalang, Bali, Indonesia</p>
           <div className='line'></div>
           <p>{description}</p>
+          <p>{amount}</p>
         </span>
         {point === 'md' || point === 'lg' ? (
           <BookingCardLg
             price={amount}
             total={total}
+            discount={discount}
             startDate={startDate}
             endDate={endDate}
             numDays={numDays}
@@ -141,6 +149,7 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
           <BookingCardSm
             price={amount}
             total={total}
+            discount={discount}
             startDate={startDate}
             endDate={endDate}
             numDays={numDays}

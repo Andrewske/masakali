@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 
 const EmailRegister = ({ setAlert, setToggle, register }) => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     password2: '',
   });
 
-  const { name, email, password, password2 } = formData;
+  const { firstName, lastName, email, password, password2 } = formData;
 
   const onChange = (e) =>
     setFormData({
@@ -25,8 +26,7 @@ const EmailRegister = ({ setAlert, setToggle, register }) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      console.log(name, email, password);
-      register({ name, email, password });
+      register({ firstName, lastName, email, password });
     }
   };
 
@@ -34,9 +34,17 @@ const EmailRegister = ({ setAlert, setToggle, register }) => {
     <form className='email-login'>
       <input
         type='text'
-        placeholder='Name'
-        name='name'
-        value={name}
+        placeholder='First Name'
+        name='firstName'
+        value={firstName}
+        onChange={(e) => onChange(e)}
+        required
+      />
+      <input
+        type='text'
+        placeholder='Last Name'
+        name='lastName'
+        value={lastName}
         onChange={(e) => onChange(e)}
         required
       />

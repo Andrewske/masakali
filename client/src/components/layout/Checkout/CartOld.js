@@ -18,7 +18,6 @@ import { serverUrl } from '../../../config';
 import {
   createPaymentIntent,
   createPaymentMethodReq,
-  confirmCardPayment,
 } from '../../../utils/stripe';
 import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import { percDiscount } from '../../../config';
@@ -32,30 +31,32 @@ const Cart = ({
   createReservation,
   updateUser,
   updateReservation,
-  makeReservation,
+  createPaymentIntent,
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState(null);
   const [isDefault, setIsDefault] = useState(false);
+  // const [price, setPrice] = useState(0);
   const history = useHistory();
 
   const stripe = useStripe();
   const elements = useElements();
+  // let { amount, total, discount } = useFormatCurrency(
+  //   reservations.new.price,
+  //   reservations.new.numDays
+  // );
 
-  const [price, setPrice] = useState(0);
-  const [numDays, setNumDays] = useState(0);
-
-  useEffect(() => {
-    if (reservations?.new) {
-      setPrice(reservations.new.price);
-      setNumDays(reservations.new.numDays);
-    }
-  }, [reservations]);
+  let { price, numDays } = reservations.new;
 
   let total = useCurrencyFormat(price * (1 - percDiscount) * numDays);
+  // useEffect(() => {
+  //   reservations.new &&
+  //     setPrice(reservations.new.price * reservations.new.numDays);
+  // }, [reservations]);
 
   useEffect(() => {
     async function loginSuccess() {
+      console.log(user);
       const config = {
         params: {
           user: user,
@@ -73,7 +74,7 @@ const Cart = ({
         );
         loadUser(response.data.user._id);
       } catch (err) {
-        console.error({ err });
+        console.error(err);
       }
     }
 
@@ -87,14 +88,9 @@ const Cart = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //setIsProcessing(true);
-    const cardElement = elements.getElement(CardElement);
-
-    let firstName = e.target.firstName.value;
-    let lastName = e.target.lastName.value;
-
     const billingDetails = {
-      name: firstName + ' ' + lastName,
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
       email: e.target.email.value,
       address: {
         city: e.target.city.value,
@@ -105,59 +101,87 @@ const Cart = ({
       },
       phone: e.target.phone?.value,
     };
+    //setIsProcessing(true);
 
-    // Update the user
     updateUser({ userId: user._id, billingDetails, isDefault });
 
-    // Create the reservation in the DB to get the Id
-    const { reservationId } = await createReservation({
-      userId: user._id,
-      reservation: reservations.new,
-    });
+    // const { reservationId = null } = await createReservation({
+    //   userId: user._id,
+    //   reservation: reservations.new[0],
+    // });
+
+    // console.log(reservationId);
+
+    const cardElement = elements.getElement(CardElement);
 
     try {
-      // Create the Payment Intent
+      // const {
+      //   data: { error: backendError, clientSecret },
+      // } = await axios.post(
+      //   serverUrl + '/stripe/payment/create-payment-intent',
+      //   {
+      //     amount: price * 100,
+      //   }
+      // );
+
+      // if (backendError) {
+      //   setCheckoutError(backendError.message);
+      //   setIsProcessing(false);
+      //   return;
+      // }
+
       const { clientSecret, paymentIntentError } = await createPaymentIntent({
-        price: price * (1 - percDiscount) * numDays * 100,
+        price: price * (1 - percDiscount) * numDays,
       });
 
       if (paymentIntentError) {
-        throw paymentIntentError;
+        console.error({ paymentIntentError });
+        throw paymentIntentError.message;
       }
 
-      // Create the Payment Method Request
-      const { paymentMethodReqId, paymentMethodReqError } =
-        await createPaymentMethodReq({ stripe, cardElement, billingDetails });
+      console.log({ clientSecret });
 
-      if (paymentMethodReqError) {
-        throw paymentMethodReqError;
-      }
-
-      // Confirm the card payment
-      const { paymentIntent, confirmCardPaymentError } =
-        await confirmCardPayment({ stripe, clientSecret, paymentMethodReqId });
-
-      if (confirmCardPaymentError) {
-        throw confirmCardPaymentError;
-      }
-
-      // Create the booking in Smoobu
-      const { smoobuId } = await makeReservation({
-        startDate: reservations.new.startDate,
-        endDate: reservations.new.endDate,
-        name: reservations.new.name,
-        firstName,
-        lastName,
-        email: billingDetails.email,
-        guests: reservations.new.guests,
-        price: parseFloat(price * (1 - percDiscount) * numDays),
-        address: billingDetails.address,
+      const { paymentMethodReq } = await createPaymentMethodReq({
+        stripe,
+        cardElement,
+        billingDetails,
+        setCheckoutError,
+        setIsProcessing,
       });
 
-      // Update the reservation with reservationId and stripeId & SmoobuId
-      if (reservationId && paymentIntent?.id && smoobuId) {
-        await updateReservation({ reservationId, stripeId: paymentIntent.id });
+      console.log({ paymentMethodReq });
+
+      const { error, paymentIntent } = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: paymentMethodReq.paymentMethod.id,
+        }
+      );
+
+      console.log(paymentIntent);
+
+      if (error) {
+        setCheckoutError(error.message);
+        setIsProcessing(false);
+        return;
+      } else {
+        console.log('no error');
+        // if (reservationId && paymentIntent?.id) {
+        //   updateReservation({ reservationId, stripeId: paymentIntent.id });
+        // }
       }
+
+      makeReservation({
+        startDate: reservations.new.startDate,
+        endDat: reservations.new.endDate,
+        name: reservations.new.name,
+        firstName: billingDetails.firstName,
+        lastName: billingDetails.lastName,
+        email: billingDetails.email,
+        guests: reservations.new.guests,
+        price: total,
+        address: billingDetails.address,
+      });
 
       setIsProcessing(false);
       history.push('/success');
@@ -224,6 +248,6 @@ export default connect(mapStateToProps, {
   loadUser,
   createReservation,
   updateReservation,
-  makeReservation,
   updateUser,
+  createPaymentIntent,
 })(Cart);

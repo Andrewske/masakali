@@ -7,3 +7,5 @@ export const clientUrl = dev
 export const serverUrl = dev
   ? 'http://localhost:5000/api'
   : 'https://www.masakaliretreat.com/api';
+
+export const percDiscount = 0.1;

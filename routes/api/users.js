@@ -15,7 +15,8 @@ router.post(
   '/',
   express.json(),
   [
-    check('name', 'Name is required').not().isEmpty(),
+    check('firstName', 'First Name is required').not().isEmpty(),
+    check('lastName', 'Last Name is required').not().isEmpty(),
     check('email', 'Please include valid email').isEmail(),
     check(
       'password',
@@ -29,7 +30,9 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
+
+    let name = firstName + ' ' + lastName;
 
     try {
       let user = await User.findOne({ email });
@@ -41,6 +44,8 @@ router.post(
 
       user = new User({
         name,
+        firstName,
+        lastName,
         email,
         password,
       });

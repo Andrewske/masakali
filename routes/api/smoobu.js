@@ -15,6 +15,7 @@ let reqConfig = {
     'Api-Key': apiKey,
   },
 };
+
 router.get('/rates', async (req, res) => {
   let { startDate = null, endDate = null } = req.query;
   try {
@@ -131,24 +132,23 @@ Example Body
 */
 
 router.post('/bookings/add', express.json(), async (req, res) => {
+  console.log('adding a booking');
   try {
     reqConfig.headers = {
       ...reqConfig.headers,
       'Content-Type': 'application/json',
     };
-    let data = req.body;
 
-    console.log(data);
+    console.log(reqConfig);
 
-    // let { data } = await axios.post(
-    //   'https://login.smoobu.com/api/reservations',
-    //   req.body,
-    //   reqConfig
-    // );
-
-    res.send(data);
+    let { data } = await axios.post(
+      'https://login.smoobu.com/api/reservations',
+      req.body,
+      reqConfig
+    );
+    res.status(200).send(data);
   } catch (error) {
-    console.error({ error });
+    console.error(error.response.data);
     res.status(422).send({ error });
   }
 });

@@ -92,6 +92,10 @@ img {
   color: var(--purple-color);
 }
 
+.red {
+  color: var(--airbnb-color);
+}
+
 .booking-com {
   color: white !important;
   background-color: var(--booking-com-color) !important;
@@ -1143,6 +1147,13 @@ $button-active-blue: #1669f2;
       margin-bottom: $margin;
       flex-wrap: wrap;
 
+      .row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+
       .break {
         flex-basis: 100%;
         height: 0;
@@ -1157,6 +1168,7 @@ $button-active-blue: #1669f2;
       white-space: wrap;
       font-size: 0.75rem;
       color: var(--airbnb-color);
+      text-align: center;
     }
 
     .form-box {
@@ -1559,6 +1571,9 @@ $button-active-blue: #1669f2;
       p {
         width: 100%;
         padding: 0.5rem 0rem;
+      }
+      .total {
+        font-size: 1.25rem;
       }
     }
 
