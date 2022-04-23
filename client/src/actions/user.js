@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { LOAD_USER, UPDATE_RESERVATION } from './types';
-import { serverUrl } from '../config';
+import { serverUrl, percDiscount } from '../config';
 
 export const updateUser = (data) => async (dispatch) => {
   try {
@@ -21,7 +21,7 @@ export const createReservation =
       startDate,
       endDate,
       name,
-      amount: price * numDays,
+      amount: price * numDays * (1 - percDiscount),
       guests,
       source: 'website',
       userId,

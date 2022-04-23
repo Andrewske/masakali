@@ -34,6 +34,8 @@ import Spa from './components/layout/Amenities/Spa';
 
 // Listing Pages
 import Surya from './components/layout/Listings/Surya';
+import Chandra from './components/layout/Listings/Chandra';
+import Jala from './components/layout/Listings/Jala';
 
 // Checkout Pages
 import Cart from './components/layout/Checkout/Cart';
@@ -84,6 +86,8 @@ const App = () => {
               <Route exact path='/foundation' component={Foundation} />
               <Route exact path='/organic-farm' component={OrganicFarm} />
               <Route exact path='/listings/surya' component={Surya} />
+              <Route exact path='/listings/chandra' component={Chandra} />
+              <Route exact path='/listings/jala' component={Jala} />
               <Route exact path='/cart' component={Cart} />
               <Route exact path='/success' component={Success} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />

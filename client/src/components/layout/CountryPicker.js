@@ -8,7 +8,7 @@ import axios from 'axios';
 import { serverUrl } from '../../config';
 
 const CountryPicker = ({ country, setRates, setCountry }) => {
-  let { name, currency, rates, flag } = country;
+  let { rates, flag, name } = country;
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState('');
   const [countries, setCountries] = useState(countryData);
@@ -29,19 +29,13 @@ const CountryPicker = ({ country, setRates, setCountry }) => {
   useEffect(() => {
     const getRates = async () => {
       let res = await axios.get(serverUrl + '/currency');
-      // let res = await axios
-      //   .get(
-      //     `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.REACT_APP_CURRENCY_API_KEY}&base_currency=USD`
-      //   )
-      //   .then((r) => r.data);
-      // console.log({ res });
       setRates(res.data);
     };
     if (!rates) {
       console.log('no rates');
       getRates();
     }
-  }, []);
+  }, [rates, setRates]);
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -64,7 +58,7 @@ const CountryPicker = ({ country, setRates, setCountry }) => {
           />
         )}
         <span onClick={() => setIsOpen(!isOpen)}>
-          <img src={`data:image/png;base64,${flag}`} />
+          <img src={`data:image/png;base64,${flag}`} alt={name} />
           <span className={isOpen ? 'icon-chevron-up' : 'icon-chevron-down'} />
         </span>
       </div>
@@ -78,7 +72,7 @@ const CountryPicker = ({ country, setRates, setCountry }) => {
                 onClick={() => handleClick(c)}
               >
                 <span>{c.name}</span>
-                <img src={`data:image/png;base64,${c.flag}`} />
+                <img src={`data:image/png;base64,${c.flag}`} alt={c.name} />
               </div>
             ) : null;
           })}

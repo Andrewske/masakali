@@ -1,5 +1,4 @@
-import React, { Fragment, useRef, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -8,25 +7,8 @@ import EmailLogin from './EmailLogin';
 import EmailRegister from './EmailRegister';
 import GoogleLoginButton from './GoogleLoginButton';
 
-const Login = ({ login, errors }) => {
+const Login = ({ errors }) => {
   const [toggle, setToggle] = useState('register');
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  const { email, password } = formData;
-
-  const onChange = (e) =>
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    login(email, password);
-  };
 
   //if I want to have google open in a pop up https://www.youtube.com/watch?v=yICiz12SdI4
   // const googleLogin = () => {

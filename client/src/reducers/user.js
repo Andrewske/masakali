@@ -6,6 +6,8 @@ import {
 } from '../actions/types';
 
 const initialState = {
+  firstName: null,
+  lastName: null,
   name: null,
   email: null,
   address: {},
@@ -21,13 +23,9 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case LOAD_USER:
-      let { name, email, address = {}, admin } = payload;
       return {
         ...state,
-        name,
-        email,
-        address,
-        admin,
+        ...payload,
       };
     case CREATE_RESERVATION:
       return {

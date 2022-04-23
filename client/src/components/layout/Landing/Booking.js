@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { HashLink as Link } from 'react-router-hash-link';
 
 import { getVillaRates } from '../../../actions/smoobu';
-import useFormatCurrency from '../../../utils/useFormatCurrency';
 import moment from 'moment';
 
 const suryaImage =
@@ -120,7 +119,7 @@ const Booking = ({ getVillaRates, villas, rates }) => {
 
   useEffect(() => {
     getVillaRates();
-  }, []);
+  }, [getVillaRates]);
 
   useEffect(() => {
     let today = moment().format('YYYY-MM-D');
@@ -130,9 +129,6 @@ const Booking = ({ getVillaRates, villas, rates }) => {
 
     for (let [key, value] of Object.entries(price)) {
       let newPrice = Math.round(villas[key]?.rates[today]?.price) || null;
-      let data = villas[key];
-      console.log({ today, newPrice, data });
-      console.log(data?.rates[today]);
       prices[key] = newPrice || prices[key];
     }
 
@@ -170,12 +166,9 @@ const Booking = ({ getVillaRates, villas, rates }) => {
           <Links>
             <a
               className='booking-com booking-page-link'
-              onClick={() =>
-                window.open(
-                  'https://www.booking.com/hotel/id/masakali-retreat-gianyar.html',
-                  '_blank'
-                )
-              }
+              href='https://www.booking.com/hotel/id/masakali-retreat-gianyar.html'
+              target='_blank'
+              rel='noopener noreferrer'
             >
               Booking.com
             </a>
@@ -184,9 +177,9 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             </Link>
             <a
               className='airbnb booking-page-link'
-              onClick={() =>
-                window.open('https://www.airbnb.com/rooms/53234674', '_blank')
-              }
+              href='https://www.airbnb.com/rooms/53234674'
+              target='_blank'
+              rel='noopener noreferrer'
             >
               AirBnb
             </a>
@@ -215,12 +208,9 @@ const Booking = ({ getVillaRates, villas, rates }) => {
           <Links>
             <a
               className='booking-com booking-page-link'
-              onClick={() =>
-                window.open(
-                  'https://www.booking.com/hotel/id/masakali-retreat-gianyar.html',
-                  '_blank'
-                )
-              }
+              href='https://www.booking.com/hotel/id/masakali-retreat-gianyar.html'
+              target='_blank'
+              rel='noopener noreferrer'
             >
               Booking.com
             </a>
@@ -229,9 +219,9 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             </Link>
             <a
               className='airbnb booking-page-link'
-              onClick={() =>
-                window.open('https://www.airbnb.com/rooms/53609606', '_blank')
-              }
+              href='https://www.airbnb.com/rooms/53609606'
+              target='_blank'
+              rel='noopener noreferrer'
             >
               AirBnb
             </a>
@@ -254,18 +244,14 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             <Prices>
               <Price>$100</Price>
               <p>$70/night</p>
-              {/* <p>${price.jala}/night</p> */}
             </Prices>
           </TextBox>
           <Links>
             <a
               className='booking-com booking-page-link'
-              onClick={() =>
-                window.open(
-                  'https://www.booking.com/hotel/id/masakali-retreat-gianyar.html',
-                  '_blank'
-                )
-              }
+              href='https://www.booking.com/hotel/id/masakali-retreat-gianyar.html'
+              target='_blank'
+              rel='noopener noreferrer'
             >
               Booking.com
             </a>
@@ -274,9 +260,9 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             </Link>
             <a
               className='airbnb booking-page-link'
-              onClick={() =>
-                window.open('https://www.airbnb.com/rooms/53395669', '_blank')
-              }
+              href='https://www.airbnb.com/rooms/53395669'
+              target='_blank'
+              rel='noopener noreferrer'
             >
               AirBnb
             </a>

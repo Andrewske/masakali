@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import CartDetails from './CartDetails';
 import moment from 'moment';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';

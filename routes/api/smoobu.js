@@ -139,8 +139,6 @@ router.post('/bookings/add', express.json(), async (req, res) => {
       'Content-Type': 'application/json',
     };
 
-    console.log(reqConfig);
-
     let { data } = await axios.post(
       'https://login.smoobu.com/api/reservations',
       req.body,

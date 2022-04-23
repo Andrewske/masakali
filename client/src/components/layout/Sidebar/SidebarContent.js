@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import SidebarSublinks from './SidebarSublinks';
 
@@ -77,6 +77,7 @@ const linkData = [
 
 const SidebarContent = ({ isOpen, handleClick }) => {
   const [amenityIsOpen, setAmenityIsOpen] = useState(false);
+  const nodeRef = useRef(null);
 
   const openLinks = () => {
     setAmenityIsOpen((amenityIsOpen) => !amenityIsOpen);
@@ -121,9 +122,12 @@ const SidebarContent = ({ isOpen, handleClick }) => {
   );
   const renderLinks = (isOpen) => {
     return (
-      <Transition in={isOpen} timeout={duration}>
+      <Transition in={isOpen} timeout={duration} nodeRef={nodeRef}>
         {(state) => (
-          <div style={{ ...linkStyle, ...linkTransitionStyles[state] }}>
+          <div
+            ref={nodeRef}
+            style={{ ...linkStyle, ...linkTransitionStyles[state] }}
+          >
             {linkItems}
             <ExtLink>
               <Link to={'/investors'} className='sidebar-link'>
@@ -145,11 +149,12 @@ const SidebarContent = ({ isOpen, handleClick }) => {
     );
   };
   return (
-    <Transition in={isOpen} timeout={duration}>
+    <Transition in={isOpen} timeout={duration} nodeRef={nodeRef}>
       {(state) => (
         <Sidebar
           //className='sidebar'
           style={{ ...sidebarStyle, ...sidebarTransitionStyles[state] }}
+          ref={nodeRef}
         >
           {renderLinks(isOpen)}
         </Sidebar>

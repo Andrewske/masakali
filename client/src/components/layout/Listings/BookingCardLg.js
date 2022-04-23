@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { DateRangePicker } from 'react-dates';
 import { START_DATE } from 'react-dates/constants';
 import GuestsDropdown from './GuestsDropdown';

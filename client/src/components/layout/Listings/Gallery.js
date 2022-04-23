@@ -1,8 +1,7 @@
-import React, { useState, Fragment } from 'react';
+import React from 'react';
 import useBreakpoint from '../../../utils/useBreakpoint';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-import FullScreenGallery from './FullScreenGallery';
 
 const Gallery = ({ images, setFullScreenGalleryOpen }) => {
   const point = useBreakpoint();

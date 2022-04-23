@@ -216,7 +216,7 @@ const Cart = ({
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  user: state.auth.user,
+  user: state.user,
   reservations: state.user.reservations,
 });
 

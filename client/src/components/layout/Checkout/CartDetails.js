@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 import startCase from 'lodash/startCase';
-import useFormatCurrency from '../../../utils/useFormatCurrency';
 import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import { percDiscount } from '../../../config';
 
@@ -23,25 +22,6 @@ const CartDetails = ({
     guests,
     img = null,
   } = reservation;
-  // const total =
-  //   price &&
-  //   numDays &&
-  //   new Intl.NumberFormat(undefined, {
-  //     style: 'currency',
-  //     currency,
-  //   }).format(price * numDays);
-
-  // useEffect(() => {
-  //   if (reservation) {
-  //     let amounts = [
-  //       reservation.price,
-  //       reservation.price * reservation.numDays,
-  //     ];
-  //     // setAmounts(formatCurrency({ amounts, country }));
-  //   }
-  // }, [reservation, country]);
-
-  //let { amount, total, discount } = useFormatCurrency(price, numDays);
 
   const discount = useCurrencyFormat(price * percDiscount * numDays);
   const total = useCurrencyFormat(price * (1 - percDiscount) * numDays);
@@ -49,7 +29,6 @@ const CartDetails = ({
 
   return (
     <div className='cart-details'>
-      {/* <span style={{ backgroundImage: `url(${img})` }} className='image' /> */}
       {!success && (
         <span
           className='icon-close remove-reservation'

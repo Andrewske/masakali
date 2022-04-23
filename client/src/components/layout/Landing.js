@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 
 //Layout
 import Home from './Landing/Home';
@@ -12,7 +12,6 @@ import Community from './Landing/Community';
 import Amenities from './Landing/Amenities';
 import Team from './Landing/Team';
 import ContactSection from './Landing/ContactSection';
-import Footer from './Footer';
 
 //import { useHotkeys } from 'react-hotkeys-hook';
 import YoutubeEmbed from '../../utils/YoutubeEmbed';

@@ -1,9 +1,5 @@
 import axios from 'axios';
-import {
-  SET_BLOCKED_DATES,
-  SET_VILLA_RATES,
-  UPDATE_RESERVATION,
-} from './types';
+import { SET_BLOCKED_DATES, SET_VILLA_RATES } from './types';
 import { serverUrl } from '../config';
 import moment from 'moment';
 

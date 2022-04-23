@@ -35,7 +35,7 @@ const GuestsDropdown = ({ guests, setGuests }) => {
       .map((key) => options[key].count)
       .reduce((a, b) => a + b, 0);
     setGuests(total);
-  }, [options]);
+  }, [options, setGuests]);
 
   const handleClick = (dir, name) => {
     let prev = options[name].count;
