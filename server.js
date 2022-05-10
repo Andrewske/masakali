@@ -23,6 +23,7 @@ var whitelist = [
   'https://www.masakaliretreat.com',
   'https://masakaliretreat.com',
   'https://staging.masakaliretreat.com',
+  'staging.masakaliretreat.com',
 ];
 var corsOptions = {
   credentials: true,
