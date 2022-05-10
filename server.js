@@ -33,10 +33,12 @@ app.use(function (req, res, next) {
 
 var corsOptions = {
   origin: function (origin, callback) {
+    console.log({ origin });
     if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log('Yes');
       callback(null, true);
     } else {
-      console.log({ origin });
+      console.log('No');
       callback(new Error('Not allowed by CORS'), true);
     }
   },
