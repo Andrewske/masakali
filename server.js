@@ -52,9 +52,9 @@ app.use(
     credentials: true,
   })
 );
+app.options('*', cors());
 
 connectDB();
-//app.options('*', cors());
 
 app.use(
   cookieSession({
