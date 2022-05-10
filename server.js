@@ -9,6 +9,7 @@ const cookieSession = require('cookie-session');
 const config = require('config');
 const clientUrl = config.get('clientUrl');
 const path = require('path');
+const cors = require('cors');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({ path: './.env' });
@@ -16,43 +17,44 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express();
 
-const cors = require('cors');
+// var whitelist = [
+//   'http://localhost:3000',
+//   'https://www.masakaliretreat.com',
+//   'https://masakaliretreat.com',
+//   'https://staging.masakaliretreat.com',
+//   'staging.masakaliretreat.com',
+//   /\.example2\.com$/,
+// ];
+// var corsOptions = {
+//   credentials: true,
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       console.log({ origin });
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+// };
 
-var whitelist = [
-  'http://localhost:3000',
-  'https://www.masakaliretreat.com',
-  'https://masakaliretreat.com',
-  'https://staging.masakaliretreat.com',
-  'staging.masakaliretreat.com',
-];
-var corsOptions = {
-  credentials: true,
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      console.log({ origin });
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
+// app.use(cors(corsOptions));
 
-app.use(cors(corsOptions));
-
-// app.use(
-//   cors({
-//     origin: [
-//       'http://localhost:3000',
-//       'https://www.masakaliretreat.com',
-//       'https://masakaliretreat.com',
-//       'https://staging.masakaliretreat.com',
-//     ],
-//     credentials: true,
-//   })
-// );
-//app.options('*', cors());
+app.use(
+  cors({
+    origin: [
+      /\.masakaliretreat\.com$/,
+      'http://localhost:3000',
+      'https://www.masakaliretreat.com',
+      'https://masakaliretreat.com',
+      'https://staging.masakaliretreat.com',
+      'staging.masakaliretreat.com',
+    ],
+    credentials: true,
+  })
+);
 
 connectDB();
+//app.options('*', cors());
 
 app.use(
   cookieSession({
