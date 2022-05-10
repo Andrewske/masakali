@@ -23,6 +23,7 @@ app.use(
       'http://localhost:3000',
       'https://www.masakaliretreat.com',
       'https://masakaliretreat.com',
+      'https://staging.masakaliretreat.com',
     ],
     credentials: true,
   })
