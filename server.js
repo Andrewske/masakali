@@ -17,17 +17,37 @@ if (process.env.NODE_ENV !== 'production') {
 const app = express();
 
 const cors = require('cors');
-app.use(
-  cors({
-    origin: [
-      'http://localhost:3000',
-      'https://www.masakaliretreat.com',
-      'https://masakaliretreat.com',
-      'https://staging.masakaliretreat.com',
-    ],
-    credentials: true,
-  })
-);
+
+var whitelist = [
+  'http://localhost:3000',
+  'https://www.masakaliretreat.com',
+  'https://masakaliretreat.com',
+  'https://staging.masakaliretreat.com',
+];
+var corsOptions = {
+  credentials: true,
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
+
+// app.use(
+//   cors({
+//     origin: [
+//       'http://localhost:3000',
+//       'https://www.masakaliretreat.com',
+//       'https://masakaliretreat.com',
+//       'https://staging.masakaliretreat.com',
+//     ],
+//     credentials: true,
+//   })
+// );
 //app.options('*', cors());
 
 connectDB();
