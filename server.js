@@ -30,7 +30,7 @@ var corsOptions = {
       callback(null, true);
     } else {
       console.log({ origin });
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error('Not allowed by CORS'), true);
     }
   },
   credentials: true,
@@ -51,7 +51,7 @@ app.use(cors(corsOptions));
 //     credentials: true,
 //   })
 // );
-app.options('*', cors());
+//app.options('*', cors());
 
 connectDB();
 
