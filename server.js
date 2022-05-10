@@ -24,6 +24,13 @@ var whitelist = [
   'https://staging.masakaliretreat.com',
   'staging.masakaliretreat.com',
 ];
+
+app.use(function (req, res, next) {
+  console.log({ origin: req.headers.origin, host: req.headers.host });
+  req.headers.origin = req.headers.origin || req.headers.host;
+  next();
+});
+
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -36,7 +43,7 @@ var corsOptions = {
   credentials: true,
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 // app.use(
 //   cors({
