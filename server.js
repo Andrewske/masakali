@@ -27,6 +27,7 @@ if (process.env.NODE_ENV !== 'production') {
         'GET, POST, OPTIONS, PUT, DELETE'
       );
     }
+    next();
   });
 } else {
   app.use(
