@@ -24,9 +24,10 @@ const whitelist = [
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  console.log({ origin });
+  console.log({ headers: req.headers });
   if (whitelist.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
+    console.log('setting origin', origin);
+    res.header('Access-Control-Allow-Origin', origin);
   }
   //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
