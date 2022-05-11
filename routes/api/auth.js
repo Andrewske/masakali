@@ -89,7 +89,7 @@ router.post(
 );
 
 router.get('/login/success', express.json(), (req, res) => {
-  console.log(req.session.passport);
+  console.log('login success', req.user);
   if (req.user) {
     console.log(req.user);
     res.status(200).json({
