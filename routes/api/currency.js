@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const cors = require('./middleware/cors');
 
-router.get('/', express.json(), async (req, res) => {
+router.get('/', express.json(), cors(), async (req, res) => {
+  console.log('currency');
   try {
     let response = await axios.get(
       `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=USD`
