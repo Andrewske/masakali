@@ -9,6 +9,7 @@ const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
 const moment = require('moment');
 const qs = require('qs');
+const cors = require('cors');
 
 let reqConfig = {
   headers: {
@@ -47,7 +48,7 @@ router.all('*', (req, res, next) => {
   next();
 });
 
-router.get('/rates', async (req, res) => {
+router.get('/rates', cors(), async (req, res) => {
   let { startDate = null, endDate = null } = req.query;
   try {
     reqConfig.params = {
