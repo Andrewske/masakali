@@ -15,7 +15,6 @@ router.all('*', (req, res, next) => {
   if (origin.match(/(staging)/g)) {
     clientUrl = 'https://staging.masakaliretreat.com';
   }
-  console.log({ clientUrl });
   return next();
 });
 
@@ -122,6 +121,7 @@ router.get(
     failureRedirect: clientUrl,
   }),
   (req, res) => {
+    console.log({ clientUrl });
     try {
       const { state } = req.query;
       const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());
