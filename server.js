@@ -86,31 +86,31 @@ if (process.env.NODE_ENV !== 'production') {
 
 // app.use(cors(corsOptions));
 
-app.use(
-  cors({
-    origin: [
-      'http://localhost:3000',
-      'https://www.masakaliretreat.com',
-      'https://masakaliretreat.com',
-      'https://staging.masakaliretreat.com',
-      'staging.masakaliretreat.com',
-    ],
-    credentials: true,
-  })
-);
-app.options(
-  '*',
-  cors({
-    origin: [
-      'http://localhost:3000',
-      'https://www.masakaliretreat.com',
-      'https://masakaliretreat.com',
-      'https://staging.masakaliretreat.com',
-      'staging.masakaliretreat.com',
-    ],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       'http://localhost:3000',
+//       'https://www.masakaliretreat.com',
+//       'https://masakaliretreat.com',
+//       'https://staging.masakaliretreat.com',
+//       'staging.masakaliretreat.com',
+//     ],
+//     credentials: true,
+//   })
+// );
+// app.options(
+//   '*',
+//   cors({
+//     origin: [
+//       'http://localhost:3000',
+//       'https://www.masakaliretreat.com',
+//       'https://masakaliretreat.com',
+//       'https://staging.masakaliretreat.com',
+//       'staging.masakaliretreat.com',
+//     ],
+//     credentials: true,
+//   })
+// );
 
 connectDB();
 
