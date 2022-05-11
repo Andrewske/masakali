@@ -7,7 +7,7 @@ const connectDB = require('./config/db');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
 const config = require('config');
-const clientUrl = config.get('clientUrl');
+
 const path = require('path');
 const app = express();
 const cors = require('cors');

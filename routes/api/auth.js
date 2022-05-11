@@ -10,6 +10,14 @@ const passport = require('passport');
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 
+router.all('*', (req, res, next) => {
+  const origin = req.headers.host;
+  if (origin.match(/(staging)/g)) {
+    clientUrl = 'https://staging.masakaliretreat.com';
+  }
+  console.log({ clientUrl });
+});
+
 // @route   GET api/auth
 // @desc    Test route
 // @access  Public
