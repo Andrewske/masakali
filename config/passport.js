@@ -3,6 +3,19 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 const config = require('config');
 //require('dotenv').config({ path: './.env' });
+const express = require('express');
+const app = express();
+
+let serverUrl = config.get('serverUrl');
+
+app.use('*', (req, res, next) => {
+  const origin = req.headers.host;
+  if (origin.match(/(staging)/g)) {
+    serverUrl = 'https://staging.masakaliretreat.com';
+  }
+  console.log('here');
+  return next();
+});
 
 module.exports = function (passport) {
   passport.use(
@@ -10,7 +23,7 @@ module.exports = function (passport) {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: config.get('serverUrl') + '/api/auth/google/callback',
+        //callbackURL: serverUrl + '/api/auth/google/callback',
         proxy: true,
       },
       async (accessToken, refreshToken, profile, done) => {

@@ -15,6 +15,7 @@ router.all('*', (req, res, next) => {
   if (origin.match(/(staging)/g)) {
     clientUrl = 'https://staging.masakaliretreat.com';
   }
+  console.log({ clientUrl });
   return next();
 });
 
@@ -107,7 +108,10 @@ router.get('/google', (req, res, next) => {
     ? Buffer.from(JSON.stringify({ returnTo })).toString('base64')
     : undefined;
 
+  console.log({ clientUrl });
+
   const authenticator = passport.authenticate('google', {
+    callbackURL: '/api/auth/google/callback',
     scope: ['profile', 'email'],
     state,
   });
@@ -119,9 +123,9 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     failureRedirect: clientUrl,
+    callbackURL: '/api/auth/google/callback',
   }),
   (req, res) => {
-    console.log({ clientUrl });
     try {
       const { state } = req.query;
       const { returnTo } = JSON.parse(Buffer.from(state, 'base64').toString());

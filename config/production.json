@@ -1,8 +1,8 @@
 {
   "mongoURI": "mongodb://kevin:QDV5IeLNtycuogub@masakali-shard-00-00.dcqef.mongodb.net:27017,masakali-shard-00-01.dcqef.mongodb.net:27017,masakali-shard-00-02.dcqef.mongodb.net:27017/<dbname>?ssl=true&replicaSet=atlas-8iuyjz-shard-0&authSource=admin&retryWrites=true&w=majority",
   "jwtSecret": "masakaliretreat",
-  "clientUrl": "https://www.masakaliretreat.com/",
-  "serverUrl": "https://www.masakaliretreat.com/",
+  "clientUrl": "https://www.masakaliretreat.com",
+  "serverUrl": "https://www.masakaliretreat.com",
   "SMOOBU_SETTINGS_CHANNEL_ID": 1466467,
   "SMOOBU_CHANDRA_ID": 1115668,
   "SMOOBU_JALA_ID": 1115671,
