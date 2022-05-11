@@ -19,11 +19,12 @@ const whitelist = [
   'https://www.masakaliretreat.com',
   'https://masakaliretreat.com',
   'https://staging.masakaliretreat.com',
+  'https://staging.masakaliretreat.com/',
   'staging.masakaliretreat.com',
 ];
 
 app.use((req, res, next) => {
-  const origin = req.headers.origin;
+  const origin = req.headers.origin || req.headers.referer;
   console.log({ headers: req.headers });
   if (whitelist.includes(origin)) {
     console.log('setting origin', origin);
