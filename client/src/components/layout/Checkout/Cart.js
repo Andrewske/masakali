@@ -56,6 +56,7 @@ const Cart = ({
 
   useEffect(() => {
     async function loginSuccess() {
+      console.log('Cart User', user);
       const config = {
         params: {
           user: user,
