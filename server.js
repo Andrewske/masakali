@@ -11,18 +11,40 @@ const clientUrl = config.get('clientUrl');
 const path = require('path');
 //const cors = require('./middleware/cors');
 const app = express();
-const cors = require('cors');
+// const cors = require('cors');
 
-app.use(cors());
+// app.use(cors());
 
-// const whitelist = [
-//   'http://localhost:3000',
-//   'https://www.masakaliretreat.com',
-//   'https://masakaliretreat.com',
-//   'https://staging.masakaliretreat.com',
-//   'https://staging.masakaliretreat.com/',
-//   'staging.masakaliretreat.com',
-// ];
+const whitelist = [
+  'http://localhost:3000',
+  'https://www.masakaliretreat.com',
+  'https://masakaliretreat.com',
+  'https://staging.masakaliretreat.com',
+  'https://staging.masakaliretreat.com/',
+  'staging.masakaliretreat.com',
+];
+
+app.use('*', (req, res, next) => {
+  var origin = req.headers.origin || req.headers.referer;
+  if (whitelist.indexOf(origin) != -1) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Headers', [
+    'Content-Type',
+    'X-Requested-With',
+    'X-HTTP-Method-Override',
+    'Accept',
+  ]);
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'GET,POST');
+  res.header('Cache-Control', 'no-store,no-cache,must-revalidate');
+  res.header('Vary', 'Origin');
+  if (req.method === 'OPTIONS') {
+    res.status(200).send('');
+    return;
+  }
+  next();
+});
 
 // app.use((req, res, next) => {
 //   const origin = req.headers.origin || req.headers.referer;
