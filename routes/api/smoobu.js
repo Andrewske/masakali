@@ -8,6 +8,7 @@ const suryaId = config.get('SMOOBU_SURYA_ID');
 const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
 const moment = require('moment');
+const getCurrency = require('../../components/currency');
 const qs = require('qs');
 
 let reqConfig = {
@@ -41,13 +42,15 @@ router.get('/rates', async (req, res) => {
     //   `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=IDR`
     // );
 
-    // let USD = response.data.data.USD;
+    let currency = await getCurrency('IDR');
 
-    // for (const [key, value] of Object.entries(data)) {
-    //   Object.keys(value).map((d, i) => {
-    //     value[d].price *= USD;
-    //   });
-    // }
+    let USD = currency.data.USD;
+
+    for (const [key, value] of Object.entries(data)) {
+      Object.keys(value).map((d, i) => {
+        value[d].price *= USD;
+      });
+    }
 
     res.status(200).send(data);
   } catch (err) {

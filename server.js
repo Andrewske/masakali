@@ -6,6 +6,7 @@ const connectDB = require('./config/db');
 
 const session = require('express-session');
 const cookieSession = require('cookie-session');
+const cookieParser = require('cookie-parser');
 const config = require('config');
 
 const path = require('path');
@@ -45,6 +46,8 @@ app.use(
     resave: false,
   })
 );
+
+app.use(cookieParser());
 
 // Passport Config
 require('./config/passport')(passport);

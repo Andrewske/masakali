@@ -1,18 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const getCurrency = require('../../components/currency');
 
 router.get('/', express.json(), async (req, res) => {
-  console.log('currency');
   try {
-    let response = await axios.get(
-      `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=USD`
-    );
-    console.log('Currency running');
-    res.status(200).send(response.data.data);
+    let data = await getCurrency();
+    res.status(200).send(data);
   } catch (err) {
-    console.error({ err });
-    res.status(422).json({ err });
+    console.error('Currency Error', err);
+    res.status(422).send({ err });
   }
 });
 
