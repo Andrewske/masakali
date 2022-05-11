@@ -15,7 +15,6 @@ router.all('*', (req, res, next) => {
   if (origin.match(/(staging)/g)) {
     clientUrl = 'https://staging.masakaliretreat.com';
   }
-  console.log({ clientUrl });
   return next();
 });
 

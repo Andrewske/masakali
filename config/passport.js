@@ -6,24 +6,12 @@ const config = require('config');
 const express = require('express');
 const app = express();
 
-let serverUrl = config.get('serverUrl');
-
-app.use('*', (req, res, next) => {
-  const origin = req.headers.host;
-  if (origin.match(/(staging)/g)) {
-    serverUrl = 'https://staging.masakaliretreat.com';
-  }
-  console.log('here');
-  return next();
-});
-
 module.exports = function (passport) {
   passport.use(
     new GoogleStrategy(
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        //callbackURL: serverUrl + '/api/auth/google/callback',
         proxy: true,
       },
       async (accessToken, refreshToken, profile, done) => {
@@ -57,10 +45,12 @@ module.exports = function (passport) {
   );
 
   passport.serializeUser((user, done) => {
+    console.log('serializeUser', user);
     done(null, user.id);
   });
 
   passport.deserializeUser((id, done) => {
+    console.log('deserializeUser', id);
     User.findById(id, (err, user) => done(err, user));
   });
 };
