@@ -11,7 +11,7 @@ const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 
 router.all('*', (req, res, next) => {
-  origin = req.headers.origin;
+  const origin = req.headers.origin;
   if (req.headers.origin.match(/(staging)/g)) {
     clientUrl = origin;
   }
