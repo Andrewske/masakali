@@ -9,53 +9,58 @@ const cookieSession = require('cookie-session');
 const config = require('config');
 const clientUrl = config.get('clientUrl');
 const path = require('path');
-const cors = require('cors');
+const cors = require('./middleware/cors');
 const app = express();
+
+app.use(cors());
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({ path: './.env' });
-
-  app.use(function (req, res, next) {
-    if (req.hostname.endsWith('masakaliretreat.com')) {
-      res.setHeader('Access-Control-Allow-Origin', 'https://' + req.hostname);
-      res.setHeader(
-        'Access-Control-Allow-Headers',
-        'X-Requested-With, Content-Type'
-      );
-      res.setHeader(
-        'Access-Control-Allow-Methods',
-        'GET, POST, OPTIONS, PUT, DELETE'
-      );
-    }
-    next();
-  });
-} else {
-  app.use(
-    cors({
-      origin: [
-        'http://localhost:3000',
-        'https://www.masakaliretreat.com',
-        'https://masakaliretreat.com',
-        'https://staging.masakaliretreat.com',
-        'staging.masakaliretreat.com',
-      ],
-      credentials: true,
-    })
-  );
-  app.options(
-    '*',
-    cors({
-      origin: [
-        'http://localhost:3000',
-        'https://www.masakaliretreat.com',
-        'https://masakaliretreat.com',
-        'https://staging.masakaliretreat.com',
-        'staging.masakaliretreat.com',
-      ],
-      credentials: true,
-    })
-  );
 }
+// } else {
+//   app.use(
+//     cors({
+//       origin: [
+//         'http://localhost:3000',
+//         'https://www.masakaliretreat.com',
+//         'https://masakaliretreat.com',
+//         'https://staging.masakaliretreat.com',
+//         'staging.masakaliretreat.com',
+//       ],
+//       credentials: true,
+//     })
+//   );
+//   app.options(
+//     '*',
+//     cors({
+//       origin: [
+//         'http://localhost:3000',
+//         'https://www.masakaliretreat.com',
+//         'https://masakaliretreat.com',
+//         'https://staging.masakaliretreat.com',
+//         'staging.masakaliretreat.com',
+//       ],
+//       credentials: true,
+//     })
+//   );
+// }
+
+// app.use(function (req, res, next) {
+//   console.log(req.hostname);
+//   if (req.hostname.endsWith('masakaliretreat.com')) {
+//     res.setHeader('Access-Control-Allow-Origin', 'https://' + req.hostname);
+//     res.setHeader(
+//       'Access-Control-Allow-Headers',
+//       'X-Requested-With, Content-Type'
+//     );
+//     res.setHeader(
+//       'Access-Control-Allow-Methods',
+//       'GET, POST, OPTIONS, PUT, DELETE'
+//     );
+//     res.header('Access-Control-Allow-Credentials', 'true');
+//   }
+//   next();
+// });
 
 // var whitelist = [
 //   'http://localhost:3000',
