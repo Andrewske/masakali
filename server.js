@@ -31,10 +31,18 @@ app.use(
 
 connectDB();
 
+// app.use(
+//   cookieSession({
+//     maxAge: 24 * 60 * 60 * 1000,
+//     keys: [process.env.COOKIE_SECRET],
+//   })
+// );
 app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [process.env.COOKIE_SECRET],
+  session({
+    secret: process.env.COOKIE_SECRET,
+    saveUninitialized: true,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+    resave: false,
   })
 );
 
