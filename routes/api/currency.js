@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const cors = require('./middleware/cors');
+const cors = require('../../middleware/cors');
 
 router.get('/', express.json(), cors(), async (req, res) => {
   console.log('currency');
