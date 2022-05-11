@@ -16,6 +16,7 @@ router.all('*', (req, res, next) => {
     clientUrl = 'https://staging.masakaliretreat.com';
   }
   console.log({ clientUrl });
+  return next();
 });
 
 // @route   GET api/auth
