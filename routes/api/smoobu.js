@@ -69,17 +69,17 @@ router.get('/rates', cors(), async (req, res) => {
     delete data[chandraId];
     delete data[jalaId];
 
-    let response = await axios.get(
-      `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=IDR`
-    );
+    // let response = await axios.get(
+    //   `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=IDR`
+    // );
 
-    let USD = response.data.data.USD;
+    // let USD = response.data.data.USD;
 
-    for (const [key, value] of Object.entries(data)) {
-      Object.keys(value).map((d, i) => {
-        value[d].price *= USD;
-      });
-    }
+    // for (const [key, value] of Object.entries(data)) {
+    //   Object.keys(value).map((d, i) => {
+    //     value[d].price *= USD;
+    //   });
+    // }
 
     res.status(200).send(data);
   } catch (err) {
