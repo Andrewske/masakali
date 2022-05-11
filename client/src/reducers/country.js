@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
     case SET_RATES:
       return {
         ...state,
-        rates: payload,
+        rates: payload.data,
       };
     case SET_COUNTRY:
       return {
