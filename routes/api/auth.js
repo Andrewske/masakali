@@ -10,15 +10,6 @@ const passport = require('passport');
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 
-router.all('*', (req, res, next) => {
-  console.log({ headers: req.headers });
-  const origin = req.headers.origin;
-  if (req.headers.origin.match(/(staging)/g)) {
-    clientUrl = origin;
-  }
-  console.log({ clientUrl });
-});
-
 // @route   GET api/auth
 // @desc    Test route
 // @access  Public
