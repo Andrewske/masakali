@@ -9,7 +9,6 @@ const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
 const moment = require('moment');
 const qs = require('qs');
-const cors = require('cors');
 
 let reqConfig = {
   headers: {
@@ -17,38 +16,7 @@ let reqConfig = {
   },
 };
 
-const whitelist = [
-  'http://localhost:3000',
-  'https://www.masakaliretreat.com',
-  'https://masakaliretreat.com',
-  'https://staging.masakaliretreat.com',
-  'https://staging.masakaliretreat.com/',
-  'staging.masakaliretreat.com',
-];
-
-router.all('*', (req, res, next) => {
-  var origin = req.headers.origin || req.headers.referer;
-  if (whitelist.indexOf(origin) != -1) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  res.header('Access-Control-Allow-Headers', [
-    'Content-Type',
-    'X-Requested-With',
-    'X-HTTP-Method-Override',
-    'Accept',
-  ]);
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Methods', 'GET,POST');
-  res.header('Cache-Control', 'no-store,no-cache,must-revalidate');
-  res.header('Vary', 'Origin');
-  if (req.method === 'OPTIONS') {
-    res.status(200).send('');
-    return;
-  }
-  next();
-});
-
-router.get('/rates', cors(), async (req, res) => {
+router.get('/rates', async (req, res) => {
   let { startDate = null, endDate = null } = req.query;
   try {
     reqConfig.params = {
