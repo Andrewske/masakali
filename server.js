@@ -13,12 +13,7 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
+app.use(cors());
 
 // const whitelist = [
 //   'http://localhost:3000',
