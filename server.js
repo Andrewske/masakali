@@ -59,7 +59,19 @@ app.use(
     credentials: true,
   })
 );
-// app.options('*', cors());
+app.options(
+  '*',
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'https://www.masakaliretreat.com',
+      'https://masakaliretreat.com',
+      'https://staging.masakaliretreat.com',
+      'staging.masakaliretreat.com',
+    ],
+    credentials: true,
+  })
+);
 
 connectDB();
 
