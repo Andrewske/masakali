@@ -4,11 +4,19 @@ const url = require('url');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const clientUrl = config.get('clientUrl');
+let clientUrl = config.get('clientUrl');
 const { check, validationResult } = require('express-validator');
 const passport = require('passport');
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
+
+router.all('*', (req, res, next) => {
+  origin = req.headers.origin;
+  if (req.headers.origin.match(/(staging)/g)) {
+    clientUrl = origin;
+  }
+  console.log({ clientUrl });
+});
 
 // @route   GET api/auth
 // @desc    Test route
