@@ -89,7 +89,6 @@ router.post(
 );
 
 router.get('/login/success', express.json(), (req, res) => {
-  console.log('login success', req.user);
   if (req.user) {
     console.log(req.user);
     res.status(200).json({
@@ -107,8 +106,6 @@ router.get('/google', (req, res, next) => {
   const state = returnTo
     ? Buffer.from(JSON.stringify({ returnTo })).toString('base64')
     : undefined;
-
-  console.log({ clientUrl });
 
   const authenticator = passport.authenticate('google', {
     callbackURL: '/api/auth/google/callback',

@@ -25,8 +25,6 @@ module.exports = function (passport) {
             image: profile.photos[0].value || null,
           };
 
-          console.log(profile);
-
           let user = await User.findOne({ googleId: profile.id });
 
           if (user) {
@@ -45,12 +43,10 @@ module.exports = function (passport) {
   );
 
   passport.serializeUser((user, done) => {
-    console.log('serializeUser', user.id);
     done(null, user.id);
   });
 
   passport.deserializeUser((id, done) => {
-    console.log('deserializeUser', id);
     User.findById(id, (err, user) => done(err, user));
   });
 };

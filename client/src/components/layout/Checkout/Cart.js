@@ -159,6 +159,7 @@ const Cart = ({
       if (reservationId && paymentIntent?.id && smoobuId) {
         await updateReservation({ reservationId, stripeId: paymentIntent.id });
       }
+      //console.log({ stripeId: paymentIntent.id });
 
       setIsProcessing(false);
       history.push('/success');
