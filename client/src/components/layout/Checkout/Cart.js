@@ -126,6 +126,8 @@ const Cart = ({
         throw paymentIntentError;
       }
 
+      console.log({ clientSecret, paymentIntentError });
+
       // Create the Payment Method Request
       const { paymentMethodReqId, paymentMethodReqError } =
         await createPaymentMethodReq({ stripe, cardElement, billingDetails });
