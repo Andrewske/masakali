@@ -23,16 +23,20 @@ export const createPaymentMethodReq = async ({
   billingDetails,
 }) => {
   try {
-    const {
-      paymentMethod: { id: paymentMethodReqId },
-      error: paymentMethodReqError,
-    } = await stripe.createPaymentMethod({
+    // const {
+    //   paymentMethod: { id: paymentMethodReqId },
+    //   error: paymentMethodReqError,
+    // } = null;
+
+    const data = await stripe.createPaymentMethod({
       type: 'card',
       card: cardElement,
       billing_details: billingDetails,
     });
 
-    return { paymentMethodReqId, paymentMethodReqError };
+    console.log({ data });
+
+    //return { paymentMethodReqId, paymentMethodReqError };
   } catch (err) {
     console.error({ location: 'createPaymentMethodReq', err });
     return { paymentMethodReqError: err };
