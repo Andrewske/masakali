@@ -3,18 +3,28 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-import useFormatCurrency from '../../../utils/useFormatCurrency';
+import useCurrencyFormat from '../../../utils/useCurrencyFormat';
+import { sendBookingConfirmation } from '../../../actions/sendgrid';
+import { percDiscount } from '../../../config';
+import { loadUser } from '../../../actions/auth';
 
-const Success = ({ reservations, country }) => {
+const Success = ({ reservations, user, sendBookingConfirmation, loadUser }) => {
   const [reservation, setReservation] = useState(null);
   const [amounts, setAmounts] = useState([0, 0]);
+  const [isSending, setIsSending] = useState(true);
 
-  let { amount, total } = useFormatCurrency(amounts[0], amounts[1]);
+  let price = useCurrencyFormat(
+    (reservation?.amount * (1 + percDiscount)) / reservation?.numDays
+  );
+  let discount = useCurrencyFormat(
+    reservation?.amount * (1 + percDiscount) - reservation?.amount
+  );
+  let total = useCurrencyFormat(reservation?.amount);
 
   useEffect(() => {
     let res =
       reservations.length > 0
-        ? reservations.sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1))[0]
+        ? reservations.sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1))[0]
         : null;
 
     res.numDays =
@@ -22,6 +32,32 @@ const Success = ({ reservations, country }) => {
     setReservation(res);
     setAmounts([res.amount / res.numDays, res.numDays]);
   }, [reservations]);
+
+  useEffect(() => {
+    const sendEmail = async () => {
+      let { _id, numDays, startDate, endDate, name } = reservation;
+      let data = {
+        id: _id,
+        email: user.email,
+        name: user?.firstName || user.name,
+        villaName: name,
+        startDate: startDate,
+        endDate: endDate,
+        price: price,
+        numDays: numDays,
+        discount: discount,
+        total: total,
+      };
+      await sendBookingConfirmation(data);
+      loadUser(user._id);
+      setIsSending(false);
+    };
+
+    if (isSending && price && reservation && !reservation.sentEmail) {
+      console.log('Sending');
+      sendEmail();
+    }
+  }, [price, reservation, isSending]);
 
   return (
     <div className='success-container'>
@@ -43,20 +79,18 @@ const Success = ({ reservations, country }) => {
             <div className='dates'>
               <div className='date'>
                 <p className='title'>Check in</p>
-                <p>
-                  {moment(reservation.startDate).utc().format('MMM DD YYYY')}
-                </p>
+                <p>{moment.utc(reservation.startDate).format('MMM DD YYYY')}</p>
                 <p>2:00 PM</p>
               </div>
               <div className='date'>
                 <p className='title'>Check out</p>
-                <p>{moment(reservation.endDate).utc().format('MMM DD YYYY')}</p>
+                <p>{moment.utc(reservation.endDate).format('MMM DD YYYY')}</p>
                 <p>11:00 AM</p>
               </div>
             </div>
             <p>Number of guests: {reservation.guests}</p>
             <p>Total nights: {reservation.numDays}</p>
-            <p>Price: {amount}/night</p>
+            <p>Price: {price}/night</p>
             <p>Total: {total}</p>
           </span>
         )}
@@ -70,8 +104,12 @@ const Success = ({ reservations, country }) => {
 };
 
 const mapStateToProps = (state) => ({
+  user: state.user,
   reservations: state.user.reservations.past,
   country: state.country,
 });
 
-export default connect(mapStateToProps)(Success);
+export default connect(mapStateToProps, {
+  sendBookingConfirmation,
+  loadUser,
+})(Success);

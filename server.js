@@ -71,6 +71,7 @@ app.use('/api/stripe/customer', require('./routes/api/stripe/customer'));
 app.use('/api/stripe/payment', require('./routes/api/stripe/payment'));
 app.use('/api/stripe/webhook', require('./routes/api/stripe/webhook'));
 app.use('/api/smoobu', require('./routes/api/smoobu'));
+app.use('/api/sendgrid', require('./routes/api/sendgrid'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-const useCurrencyFormat = (amount = 0) => {
-  const [total, setTotal] = useState(0);
+const useCurrencyFormat = (amount = null) => {
+  const [total, setTotal] = useState(null);
   const country = useSelector((state) => state.country);
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -11,7 +11,9 @@ const useCurrencyFormat = (amount = 0) => {
   });
 
   useEffect(() => {
-    setTotal(formatter.format(amount * country.conversion));
+    if (amount && country) {
+      setTotal(formatter.format(amount * country.conversion));
+    }
   }, [amount, country, formatter]);
 
   return total;

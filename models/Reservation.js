@@ -29,6 +29,10 @@ const ReservationSchema = new mongoose.Schema({
   stripeId: {
     type: String,
   },
+  sentEmail: {
+    type: Boolean,
+    default: false,
+  },
   createdAt: {
     type: Date,
     default: Date.now(),

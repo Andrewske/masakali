@@ -80,20 +80,17 @@ router.post(
 
 router.post('/update', express.json(), async (req, res) => {
   try {
-    console.log({ body: req.body, address: req.body.billingDetails.address });
-    const { userId, billingDetails, isDefault } = req.body;
+    const { userId, billingDetails = null, isDefault = false } = req.body;
 
     const user = await User.findOne({ _id: userId });
 
-    if (user?.address?.city) {
-      if (isDefault) {
+    if (billingDetails) {
+      if (isDefault || !user?.address?.city) {
         user.address = billingDetails.address;
+        user.save();
       }
-    } else {
-      user.address = billingDetails.address;
     }
 
-    user.save();
     res.status(200).json(user);
   } catch (err) {
     console.error({ err });

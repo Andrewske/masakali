@@ -47,8 +47,8 @@ const CartDetails = ({
       )}
       <span className='details'>
         <h3>Stay in {startCase(name)} Room</h3>
-        <p>Check In: {moment(startDate).format('MMM DD YYYY')} at 2:00pm</p>
-        <p>Check Out: {moment(endDate).format('MMM DD YYYY')} at 11:00am</p>
+        <p>Check In: {moment.utc(startDate).format('MMM DD YYYY')} at 2:00pm</p>
+        <p>Check Out: {moment.utc(endDate).format('MMM DD YYYY')} at 11:00am</p>
         <p>Number of guests: {guests}</p>
         <p>Total nights: {numDays}</p>
         <p>Price: {amount}/night</p>

@@ -9,6 +9,7 @@ const { check, validationResult } = require('express-validator');
 const passport = require('passport');
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
+const Reservation = require('../../models/Reservation');
 
 router.all('*', (req, res, next) => {
   const origin = req.headers.host;
@@ -23,7 +24,13 @@ router.all('*', (req, res, next) => {
 // @access  Public
 router.get('/', auth, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    let user = await User.findById(req.user.id).select('-password');
+    const reservation = await Reservation.find({ userId: req.user.id });
+
+    if (reservation) {
+      user = { ...user, reservations: { past: reservation } };
+    }
+
     res.json(user);
   } catch (err) {
     console.error(err.message);

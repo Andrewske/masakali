@@ -15,7 +15,8 @@ router.get('/', async (req, res) => {
       ...(userId && { userId }),
     };
     let reservations = await Reservation.find(filter);
-    return res.status(400).send(reservations);
+
+    res.status(200).send(reservations);
   } catch (err) {
     console.log({ err });
     res.status(400).send({ err });
