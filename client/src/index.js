@@ -24,7 +24,7 @@ import axios from 'axios';
         },
         method: 'GET',
         url: `${serverUrl}/stripe/payment/config`,
-        //withCredentials: true,
+        withCredentials: true,
       };
       const { publishableKey } = await axios(config).then((r) => r.data);
       stripePromise = loadStripe(publishableKey);

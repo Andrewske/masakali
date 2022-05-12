@@ -1,4 +1,4 @@
-require('dotenv').config({ path: './.env' });
+//require('dotenv').config({ path: './.env' });
 const bodyParser = require('body-parser');
 const stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
 const express = require('express');
