@@ -11,7 +11,8 @@ import axios from 'axios';
 
   if (process.env.NODE_ENV === 'production') {
     try {
-      stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
+      console.log(process.env.STRIPE_PUBLISHABLE_KEY);
+      stripePromise = loadStripe(`${process.env.STRIPE_PUBLISHABLE_KEY}`);
     } catch (error) {
       console.log('Could not load stripe: ', error.message);
     }
