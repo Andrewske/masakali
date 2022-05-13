@@ -34,10 +34,14 @@ const Surya = ({ loadVillas, surya, getVillaRates, currency }) => {
   }, [surya]);
 
   useEffect(() => {
-    if (!surya.rates) {
+    if (!surya?.rates) {
       getVillaRates();
     } else {
-      setReducedPrice(surya.rates[moment().format('YYYY-MM-D')].price);
+      let price =
+        surya.rates[moment().utc().format('YYYY-MM-D')]?.price || null;
+      if (price) {
+        setReducedPrice(surya.rates[moment().utc().format('YYYY-MM-D')]?.price);
+      }
     }
   }, [surya.rates]);
 

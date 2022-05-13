@@ -13,7 +13,7 @@ const imageSelection = [10, 0, 1, 4, 5];
 const Chandra = ({ loadVillas, chandra, getVillaRates, currency }) => {
   const [blockedDates, setBlockedDates] = useState(null);
   const [checkInDates, setCheckInDates] = useState(null);
-  const [reducedPrice, setReducedPrice] = useState(100);
+  const [reducedPrice, setReducedPrice] = useState(102);
 
   useEffect(() => {
     if (chandra?.datesReserved) {
@@ -34,10 +34,16 @@ const Chandra = ({ loadVillas, chandra, getVillaRates, currency }) => {
   }, [chandra]);
 
   useEffect(() => {
-    if (!chandra.rates) {
+    if (!chandra?.rates) {
       getVillaRates();
     } else {
-      setReducedPrice(chandra.rates[moment().format('YYYY-MM-D')].price);
+      let price =
+        chandra.rates[moment().utc().format('YYYY-MM-D')]?.price || null;
+      if (price) {
+        setReducedPrice(
+          chandra.rates[moment().utc().format('YYYY-MM-D')]?.price
+        );
+      }
     }
   }, [chandra.rates]);
 

@@ -14,10 +14,10 @@ const Success = ({ reservations, user, sendBookingConfirmation, loadUser }) => {
   const [isSending, setIsSending] = useState(true);
 
   let price = useCurrencyFormat(
-    (reservation?.amount * (1 + percDiscount)) / reservation?.numDays
+    reservation?.amount / (1 - percDiscount) / reservation?.numDays
   );
   let discount = useCurrencyFormat(
-    reservation?.amount * (1 + percDiscount) - reservation?.amount
+    reservation?.amount / (1 - percDiscount) - reservation?.amount
   );
   let total = useCurrencyFormat(reservation?.amount);
 

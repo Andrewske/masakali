@@ -13,7 +13,7 @@ const imageSelection = [1, 10, 0, 4, 5];
 const Jala = ({ loadVillas, jala, getVillaRates, currency }) => {
   const [blockedDates, setBlockedDates] = useState(null);
   const [checkInDates, setCheckInDates] = useState(null);
-  const [reducedPrice, setReducedPrice] = useState(100);
+  const [reducedPrice, setReducedPrice] = useState(70);
 
   useEffect(() => {
     if (jala?.datesReserved) {
@@ -34,10 +34,13 @@ const Jala = ({ loadVillas, jala, getVillaRates, currency }) => {
   }, [jala]);
 
   useEffect(() => {
-    if (!jala.rates) {
+    if (!jala?.rates) {
       getVillaRates();
     } else {
-      setReducedPrice(jala.rates[moment().format('YYYY-MM-D')].price);
+      let price = jala.rates[moment().utc().format('YYYY-MM-D')]?.price || null;
+      if (price) {
+        setReducedPrice(jala.rates[moment().utc().format('YYYY-MM-D')]?.price);
+      }
     }
   }, [jala.rates]);
 

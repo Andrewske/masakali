@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { HashLink as Link } from 'react-router-hash-link';
@@ -172,8 +173,8 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             >
               Booking.com
             </a>
-            <Link className='email booking-page-link' to={`/#contact`}>
-              Email Us
+            <Link className='email booking-page-link' to={`/listings/surya`}>
+              Book Now
             </Link>
             <a
               className='airbnb booking-page-link'
@@ -214,8 +215,8 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             >
               Booking.com
             </a>
-            <Link className='email booking-page-link' to={`/#contact`}>
-              Email Us
+            <Link className='email booking-page-link' to={`/listings/chandra`}>
+              Book Now
             </Link>
             <a
               className='airbnb booking-page-link'
@@ -255,8 +256,8 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             >
               Booking.com
             </a>
-            <Link className='email booking-page-link' to={`/#contact`}>
-              Email Us
+            <Link className='email booking-page-link' to={`/listings/jala`}>
+              Book Now
             </Link>
             <a
               className='airbnb booking-page-link'

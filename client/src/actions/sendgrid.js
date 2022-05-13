@@ -2,6 +2,7 @@ import axios from 'axios';
 import { serverUrl } from '../config';
 import moment from 'moment';
 import useCurrencyFormat from '../utils/useCurrencyFormat';
+import { capitalize } from 'lodash';
 
 export const sendBookingConfirmation =
   ({
@@ -21,7 +22,7 @@ export const sendBookingConfirmation =
       id,
       email,
       name,
-      villaName: villaName.toUpperCase(),
+      villaName: capitalize(villaName),
       startDate: moment.utc(startDate).format('ddd MMM DD YYYY').toString(),
       endDate: moment.utc(endDate).format('ddd MMM DD YYYY').toString(),
       price,
