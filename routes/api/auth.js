@@ -23,13 +23,18 @@ router.all('*', (req, res, next) => {
 // @desc    Test route
 // @access  Public
 router.get('/', auth, async (req, res) => {
+  //auth middleware
   try {
-    let user = await User.findById(req.user.id).select('-password');
-    const reservation = await Reservation.find({ userId: req.user.id });
+    let userId = req.user.id;
+    let user = await User.findById(userId).select('-password').lean();
+    const reservation = await Reservation.find({ userId: userId });
+    console.log({ user });
 
     if (reservation) {
-      user = { ...user, reservations: { past: reservation } };
+      console.log('reservation');
+      user.reservations = { past: reservation };
     }
+    console.log({ user });
 
     res.json(user);
   } catch (err) {

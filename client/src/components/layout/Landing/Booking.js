@@ -269,10 +269,7 @@ const Booking = ({ getVillaRates, villas, rates }) => {
             </a>
           </Links>
         </Card>
-        <SubText>
-          Save 10% by booking with us directly.{' '}
-          <Link to={'/#contact'}>Click here to send us an email</Link>.
-        </SubText>
+        <SubText>Save 10% by booking with us directly.</SubText>
         <SubText>
           Masakali is still in development. Some amenities may not be available.
         </SubText>

@@ -185,35 +185,44 @@ const Cart = ({
           <CartDetails reservation={reservations.new} />
         </div>
       )}
-
-      {isAuthenticated ? (
-        <form className='row' onSubmit={handleSubmit}>
-          <BillingDetails
-            user={user}
-            isDefault={isDefault}
-            setIsDefault={setIsDefault}
-          />
-          <div className='card-element-container'>
-            <CardElement
-              options={cardElementOptions}
-              onChange={handleCardDetailsChange}
+      <span className=''>
+        {isAuthenticated ? (
+          <form className='row' onSubmit={handleSubmit}>
+            <BillingDetails
+              user={user}
+              isDefault={isDefault}
+              setIsDefault={setIsDefault}
             />
-          </div>
-          <span style={{ fontSize: '.5rem', margin: '0 auto' }}>
-            Powered by Stripe
-          </span>
-          {checkoutError && <CheckoutError>{checkoutError}</CheckoutError>}
+            <div className='card-element-container'>
+              <CardElement
+                options={cardElementOptions}
+                onChange={handleCardDetailsChange}
+              />
+            </div>
+            <span style={{ fontSize: '.5rem', margin: '0 auto' }}>
+              Powered by Stripe
+            </span>
+            {checkoutError && <CheckoutError>{checkoutError}</CheckoutError>}
 
-          <button className='btn submit' disabled={isProcessing || !stripe}>
-            {isProcessing ? 'Processing...' : `Pay ${total}`}
-          </button>
-        </form>
-      ) : (
+            <button className='btn submit' disabled={isProcessing || !stripe}>
+              {isProcessing ? 'Processing...' : `Pay ${total}`}
+            </button>
+          </form>
+        ) : (
+          <div className='row'>
+            <h2>Log in or sign up to book</h2>
+            <Login />
+          </div>
+        )}
         <div className='row'>
-          <h2>Log in or sign up to book</h2>
-          <Login />
+          <p>
+            Having troubles with checkout? Contact us at{' '}
+            <a href='mailto:admin@masakaliretreat.com'>
+              admin@masakaliretreat.com
+            </a>
+          </p>
         </div>
-      )}
+      </span>
     </div>
   );
 };

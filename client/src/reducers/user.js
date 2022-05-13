@@ -23,9 +23,14 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case LOAD_USER:
+      console.log({ state, payload });
       return {
         ...state,
         ...payload,
+        reservations: {
+          ...state.reservations,
+          past: payload.reservations.past,
+        },
       };
     case CREATE_RESERVATION:
       return {
