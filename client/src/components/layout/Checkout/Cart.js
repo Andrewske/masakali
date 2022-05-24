@@ -87,6 +87,7 @@ const Cart = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.persist();
 
     //setIsProcessing(true);
     const cardElement = elements.getElement(CardElement);
@@ -118,8 +119,15 @@ const Cart = ({
 
     try {
       // Create the Payment Intent
+      let finalPrice = price * (1 - percDiscount) * numDays * 100;
+
+      if (e.target?.discount?.value === process.env.ADMIN_TEST_CODE) {
+        console.log('discount added');
+        finalPrice = 100;
+      }
+
       const { clientSecret, paymentIntentError } = await createPaymentIntent({
-        price: price * (1 - percDiscount) * numDays * 100,
+        price: finalPrice,
       });
 
       if (paymentIntentError) {

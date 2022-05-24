@@ -62,7 +62,7 @@ const EmailRegister = ({ setAlert, setToggle, register }) => {
         name='password'
         minLength='6'
         value={password}
-        autocomplete='new-password'
+        autoComplete='new-password'
         onChange={(e) => onChange(e)}
       />
       <input
@@ -88,7 +88,6 @@ const EmailRegister = ({ setAlert, setToggle, register }) => {
 
 EmailRegister.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  togglePopup: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
 };

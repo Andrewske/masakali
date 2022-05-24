@@ -68,6 +68,16 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
         initialValue={user?.address?.postal_code}
         required
       />
+      {user?.admin && (
+        <FormField
+          name='discount'
+          label='discount'
+          type='text'
+          placeholder='code?'
+          //initialValue={user?.address?.postal_code}
+          //required
+        />
+      )}
       <div className='form-field-container'>
         <label htmlFor={'isDefault'} className='checkbox'>
           Set as default billing address

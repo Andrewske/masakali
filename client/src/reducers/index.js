@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { LOGOUT } from '../actions/types';
 
 import alert from './alert';
 import auth from './auth';
@@ -14,12 +15,20 @@ const persistConfig = {
   whitelist: ['auth', 'user', 'country'],
 };
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   alert,
   auth,
   villas,
   user,
   country,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === LOGOUT) {
+    storage.removeItem('persist:root');
+    return appReducer(undefined, action);
+  }
+  return appReducer(state, action);
+};
 
 export default persistReducer(persistConfig, rootReducer);

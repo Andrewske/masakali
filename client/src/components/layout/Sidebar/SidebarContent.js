@@ -1,6 +1,8 @@
 import React, { Fragment, useState, useRef } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import SidebarSublinks from './SidebarSublinks';
+import { connect } from 'react-redux';
+import { LOGOUT } from '../../../actions/types';
 
 import { Transition } from 'react-transition-group';
 import styled from 'styled-components';
@@ -75,7 +77,7 @@ const linkData = [
   { id: 'contact', name: 'Contact' },
 ];
 
-const SidebarContent = ({ isOpen, handleClick }) => {
+const SidebarContent = ({ isOpen, handleClick, logout }) => {
   const [amenityIsOpen, setAmenityIsOpen] = useState(false);
   const nodeRef = useRef(null);
 
@@ -134,6 +136,11 @@ const SidebarContent = ({ isOpen, handleClick }) => {
                 Investors
               </Link>
             </ExtLink>
+            <ExtLink>
+              <span className='sidebar-link' onClick={() => logout()}>
+                Logout
+              </span>
+            </ExtLink>
 
             <Social>
               <SidebarLink href='https://www.instagram.com/masakaliretreat'>
@@ -165,4 +172,8 @@ const SidebarContent = ({ isOpen, handleClick }) => {
 
 SidebarContent.propTypes = {};
 
-export default SidebarContent;
+const mapDispatchToProps = (dispatch) => ({
+  logout: (payload) => dispatch({ type: LOGOUT }),
+});
+
+export default connect(null, mapDispatchToProps)(SidebarContent);

@@ -37,7 +37,7 @@ const EmailLogin = ({ login, setToggle }) => {
         name='password'
         minLength='6'
         value={password}
-        autocomplete='current-password'
+        autoComplete='current-password'
         onChange={(e) => onChange(e)}
       />
       <span onClick={handleSubmit} className='btn'>
