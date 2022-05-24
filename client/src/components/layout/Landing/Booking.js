@@ -158,11 +158,10 @@ const Booking = ({ getVillaRates, villas, rates }) => {
               <li>Outdoor Shower</li>
               <li>Spa services and meals available</li>
             </ul>
-            <Prices>
+            {/* <Prices>
               <Price>$150</Price>
-              {/* <p>${price.surya}/night</p> */}
               <p>$92/night</p>
-            </Prices>
+            </Prices> */}
           </TextBox>
           <Links>
             <a
@@ -200,11 +199,10 @@ const Booking = ({ getVillaRates, villas, rates }) => {
               <li>Outdoor Shower</li>
               <li>Spa services and meals available</li>
             </ul>
-            <Prices>
+            {/* <Prices>
               <Price>$150</Price>
               <p>$105/night</p>
-              {/* <p>${price.chandra}/night</p> */}
-            </Prices>
+            </Prices> */}
           </TextBox>
           <Links>
             <a
@@ -242,10 +240,10 @@ const Booking = ({ getVillaRates, villas, rates }) => {
               <li>Outdoor Shower</li>
               <li>Spa services and meals available</li>
             </ul>
-            <Prices>
+            {/* <Prices>
               <Price>$100</Price>
               <p>$70/night</p>
-            </Prices>
+            </Prices> */}
           </TextBox>
           <Links>
             <a

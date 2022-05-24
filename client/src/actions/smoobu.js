@@ -77,15 +77,19 @@ export const makeReservation =
         phone: phone,
         language: language,
       };
-      // let { data } = await axios.post(
-      //   serverUrl + '/smoobu/bookings/add',
-      //   body,
-      //   { headers: { 'Content-Type': 'application/json' } }
-      // );
 
-      // return { smoobuId: data.id };
+      // Don't create the smoobu booking if in development
+      if (process.env.NODE_ENV !== 'production') {
+        return { smoobuId: 'test' };
+      }
 
-      return { smoobuId: 21976543 };
+      let { data } = await axios.post(
+        serverUrl + '/smoobu/bookings/add',
+        body,
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+
+      return { smoobuId: data.id };
     } catch (err) {
       console.error({ location: 'makeReservation', err });
     }

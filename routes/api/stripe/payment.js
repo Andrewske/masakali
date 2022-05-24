@@ -1,6 +1,12 @@
 //require('dotenv').config({ path: './.env' });
 const bodyParser = require('body-parser');
-const stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
+let stripe;
+if (process.env.NODE_ENV !== 'production') {
+  stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
+} else {
+  stripe = require('stripe')(process.env.STRIPE_LIVE_KEY);
+}
+
 const express = require('express');
 const router = express.Router();
 
@@ -15,7 +21,6 @@ router.post('/create-payment-intent', bodyParser.json(), async (req, res) => {
     });
     res.status(200).json({ clientSecret: paymentIntent.client_secret });
   } catch (err) {
-    console.log(process.env.STRIPE_TEST_KEY);
     console.log({ err });
     res.status(422).send({ error: err.message });
   }

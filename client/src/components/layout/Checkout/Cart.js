@@ -215,7 +215,7 @@ const Cart = ({
           </div>
         )}
         <div className='row'>
-          <p>
+          <p className='subtext'>
             Having troubles with checkout? Contact us at{' '}
             <a href='mailto:admin@masakaliretreat.com'>
               admin@masakaliretreat.com

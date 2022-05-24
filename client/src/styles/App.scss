@@ -1550,6 +1550,11 @@ $button-active-blue: #1669f2;
     }
   }
 
+  .subtext {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
   .cart-details {
     display: flex;
     flex-direction: column;

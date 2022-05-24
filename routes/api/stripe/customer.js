@@ -1,6 +1,12 @@
 require('dotenv').config({ path: './.env' });
 const bodyParser = require('body-parser');
-const stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
+let stripe;
+if (process.env.NODE_ENV !== 'production') {
+  stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
+} else {
+  stripe = require('stripe')(process.env.STRIPE_LIVE_KEY);
+}
+
 const express = require('express');
 const router = express.Router();
 
