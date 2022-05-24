@@ -27,7 +27,11 @@ router.post('/create-payment-intent', bodyParser.json(), async (req, res) => {
 });
 
 router.get('/config', async (req, res) => {
-  res.send({ publishableKey: process.env.STRIPE_PUBLISHABLE_KEY });
+  if (process.env.NODE_ENV !== 'production') {
+    res.send({ publishableKey: process.env.STRIPE_PUBLISHABLE_KEY });
+  } else {
+    res.send({ publishableKey: process.env.STRIPE_PUBLISHABLE_LIVE_KEY });
+  }
 });
 
 module.exports = router;
