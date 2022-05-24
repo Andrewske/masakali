@@ -7,6 +7,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
+const Error = require('../../models/Error');
 
 // @route   POST api/users
 // @desc    Register User
@@ -92,6 +93,24 @@ router.post('/update', express.json(), async (req, res) => {
     }
 
     res.status(200).json(user);
+  } catch (err) {
+    console.error({ err });
+    res.status(500).send({ err });
+  }
+});
+
+router.post('/error', express.json(), async (req, res) => {
+  let error = req.body?.error || null;
+  let userId = req.body?.userId || null;
+
+  try {
+    const err = new Error({
+      error,
+      userId,
+    });
+    err.save();
+    console.log(err);
+    res.status(200).send(err);
   } catch (err) {
     console.error({ err });
     res.status(500).send({ err });

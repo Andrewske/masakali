@@ -13,6 +13,7 @@ import {
   createReservation,
   updateUser,
   updateReservation,
+  createError,
 } from '../../../actions/user';
 import { serverUrl } from '../../../config';
 import {
@@ -33,6 +34,7 @@ const Cart = ({
   updateUser,
   updateReservation,
   makeReservation,
+  createError,
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState(null);
@@ -59,7 +61,7 @@ const Cart = ({
       console.log('Cart User', user);
       const config = {
         params: {
-          user: user,
+          email: user?.email,
         },
         withCredentials: true,
         headers: {
@@ -175,6 +177,7 @@ const Cart = ({
       history.push('/success');
     } catch (err) {
       console.error({ location: 'handleSubmit', err });
+      createError({ error: err, userId: user._id });
       setCheckoutError(err.message);
     }
   };
@@ -247,4 +250,5 @@ export default connect(mapStateToProps, {
   updateReservation,
   makeReservation,
   updateUser,
+  createError,
 })(Cart);

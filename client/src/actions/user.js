@@ -50,3 +50,12 @@ export const updateReservation = (data) => async (dispatch) => {
     console.error({ err });
   }
 };
+
+export const createError = (data) => async (dispatch) => {
+  try {
+    let res = await axios.post(serverUrl + '/users/error', data);
+    return;
+  } catch (err) {
+    console.error({ location: 'createError', err });
+  }
+};
