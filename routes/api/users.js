@@ -102,6 +102,7 @@ router.post('/update', express.json(), async (req, res) => {
 router.post('/error', express.json(), async (req, res) => {
   let error = req.body?.error || null;
   let userId = req.body?.userId || null;
+  console.log(req.body);
 
   try {
     const err = new Error({
