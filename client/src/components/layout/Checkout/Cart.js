@@ -25,6 +25,8 @@ import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import { percDiscount } from '../../../config';
 import { makeReservation } from '../../../actions/smoobu';
 
+//import {} from 'dotenv/config';
+
 const Cart = ({
   isAuthenticated,
   loadUser,
@@ -87,6 +89,14 @@ const Cart = ({
     e.error ? setCheckoutError(e.error.message) : setCheckoutError();
   };
 
+  const discountPrice = (e) => {
+    let code = process.env.REACT_APP_ADMIN_TEST_CODE;
+    if (e.target?.value == code) {
+      console.log('discount added');
+      setPrice(1.2); // finalPrice = 100
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     e.persist();
@@ -125,18 +135,16 @@ const Cart = ({
 
       if (e.target?.discount?.value === process.env.ADMIN_TEST_CODE) {
         console.log('discount added');
-        finalPrice = 100;
+        setPrice(100); // finalPrice = 100
       }
 
       const { clientSecret, paymentIntentError } = await createPaymentIntent({
-        price: finalPrice,
+        price: price,
       });
 
       if (paymentIntentError) {
         throw paymentIntentError;
       }
-
-      console.log({ clientSecret, paymentIntentError });
 
       // Create the Payment Method Request
       const { paymentMethodReqId, paymentMethodReqError } =
@@ -198,7 +206,11 @@ const Cart = ({
       )}
       <span className=''>
         {isAuthenticated ? (
-          <form className='row' onSubmit={handleSubmit}>
+          <form
+            className='row'
+            onSubmit={handleSubmit}
+            onChange={(e) => discountPrice(e)}
+          >
             <BillingDetails
               user={user}
               isDefault={isDefault}
