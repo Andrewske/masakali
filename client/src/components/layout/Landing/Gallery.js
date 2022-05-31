@@ -54,11 +54,6 @@ const amenities = [
     path: '/Home_Gallery/home-gallery-surya-side_S-U2y7f90Z.jpg',
   },
   {
-    key: 'suzanne-yoge',
-    title: 'Suzanne Yoga',
-    path: '/Home_Gallery/home-gallery-yoga_zeQu8yjzv.jpg',
-  },
-  {
     key: 'surya-bathroom',
     title: 'Surya Bathroom',
     path: '/Home_Gallery/home-gallery-bathroom_EMae8Viz4.jpg',
@@ -110,10 +105,10 @@ const Gallery = ({ width }) => {
           // customTransition='all .5'
           transitionDuration={2000}
           containerClass='gallery-container'
-          //removeArrowOnDeviceType={['tablet', 'mobile']}
-          // deviceType={this.props.deviceType}
-          // dotListClass='carousel-dot-list'
-          //itemClass='carousel-item-padding-40-px'
+        //removeArrowOnDeviceType={['tablet', 'mobile']}
+        // deviceType={this.props.deviceType}
+        // dotListClass='carousel-dot-list'
+        //itemClass='carousel-item-padding-40-px'
         >
           {amenities.map((i) => {
             return (

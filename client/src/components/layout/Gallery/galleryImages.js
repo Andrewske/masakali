@@ -1,15 +1,15 @@
 export const chandraImages = [
-  { key: 0, path: '/Gallery/Completed/Chandra/chandra_bed_left_JVdgUKVR1Fp3.jpg'},
+  { key: 0, path: '/Gallery/Completed/Chandra/chandra_bed_left_JVdgUKVR1Fp3.jpg' },
   { key: 1, path: '/Gallery/Completed/Chandra/chandra_desk_Qnze0psowuT.jpg' },
-  { key: 2, path: '/Gallery/Completed/Chandra/chandra_bathroom_1_QhGUo7tBsnd.jpg'},
-  { key: 3, path: '/Gallery/Completed/Chandra/chandra_bath_HMF3on06L.jpg'},
-  { key: 4, path: '/Gallery/Completed/Chandra/chandra_kitchen_XUypI8FC-vq1.jpg'},
+  { key: 2, path: '/Gallery/Completed/Chandra/chandra_bathroom_1_QhGUo7tBsnd.jpg' },
+  { key: 3, path: '/Gallery/Completed/Chandra/chandra_bath_HMF3on06L.jpg' },
+  { key: 4, path: '/Gallery/Completed/Chandra/chandra_kitchen_XUypI8FC-vq1.jpg' },
   { key: 5, path: '/Gallery/Completed/Chandra/navita_chair_orU5w7bYa.jpg' },
-  { key: 6, path: '/Gallery/Completed/Chandra/pool_view_night_S4OA-hbOB.jpg'},
+  { key: 6, path: '/Gallery/Completed/Chandra/pool_view_night_S4OA-hbOB.jpg' },
   { key: 7, path: '/Gallery/Completed/Chandra/sylvia_door_TVmxJMIw_Ij.jpg' },
-  { key: 8, path: '/Gallery/Completed/Chandra/navita_puppy_CMK4i2imI.jpg'},
-  { key: 9, path: '/Gallery/Completed/Chandra/sylvia_chair_IzyR69YoNo.jpg'},
-  { key: 10, path: '/Gallery/Completed/Chandra/chandra_walkway_Ll7TY_QIKKR.jpg'},
+  //{ key: 8, path: '/Gallery/Completed/Chandra/navita_puppy_CMK4i2imI.jpg'},
+  { key: 8, path: '/Gallery/Completed/Chandra/sylvia_chair_IzyR69YoNo.jpg' },
+  { key: 9, path: '/Gallery/Completed/Chandra/chandra_walkway_Ll7TY_QIKKR.jpg' },
 ];
 
 export const chandraConstructionImages = [
@@ -95,7 +95,7 @@ export const jalaImages = [
 ];
 
 export const jalaConstructionImages = [
-  
+
   { key: 0, path: '/Gallery/under-construction/Jala/9_asv647_QfR.jpg' },
   { key: 1, path: '/Gallery/under-construction/Jala/1_F1SJLpvViM.jpg' },
   { key: 2, path: '/Gallery/under-construction/Jala/2_YIeWz0J_pw.jpg' },
@@ -109,7 +109,7 @@ export const jalaConstructionImages = [
 
 
 export const yogaShalaConstructionImages = [
-  {key: 0, path: '/Gallery/under-construction/yoga_shala/yoga_shala_1_Wsr0CHhQn.jpg'},
-  {key: 1, path: '/Gallery/under-construction/yoga_shala/yoga_shala_2_quafLsm7k.jpg'},
-  {key: 2, path: '/Gallery/under-construction/yoga_shala/yoga_shala_3_yoOApzTq9.jpg'}
+  { key: 0, path: '/Gallery/under-construction/yoga_shala/yoga_shala_1_Wsr0CHhQn.jpg' },
+  { key: 1, path: '/Gallery/under-construction/yoga_shala/yoga_shala_2_quafLsm7k.jpg' },
+  { key: 2, path: '/Gallery/under-construction/yoga_shala/yoga_shala_3_yoOApzTq9.jpg' }
 ]
