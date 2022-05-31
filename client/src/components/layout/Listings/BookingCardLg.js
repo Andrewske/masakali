@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-dates';
-import { START_DATE } from 'react-dates/constants';
+import { START_DATE, HORIZONTAL_ORIENTATION, VERTICAL_ORIENTATION } from 'react-dates/constants';
 import GuestsDropdown from './GuestsDropdown';
 import moment from 'moment';
 
@@ -39,7 +39,8 @@ const BookingCardLg = ({
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
           initialVisibleMonth={() => moment()}
           showClearDates={true}
-          orientation={'vertical'}
+          orientation={HORIZONTAL_ORIENTATION}
+          numberOfMonths={1}
           isDayBlocked={(day) => isBlocked(day)}
           renderDayContents={(day) => renderDayContents(day)}
         />

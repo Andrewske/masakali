@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { DayPickerRangeController } from 'react-dates';
 import { START_DATE } from 'react-dates/constants';
+//import { isInclusivelyAfterDay } from 'react-dates/src/utils/isInclusivelyAfterDay'
 import moment from 'moment';
 import GuestsDropdown from './GuestsDropdown';
 
@@ -20,6 +21,28 @@ const BookingCardSm = ({
 }) => {
   const [focusedInput, setFocusedInput] = useState(null);
   const [datePickerActive, setDatePickerActive] = useState(false);
+
+  const isBeforeDay = (a, b) => {
+    if (!moment.isMoment(a) || !moment.isMoment(b)) return false;
+
+    const aYear = a.year();
+    const aMonth = a.month();
+
+    const bYear = b.year();
+    const bMonth = b.month();
+
+    const isSameYear = aYear === bYear;
+    const isSameMonth = aMonth === bMonth;
+
+    if (isSameYear && isSameMonth) return a.date() < b.date();
+    if (isSameYear) return aMonth < bMonth;
+    return aYear < bYear;
+  }
+
+  const isInclusivelyAfterDay = (a, b) => {
+    if (!moment.isMoment(a) || !moment.isMoment(b)) return false;
+    return !isBeforeDay(a, b);
+  }
 
   return (
     <div className='booking-card-sm'>
@@ -78,6 +101,7 @@ const BookingCardSm = ({
           navNext={<span className='load-more'>Load More Months</span>}
           isDayBlocked={(day) => isBlocked(day)}
           renderDayContents={(day) => renderDayContents(day)}
+          isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
         />
       </span>
     </div>
