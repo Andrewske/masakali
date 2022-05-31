@@ -22,7 +22,7 @@ router.get('/rates', async (req, res) => {
   try {
     reqConfig.params = {
       start_date: startDate || moment().format('YYYY-MM-D'),
-      end_date: endDate || moment().add(1, 'years').format('YYYY-MM-D'),
+      end_date: endDate || moment().add(2, 'years').format('YYYY-MM-D'),
       apartments: [suryaId, chandraId, jalaId],
     };
 

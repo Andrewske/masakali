@@ -56,6 +56,7 @@ const Chandra = ({ loadVillas, chandra, getVillaRates, currency }) => {
     imageSelection,
     blockedDates,
     checkInDates,
+    setReducedPrice
   };
 
   useEffect(() => {

@@ -14,7 +14,7 @@ import { getBlockedDates } from '../../../actions/smoobu';
 
 const percDiscount = 0.1;
 
-const Template = ({ listing, createReservation, handleSmoobu }) => {
+const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
   let {
     name,
     title,
@@ -24,6 +24,7 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
     imageSelection,
     blockedDates,
     checkInDates,
+    setReducedPrice
   } = listing;
   const [fullScreenGalleryOpen, setFullScreenGalleryOpen] = useState(false);
   const [startDate, setStartDate] = useState(null);
@@ -55,7 +56,7 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
         return (
           moment(day).isBefore(moment(startDate).subtract(1, 'days')) ||
           moment(day).format('YYYY-MM-DD') >=
-            afterDates.sort((a, b) => new Date(a) - new Date(b))[0]
+          afterDates.sort((a, b) => new Date(a) - new Date(b))[0]
         );
       }
     }
@@ -77,11 +78,17 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
 
     if (startDate && !endDate) {
       setNumDays('Select check-out date');
+
     }
 
     if (startDate && endDate) {
       let days = (endDate - startDate) / (60 * 60 * 24 * 1000);
       setNumDays(days);
+      let price =
+        villas[name].rates[moment(startDate).utc().format('YYYY-MM-D')]?.price || null;
+      if (price) {
+        setReducedPrice(villas[name].rates[moment(startDate).utc().format('YYYY-MM-D')]?.price);
+      }
     }
   };
 
@@ -105,9 +112,8 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
 
   return (
     <div
-      className={`container listing-page ${
-        fullScreenGalleryOpen ? 'hidden' : ''
-      }`}
+      className={`container listing-page ${fullScreenGalleryOpen ? 'hidden' : ''
+        }`}
     >
       <FullScreenGallery
         images={images}
@@ -167,6 +173,10 @@ const Template = ({ listing, createReservation, handleSmoobu }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  villas: state.villas
+})
+
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSmoobu: () => dispatch(getBlockedDates()),
@@ -175,4 +185,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Template);
+export default connect(mapStateToProps, mapDispatchToProps)(Template);

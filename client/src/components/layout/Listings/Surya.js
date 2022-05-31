@@ -54,6 +54,7 @@ const Surya = ({ loadVillas, surya, getVillaRates, currency }) => {
     imageSelection,
     blockedDates,
     checkInDates,
+    setReducedPrice
   };
 
   useEffect(() => {

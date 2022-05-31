@@ -53,6 +53,7 @@ const Jala = ({ loadVillas, jala, getVillaRates, currency }) => {
     imageSelection,
     blockedDates,
     checkInDates,
+    setReducedPrice
   };
 
   useEffect(() => {
