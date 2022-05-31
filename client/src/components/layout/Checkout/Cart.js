@@ -134,7 +134,7 @@ const Cart = ({
       let finalPrice = price * (1 - percDiscount) * numDays * 100;
 
       const { clientSecret, paymentIntentError } = await createPaymentIntent({
-        price: price,
+        price: finalPrice,
       });
 
       if (paymentIntentError) {
