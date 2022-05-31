@@ -131,7 +131,7 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
       <span className='listing-body'>
         <span className='listing-details'>
           <h1>{title}</h1>
-          <p>Tegallalang, Bali, Indonesia</p>
+          <p>Kelusa Payangan, Bali, Indonesia</p>
           <div className='line'></div>
           <p>{description}</p>
           <p>{amount}</p>
