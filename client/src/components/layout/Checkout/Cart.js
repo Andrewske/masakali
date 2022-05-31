@@ -133,11 +133,6 @@ const Cart = ({
       // Create the Payment Intent
       let finalPrice = price * (1 - percDiscount) * numDays * 100;
 
-      if (e.target?.discount?.value === process.env.ADMIN_TEST_CODE) {
-        console.log('discount added');
-        setPrice(100); // finalPrice = 100
-      }
-
       const { clientSecret, paymentIntentError } = await createPaymentIntent({
         price: price,
       });
