@@ -31,7 +31,7 @@ const CountryPicker = ({ country, setRates, setCountry }) => {
       let res = await axios.get(serverUrl + '/currency');
       setRates(res.data);
     };
-    if (!rates) {
+    if (!rates.USD) {
       console.log('no rates');
       getRates();
     }
