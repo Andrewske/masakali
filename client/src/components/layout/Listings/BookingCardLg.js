@@ -43,6 +43,7 @@ const BookingCardLg = ({
           numberOfMonths={1}
           isDayBlocked={(day) => isBlocked(day)}
           renderDayContents={(day) => renderDayContents(day)}
+          maxDate={moment().add(2, 'y')}
         />
         <GuestsDropdown guests={guests} setGuests={setGuests} />
       </div>

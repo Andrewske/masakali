@@ -39,9 +39,21 @@ const BookingCardSm = ({
     return aYear < bYear;
   }
 
-  const isInclusivelyAfterDay = (a, b) => {
+  const isAfterDay = (a, b) => {
     if (!moment.isMoment(a) || !moment.isMoment(b)) return false;
-    return !isBeforeDay(a, b);
+
+    const aYear = a.year();
+    const aMonth = a.month();
+
+    const bYear = b.year();
+    const bMonth = b.month();
+
+    const isSameYear = aYear === bYear;
+    const isSameMonth = aMonth === bMonth;
+
+    if (isSameYear && isSameMonth) return a.date() > b.date();
+    if (isSameYear) return aMonth > bMonth;
+    return aYear > bYear;
   }
 
   return (
@@ -101,7 +113,7 @@ const BookingCardSm = ({
           navNext={<span className='load-more'>Load More Months</span>}
           isDayBlocked={(day) => isBlocked(day)}
           renderDayContents={(day) => renderDayContents(day)}
-          isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
+          isOutsideRange={day => isBeforeDay(day, moment()) || isAfterDay(day, moment().add(2, 'y'))}
         />
       </span>
     </div>
