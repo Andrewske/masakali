@@ -14,7 +14,7 @@ import moment from 'moment';
 import { getBlockedDates } from '../../../actions/smoobu';
 
 const percDiscount = 0.1;
-const taxRate = .085;
+const taxRate = 0.085;
 
 const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
   let {
@@ -26,7 +26,7 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
     imageSelection,
     blockedDates,
     checkInDates,
-    setReducedPrice
+    setReducedPrice,
   } = listing;
   const [fullScreenGalleryOpen, setFullScreenGalleryOpen] = useState(false);
   const [startDate, setStartDate] = useState(null);
@@ -40,12 +40,14 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
     imageSelection.map((a) => a.key === i)
   );
 
-
   const discount = useCurrencyFormat(calcDiscount({ price, numDays }));
   const amount = useCurrencyFormat(price);
-  const taxes = useCurrencyFormat(calcTaxes({ price, numDays }))
+  const taxes = useCurrencyFormat(calcTaxes({ price, numDays }));
   const total = useCurrencyFormat(calcTotal({ price, numDays }));
 
+  useEffect(() => {
+    console.log({ discount, amount, taxes, total, price });
+  }, [discount, amount, taxes, total, price]);
 
   useEffect(() => {
     handleSmoobu();
@@ -60,7 +62,7 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
         return (
           moment(day).isBefore(moment(startDate).subtract(1, 'days')) ||
           moment(day).format('YYYY-MM-DD') >=
-          afterDates.sort((a, b) => new Date(a) - new Date(b))[0]
+            afterDates.sort((a, b) => new Date(a) - new Date(b))[0]
         );
       }
     }
@@ -82,16 +84,18 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
 
     if (startDate && !endDate) {
       setNumDays('Select check-out date');
-
     }
 
     if (startDate && endDate) {
       let days = (endDate - startDate) / (60 * 60 * 24 * 1000);
       setNumDays(days);
       let price =
-        villas[name].rates[moment(startDate).utc().format('YYYY-MM-D')]?.price || null;
+        villas[name].rates[moment(startDate).utc().format('YYYY-MM-D')]
+          ?.price || null;
       if (price) {
-        setReducedPrice(villas[name].rates[moment(startDate).utc().format('YYYY-MM-D')]?.price);
+        setReducedPrice(
+          villas[name].rates[moment(startDate).utc().format('YYYY-MM-D')]?.price
+        );
       }
     }
   };
@@ -119,8 +123,9 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
 
   return (
     <div
-      className={`container listing-page ${fullScreenGalleryOpen ? 'hidden' : ''
-        }`}
+      className={`container listing-page ${
+        fullScreenGalleryOpen ? 'hidden' : ''
+      }`}
     >
       <FullScreenGallery
         images={images}
@@ -183,8 +188,8 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
 };
 
 const mapStateToProps = (state) => ({
-  villas: state.villas
-})
+  villas: state.villas,
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {
