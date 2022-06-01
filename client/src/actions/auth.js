@@ -20,6 +20,7 @@ export const loadUser =
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
+    console.log('Loading User');
     try {
       const url = userId
         ? serverUrl + `/auth?userId=${userId}`
@@ -110,3 +111,27 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });
 };
+
+export const resetPassword =
+  ({ userId, email, password }) =>
+  async (dispatch) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const body = JSON.stringify({ userId, email, password });
+    try {
+      const {
+        data: { message },
+      } = await axios.post(serverUrl + '/auth/reset-password', body, config);
+
+      console.log(message);
+
+      return message;
+    } catch (err) {
+      console.error({ location: 'resetPassword', err });
+      return;
+    }
+  };

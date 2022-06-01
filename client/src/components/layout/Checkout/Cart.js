@@ -4,7 +4,7 @@ import BillingDetails from '../../forms/BillingDetails';
 import CartDetails from './CartDetails';
 import CheckoutError from './CheckoutError';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Login from '../../auth/Login';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useEffect } from 'react';
@@ -42,7 +42,7 @@ const Cart = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState(null);
   const [isDefault, setIsDefault] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -183,7 +183,7 @@ const Cart = ({
       //console.log({ stripeId: paymentIntent.id });
 
       setIsProcessing(false);
-      history.push('/success');
+      navigate('/success');
     } catch (err) {
       console.error({ location: 'handleSubmit', err });
       createError({ error: err, userId: user._id });

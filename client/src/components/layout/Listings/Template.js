@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Gallery from './Gallery';
 import FullScreenGallery from './FullScreenGallery';
 import BookingCardLg from './BookingCardLg';
@@ -34,7 +34,7 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
   const [numDays, setNumDays] = useState(0);
   const [guests, setGuests] = useState(1);
   const point = useBreakpoint();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const imagePaths = images.filter((i) =>
     imageSelection.map((a) => a.key === i)
@@ -109,7 +109,7 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
       guests,
       img: imagePaths[0],
     });
-    history.push('/cart');
+    navigate('/cart');
   };
 
   const clearDates = () => {

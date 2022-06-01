@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -14,7 +14,7 @@ import Amenities from './components/layout/Landing/Amenities';
 
 import Sidebar from './components/layout/Sidebar/Sidebar';
 import Dashboard from './components/dashboard/Dashboard';
-import PrivateRoute from './components/routing/PrivateRoute';
+// import PrivateRoute from './components/routing/PrivateRoute';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store';
@@ -47,6 +47,9 @@ import CountryPicker from './components/layout/CountryPicker';
 // New Landing Page
 import Home from './components/layout/Home/Home'
 
+// Auth Pages
+import ResetPassword from './components/auth/ResetPassword'
+
 //imageKitId = 4kpopox69zpcd
 
 if (localStorage.token) {
@@ -62,40 +65,41 @@ const App = () => {
           <CountryPicker />
           <Fragment>
             <Sidebar />
-            <Switch>
-              <Route exact path='/' component={Landing} />
-              <Route exact path='/investors' component={Financials} />
-              <Route exact path='/gallery' component={Gallery} />
-              <Route exact path='/amenities' component={Amenities} />
+            <Routes>
+              <Route exact path='/' element={<Landing />} />
+              <Route exact path='/investors' element={<Financials />} />
+              <Route exact path='/gallery' element={<Gallery />} />
+              <Route exact path='/amenities' element={<Amenities />} />
               <Route
                 exact
                 path='/retreats-and-workshops'
-                component={Retreats}
+                element={<Retreats />}
               />
-              <Route exact path='/sound-healing' component={SoundHealing} />
-              <Route exact path='/yoga-teacher-training' component={YTT} />
-              <Route exact path='/cafe-juice-bar' component={CafeJuiceBar} />
-              <Route exact path='/spa' component={Spa} />
+              <Route exact path='/sound-healing' element={<SoundHealing />} />
+              <Route exact path='/yoga-teacher-training' element={<YTT />} />
+              <Route exact path='/cafe-juice-bar' element={<CafeJuiceBar />} />
+              <Route exact path='/spa' element={<Spa />} />
               <Route
                 exact
                 path='/sustainable-development'
-                component={Sustainable}
+                element={<Sustainable />}
               />
               <Route
                 exact
                 path='/organic-beauty-products'
-                component={OrganicProducts}
+                element={<OrganicProducts />}
               />
-              <Route exact path='/foundation' component={Foundation} />
-              <Route exact path='/organic-farm' component={OrganicFarm} />
-              <Route exact path='/listings/surya' component={Surya} />
-              <Route exact path='/listings/chandra' component={Chandra} />
-              <Route exact path='/listings/jala' component={Jala} />
-              <Route exact path='/cart' component={Cart} />
-              <Route exact path='/success' component={Success} />
-              <Route exact path='/home' component={Home} />
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
-            </Switch>
+              <Route exact path='/foundation' element={<Foundation />} />
+              <Route exact path='/organic-farm' element={<OrganicFarm />} />
+              <Route exact path='/listings/surya' element={<Surya />} />
+              <Route exact path='/listings/chandra' element={<Chandra />} />
+              <Route exact path='/listings/jala' element={<Jala />} />
+              <Route exact path='/cart' element={<Cart />} />
+              <Route exact path='/success' element={<Success />} />
+              <Route exact path='/home' element={<Home />} />
+              <Route exact path='/reset-password' element={<ResetPassword />} />
+              {/* <PrivateRoute exact path='/dashboard' element={<Dashboard />} /> */}
+            </Routes>
             <Footer />
           </Fragment>
         </PersistGate>

@@ -122,6 +122,12 @@ const SidebarContent = ({ isOpen, handleClick, logout }) => {
       </Link>
     )
   );
+
+  const handleLogoutClick = () => {
+    handleClick();
+    logout();
+  };
+
   const renderLinks = (isOpen) => {
     return (
       <Transition in={isOpen} timeout={duration} nodeRef={nodeRef}>
@@ -137,7 +143,7 @@ const SidebarContent = ({ isOpen, handleClick, logout }) => {
               </Link>
             </ExtLink>
             <ExtLink>
-              <span className='sidebar-link' onClick={() => logout()}>
+              <span className='sidebar-link' onClick={handleLogoutClick}>
                 Logout
               </span>
             </ExtLink>

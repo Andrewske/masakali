@@ -5,6 +5,8 @@ import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 const EmailRegister = ({ setAlert, setToggle, register }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -57,7 +59,7 @@ const EmailRegister = ({ setAlert, setToggle, register }) => {
         required
       />
       <input
-        type='password'
+        type={showPassword ? 'text' : 'password'}
         placeholder='Password'
         name='password'
         minLength='6'
@@ -66,13 +68,20 @@ const EmailRegister = ({ setAlert, setToggle, register }) => {
         onChange={(e) => onChange(e)}
       />
       <input
-        type='password'
+        type={showPassword ? 'text' : 'password'}
         placeholder='Confirm Password'
         name='password2'
         minLength='6'
         value={password2}
         onChange={(e) => onChange(e)}
       />
+      <span
+        className='show-password'
+        onClick={() => setShowPassword(!showPassword)}
+      >
+        <i className='icon-view-show'></i>
+        <p className='small'>Show Password</p>
+      </span>
       <span className='btn' onClick={handleSubmit}>
         Register
       </span>

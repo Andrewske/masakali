@@ -71,3 +71,7 @@
 .icon-instagram:before {
   content: '\ea92';
 }
+
+.icon-view-show:before {
+  content: '\e900';
+}

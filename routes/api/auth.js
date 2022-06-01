@@ -28,13 +28,11 @@ router.get('/', auth, async (req, res) => {
     let userId = req.user.id;
     let user = await User.findById(userId).select('-password').lean();
     const reservation = await Reservation.find({ userId: userId });
-    console.log({ user });
 
     if (reservation) {
       console.log('reservation');
       user.reservations = { past: reservation };
     }
-    console.log({ user });
 
     res.json(user);
   } catch (err) {
@@ -99,6 +97,29 @@ router.post(
     }
   }
 );
+
+// @route   GET api/auth
+// @desc    Test route
+// @access  Public
+
+router.post('/reset-password', express.json(), async (req, res) => {
+  let { userId, password } = req.body;
+
+  try {
+    let user = await User.findOne({ _id: userId });
+
+    const salt = await bcrypt.genSalt(10);
+
+    user.password = await bcrypt.hash(password, salt);
+
+    console.log(user);
+
+    await user.save();
+    return res.status(200).json({ message: 'Success' });
+  } catch (err) {
+    console.error({ location: '/reset-password', message: err.message });
+  }
+});
 
 router.get('/login/success', express.json(), (req, res) => {
   if (req.user) {

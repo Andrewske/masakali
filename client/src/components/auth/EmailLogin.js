@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
+import Alert from '../layout/Alert';
+import { sendPasswordReset } from '../../actions/sendgrid';
+import { setAlert } from '../../actions/alert';
 
-const EmailLogin = ({ login, setToggle }) => {
+const EmailLogin = ({ login, setToggle, setAlert }) => {
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -21,6 +25,30 @@ const EmailLogin = ({ login, setToggle }) => {
     login(email, password);
   };
 
+  const emailValidation = () => {
+    const regex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (!email || regex.test(email) === false) {
+      return false;
+    }
+    return true;
+  };
+
+  const resetPassword = async () => {
+    if (!emailValidation()) {
+      setAlert('Please give a valid email', 'danger');
+      return;
+    }
+
+    let { error } = await sendPasswordReset({ email });
+
+    if (error) {
+      setAlert(error, 'danger');
+    } else {
+      setAlert('Please check your email for reset link', 'danger');
+    }
+  };
+
   return (
     <form className='email-login'>
       <input
@@ -32,7 +60,7 @@ const EmailLogin = ({ login, setToggle }) => {
         required
       />
       <input
-        type='password'
+        type={showPassword ? 'text' : 'password'}
         placeholder='Password'
         name='password'
         minLength='6'
@@ -40,9 +68,22 @@ const EmailLogin = ({ login, setToggle }) => {
         autoComplete='current-password'
         onChange={(e) => onChange(e)}
       />
+      <span
+        className='show-password'
+        onClick={() => setShowPassword(!showPassword)}
+      >
+        <i className='icon-view-show'></i>
+        <p className='small'>Show Password</p>
+      </span>
       <span onClick={handleSubmit} className='btn'>
         Login
       </span>
+      <p className='sub-text'>
+        Forgot your password?{' '}
+        <span className='link' onClick={resetPassword}>
+          Reset Password
+        </span>
+      </p>
       <p className='sub-text'>
         Don't have an account?{' '}
         <span className='link' onClick={() => setToggle('register')}>
@@ -53,4 +94,4 @@ const EmailLogin = ({ login, setToggle }) => {
   );
 };
 
-export default connect(null, { login })(EmailLogin);
+export default connect(null, { login, setAlert })(EmailLogin);
