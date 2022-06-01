@@ -14,6 +14,12 @@ const useCurrencyFormat = (amount = null) => {
     if (amount && country) {
       setTotal(formatter.format(amount * country.conversion));
     }
+
+    console.log({
+      amount,
+      country,
+      format: formatter.format(amount * country.conversion),
+    });
   }, [amount, country, formatter]);
 
   return total;
