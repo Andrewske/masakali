@@ -107,6 +107,8 @@ const Cart = ({
     let firstName = e.target.firstName.value;
     let lastName = e.target.lastName.value;
 
+    console.log({ country: e.target.country.value })
+
     const billingDetails = {
       name: firstName + ' ' + lastName,
       email: e.target.email.value,
@@ -137,6 +139,8 @@ const Cart = ({
         price: finalPrice,
       });
 
+      console.log({ clientSecret, paymentIntentError })
+
       if (paymentIntentError) {
         throw paymentIntentError;
       }
@@ -145,6 +149,7 @@ const Cart = ({
       const { paymentMethodReqId, paymentMethodReqError } =
         await createPaymentMethodReq({ stripe, cardElement, billingDetails });
 
+      console.log({ paymentMethodReqError })
       if (paymentMethodReqError) {
         throw paymentMethodReqError;
       }

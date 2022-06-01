@@ -1657,6 +1657,19 @@ $button-active-blue: #1669f2;
       }
     }
 
+    .country {
+      font-size: 1rem;
+      width: 100%;
+      padding: 11px 15px 11px 8px;
+      color: black;
+      background-color: transparent;
+      animation: 1ms void-animation-out;
+      border: none;
+      &::placeholder {
+        color: $light-purple-5;
+      }
+    }
+
     .error {
       font-size: 0.75rem;
       color: var(--danger-color);

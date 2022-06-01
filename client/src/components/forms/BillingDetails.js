@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import FormField from './FormField';
+import CountrySelector from './CountrySelector';
+
 
 const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
+
+
   return (
     <>
       <FormField
@@ -52,14 +56,15 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
         initialValue={user?.address?.state}
         required
       />
-      <FormField
+      {/* <FormField
         name='country'
         label='Country'
         type='text'
         placeholder='US'
         initialValue={user?.address?.country}
         required
-      />
+      /> */}
+      <CountrySelector initialValue={user?.address?.country} />
       <FormField
         name='zip'
         label='ZIP'
@@ -74,8 +79,8 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
           label='discount'
           type='text'
           placeholder='code?'
-          //initialValue={user?.address?.postal_code}
-          //required
+        //initialValue={user?.address?.postal_code}
+        //required
         />
       )}
       <div className='form-field-container'>

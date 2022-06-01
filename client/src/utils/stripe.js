@@ -2,7 +2,6 @@ import axios from 'axios';
 import { serverUrl } from '../config';
 
 export const createPaymentIntent = async ({ price }) => {
-  console.log('this is happening', price);
   try {
     const {
       data: { error: paymentIntentError, clientSecret },
@@ -22,21 +21,17 @@ export const createPaymentMethodReq = async ({
   cardElement,
   billingDetails,
 }) => {
-  try {
-    const {
-      paymentMethod: { id: paymentMethodReqId },
-      error: paymentMethodReqError,
-    } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-      billing_details: billingDetails,
-    });
+  const data = await stripe.createPaymentMethod({
+    type: 'card',
+    card: cardElement,
+    billing_details: billingDetails,
+  });
 
-    return { paymentMethodReqId, paymentMethodReqError };
-  } catch (err) {
-    console.error({ location: 'createPaymentMethodReq', err });
-    return { paymentMethodReqError: err };
-  }
+  let paymentMethodReqId = data?.paymentMethod?.id || null
+  let paymentMethodReqError = data?.error || null
+
+
+  return { paymentMethodReqId, paymentMethodReqError };
 };
 
 export const confirmCardPayment = async ({
