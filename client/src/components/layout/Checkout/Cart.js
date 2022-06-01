@@ -24,6 +24,7 @@ import {
 import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import { percDiscount } from '../../../config';
 import { makeReservation } from '../../../actions/smoobu';
+import { compareSync } from 'bcryptjs';
 
 //import {} from 'dotenv/config';
 
@@ -51,12 +52,12 @@ const Cart = ({
 
   useEffect(() => {
     if (reservations?.new) {
-      setPrice(reservations.new.price);
+      setPrice(reservations.new.total);
       setNumDays(reservations.new.numDays);
     }
   }, [reservations]);
 
-  let total = useCurrencyFormat(price * (1 - percDiscount) * numDays);
+  let total = useCurrencyFormat(price);
 
   useEffect(() => {
     async function loginSuccess() {
@@ -133,7 +134,7 @@ const Cart = ({
 
     try {
       // Create the Payment Intent
-      let finalPrice = price * (1 - percDiscount) * numDays * 100;
+      let finalPrice = price * 100;
 
       const { clientSecret, paymentIntentError } = await createPaymentIntent({
         price: finalPrice,

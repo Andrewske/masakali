@@ -14,31 +14,34 @@ export const updateUser = (data) => async (dispatch) => {
 export const createReservation =
   ({
     userId,
-    reservation: { startDate, endDate, name, price, numDays, guests },
+    reservation: { startDate, endDate, name, amount, discount, taxes, total, numDays, guests },
   }) =>
-  async (dispatch) => {
-    let data = {
-      startDate,
-      endDate,
-      name,
-      amount: price * numDays * (1 - percDiscount),
-      guests,
-      source: 'website',
-      userId,
+    async (dispatch) => {
+      let data = {
+        startDate,
+        endDate,
+        name,
+        amount,
+        discount,
+        taxes,
+        total,
+        guests,
+        source: 'website',
+        userId,
+      };
+
+      try {
+        let res = await axios.post(serverUrl + '/reservations/add', data);
+        dispatch({
+          type: 'RESERVATION_COMPLETE',
+          payload: res.data,
+        });
+
+        return { reservationId: res.data._id };
+      } catch (err) {
+        console.error({ err });
+      }
     };
-
-    try {
-      let res = await axios.post(serverUrl + '/reservations/add', data);
-      dispatch({
-        type: 'RESERVATION_COMPLETE',
-        payload: res.data,
-      });
-
-      return { reservationId: res.data._id };
-    } catch (err) {
-      console.error({ err });
-    }
-  };
 
 export const updateReservation = (data) => async (dispatch) => {
   console.log('update reservation');

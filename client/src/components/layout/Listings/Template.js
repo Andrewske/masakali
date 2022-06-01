@@ -8,11 +8,13 @@ import BookingCardSm from './BookingCardSm';
 import useBreakpoint from '../../../utils/useBreakpoint';
 import useFormatCurrency from '../../../utils/useFormatCurrency';
 import useCurrencyFormat from '../../../utils/useCurrencyFormat';
+import { calcDiscount, calcTaxes, calcTotal } from '../../../utils/getPrices';
 import moment from 'moment';
 
 import { getBlockedDates } from '../../../actions/smoobu';
 
 const percDiscount = 0.1;
+const taxRate = .085;
 
 const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
   let {
@@ -38,10 +40,12 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
     imageSelection.map((a) => a.key === i)
   );
 
-  //const { total, discount } = useFormatCurrency(price, numDays);
-  const discount = useCurrencyFormat(price * percDiscount * numDays);
-  const total = useCurrencyFormat(price * (1 - percDiscount) * numDays);
+
+  const discount = useCurrencyFormat(calcDiscount({ price, numDays }));
   const amount = useCurrencyFormat(price);
+  const taxes = useCurrencyFormat(calcTaxes({ price, numDays }))
+  const total = useCurrencyFormat(calcTotal({ price, numDays }));
+
 
   useEffect(() => {
     handleSmoobu();
@@ -97,7 +101,10 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
       startDate: moment(startDate).format('YYYY-MM-DD'),
       endDate: moment(endDate).format('YYYY-MM-DD'),
       numDays,
-      price,
+      amount: price,
+      discount: calcDiscount({ price, numDays }),
+      taxes: calcTaxes({ price, numDays }),
+      total: calcTotal({ price, numDays }),
       name,
       guests,
       img: imagePaths[0],
@@ -141,6 +148,7 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
             price={amount}
             total={total}
             discount={discount}
+            taxes={taxes}
             startDate={startDate}
             endDate={endDate}
             numDays={numDays}
@@ -156,6 +164,7 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
             price={amount}
             total={total}
             discount={discount}
+            taxes={taxes}
             startDate={startDate}
             endDate={endDate}
             numDays={numDays}

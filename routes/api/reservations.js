@@ -31,6 +31,9 @@ router.post('/add', express.json(), async (req, res) => {
       endDate,
       name,
       amount,
+      discount,
+      taxes,
+      total,
       guests,
       source = null,
       userId = null,
@@ -38,7 +41,7 @@ router.post('/add', express.json(), async (req, res) => {
 
     name = name.toLowerCase();
 
-    const data = { startDate, endDate, name, amount, source, userId, guests };
+    const data = { startDate, endDate, name, amount, discount, taxes, total, source, userId, guests };
 
     let reservation = await new Reservation(data);
 

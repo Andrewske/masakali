@@ -20,6 +20,18 @@ const ReservationSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  discount: {
+    type: Number,
+    required: true,
+  },
+  taxes: {
+    type: Number,
+    required: true,
+  },
+  total: {
+    type: Number,
+    required: true,
+  },
   source: {
     type: String,
   },

@@ -8,6 +8,7 @@ import GuestsDropdown from './GuestsDropdown';
 const BookingCardSm = ({
   price,
   total,
+  taxes,
   startDate,
   endDate,
   numDays,

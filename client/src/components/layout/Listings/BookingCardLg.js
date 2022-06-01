@@ -8,6 +8,7 @@ const BookingCardLg = ({
   price,
   total,
   discount,
+  taxes,
   startDate,
   endDate,
   numDays,
@@ -64,6 +65,10 @@ const BookingCardLg = ({
           <span className='row red'>
             <p>Discount (10%)</p>
             <p>{discount}</p>
+          </span>
+          <span className='row'>
+            <p>Tax</p>
+            <p>{taxes}</p>
           </span>
           <span className='row'>
             <p>Total</p>

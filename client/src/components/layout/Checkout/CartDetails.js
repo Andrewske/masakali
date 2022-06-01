@@ -16,16 +16,16 @@ const CartDetails = ({
   const {
     startDate = null,
     endDate = null,
-    price = 0,
     numDays = 0,
     name,
     guests,
     img = null,
   } = reservation;
 
-  const discount = useCurrencyFormat(price * percDiscount * numDays);
-  const total = useCurrencyFormat(price * (1 - percDiscount) * numDays);
-  const amount = useCurrencyFormat(price);
+  const discount = useCurrencyFormat(reservation.discount);
+  const total = useCurrencyFormat(reservation.total);
+  const amount = useCurrencyFormat(reservation.amount);
+  const taxes = useCurrencyFormat(reservation.taxes);
 
   return (
     <div className='cart-details'>
@@ -53,6 +53,7 @@ const CartDetails = ({
         <p>Total nights: {numDays}</p>
         <p>Price: {amount}/night</p>
         <p>Discount: {discount}</p>
+        <p>Taxes: {taxes}</p>
         <p className='total'>Total: {total}</p>
       </span>
     </div>
