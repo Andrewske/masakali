@@ -44,6 +44,9 @@ import Success from './components/layout/Checkout/Success';
 import Footer from './components/layout/Footer';
 import CountryPicker from './components/layout/CountryPicker';
 
+// New Landing Page
+import Home from './components/layout/Home/Home'
+
 //imageKitId = 4kpopox69zpcd
 
 if (localStorage.token) {
@@ -90,6 +93,7 @@ const App = () => {
               <Route exact path='/listings/jala' component={Jala} />
               <Route exact path='/cart' component={Cart} />
               <Route exact path='/success' component={Success} />
+              <Route exact path='/home' component={Home} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
             </Switch>
             <Footer />

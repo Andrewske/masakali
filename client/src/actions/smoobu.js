@@ -6,7 +6,7 @@ import moment from 'moment';
 export const getVillaRates = () => async (dispatch) => {
   try {
     let { data } = await axios.get(serverUrl + '/smoobu/rates', {
-      params: { startDate: moment.utc().format('YYYY-MM-D') },
+      params: { startDate: moment.utc().format('YYYY-MM-DD') },
     });
 
     dispatch({
@@ -45,52 +45,52 @@ export const makeReservation =
     phone = '',
     language = 'en',
   }) =>
-  async (dispatch) => {
-    let apartmentIds = {
-      surya: 1115674,
-      chandra: 1115668,
-      jala: 1115671,
-    };
-
-    // Add Children
-
-    try {
-      let body = {
-        arrivalDate: startDate,
-        departureDate: endDate,
-        channelId: 1466467,
-        apartmentId: apartmentIds[name],
-        arrivalTime: '14:00',
-        departureTime: '11:00',
-        firstName: firstName,
-        lastName: lastName,
-        adults: guests,
-        price: price,
-        priceStatus: 1,
-        address: {
-          street: line1,
-          postalCode: postal_code,
-          location: city + ', ' + state,
-        },
-        country: country,
-        email: email,
-        phone: phone,
-        language: language,
+    async (dispatch) => {
+      let apartmentIds = {
+        surya: 1115674,
+        chandra: 1115668,
+        jala: 1115671,
       };
 
-      // Don't create the smoobu booking if in development
-      if (process.env.NODE_ENV !== 'production') {
-        return { smoobuId: 'test' };
+      // Add Children
+
+      try {
+        let body = {
+          arrivalDate: startDate,
+          departureDate: endDate,
+          channelId: 1466467,
+          apartmentId: apartmentIds[name],
+          arrivalTime: '14:00',
+          departureTime: '11:00',
+          firstName: firstName,
+          lastName: lastName,
+          adults: guests,
+          price: price,
+          priceStatus: 1,
+          address: {
+            street: line1,
+            postalCode: postal_code,
+            location: city + ', ' + state,
+          },
+          country: country,
+          email: email,
+          phone: phone,
+          language: language,
+        };
+
+        // Don't create the smoobu booking if in development
+        if (process.env.NODE_ENV !== 'production') {
+          return { smoobuId: 'test' };
+        }
+
+        let { data } = await axios.post(
+          serverUrl + '/smoobu/bookings/add',
+          body,
+          { headers: { 'Content-Type': 'application/json' } }
+        );
+
+        return { smoobuId: data.id };
+      } catch (err) {
+        console.error({ location: 'makeReservation', err });
       }
-
-      let { data } = await axios.post(
-        serverUrl + '/smoobu/bookings/add',
-        body,
-        { headers: { 'Content-Type': 'application/json' } }
-      );
-
-      return { smoobuId: data.id };
-    } catch (err) {
-      console.error({ location: 'makeReservation', err });
-    }
-  };
+    };

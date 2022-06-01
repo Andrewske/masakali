@@ -19,10 +19,11 @@ let reqConfig = {
 
 router.get('/rates', async (req, res) => {
   let { startDate = null, endDate = null } = req.query;
+  console.log(startDate)
   try {
     reqConfig.params = {
-      start_date: startDate || moment().format('YYYY-MM-D'),
-      end_date: endDate || moment().add(2, 'years').format('YYYY-MM-D'),
+      start_date: startDate || moment().format('YYYY-MM-DD'),
+      end_date: endDate || moment().add(2, 'years').format('YYYY-MM-DD'),
       apartments: [suryaId, chandraId, jalaId],
     };
 
@@ -55,7 +56,7 @@ router.get('/rates', async (req, res) => {
     res.status(200).send(data);
   } catch (err) {
     console.error(err.message);
-    res.status(422).send(err.message);
+    res.status(422).send(err);
   }
 });
 

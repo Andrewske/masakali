@@ -1793,3 +1793,55 @@ $button-active-blue: #1669f2;
     }
   }
 }
+
+.availability-container {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: space-evenly;
+
+  .checkin-date {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-family: RuckSack, Book;
+      font-size: 20px;
+      text-align: left;
+      line-height: 24px;
+      letter-spacing: 5.2px;
+    }
+
+    .date {
+      display: flex;
+      flex-direction: row;
+
+      .day {
+        font-family: Baskerville;
+        font-size: 75px;
+        text-align: left;
+        line-height: 85px;
+        width: 79px;
+      }
+
+      .small {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .month-year {
+          font-family: Baskerville;
+          font-size: 20px;
+          line-height: 23px;
+        }
+
+        .weekday {
+          font-family: Avenir;
+          font-size: 20px;
+          line-height: 27px;
+          text-transform: Uppercase;
+        }
+      }
+    }
+  }
+}
