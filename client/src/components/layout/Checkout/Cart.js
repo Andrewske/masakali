@@ -97,9 +97,11 @@ const Cart = ({
     let customerCode = process.env.REACT_APP_CUSTOMER_COUPON;
 
     if (e.target?.value == adminCode) {
+      console.log('discount added');
       updatePricing({ price: 1.2, numDays, res: reservations?.new });
     }
     if (e.target?.value == customerCode) {
+      console.log('discount added');
       updatePricing({ price: 92.05, numDays, res: reservations?.new }); // finalPrice = 100
     }
   };
