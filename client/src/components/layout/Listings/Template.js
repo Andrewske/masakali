@@ -6,15 +6,11 @@ import FullScreenGallery from './FullScreenGallery';
 import BookingCardLg from './BookingCardLg';
 import BookingCardSm from './BookingCardSm';
 import useBreakpoint from '../../../utils/useBreakpoint';
-import useFormatCurrency from '../../../utils/useFormatCurrency';
 import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import { calcDiscount, calcTaxes, calcTotal } from '../../../utils/getPrices';
 import moment from 'moment';
 
 import { getBlockedDates } from '../../../actions/smoobu';
-
-const percDiscount = 0.1;
-const taxRate = 0.085;
 
 const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
   let {
