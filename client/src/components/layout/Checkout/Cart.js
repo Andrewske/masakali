@@ -110,7 +110,7 @@ const Cart = ({
     e.preventDefault();
     e.persist();
 
-    //setIsProcessing(true);
+    setIsProcessing(true);
     const cardElement = elements.getElement(CardElement);
 
     let firstName = e.target.firstName.value;
