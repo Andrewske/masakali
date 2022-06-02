@@ -146,7 +146,7 @@ const Cart = ({
         price: finalPrice,
       });
 
-      console.log({ clientSecret, paymentIntentError });
+      //console.log({ clientSecret, paymentIntentError });
 
       if (paymentIntentError) {
         throw paymentIntentError;
