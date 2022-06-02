@@ -3,6 +3,7 @@ import {
   CREATE_RESERVATION,
   UPDATE_RESERVATION,
   REMOVE_RESERVATION,
+  UPDATE_PRICING,
 } from '../actions/types';
 
 const initialState = {
@@ -33,6 +34,14 @@ export default function (state = initialState, action) {
         },
       };
     case CREATE_RESERVATION:
+      return {
+        ...state,
+        reservations: {
+          ...state.reservations,
+          new: payload,
+        },
+      };
+    case UPDATE_PRICING:
       return {
         ...state,
         reservations: {

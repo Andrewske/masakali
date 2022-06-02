@@ -13,13 +13,10 @@ const Success = ({ reservations, user, sendBookingConfirmation, loadUser }) => {
   const [amounts, setAmounts] = useState([0, 0]);
   const [isSending, setIsSending] = useState(true);
 
-  let price = useCurrencyFormat(
-    reservation?.amount / (1 - percDiscount) / reservation?.numDays
-  );
-  let discount = useCurrencyFormat(
-    reservation?.amount / (1 - percDiscount) - reservation?.amount
-  );
-  let total = useCurrencyFormat(reservation?.amount);
+  let price = useCurrencyFormat(reservation?.amount);
+  let discount = useCurrencyFormat(reservation?.discount);
+  let total = useCurrencyFormat(reservation?.total);
+  let taxes = useCurrencyFormat(reservation?.taxes);
 
   useEffect(() => {
     let res =
@@ -46,6 +43,7 @@ const Success = ({ reservations, user, sendBookingConfirmation, loadUser }) => {
         price: price,
         numDays: numDays,
         discount: discount,
+        taxes: taxes,
         total: total,
       };
       await sendBookingConfirmation(data);
@@ -91,6 +89,8 @@ const Success = ({ reservations, user, sendBookingConfirmation, loadUser }) => {
             <p>Number of guests: {reservation.guests}</p>
             <p>Total nights: {reservation.numDays}</p>
             <p>Price: {price}/night</p>
+            <p>Discount: {discount}</p>
+            <p>Taxes: {taxes}</p>
             <p>Total: {total}</p>
           </span>
         )}

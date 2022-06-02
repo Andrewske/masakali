@@ -14,6 +14,7 @@ import {
   updateUser,
   updateReservation,
   createError,
+  updatePricing,
 } from '../../../actions/user';
 import { serverUrl } from '../../../config';
 import {
@@ -38,6 +39,7 @@ const Cart = ({
   updateReservation,
   makeReservation,
   createError,
+  updatePricing,
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState(null);
@@ -91,10 +93,14 @@ const Cart = ({
   };
 
   const discountPrice = (e) => {
-    let code = process.env.REACT_APP_ADMIN_TEST_CODE;
-    if (e.target?.value == code) {
-      console.log('discount added');
-      setPrice(1.2); // finalPrice = 100
+    let adminCode = process.env.REACT_APP_ADMIN_TEST_CODE;
+    let customerCode = process.env.REACT_APP_CUSTOMER_COUPON;
+
+    if (e.target?.value == adminCode) {
+      updatePricing({ price: 1.2, numDays, res: reservations?.new });
+    }
+    if (e.target?.value == customerCode) {
+      updatePricing({ price: 92.05, numDays, res: reservations?.new }); // finalPrice = 100
     }
   };
 
@@ -108,7 +114,7 @@ const Cart = ({
     let firstName = e.target.firstName.value;
     let lastName = e.target.lastName.value;
 
-    console.log({ country: e.target.country.value })
+    console.log({ country: e.target.country.value });
 
     const billingDetails = {
       name: firstName + ' ' + lastName,
@@ -140,7 +146,7 @@ const Cart = ({
         price: finalPrice,
       });
 
-      console.log({ clientSecret, paymentIntentError })
+      console.log({ clientSecret, paymentIntentError });
 
       if (paymentIntentError) {
         throw paymentIntentError;
@@ -150,7 +156,7 @@ const Cart = ({
       const { paymentMethodReqId, paymentMethodReqError } =
         await createPaymentMethodReq({ stripe, cardElement, billingDetails });
 
-      console.log({ paymentMethodReqError })
+      console.log({ paymentMethodReqError });
       if (paymentMethodReqError) {
         throw paymentMethodReqError;
       }
@@ -212,7 +218,6 @@ const Cart = ({
           onSubmit={handleSubmit}
           onChange={(e) => discountPrice(e)}
         >
-
           <BillingDetails
             user={user}
             isDefault={isDefault}
@@ -232,7 +237,6 @@ const Cart = ({
           <button className='btn submit' disabled={isProcessing || !stripe}>
             {isProcessing ? 'Processing...' : `Pay ${total}`}
           </button>
-
         </form>
       ) : (
         <div className='row'>
@@ -248,7 +252,6 @@ const Cart = ({
           </a>
         </p>
       </div>
-
     </div>
   );
 };
@@ -266,4 +269,5 @@ export default connect(mapStateToProps, {
   makeReservation,
   updateUser,
   createError,
+  updatePricing,
 })(Cart);
