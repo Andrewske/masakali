@@ -17,6 +17,7 @@ export const sendBookingConfirmation =
     numDays,
     discount,
     total,
+    taxes,
   }) =>
   async (dispatch) => {
     let body = {
@@ -30,6 +31,7 @@ export const sendBookingConfirmation =
       numDays,
       discount,
       total,
+      taxes,
     };
 
     try {
