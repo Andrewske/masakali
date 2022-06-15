@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ADMIN_GET_USERS, ADMIN_GET_ERRORS } from './types';
 import { serverUrl } from '../config';
+import moment from 'moment';
 
 export const getUsers = (req, res) => async (dispatch) => {
   try {
@@ -18,9 +19,11 @@ export const getErrors = (req, res) => async (dispatch) => {
   try {
     let { data } = await axios.get(serverUrl + '/admin/errors');
 
-    console.log(data);
+    const sorted = data.sort(
+      (a, b) => moment(b.createdAt) - moment(a.createdAt)
+    );
 
-    dispatch({ type: ADMIN_GET_ERRORS, payload: data });
+    dispatch({ type: ADMIN_GET_ERRORS, payload: sorted });
   } catch (err) {
     console.error({ location: 'getErrors', error: err.message });
   }

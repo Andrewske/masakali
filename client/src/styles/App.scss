@@ -1942,3 +1942,35 @@ $button-active-blue: #1669f2;
     margin: auto 0;
   }
 }
+
+.errors-table {
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 90vw;
+  $border: 1px solid black;
+
+  table {
+    border-spacing: 0;
+    border: $border;
+
+    tr {
+      &:last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    th,
+    td {
+      margin: 0;
+      padding: 0.5rem;
+      border-bottom: $border;
+      border-right: $border;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}
