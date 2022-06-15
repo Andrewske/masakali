@@ -3,6 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { LOGOUT } from '../actions/types';
 
+import admin from './admin';
 import alert from './alert';
 import auth from './auth';
 import villas from './villas';
@@ -16,6 +17,7 @@ const persistConfig = {
 };
 
 const appReducer = combineReducers({
+  admin,
   alert,
   auth,
   villas,

@@ -18,3 +18,5 @@ export const SET_RATES = 'SET_RATES';
 export const SET_COUNTRY = 'SET_COUNTRY';
 export const SET_BLOCKED_DATES = 'SET_BLOCKED_DATES';
 export const SET_VILLA_RATES = 'SET_VILLA_RATES';
+export const ADMIN_GET_USERS = 'ADMIN_GET_USERS';
+export const ADMIN_GET_ERRORS = 'ADMIN_GET_ERRORS';

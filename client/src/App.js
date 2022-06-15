@@ -14,7 +14,7 @@ import Amenities from './components/layout/Landing/Amenities';
 
 import Sidebar from './components/layout/Sidebar/Sidebar';
 import Dashboard from './components/dashboard/Dashboard';
-// import PrivateRoute from './components/routing/PrivateRoute';
+import PrivateRoute from './components/routing/PrivateRoute';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store';
@@ -45,10 +45,11 @@ import Footer from './components/layout/Footer';
 import CountryPicker from './components/layout/CountryPicker';
 
 // New Landing Page
-import Home from './components/layout/Home/Home'
+import Home from './components/layout/Home/Home';
 
 // Auth Pages
-import ResetPassword from './components/auth/ResetPassword'
+import Login from './components/auth/Login';
+import ResetPassword from './components/auth/ResetPassword';
 
 //imageKitId = 4kpopox69zpcd
 
@@ -67,6 +68,7 @@ const App = () => {
             <Sidebar />
             <Routes>
               <Route exact path='/' element={<Landing />} />
+              <Route exact path='/login' element={<Login />} />
               <Route exact path='/investors' element={<Financials />} />
               <Route exact path='/gallery' element={<Gallery />} />
               <Route exact path='/amenities' element={<Amenities />} />
@@ -98,7 +100,14 @@ const App = () => {
               <Route exact path='/success' element={<Success />} />
               <Route exact path='/home' element={<Home />} />
               <Route exact path='/reset-password' element={<ResetPassword />} />
-              {/* <PrivateRoute exact path='/dashboard' element={<Dashboard />} /> */}
+              <Route
+                path='/dashboard'
+                element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
             </Routes>
             <Footer />
           </Fragment>

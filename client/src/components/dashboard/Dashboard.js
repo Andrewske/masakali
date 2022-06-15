@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { getErrors, getUsers } from '../../actions/admin';
+import { connect } from 'react-redux';
 
-const Dashboard = (props) => {
-  return <div>Dashboard</div>;
+const Dashboard = ({ getUsers, getErrors }) => {
+  useEffect(() => {
+    getUsers();
+    getErrors();
+  }, []);
+  return <div className='container full'>Dashboard</div>;
 };
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  admin: state.admin,
+});
+
+export default connect(mapStateToProps, { getUsers, getErrors })(Dashboard);
