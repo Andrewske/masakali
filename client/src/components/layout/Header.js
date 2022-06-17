@@ -1,53 +1,71 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import Logo from '../../img/masakali-home-logo.png';
+import useBreakpoint from '../../utils/useBreakpoint';
+import CountryPicker from './CountryPicker';
 
-const Container = styled.div`
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  height: 50px;
-  font-size: 10px;
-  padding: 0px 50px 0px 50px;
-`;
-
-const amenities = [
-  { id: 'retreats-and-workshops', name: 'Retreats & Workshops' },
-  { id: 'sound-healing', name: 'Sound Healing' },
-  { id: 'yoga-teacher-training', name: 'Yoga Teacher Training' },
-  { id: 'organic-beauty-products', name: 'Organic Beauty Products' },
-  { id: 'foundation', name: 'Foundation' },
-  { id: 'cafe-juice-bar', name: 'Cafe Juice Bar' },
-  { id: 'sustainable-development', name: 'Sustainable Development' },
-  { id: 'organic-farm', name: 'Organic Farm' },
-];
-
-const Header = ({ type }) => {
-  const [menu, setMenu] = useState(null);
+const Header = () => {
+  const [isSmall, setIsSmall] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [hideHeader, setHideHeader] = useState(true);
+  const point = useBreakpoint();
 
   useEffect(() => {
-    switch (type) {
-      case 'amenities':
-        setMenu(amenities);
-      default:
-        return;
+    if (point === 'xs' || point === 'sm') {
+      setIsSmall(true);
+    } else {
+      setIsSmall(false);
+      setIsExpanded(false);
     }
+  }, [point]);
+
+  useEffect(() => {
+    window.onscroll = () =>
+      window.pageYOffset === 0 ? setHideHeader(true) : setHideHeader(false);
+
+    return () => (window.onscroll = null);
   });
 
   return (
-    menu && (
-      <Container className='bg-purple'>
-        {menu.map((i) => (
-          <Link to={`/${i.id}`} key={i.id} style={{ flexGrow: 1 }}>
-            {i.name}
-          </Link>
-        ))}
-      </Container>
-    )
+    <div className={hideHeader ? 'header-container' : 'header-container show'}>
+      <span className='main'>
+        <div>
+          <img src={Logo} alt='Masakali Logo' className='logo' />
+        </div>
+        {!isSmall && (
+          <span className='links'>
+            <span>Home</span>
+            <span>Villas</span>
+            <span>Dining</span>
+            <span>Ammenities</span>
+          </span>
+        )}
+        <div>
+          <span className='button'>BOOK NOW</span>
+        </div>
+        {/* <CountryPicker /> */}
+      </span>
+
+      {isSmall && (
+        <span className='expander' onClick={() => setIsExpanded(!isExpanded)}>
+          {isExpanded ? (
+            <i className='icon-chevron-up' />
+          ) : (
+            <i className='icon-chevron-down' />
+          )}
+        </span>
+      )}
+
+      <span
+        className={isExpanded ? 'expanded-content true' : 'expanded-content'}
+      >
+        <span className='links'>
+          <span>Home</span>
+          <span>Villas</span>
+          <span>Dining</span>
+          <span>Ammenities</span>
+        </span>
+      </span>
+    </div>
   );
 };
 

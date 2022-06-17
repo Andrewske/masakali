@@ -98,8 +98,16 @@ const App = () => {
               <Route exact path='/listings/jala' element={<Jala />} />
               <Route exact path='/cart' element={<Cart />} />
               <Route exact path='/success' element={<Success />} />
-              <Route exact path='/home' element={<Home />} />
+              {/* <Route exact path='/home' element={<Home />} /> */}
               <Route exact path='/reset-password' element={<ResetPassword />} />
+              <Route
+                path='/home'
+                element={
+                  <PrivateRoute>
+                    <Home />
+                  </PrivateRoute>
+                }
+              />
               <Route
                 path='/dashboard'
                 element={
