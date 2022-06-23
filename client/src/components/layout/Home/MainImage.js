@@ -99,7 +99,7 @@ const MainImage = () => {
                     { height: height, width: width, dpr: 'auto' },
                   ]}
                   lqip={{ active: true }}
-                  //loading='lazy'
+                  loading={i === 0 ? '' : 'lazy'}
                 />
               </ImageContext>
             </div>

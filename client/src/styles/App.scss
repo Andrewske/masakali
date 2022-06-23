@@ -82,6 +82,7 @@ img {
 
 .center-col {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -374,6 +375,257 @@ h4 {
     .links {
       justify-content: center;
       gap: 0;
+    }
+  }
+}
+
+.about-container {
+  background-color: #f2f2f2;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  font-family: 'Avenir', 'Book';
+
+  .about-text {
+    max-width: 500px;
+    flex: 1 1 50%;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h1 {
+      font-family: 'Baskerville', 'Regular';
+      line-height: 4rem;
+      font-size: 3rem;
+    }
+
+    .main {
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+
+    .secondary {
+      line-height: 1.5rem;
+    }
+  }
+
+  .about-img {
+    aspect-ratio: 1 / 1;
+    max-width: 500px;
+    margin: 2rem;
+  }
+}
+
+.why-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: var(--purple-color);
+  color: white;
+  padding: 3rem;
+
+  h2 {
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+    text-transform: Uppercase;
+  }
+
+  .why-features {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-top: 3rem;
+
+    .why-feature {
+      max-width: 300px;
+      position: relative;
+      margin-top: 1rem;
+      margin-left: 2.5rem;
+
+      h3 {
+        text-transform: Uppercase;
+        font-size: 1.5rem;
+      }
+
+      .why-feature-icon {
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        top: 0.5rem;
+        left: -2.5rem;
+      }
+    }
+  }
+}
+
+.villas-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evently;
+  align-items: center;
+  width: 100vw;
+  padding: 3rem;
+
+  // h2 {
+  //   padding-top: 3rem;
+  // }
+
+  .villas-text {
+    max-width: calc(min(600px, 90%));
+    padding-top: 3rem;
+  }
+
+  .villas-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evently;
+    width: 100%;
+    padding: 3rem;
+    position: relative;
+
+    .villas-img {
+      max-height: 400px;
+      width: auto;
+      margin: 2rem auto;
+      position: relative;
+      box-shadow: 0 0 15px #3a1b49;
+      object-fit: fill;
+
+      .hover-details {
+        @extend .center-col;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: scale(0);
+        transition: all 0.5s ease-in-out;
+        z-index: 2;
+        background: rgba(243, 243, 243, 0.9);
+        margin: 2rem;
+        padding: 2rem;
+
+        h2 {
+          text-transform: uppercase;
+        }
+
+        &.active {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
+
+.extras-container {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  .extras-img {
+    width: calc(max(350px, 30vw));
+    height: calc(max(350px, 30vw));
+
+    &.down {
+      margin-top: 2rem;
+    }
+  }
+
+  .extras-details {
+    width: calc(max(350px, 30vw));
+    min-height: calc(max(350px, 30vw));
+
+    background-color: #f2f2f2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &.down {
+      margin-top: 2rem;
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      //padding: 2rem;
+
+      .distance {
+        display: flex;
+        flex-direction: column;
+
+        .large {
+          margin: 0;
+          font-size: 1.5rem;
+          padding: 0;
+        }
+
+        .small {
+          margin: 0;
+          padding: 0;
+        }
+
+        h3 {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .contact {
+      margin: auto 0 2rem 0;
+      display: flex;
+      justify-content: space-evenly;
+
+      .item {
+        margin: 0;
+        font-size: 0.75rem;
+        min-width: 150px;
+
+        .item-title {
+          text-transform: uppercase;
+          font-weight: bold;
+          letter-spacing: 2px;
+        }
+
+        .item-details {
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    h2 {
+      text-transform: uppercase;
+    }
+
+    span {
+      margin-left: 2rem;
+      padding-top: 1rem;
+    }
+
+    ul {
+      margin-left: 2rem;
+      font-size: 0.85rem;
+      list-style: none;
+
+      li::before {
+        content: '-';
+        padding-right: 0.5rem;
+      }
+    }
+  }
+
+  .extras-link {
+    text-transform: uppercase;
+
+    i {
+      position: relative;
+      top: calc(50% - 12px);
     }
   }
 }
