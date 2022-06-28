@@ -21,7 +21,7 @@ export const getVillaRates = () => async (dispatch) => {
 export const getBlockedDates = () => async (dispatch) => {
   try {
     let { data } = await axios.get(serverUrl + '/smoobu/bookings/bookedDates');
-    console.log(data);
+
     dispatch({
       type: SET_BLOCKED_DATES,
       payload: data,

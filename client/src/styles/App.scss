@@ -2310,6 +2310,51 @@ $button-active-blue: #1669f2;
     padding: 1rem;
     margin: auto 0;
   }
+
+  .villas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: calc(min(90%, 600px));
+    padding-bottom: 2rem;
+
+    .villa {
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+      width: 200px;
+      height: 150px;
+      transform: scale(1);
+      transition: scale 500ms ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      h3 {
+        color: white;
+        padding: 1rem;
+        font-size: 2rem;
+        text-transform: capitalize;
+      }
+
+      p {
+        color: white;
+        padding: 1rem;
+        font-size: 1.5rem;
+      }
+
+      img {
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.75;
+      }
+    }
+  }
 }
 
 .errors-table {
