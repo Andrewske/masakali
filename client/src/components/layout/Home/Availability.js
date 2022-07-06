@@ -42,6 +42,7 @@ const Availability = ({
 
   const handleCheckIn = (date) => {
     setCheckIn(date);
+    //setCheckOut(moment(date).add(1, 'days'));
     setCheckInPickerOpen(false);
   };
   const handleCheckOut = (date) => {
@@ -145,10 +146,12 @@ const Availability = ({
           {checkOutPickerOpen && (
             <span className='day-picker'>
               <DayPickerSingleDateController
+                initialVisibleMonth={() => moment(checkIn)}
                 date={checkOut}
                 onDateChange={(date) => handleCheckOut(date)}
-                focused={focused}
+                focused
                 onFocusChange={({ focused }) => setFocused(focused)}
+                isOutsideRange={(day) => day.isBefore(moment(checkIn))}
               />
             </span>
           )}

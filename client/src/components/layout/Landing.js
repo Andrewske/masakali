@@ -30,39 +30,33 @@ const Landing = () => {
   // });
 
   return (
-    <Fragment>
-      <div className='landing'>
-        {/* {showLoginPopup ? <LoginPopup togglePopup={togglePopup} /> : null}
+    <div className='landing'>
+      {/* {showLoginPopup ? <LoginPopup togglePopup={togglePopup} /> : null}
         {showRegisterPopup ? <RegisterPopup togglePopup={togglePopup} /> : null} */}
-        <Home />
-        <Vision />
-        <Location height={height} width={width} />
-        <Facilities />
-        <Booking />
-        <Gallery width={width} />
-        <div
-          id='landing-video'
-          className='header'
-          style={{ paddingTop: '50px' }}
-        >
-          <p>MASAKALI</p>
-          <h1>Video</h1>
-          <div className='divider' />
-        </div>
-        {height && (
-          <YoutubeEmbed
-            embedId={'in8GqtSGIJ0'}
-            title={'Masakali Tour Video'}
-            preview={`https://ik.imagekit.io/4kpopox69zp/tr:h-${height},w-${width},c-at_max,dpr-auto/masakali-tour-video-thumbnail_UOIa12ChI.png`}
-          />
-        )}
-        <Experience />
-        <Community />
-        <Amenities bg={'background-gray'} />
-        <Team />
-        <ContactSection />
+      <Home />
+      <Vision />
+      <Location height={height} width={width} />
+      <Facilities />
+      <Booking />
+      <Gallery width={width} />
+      <div id='landing-video' className='header' style={{ paddingTop: '50px' }}>
+        <p>MASAKALI</p>
+        <h1>Video</h1>
+        <div className='divider' />
       </div>
-    </Fragment>
+      {height && (
+        <YoutubeEmbed
+          embedId={'in8GqtSGIJ0'}
+          title={'Masakali Tour Video'}
+          preview={`https://ik.imagekit.io/4kpopox69zp/tr:h-${height},w-${width},c-at_max,dpr-auto/masakali-tour-video-thumbnail_UOIa12ChI.png`}
+        />
+      )}
+      <Experience />
+      <Community />
+      <Amenities bg={'background-gray'} />
+      <Team />
+      <ContactSection />
+    </div>
   );
 };
 
