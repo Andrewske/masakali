@@ -1,13 +1,16 @@
+/* eslint-disable import/no-anonymous-default-export */
 import {
   LOAD_VILLAS,
   SET_BLOCKED_DATES,
   SET_VILLA_RATES,
+  SET_REVIEWS,
 } from '../actions/types';
 
 const initialState = {
   surya: {},
   chandra: {},
   jala: {},
+  reviews: null,
 };
 
 export default function (state = initialState, action) {
@@ -52,6 +55,11 @@ export default function (state = initialState, action) {
           ...state.jala,
           rates: payload.jala,
         },
+      };
+    case SET_REVIEWS:
+      return {
+        ...state,
+        reviews: payload,
       };
     default:
       return state;
