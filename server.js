@@ -66,6 +66,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/admin', require('./routes/api/admin'));
 app.use('/api/villas', require('./routes/api/villas'));
+app.use('/api/reviews', require('./routes/api/reviews'));
 app.use('/api/currency', require('./routes/api/currency'));
 app.use('/api/reservations', require('./routes/api/reservations'));
 app.use('/api/stripe/customer', require('./routes/api/stripe/customer'));

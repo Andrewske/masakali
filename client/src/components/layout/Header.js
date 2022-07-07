@@ -42,7 +42,7 @@ const Header = ({ hide }) => {
           </span>
         )}
         <div>
-          <span className='button'>BOOK NOW</span>
+          <button className='button white'>BOOK NOW</button>
         </div>
         {/* <CountryPicker /> */}
       </span>
