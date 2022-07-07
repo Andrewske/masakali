@@ -47,6 +47,9 @@ import CountryPicker from './components/layout/CountryPicker';
 // New Landing Page
 import Home from './components/layout/Home/Home';
 
+// New Listing Pages
+import NewSurya from './components/layout/Villas/Surya';
+
 // Auth Pages
 import Login from './components/auth/Login';
 import ResetPassword from './components/auth/ResetPassword';
@@ -105,6 +108,14 @@ const App = () => {
                 element={
                   <PrivateRoute>
                     <Home />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path='/home/surya'
+                element={
+                  <PrivateRoute>
+                    <NewSurya />
                   </PrivateRoute>
                 }
               />
