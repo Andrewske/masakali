@@ -12,7 +12,7 @@ import Location from './Location';
 const Home = () => {
   return (
     <div className='landing'>
-      <Header />
+      <Header hide={true} />
       <MainImage />
       <Availability />
       <About />

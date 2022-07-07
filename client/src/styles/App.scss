@@ -14,6 +14,14 @@
 
 $light-purple-5: rgba(163, 143, 159, 0.5);
 
+@font-face {
+  font-family: 'Avenir, Book';
+  src: url('../../public/fonts/AvenirLTStd-Book.otf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -139,11 +147,42 @@ img {
   margin: auto;
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  //padding-top: 50px;
+  //padding-bottom: 50px;
 
   &.full {
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh);
+  }
+}
+
+.villa-template {
+  font-family: 'Avenir, Book';
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  min-height: calc(100vh - 150px);
+  margin-top: 150px;
+  padding-top: 50px;
+
+  .details {
+    flex: 1 1 30%;
+    height: 100%;
+    padding: 2rem;
+
+    .date-container {
+      background: rgba(242, 242, 242, 1) !important;
+      padding: 1rem;
+    }
+  }
+
+  .template-gallery {
+    flex: 1 1 70%;
+
+    img {
+      display: block;
+      object-fit: cover;
+      min-height: 350px;
+    }
   }
 }
 
@@ -268,6 +307,8 @@ h4 {
 }
 
 .header-container {
+  font-family: 'Avenir, Book' !important;
+  height: 150px;
   width: 100%;
   display: flex;
   flex-direction: column;

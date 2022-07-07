@@ -3,10 +3,10 @@ import Logo from '../../img/masakali-home-logo.png';
 import useBreakpoint from '../../utils/useBreakpoint';
 import CountryPicker from './CountryPicker';
 
-const Header = () => {
+const Header = ({ hide }) => {
   const [isSmall, setIsSmall] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [hideHeader, setHideHeader] = useState(true);
+  const [hideHeader, setHideHeader] = useState(hide);
   const point = useBreakpoint();
 
   useEffect(() => {
@@ -19,10 +19,12 @@ const Header = () => {
   }, [point]);
 
   useEffect(() => {
-    window.onscroll = () =>
-      window.pageYOffset === 0 ? setHideHeader(true) : setHideHeader(false);
+    if (hide) {
+      window.onscroll = () =>
+        window.pageYOffset === 0 ? setHideHeader(true) : setHideHeader(false);
 
-    return () => (window.onscroll = null);
+      return () => (window.onscroll = null);
+    }
   });
 
   return (
