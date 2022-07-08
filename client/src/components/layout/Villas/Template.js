@@ -7,10 +7,20 @@ import moment from 'moment';
 import useOnClickOutside from '../../../utils/useOnClickOutside';
 import { DayPickerSingleDateController } from 'react-dates';
 import TemplateInfo from './TemplateInfo';
+import ImageCarousel from './ImageCarousel';
 import { getReviews } from '../../../actions/google';
 
 const ARRIVAL_DATE = 'ARRIVAL DATE';
 const DEPARTURE_DATE = 'DEPARTURE DATE';
+
+const villaDetails = {
+  surya: {
+    name: 'Surya',
+    description:
+      'Surya Villa is equipped with a king-size luxury mattress and a sofa. Look forward to a serene outdoor view as you plunge into your private infinity pool and listen to the gentle breeze of Bali.',
+    ammenities: { bed: 'King' },
+  },
+};
 
 const Template = ({ reviews, getReviews }) => {
   const [checkIn, setCheckIn] = useState(moment());
@@ -98,12 +108,12 @@ const Template = ({ reviews, getReviews }) => {
                 </span>
               )}
             </div>
-            <button className='button purple'>Book Surya</button>
+            <button className='button purple wide'>Book Surya</button>
           </span>
 
           <TemplateInfo />
         </div>
-        <span className='template-gallery'>
+        {/* <span className='template-gallery'>
           <ImageContext>
             <IKImage
               className='template-gallery-image'
@@ -112,7 +122,8 @@ const Template = ({ reviews, getReviews }) => {
               // loading='lazy'
             />
           </ImageContext>
-        </span>
+        </span> */}
+        <ImageCarousel />
       </span>
     </span>
   );

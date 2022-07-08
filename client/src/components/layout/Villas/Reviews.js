@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import star from '../../../img/icons8-star-48.png';
 import moment from 'moment';
 
 const Reviews = ({ reviews }) => {
   const [index, setIndex] = useState(4);
-
-  console.log(reviews);
 
   const next = () => {
     index === reviews.length - 1 ? setIndex(0) : setIndex(index + 1);
