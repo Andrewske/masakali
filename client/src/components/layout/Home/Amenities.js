@@ -26,7 +26,7 @@ const Amenities = () => {
           </ul>
 
           <span className='extras-link'>
-            See full services <i className='icon-chevron-right' />
+            See our guestbook <i className='icon-chevron-right' />
           </span>
         </span>
       </span>

@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Logo from '../../img/masakali-home-logo.png';
 import useBreakpoint from '../../utils/useBreakpoint';
 import CountryPicker from './CountryPicker';
+import { useNavigate } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 const Header = ({ hide }) => {
   const [isSmall, setIsSmall] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [hideHeader, setHideHeader] = useState(hide);
   const point = useBreakpoint();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (point === 'xs' || point === 'sm') {
@@ -35,14 +38,16 @@ const Header = ({ hide }) => {
         </div>
         {!isSmall && (
           <span className='links'>
-            <span>Home</span>
-            <span>Villas</span>
-            <span>Dining</span>
-            <span>Ammenities</span>
+            <Link to='/#home'>Home</Link>
+            <Link to='/#villas'>Villas</Link>
+            <Link to='/#dining'>Dining</Link>
+            <Link to='/#amenities'>Amenities</Link>
           </span>
         )}
         <div>
-          <button className='button white'>BOOK NOW</button>
+          <button className='button white' onClick={() => navigate('/villas')}>
+            BOOK NOW
+          </button>
         </div>
         {/* <CountryPicker /> */}
       </span>
@@ -61,10 +66,10 @@ const Header = ({ hide }) => {
         className={isExpanded ? 'expanded-content true' : 'expanded-content'}
       >
         <span className='links'>
-          <span>Home</span>
-          <span>Villas</span>
-          <span>Dining</span>
-          <span>Ammenities</span>
+          <Link to='#home'>Home</Link>
+          <Link to='#villas'>Villas</Link>
+          <Link to='#dining'>Dining</Link>
+          <Link to='#amenities'>Amenities</Link>
         </span>
       </span>
     </div>

@@ -13,7 +13,7 @@ import country from './country';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'user', 'country'],
+  whitelist: ['auth', 'user', 'country', 'villas'],
 };
 
 const appReducer = combineReducers({

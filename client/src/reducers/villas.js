@@ -29,15 +29,15 @@ export default function (state = initialState, action) {
         ...state,
         surya: {
           ...state.surya,
-          datesReserved: payload.surya,
+          ...payload.surya,
         },
         chandra: {
           ...state.chandra,
-          datesReserved: payload.chandra,
+          ...payload.chandra,
         },
         jala: {
           ...state.jala,
-          datesReserved: payload.jala,
+          ...payload.jala,
         },
       };
     case SET_VILLA_RATES:

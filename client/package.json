@@ -16,9 +16,10 @@
     "emailjs-com": "^2.6.4",
     "formik": "^2.2.9",
     "imagekitio-react": "^1.0.9",
-    "moment": "^2.29.3",
+    "moment": "^2.29.4",
     "moment-range": "^4.0.2",
     "react": "^16.14.0",
+    "react-app-rewired": "^2.2.1",
     "react-dates": "^21.8.0",
     "react-dom": "^16.14.0",
     "react-download-link": "^2.3.0",
@@ -46,10 +47,10 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -69,9 +70,12 @@
   "devDependencies": {
     "compression-webpack-plugin": "^8.0.0",
     "sass": "^1.52.3",
-    "sass-loader": "^12.3.0"
+    "sass-loader": "^12.3.0",
+    "webpack": "^5.73.0"
   },
   "browser": {
-    "crypto": false
+    "crypto": false,
+    "http": false,
+    "https": false
   }
 }
