@@ -38,9 +38,11 @@ const Surya = ({ loadVillas, surya, getVillaRates, currency }) => {
       getVillaRates();
     } else {
       let price =
-        surya.rates[moment().utc().format('YYYY-MM-D')]?.price || null;
+        surya.rates[moment().utc().format('YYYY-MM-DD')]?.price || null;
       if (price) {
-        setReducedPrice(surya.rates[moment().utc().format('YYYY-MM-D')]?.price);
+        setReducedPrice(
+          surya.rates[moment().utc().format('YYYY-MM-DD')]?.price
+        );
       }
     }
   }, [surya.rates]);
@@ -54,7 +56,7 @@ const Surya = ({ loadVillas, surya, getVillaRates, currency }) => {
     imageSelection,
     blockedDates,
     checkInDates,
-    setReducedPrice
+    setReducedPrice,
   };
 
   useEffect(() => {

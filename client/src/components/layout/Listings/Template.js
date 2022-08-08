@@ -86,11 +86,12 @@ const Template = ({ listing, createReservation, handleSmoobu, villas }) => {
       let days = (endDate - startDate) / (60 * 60 * 24 * 1000);
       setNumDays(days);
       let price =
-        villas[name].rates[moment(startDate).utc().format('YYYY-MM-D')]
+        villas[name].rates[moment(startDate).utc().format('YYYY-MM-DD')]
           ?.price || null;
       if (price) {
         setReducedPrice(
-          villas[name].rates[moment(startDate).utc().format('YYYY-MM-D')]?.price
+          villas[name].rates[moment(startDate).utc().format('YYYY-MM-DD')]
+            ?.price
         );
       }
     }

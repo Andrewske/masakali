@@ -38,10 +38,10 @@ const Chandra = ({ loadVillas, chandra, getVillaRates, currency }) => {
       getVillaRates();
     } else {
       let price =
-        chandra.rates[moment().utc().format('YYYY-MM-D')]?.price || null;
+        chandra.rates[moment().utc().format('YYYY-MM-DD')]?.price || null;
       if (price) {
         setReducedPrice(
-          chandra.rates[moment().utc().format('YYYY-MM-D')]?.price
+          chandra.rates[moment().utc().format('YYYY-MM-DD')]?.price
         );
       }
     }
@@ -56,7 +56,7 @@ const Chandra = ({ loadVillas, chandra, getVillaRates, currency }) => {
     imageSelection,
     blockedDates,
     checkInDates,
-    setReducedPrice
+    setReducedPrice,
   };
 
   useEffect(() => {
