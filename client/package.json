@@ -70,7 +70,8 @@
     ]
   },
   "devDependencies": {
-    "compression-webpack-plugin": "^8.0.0"
+    "compression-webpack-plugin": "^8.0.0",
+    "webpack": "^5.74.0"
   },
   "browser": {
     "crypto": false,

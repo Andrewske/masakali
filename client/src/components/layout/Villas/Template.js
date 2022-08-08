@@ -10,7 +10,12 @@ import TemplateInfo from './TemplateInfo';
 import ImageCarousel from './ImageCarousel';
 import { getReviews } from '../../../actions/google';
 import { getBlockedDates } from '../../../actions/smoobu';
+import CountryPicker from '../CountryPicker';
+import { calcDiscount, calcTaxes, calcTotal } from '../../../utils/getPrices';
+import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import _ from 'lodash';
+import { useNavigate } from 'react-router-dom';
+import { createReservation } from '../../../actions/user';
 
 const ARRIVAL_DATE = 'ARRIVAL DATE';
 const DEPARTURE_DATE = 'DEPARTURE DATE';
@@ -39,14 +44,26 @@ const villaDetails = {
   },
 };
 
-const Template = ({ reviews, getReviews, getBlockedDates, villas }) => {
+const Template = ({
+  reviews,
+  getReviews,
+  getBlockedDates,
+  villas,
+  country,
+  createReservation,
+}) => {
   const [checkIn, setCheckIn] = useState(moment());
   const [checkOut, setCheckOut] = useState(moment().add(1, 'd'));
   const [focused, setFocused] = useState(null);
   const [checkInPickerOpen, setCheckInPickerOpen] = useState(false);
   const [checkOutPickerOpen, setCheckOutPickerOpen] = useState(false);
+  const [price, setPrice] = useState(100);
+  const [numDays, setNumDays] = useState(checkOut.diff(checkIn, 'days'));
+  const [total, setTotal] = useState(100);
 
   const [villa, setVilla] = useState('surya');
+
+  const navigate = useNavigate();
 
   const checkInRef = useRef(null);
   const checkOutRef = useRef(null);
@@ -88,6 +105,41 @@ const Template = ({ reviews, getReviews, getBlockedDates, villas }) => {
 
       return day <= moment(checkIn).format('YYYY-MM-DD') || day > next;
     }
+  };
+
+  useEffect(() => {
+    if (checkIn && checkOut) {
+      let numDays = checkOut.diff(checkIn, 'days');
+
+      // ADD A DEFAULT FOR EACH VILLA IF WE CANNOT GET RATES
+      let pricePerNight =
+        villas[villa].rates[moment(checkIn).format('YYYY-MM-DD')].price;
+      //const {price, total} = calcPrice(numDays, )
+      setPrice(pricePerNight);
+      setNumDays(numDays);
+      setTotal(calcTotal({ price: pricePerNight, numDays }));
+    }
+  }, [checkIn, checkOut]);
+
+  const formattedTotal = useCurrencyFormat(total);
+
+  const reserveDates = () => {
+    let price = villas[villa].rates[moment(checkIn).format('YYYY-MM-DD')].price;
+    let numDays = checkOut.diff(checkIn, 'days');
+
+    createReservation({
+      startDate: checkIn,
+      endDate: checkOut,
+      numDays: checkOut.diff(checkIn, 'days'),
+      amount: price,
+      discount: calcDiscount({ price, numDays }),
+      taxes: calcTaxes({ price, numDays }),
+      total: calcTotal({ price, numDays }),
+      name: villa,
+      //guests,
+      img: null,
+    });
+    navigate('/cart');
   };
 
   const nextVilla = () => {
@@ -170,10 +222,19 @@ const Template = ({ reviews, getReviews, getBlockedDates, villas }) => {
                   />
                 </span>
               )}
+              <span className='villa-template-total'>
+                <p>TOTAL</p>
+                <span className='villa-template-total-price'>
+                  <span className='price'>
+                    {formattedTotal} {country.currency}
+                  </span>
+                  <CountryPicker />
+                </span>
+              </span>
             </div>
             <button
               className='button purple wide'
-              onClick={() => getBlockedDates()}
+              onClick={() => reserveDates()}
             >
               {`Book ${villaDetails[villa].name}`}
             </button>
@@ -200,8 +261,17 @@ const Template = ({ reviews, getReviews, getBlockedDates, villas }) => {
 const mapStateToProps = (state) => ({
   villas: state.villas,
   reviews: state.villas.reviews,
+  country: state.country,
 });
 
-export default connect(mapStateToProps, { getReviews, getBlockedDates })(
-  Template
-);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    //handleSmoobu: () => dispatch(getBlockedDates()),
+    getReviews: () => getReviews(),
+    getBlockedDates: () => getBlockedDates(),
+    createReservation: (payload) =>
+      dispatch({ type: 'CREATE_RESERVATION', payload }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Template);

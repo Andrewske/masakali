@@ -29,32 +29,47 @@ const CartDetails = ({
 
   return (
     <div className='cart-details'>
-      {!success && (
+      {/* {!success && (
         <span
           className='icon-close remove-reservation'
           onClick={() => removeReservation(reservation)}
         />
-      )}
-      {img?.path && (
-        <ImageContext>
-          <IKImage
-            className='large-img'
-            path={img.path}
-            transformation={[{ height: '500px', dpr: 'auto' }]}
-            loading='lazy'
-          />
-        </ImageContext>
-      )}
+      )} */}
+      <span className='details-header'>
+        <h3>{name} Villa</h3>
+      </span>
       <span className='details'>
-        <h3>Stay in {startCase(name)} Room</h3>
-        <p>Check In: {moment.utc(startDate).format('MMM DD YYYY')} at 2:00pm</p>
-        <p>Check Out: {moment.utc(endDate).format('MMM DD YYYY')} at 11:00am</p>
-        <p>Number of guests: {guests}</p>
-        <p>Total nights: {numDays}</p>
-        <p>Price: {amount}/night</p>
-        <p>Discount: {discount}</p>
-        <p>Taxes: {taxes}</p>
-        <p className='total'>Total: {total}</p>
+        <span className='detail'>
+          <p className='detail-title'>Arrival Date</p>
+          <p>{moment.utc(startDate).format('MMM DD YYYY')} at 2:00pm</p>
+        </span>
+        <span className='detail'>
+          <p className='detail-title'>Departure Date</p>
+          <p>{moment.utc(endDate).format('MMM DD YYYY')} at 11:00am</p>
+        </span>
+        <span className='detail'>
+          <p className='detail-title'>Number of Guests</p>
+          <p>{guests || 0}</p>
+        </span>
+        <span className='detail'>
+          <p className='detail-title'>Number of Nights</p>
+          <p>{numDays}</p>
+        </span>
+        <span className='detail'>
+          <p className='detail-title'>Price</p>
+          <p>{amount}/night</p>
+        </span>
+        <span className='detail'>
+          <p className='detail-title'>Discount</p>
+          <p>{discount}</p>
+        </span>
+        <span className='detail'>
+          <p className='detail-title'>Taxes</p>
+          <p>{taxes}</p>
+        </span>
+      </span>
+      <span className='details-footer'>
+        <p>Total</p>
       </span>
     </div>
   );

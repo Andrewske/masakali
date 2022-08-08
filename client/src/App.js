@@ -70,55 +70,85 @@ const App = () => {
           <Fragment>
             {/* <Sidebar /> */}
             <Routes>
-              <Route exact path='/' element={<Landing />} />
+              <Route exact path='/investors' element={<Landing />} />
               <Route exact path='/login' element={<Login />} />
-              <Route exact path='/investors' element={<Financials />} />
-              <Route exact path='/gallery' element={<Gallery />} />
-              <Route exact path='/amenities' element={<Amenities />} />
               <Route
                 exact
-                path='/retreats-and-workshops'
+                path='/investors/investors'
+                element={<Financials />}
+              />
+              <Route exact path='/investors/gallery' element={<Gallery />} />
+              <Route
+                exact
+                path='/investors/amenities'
+                element={<Amenities />}
+              />
+              <Route
+                exact
+                path='/investors/retreats-and-workshops'
                 element={<Retreats />}
               />
-              <Route exact path='/sound-healing' element={<SoundHealing />} />
-              <Route exact path='/yoga-teacher-training' element={<YTT />} />
-              <Route exact path='/cafe-juice-bar' element={<CafeJuiceBar />} />
-              <Route exact path='/spa' element={<Spa />} />
               <Route
                 exact
-                path='/sustainable-development'
+                path='/investors/sound-healing'
+                element={<SoundHealing />}
+              />
+              <Route
+                exact
+                path='/investors/yoga-teacher-training'
+                element={<YTT />}
+              />
+              <Route
+                exact
+                path='/investors/cafe-juice-bar'
+                element={<CafeJuiceBar />}
+              />
+              <Route exact path='/investors/spa' element={<Spa />} />
+              <Route
+                exact
+                path='/investors/sustainable-development'
                 element={<Sustainable />}
               />
               <Route
                 exact
-                path='/organic-beauty-products'
+                path='/investors/organic-beauty-products'
                 element={<OrganicProducts />}
               />
-              <Route exact path='/foundation' element={<Foundation />} />
-              <Route exact path='/organic-farm' element={<OrganicFarm />} />
-              <Route exact path='/listings/surya' element={<Surya />} />
-              <Route exact path='/listings/chandra' element={<Chandra />} />
-              <Route exact path='/listings/jala' element={<Jala />} />
+              <Route
+                exact
+                path='/investors/foundation'
+                element={<Foundation />}
+              />
+              <Route
+                exact
+                path='/investors/organic-farm'
+                element={<OrganicFarm />}
+              />
+              <Route
+                exact
+                path='/investors/listings/surya'
+                element={<Surya />}
+              />
+              <Route
+                exact
+                path='/investors/listings/chandra'
+                element={<Chandra />}
+              />
+              <Route exact path='/investors/listings/jala' element={<Jala />} />
               <Route exact path='/cart' element={<Cart />} />
               <Route exact path='/success' element={<Success />} />
               {/* <Route exact path='/home' element={<Home />} /> */}
               <Route exact path='/reset-password' element={<ResetPassword />} />
-              <Route
+              <Route path='/' element={<Home />} />
+              {/* <Route
                 path='/home'
                 element={
                   <PrivateRoute>
                     <Home />
                   </PrivateRoute>
                 }
-              />
-              <Route
-                path='/villas'
-                element={
-                  <PrivateRoute>
-                    <NewSurya />
-                  </PrivateRoute>
-                }
-              />
+              /> */}
+              <Route path='/villas' element={<NewSurya />} />
               <Route
                 path='/dashboard'
                 element={
