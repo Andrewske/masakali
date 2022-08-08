@@ -48,7 +48,7 @@ import CountryPicker from './components/layout/CountryPicker';
 import Home from './components/layout/Home/Home';
 
 // New Listing Pages
-import NewSurya from './components/layout/Villas/Surya';
+import Villas from './components/layout/Villas/Template';
 
 // Auth Pages
 import Login from './components/auth/Login';
@@ -148,7 +148,7 @@ const App = () => {
                   </PrivateRoute>
                 }
               /> */}
-              <Route path='/villas' element={<NewSurya />} />
+              <Route path='/villas' element={<Villas />} />
               <Route
                 path='/dashboard'
                 element={

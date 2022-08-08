@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-const Reviews = ({ reviews }) => {
+import { getReviews } from '../../../actions/google';
+
+const Reviews = ({ reviews, getReviews }) => {
   const [index, setIndex] = useState(4);
 
   const next = () => {
@@ -12,6 +14,12 @@ const Reviews = ({ reviews }) => {
   const prev = () => {
     index === 0 ? setIndex(reviews.length - 1) : setIndex(index - 1);
   };
+
+  useEffect(() => {
+    if (!reviews) getReviews();
+
+    return () => getReviews();
+  }, [reviews, getReviews]);
 
   return (
     reviews && (
@@ -46,4 +54,4 @@ const mapStateToProps = (state) => ({
   reviews: state.villas.reviews,
 });
 
-export default connect(mapStateToProps, null)(Reviews);
+export default connect(mapStateToProps, [getReviews])(Reviews);
