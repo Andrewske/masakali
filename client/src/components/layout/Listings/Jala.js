@@ -13,7 +13,7 @@ const imageSelection = [1, 10, 0, 4, 5];
 const Jala = ({ loadVillas, jala, getVillaRates, currency }) => {
   const [blockedDates, setBlockedDates] = useState(null);
   const [checkInDates, setCheckInDates] = useState(null);
-  const [reducedPrice, setReducedPrice] = useState(70);
+  const [reducedPrice, setReducedPrice] = useState(140);
 
   useEffect(() => {
     if (jala?.datesReserved) {

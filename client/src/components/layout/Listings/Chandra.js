@@ -13,7 +13,7 @@ const imageSelection = [10, 0, 1, 4, 5];
 const Chandra = ({ loadVillas, chandra, getVillaRates, currency }) => {
   const [blockedDates, setBlockedDates] = useState(null);
   const [checkInDates, setCheckInDates] = useState(null);
-  const [reducedPrice, setReducedPrice] = useState(102);
+  const [reducedPrice, setReducedPrice] = useState(170);
 
   useEffect(() => {
     if (chandra?.datesReserved) {
