@@ -59,6 +59,7 @@ const Template = ({ reviews, getReviews, getBlockedDates, villas }) => {
     setCheckOut(moment(date).add(1, 'days'));
     setCheckInPickerOpen(false);
   };
+
   const handleCheckOut = (date) => {
     setCheckOut(date);
     setCheckOutPickerOpen(false);
