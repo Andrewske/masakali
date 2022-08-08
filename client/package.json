@@ -71,9 +71,13 @@
   },
   "devDependencies": {
     "compression-webpack-plugin": "^8.0.0",
+<<<<<<< HEAD
     "sass": "^1.52.3",
     "sass-loader": "^12.3.0",
     "webpack": "^5.73.0"
+=======
+    "webpack": "^5.74.0"
+>>>>>>> 3e8ddfd... work on cart page
   },
   "browser": {
     "crypto": false,

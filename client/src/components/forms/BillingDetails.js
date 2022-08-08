@@ -2,15 +2,12 @@ import React, { useState, useMemo } from 'react';
 import FormField from './FormField';
 import CountrySelector from './CountrySelector';
 
-
 const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
-
-
   return (
     <>
       <FormField
         name='firstName'
-        label='First Name'
+        //label='First Name'
         type='text'
         placeholder='Jane'
         initialValue={user?.firstName}
@@ -18,7 +15,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
       />
       <FormField
         name='lastName'
-        label='Last Name'
+        //label='Last Name'
         type='text'
         placeholder='Doe'
         initialValue={user?.lastName}
@@ -26,7 +23,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
       />
       <FormField
         name='email'
-        label='Email'
+        //label='Email'
         type='email'
         placeholder='jane.doe@example.com'
         initialValue={user?.email}
@@ -34,7 +31,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
       />
       <FormField
         name='address'
-        label='Address'
+        //label='Address'
         type='text'
         placeholder='185 Berry St. Suite 550'
         initialValue={user?.address?.line1}
@@ -42,7 +39,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
       />
       <FormField
         name='city'
-        label='City'
+        //label='City'
         type='text'
         placeholder='San Francisco'
         initialValue={user?.address?.city}
@@ -50,7 +47,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
       />
       <FormField
         name='state'
-        label='State'
+        //label='State'
         type='text'
         placeholder='CA'
         initialValue={user?.address?.state}
@@ -58,7 +55,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
       />
       {/* <FormField
         name='country'
-        label='Country'
+        //label='Country'
         type='text'
         placeholder='US'
         initialValue={user?.address?.country}
@@ -67,7 +64,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
       <CountrySelector initialValue={user?.address?.country} />
       <FormField
         name='zip'
-        label='ZIP'
+        //label='ZIP'
         type='text'
         placeholder='94103'
         initialValue={user?.address?.postal_code}
@@ -76,11 +73,11 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
       {user?.admin && (
         <FormField
           name='discount'
-          label='discount'
+          //label='discount'
           type='text'
           placeholder='code?'
-        //initialValue={user?.address?.postal_code}
-        //required
+          //initialValue={user?.address?.postal_code}
+          //required
         />
       )}
       <div className='form-field-container'>

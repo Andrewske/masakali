@@ -12,6 +12,8 @@
   --airbnb-color: #ff5a5f;
 }
 
+$purple: rgba(55, 33, 55, 1);
+$light-purple-7: rgba(55, 33, 55, 0.75);
 $light-purple-5: rgba(163, 143, 159, 0.5);
 
 @font-face {
@@ -188,6 +190,17 @@ img {
   }
 }
 
+.baskerville-spaced {
+  font-family: 'Baskerville Regular';
+  text-transform: Uppercase;
+  letter-spacing: 0.25rem;
+}
+.avenir-spaced {
+  font-family: 'Avenir Book';
+  text-transform: Uppercase;
+  letter-spacing: 0.25rem;
+}
+
 .villa-template {
   font-family: 'Avenir Book';
   display: flex;
@@ -265,6 +278,33 @@ img {
               .month-year {
                 text-transform: Uppercase;
               }
+            }
+          }
+        }
+
+        .villa-template-total {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: nowrap;
+          border-top: 1px solid black;
+          padding-top: 1rem;
+
+          p {
+            text-transform: uppercase;
+            letter-spacing: 0.25rem;
+            opacity: 0.75;
+          }
+
+          .villa-template-total-price {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            font-family: 'Baskerville Regular';
+
+            .price {
+              margin-right: 0.5rem;
             }
           }
         }
@@ -464,11 +504,13 @@ h2 {
 }
 
 h3 {
+  @extend .avenir-spaced;
   font-size: 1.25em;
   font-weight: normal;
 }
 
 h4 {
+  @extend .avenir-spaced;
   font-size: 1.15rem;
   font-weight: normal;
 }
@@ -2208,23 +2250,29 @@ $button-active-blue: #1669f2;
     flex-direction: column;
     position: relative;
 
-    .image {
-      display: grid;
-      place-items: center;
-      height: 300px;
+    .details-header {
       width: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      margin: 0 !important;
+      height: 50px;
+      @extend .center-col;
+      @extend .avenir-spaced;
+      background-color: $light-purple-5;
+      color: white;
     }
 
     .details {
-      margin: 15px;
-      p {
-        width: 100%;
-        padding: 0.5rem 0rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .detail {
+        padding: 0.5rem 0;
+
+        .detail-title {
+          @extend .avenir-spaced;
+        }
       }
+
       .total {
         font-size: 1.25rem;
       }
@@ -2364,14 +2412,13 @@ $button-active-blue: #1669f2;
 }
 
 .country-dropdown {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
+  position: relative;
+  width: max-content;
   z-index: 200000;
 
   .selected {
     height: 40px;
-    border: 1px solid var(--purple-color);
+    //border: 1px solid var(--purple-color);
     border-radius: 0.25rem;
     white-space: nowrap;
     overflow: hidden;
@@ -2386,7 +2433,7 @@ $button-active-blue: #1669f2;
       input {
         width: 75%;
         font-size: 1rem;
-        font-family: 'RuckSack', sans-serif;
+        //font-family: 'RuckSack', sans-serif;
         font-weight: 500;
         padding: 0.25rem;
         margin: auto;
@@ -2414,7 +2461,7 @@ $button-active-blue: #1669f2;
     transform: translateY(50px);
     max-height: 350px;
     overflow-y: scroll;
-    background-color: white;
+    background: rgba(242, 242, 242, 1) !important;
     border-radius: 0.25rem;
 
     .list-item {
