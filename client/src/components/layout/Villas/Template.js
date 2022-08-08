@@ -1,21 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header';
-import ImageContext from '../../../utils/ImageContext';
-import { IKImage } from 'imagekitio-react';
+
 import moment from 'moment';
 import useOnClickOutside from '../../../utils/useOnClickOutside';
 import { DayPickerSingleDateController } from 'react-dates';
 import TemplateInfo from './TemplateInfo';
 import ImageCarousel from './ImageCarousel';
-import { getReviews } from '../../../actions/google';
+
 import { getBlockedDates } from '../../../actions/smoobu';
 import CountryPicker from '../CountryPicker';
 import { calcDiscount, calcTaxes, calcTotal } from '../../../utils/getPrices';
 import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import _ from 'lodash';
 import { useNavigate } from 'react-router-dom';
-import { createReservation } from '../../../actions/user';
 
 const ARRIVAL_DATE = 'ARRIVAL DATE';
 const DEPARTURE_DATE = 'DEPARTURE DATE';
@@ -44,14 +42,7 @@ const villaDetails = {
   },
 };
 
-const Template = ({
-  reviews,
-  getReviews,
-  getBlockedDates,
-  villas,
-  country,
-  createReservation,
-}) => {
+const Template = ({ getBlockedDates, villas, country, createReservation }) => {
   const [checkIn, setCheckIn] = useState(moment());
   const [checkOut, setCheckOut] = useState(moment().add(1, 'd'));
   const [focused, setFocused] = useState(null);
@@ -61,7 +52,11 @@ const Template = ({
   const [numDays, setNumDays] = useState(checkOut.diff(checkIn, 'days'));
   const [total, setTotal] = useState(100);
 
-  const [villa, setVilla] = useState('surya');
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+
+  const [villa, setVilla] = useState(params.villa || 'surya');
 
   const navigate = useNavigate();
 
@@ -81,10 +76,6 @@ const Template = ({
     setCheckOut(date);
     setCheckOutPickerOpen(false);
   };
-
-  useEffect(() => {
-    if (!reviews) getReviews();
-  }, [reviews, getReviews]);
 
   useEffect(() => {
     if (_.size(villas[villa]) === 0) getBlockedDates();
@@ -260,14 +251,11 @@ const Template = ({
 
 const mapStateToProps = (state) => ({
   villas: state.villas,
-  reviews: state.villas.reviews,
   country: state.country,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    //handleSmoobu: () => dispatch(getBlockedDates()),
-    getReviews: () => getReviews(),
     getBlockedDates: () => getBlockedDates(),
     createReservation: (payload) =>
       dispatch({ type: 'CREATE_RESERVATION', payload }),

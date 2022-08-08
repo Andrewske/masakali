@@ -2,11 +2,13 @@ import React, { useMemo } from 'react';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 import useHover from '../../../utils/useHover';
+import { useNavigate } from 'react-router-dom';
 
 const Villas = () => {
   const [suryaRef, isSuryaHovered] = useHover();
   const [chandraRef, isChandraHovered] = useHover();
   const [jalaRef, isJalaHovered] = useHover();
+  const navigate = useNavigate();
 
   const villaDetails = useMemo(
     () => [
@@ -80,7 +82,12 @@ const Villas = () => {
             >
               <h2>{villa.name}</h2>
               <p>{villa.details}</p>
-              <button className='button purple'>View Details</button>
+              <button
+                className='button purple'
+                onClick={() => navigate(`/villas?villa=${villa.name}`)}
+              >
+                View Details
+              </button>
             </span>
           </span>
         ))}
