@@ -14,6 +14,7 @@ import { calcDiscount, calcTaxes, calcTotal } from '../../../utils/getPrices';
 import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import _ from 'lodash';
 import { useNavigate } from 'react-router-dom';
+import { getVillaRates } from '../../../actions/smoobu';
 
 const ARRIVAL_DATE = 'ARRIVAL DATE';
 const DEPARTURE_DATE = 'DEPARTURE DATE';
@@ -42,15 +43,21 @@ const villaDetails = {
   },
 };
 
-const Template = ({ getBlockedDates, villas, country, createReservation }) => {
+const Template = ({
+  getBlockedDates,
+  villas,
+  country,
+  createReservation,
+  getVillaRates,
+}) => {
   const [checkIn, setCheckIn] = useState(moment());
   const [checkOut, setCheckOut] = useState(moment().add(1, 'd'));
   const [focused, setFocused] = useState(null);
   const [checkInPickerOpen, setCheckInPickerOpen] = useState(false);
   const [checkOutPickerOpen, setCheckOutPickerOpen] = useState(false);
-  const [price, setPrice] = useState(100);
+  const [price, setPrice] = useState(0);
   const [numDays, setNumDays] = useState(checkOut.diff(checkIn, 'days'));
-  const [total, setTotal] = useState(100);
+  const [total, setTotal] = useState(0);
 
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
@@ -66,14 +73,32 @@ const Template = ({ getBlockedDates, villas, country, createReservation }) => {
   useOnClickOutside(checkInRef, () => setCheckInPickerOpen(false));
   useOnClickOutside(checkOutRef, () => setCheckOutPickerOpen(false));
 
+  useEffect(() => {
+    getVillaRates();
+  }, []);
+
+  const setPrices = ({ startDate = checkIn, endDate = checkOut }) => {
+    let numDays = endDate.diff(startDate, 'days');
+
+    // ADD A DEFAULT FOR EACH VILLA IF WE CANNOT GET RATES
+    let pricePerNight =
+      villas[villa].rates[moment(startDate).format('YYYY-MM-DD')].price;
+
+    setPrice(pricePerNight);
+    setNumDays(numDays);
+    setTotal(calcTotal({ price: pricePerNight, numDays }));
+  };
+
   const handleCheckIn = (date) => {
     setCheckIn(date);
     setCheckOut(moment(date).add(1, 'days'));
+    setPrices({ startDate: date, endDate: moment(date).add(1, 'days') });
     setCheckInPickerOpen(false);
   };
 
   const handleCheckOut = (date) => {
     setCheckOut(date);
+    setPrices({ endDate: date });
     setCheckOutPickerOpen(false);
   };
 
@@ -97,20 +122,6 @@ const Template = ({ getBlockedDates, villas, country, createReservation }) => {
       return day <= moment(checkIn).format('YYYY-MM-DD') || day > next;
     }
   };
-
-  useEffect(() => {
-    if (checkIn && checkOut) {
-      let numDays = checkOut.diff(checkIn, 'days');
-
-      // ADD A DEFAULT FOR EACH VILLA IF WE CANNOT GET RATES
-      let pricePerNight =
-        villas[villa].rates[moment(checkIn).format('YYYY-MM-DD')].price;
-      //const {price, total} = calcPrice(numDays, )
-      setPrice(pricePerNight);
-      setNumDays(numDays);
-      setTotal(calcTotal({ price: pricePerNight, numDays }));
-    }
-  }, [checkIn, checkOut]);
 
   const formattedTotal = useCurrencyFormat(total);
 
@@ -256,6 +267,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    getVillaRates: () => dispatch(getVillaRates()),
     getBlockedDates: () => getBlockedDates(),
     createReservation: (payload) =>
       dispatch({ type: 'CREATE_RESERVATION', payload }),
