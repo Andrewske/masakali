@@ -26,6 +26,9 @@ import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import { percDiscount } from '../../../config';
 import { makeReservation } from '../../../actions/smoobu';
 import { compareSync } from 'bcryptjs';
+import ImageContext from '../../../utils/ImageContext';
+import { IKImage } from 'imagekitio-react';
+import Header from '../Header';
 
 //import {} from 'dotenv/config';
 
@@ -204,55 +207,70 @@ const Cart = ({
   };
 
   return (
-    <div className='cart-container'>
-      <header>
-        <h1>Cart</h1>
-      </header>
-      {reservations?.new && (
-        <div className='row'>
-          <CartDetails reservation={reservations.new} />
-        </div>
-      )}
-
-      {isAuthenticated ? (
-        <form
-          className='row'
-          onSubmit={handleSubmit}
-          onChange={(e) => discountPrice(e)}
-        >
-          <BillingDetails
-            user={user}
-            isDefault={isDefault}
-            setIsDefault={setIsDefault}
-          />
-          <div className='card-element-container'>
-            <CardElement
-              options={cardElementOptions}
-              onChange={handleCardDetailsChange}
+    <div className='container full'>
+      <Header hide={false} />
+      <div className='cart-container'>
+        <header>
+          <h1>Check out</h1>
+        </header>
+        <span className='row image'>
+          <ImageContext>
+            <IKImage
+              path={'/surya-front-night_JpkSeqJUB.jpg'}
+              transformation={[{ width: '800px', dpr: 'auto' }]}
+              lqip={{ active: true }}
+              loading='lazy'
             />
-          </div>
-          <span style={{ fontSize: '.5rem', margin: '0 auto' }}>
-            Powered by Stripe
-          </span>
-          {checkoutError && <CheckoutError>{checkoutError}</CheckoutError>}
+          </ImageContext>
+        </span>
 
-          <button className='btn submit' disabled={isProcessing || !stripe}>
-            {isProcessing ? 'Processing...' : `Pay ${total}`}
-          </button>
-        </form>
-      ) : (
-        <div className='row'>
-          <h2>Log in or sign up to book</h2>
-          <Login />
+        {reservations?.new && (
+          <div className='row'>
+            <CartDetails reservation={reservations.new} />
+          </div>
+        )}
+
+        {isAuthenticated ? (
+          <form
+            className='row'
+            onSubmit={handleSubmit}
+            onChange={(e) => discountPrice(e)}
+          >
+            <BillingDetails
+              user={user}
+              isDefault={isDefault}
+              setIsDefault={setIsDefault}
+            />
+            <div className='card-element-container'>
+              <CardElement
+                options={cardElementOptions}
+                onChange={handleCardDetailsChange}
+              />
+            </div>
+            <span style={{ fontSize: '.5rem', margin: '0 auto' }}>
+              Powered by Stripe
+            </span>
+            {checkoutError && <CheckoutError>{checkoutError}</CheckoutError>}
+
+            <button className='btn submit' disabled={isProcessing || !stripe}>
+              {isProcessing ? 'Processing...' : `Pay ${total}`}
+            </button>
+          </form>
+        ) : (
+          <div className='row'>
+            <h2>Log in or sign up to book</h2>
+            <Login />
+          </div>
+        )}
+
+        <div className=''>
+          <p className='subtext'>
+            Having troubles with checkout? Contact us at{' '}
+            <a href='mailto:admin@masakaliretreat.com'>
+              admin@masakaliretreat.com
+            </a>
+          </p>
         </div>
-      )}
-      <div className='row'>
-        <p className='subtext'>
-          Having troubles with checkout? Contact us at{' '}
-          <a href='mailto:admin@masakaliretreat.com'>
-            admin@masakaliretreat.com
-          </a>
-        </p>
       </div>
     </div>
   );

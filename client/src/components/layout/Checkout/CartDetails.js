@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import ImageContext from '../../../utils/ImageContext';
-import { IKImage } from 'imagekitio-react';
-import startCase from 'lodash/startCase';
 import useCurrencyFormat from '../../../utils/useCurrencyFormat';
-import { percDiscount } from '../../../config';
+import CountryPicker from '../CountryPicker';
 
 const CartDetails = ({
   reservation,
@@ -40,36 +37,42 @@ const CartDetails = ({
       </span>
       <span className='details'>
         <span className='detail'>
-          <p className='detail-title'>Arrival Date</p>
+          <p className='detail-title light'>Arrival Date</p>
           <p>{moment.utc(startDate).format('MMM DD YYYY')} at 2:00pm</p>
         </span>
         <span className='detail'>
-          <p className='detail-title'>Departure Date</p>
+          <p className='detail-title light'>Departure Date</p>
           <p>{moment.utc(endDate).format('MMM DD YYYY')} at 11:00am</p>
         </span>
         <span className='detail'>
-          <p className='detail-title'>Number of Guests</p>
+          <p className='detail-title light'>Number of Guests</p>
           <p>{guests || 0}</p>
         </span>
         <span className='detail'>
-          <p className='detail-title'>Number of Nights</p>
+          <p className='detail-title light'>Number of Nights</p>
           <p>{numDays}</p>
         </span>
         <span className='detail'>
-          <p className='detail-title'>Price</p>
+          <p className='detail-title light'>Price</p>
           <p>{amount}/night</p>
         </span>
         <span className='detail'>
-          <p className='detail-title'>Discount</p>
+          <p className='detail-title light'>Discount</p>
           <p>{discount}</p>
         </span>
         <span className='detail'>
-          <p className='detail-title'>Taxes</p>
+          <p className='detail-title light'>Taxes</p>
           <p>{taxes}</p>
         </span>
       </span>
       <span className='details-footer'>
         <p>Total</p>
+        <span className='details-footer-total-price'>
+          <span className='price'>
+            {total} {country.currency}
+          </span>
+          <CountryPicker />
+        </span>
       </span>
     </div>
   );
