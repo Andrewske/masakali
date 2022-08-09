@@ -199,6 +199,10 @@ img {
   font-family: 'Avenir Book';
   text-transform: Uppercase;
   letter-spacing: 0.25rem;
+
+  &.light {
+    color: rgba(140, 140, 140, 1);
+  }
 }
 
 .villa-template {
@@ -2208,7 +2212,8 @@ $button-active-blue: #1669f2;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 150px);
+  margin-top: 150px;
   position: relative;
   padding-top: 50px;
 
@@ -2217,25 +2222,30 @@ $button-active-blue: #1669f2;
     height: 50px;
     display: grid;
     place-items: center;
-    padding: 0.5rem;
-    position: absolute;
-    top: 0px;
   }
 
   .row {
+    flex: 1 1 25%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    //width: 475px;
-    box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08);
+    //box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08);
     border-radius: 4px;
-    //background-color: $light-purple-5;
-    position: relative;
     margin: 2rem;
-    width: calc(max(35%, 350px));
+    min-width: 350px;
+    height: 650px;
+    background: rgba(242, 242, 242, 1);
+    //width: calc(max(350px, 25%));
+
+    &.image {
+      background-color: transparent !important;
+    }
+
+    img {
+      object-fit: contain;
+    }
 
     h2 {
-      padding-top: 1rem;
       margin: 0 auto;
     }
   }
@@ -2249,21 +2259,43 @@ $button-active-blue: #1669f2;
     display: flex;
     flex-direction: column;
     position: relative;
+    height: 100%;
 
     .details-header {
       width: 100%;
-      height: 50px;
+      height: 4rem;
       @extend .center-col;
       @extend .avenir-spaced;
-      background-color: $light-purple-5;
+      background-color: rgba(163, 143, 159, 1);
       color: white;
     }
 
+    .details-footer {
+      padding: 1rem 0;
+      @extend .avenir-spaced;
+      border-top: 1px solid black;
+      margin: 0 2rem;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+
+      .details-footer-total-price {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+    }
+
     .details {
-      padding: 1rem;
+      padding: 1rem 2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
+      p {
+        font-family: 'Baskerville, Regular';
+      }
 
       .detail {
         padding: 0.5rem 0;
