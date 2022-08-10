@@ -72,10 +72,9 @@ const EmailLogin = ({ login, setToggle, setAlert }) => {
         className='show-password'
         onClick={() => setShowPassword(!showPassword)}
       >
-        <i className='icon-view-show'></i>
-        <p className='small'>Show Password</p>
+        <p className='small'>{showPassword ? 'Hide' : 'Show'} Password</p>
       </span>
-      <span onClick={handleSubmit} className='btn'>
+      <span onClick={handleSubmit} className='button purple'>
         Login
       </span>
       <p className='sub-text'>

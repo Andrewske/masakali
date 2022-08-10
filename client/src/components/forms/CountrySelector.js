@@ -14,7 +14,6 @@ const CountrySelector = ({ initialValue }) => {
   };
 
   useEffect(() => {
-    console.log({ initialValue });
     if (initialValue) {
       setValue({
         value: initialValue,
@@ -27,7 +26,8 @@ const CountrySelector = ({ initialValue }) => {
     <div className='form-field-container'>
       {/* <label htmlFor={'country'}>{'Country'}</label> */}
       <Select
-        className='country'
+        className='country-select-container'
+        classNamePrefix='country'
         name={'country'}
         placeholder={'United States'}
         required={true}
