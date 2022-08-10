@@ -82,7 +82,7 @@ const EmailRegister = ({ setAlert, setToggle, register }) => {
         <i className='icon-view-show'></i>
         <p className='small'>Show Password</p>
       </span>
-      <span className='btn' onClick={handleSubmit}>
+      <span className='button purple' onClick={handleSubmit}>
         Register
       </span>
       <p className='sub-text'>

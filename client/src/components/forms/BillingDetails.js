@@ -5,27 +5,30 @@ import CountrySelector from './CountrySelector';
 const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
   return (
     <>
-      <FormField
-        name='firstName'
-        //label='First Name'
-        type='text'
-        placeholder='Jane'
-        initialValue={user?.firstName}
-        required
-      />
-      <FormField
-        name='lastName'
-        //label='Last Name'
-        type='text'
-        placeholder='Doe'
-        initialValue={user?.lastName}
-        required
-      />
+      <span className='billing-form-name'>
+        <FormField
+          name='firstName'
+          //label='First Name'
+          type='text'
+          placeholder='First Name'
+          initialValue={user?.firstName}
+          required
+        />
+        <FormField
+          name='lastName'
+          //label='Last Name'
+          type='text'
+          placeholder='Last Name'
+          initialValue={user?.lastName}
+          required
+        />
+      </span>
+
       <FormField
         name='email'
         //label='Email'
         type='email'
-        placeholder='jane.doe@example.com'
+        placeholder='Email'
         initialValue={user?.email}
         required
       />
@@ -33,7 +36,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
         name='address'
         //label='Address'
         type='text'
-        placeholder='185 Berry St. Suite 550'
+        placeholder='Address'
         initialValue={user?.address?.line1}
         required
       />
@@ -41,7 +44,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
         name='city'
         //label='City'
         type='text'
-        placeholder='San Francisco'
+        placeholder='City'
         initialValue={user?.address?.city}
         required
       />
@@ -49,7 +52,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
         name='state'
         //label='State'
         type='text'
-        placeholder='CA'
+        placeholder='State'
         initialValue={user?.address?.state}
         required
       />
@@ -66,7 +69,7 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
         name='zip'
         //label='ZIP'
         type='text'
-        placeholder='94103'
+        placeholder='ZIP'
         initialValue={user?.address?.postal_code}
         required
       />

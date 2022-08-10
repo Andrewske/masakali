@@ -4,7 +4,7 @@ import { IKImage } from 'imagekitio-react';
 
 const Dining = () => {
   return (
-    <div className='extras-container'>
+    <div id='dining' className='extras-container'>
       <span className='extras-img'>
         <ImageContext>
           <IKImage

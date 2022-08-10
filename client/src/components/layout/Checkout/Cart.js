@@ -232,7 +232,7 @@ const Cart = ({
 
         {isAuthenticated ? (
           <form
-            className='row'
+            className='billing-form'
             onSubmit={handleSubmit}
             onChange={(e) => discountPrice(e)}
           >
@@ -258,7 +258,7 @@ const Cart = ({
           </form>
         ) : (
           <div className='row'>
-            <h2>Log in or sign up to book</h2>
+            <h2 className='cart-login-header'>Log in or sign up to book</h2>
             <Login />
           </div>
         )}
