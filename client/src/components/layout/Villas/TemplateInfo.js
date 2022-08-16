@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Reviews from './Reviews';
 
-const TemplateInfo = () => {
+const TemplateInfo = ({ villa }) => {
   const [content, setContent] = useState('description');
   const handleContentClick = (name) => {
     setContent(name);
@@ -54,7 +54,7 @@ const TemplateInfo = () => {
       )}
       {content === 'reviews' && (
         <span className='villa-template-info-content'>
-          <Reviews />
+          <Reviews villa={villa} />
         </span>
       )}
     </div>

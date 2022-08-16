@@ -244,7 +244,7 @@ const Template = ({
             </button>
           </span>
 
-          <TemplateInfo />
+          <TemplateInfo villa={villa} />
         </div>
         {/* <span className='template-gallery'>
           <ImageContext>
