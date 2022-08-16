@@ -193,7 +193,7 @@ const Template = ({
                   <DayPickerSingleDateController
                     date={checkIn}
                     onDateChange={(date) => handleCheckIn(date)}
-                    focused={focused}
+                    focused={checkIn}
                     onFocusChange={({ focused }) => setFocused(focused)}
                     isOutsideRange={(day) => day.isBefore(moment())}
                     isDayBlocked={(day) => isBlocked({ day, isCheckIn: true })}

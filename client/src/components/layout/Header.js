@@ -42,8 +42,8 @@ const Header = ({ hide }) => {
   };
 
   return (
-    <div className={hideHeader ? 'header-container' : 'header-container show'}>
-      <span className='main'>
+    <nav className={hideHeader ? 'header-container' : 'header-container show'}>
+      <div className='main'>
         <div>
           <img src={Logo} alt='Masakali Logo' className='logo' />
         </div>
@@ -72,7 +72,7 @@ const Header = ({ hide }) => {
           </button>
         </div>
         {/* <CountryPicker /> */}
-      </span>
+      </div>
 
       {isSmall && (
         <span className='expander' onClick={() => setIsExpanded(!isExpanded)}>
@@ -94,7 +94,7 @@ const Header = ({ hide }) => {
           <Link to='#amenities'>Amenities</Link>
         </span>
       </span>
-    </div>
+    </nav>
   );
 };
 
