@@ -9,6 +9,7 @@ import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 import Alert from '../Alert';
 import moment from 'moment';
+import useVillaPricing from '../../../hooks/useVillaPricing';
 
 const Availability = ({
   setAlert,
@@ -28,6 +29,8 @@ const Availability = ({
     chandra: false,
     jala: false,
   });
+
+  // const villaPricing = useVillaPricing({ checkIn, checkOut });
 
   const ARRIVAL_DATE = 'ARRIVAL DATE';
   const DEPARTURE_DATE = 'DEPARTURE DATE';
@@ -156,9 +159,10 @@ const Availability = ({
             </span>
           )}
         </span>
-
-        <span className='button' onClick={handleClick}>
-          Check Availability
+        <span className='checkin-button'>
+          <span className='button purple' onClick={handleClick}>
+            Check Availability
+          </span>
         </span>
       </span>
       <span className='villas'>
@@ -174,8 +178,10 @@ const Availability = ({
                     loading='lazy'
                   />
                 </ImageContext>
-                <h3>{key}</h3>
-                <p>$100/night</p>
+                <span className='villa-details'>
+                  <h3>{key}</h3>
+                  <p>$100/night</p>
+                </span>
               </span>
             )
         )}

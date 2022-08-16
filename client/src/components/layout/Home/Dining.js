@@ -8,7 +8,7 @@ const Dining = () => {
       <span className='extras-img'>
         <ImageContext>
           <IKImage
-            path='/surya-front-night_JpkSeqJUB.jpg'
+            path='/Main/masakali-dining_wZNNBopbm.webp'
             transformation={[{ height: '400px', width: '400px', dpr: 'auto' }]}
             lqip={{ active: true }}
             loading='lazy'

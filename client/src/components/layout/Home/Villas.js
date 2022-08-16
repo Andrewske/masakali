@@ -15,7 +15,7 @@ const Villas = () => {
       {
         name: 'surya',
         ref: suryaRef,
-        path: '/surya-front-night_JpkSeqJUB.jpg',
+        path: '/Main/Surya/surya-front-main_yynphR5d1s.webp',
         isHovered: isSuryaHovered,
         details: `Warm and elegant private pool villa, provides you with ample space
         to rest and recharge. Lorem ipsum dolor sit amet, consectetur
@@ -25,7 +25,7 @@ const Villas = () => {
       {
         name: 'chandra',
         ref: chandraRef,
-        path: '/surya-front-night_JpkSeqJUB.jpg',
+        path: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp',
         isHovered: isChandraHovered,
         details: `Warm and elegant private pool villa, provides you with ample space
         to rest and recharge. Lorem ipsum dolor sit amet, consectetur
@@ -35,7 +35,7 @@ const Villas = () => {
       {
         name: 'jala',
         ref: jalaRef,
-        path: '/surya-front-night_JpkSeqJUB.jpg',
+        path: '/Main/Jala/jala-front-main_yJaEapAckn.webp',
         isHovered: isJalaHovered,
         details: `Warm and elegant private pool villa, provides you with ample space
         to rest and recharge. Lorem ipsum dolor sit amet, consectetur
