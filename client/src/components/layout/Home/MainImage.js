@@ -86,7 +86,6 @@ const MainImage = () => {
         //keyBoardControl={true}
         //customTransition='all .5'
         transitionDuration={1000}
-        containerClass='home-gallery'
       >
         {images.map((d, i) => (
           <Item key={d.key}>

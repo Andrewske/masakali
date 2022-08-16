@@ -44,8 +44,7 @@ router.get('/rates', async (req, res) => {
     // );
 
     let currency = await getCurrency('IDR');
-
-    let USD = currency?.data?.USD?.value;
+    let USD = currency?.data?.USD?.value ?? 0.000068;
 
     for (const [key, value] of Object.entries(data)) {
       Object.keys(value).map((d, i) => {

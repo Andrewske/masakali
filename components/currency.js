@@ -14,6 +14,7 @@ module.exports = getCurrency = async (baseCurrency = 'USD') => {
 
   try {
     let response = await axios.get(
+<<<<<<< HEAD
       `https://api.currencyapi.com/v3/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=${baseCurrency}`
     );
     let newCurrency = new Currency({
@@ -23,6 +24,18 @@ module.exports = getCurrency = async (baseCurrency = 'USD') => {
 
     await newCurrency.save();
 
+=======
+      `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=${baseCurrency}`
+    );
+
+    let newCurrency = new Currency({
+      baseCurrency,
+      data: response.data.data,
+    });
+
+    await newCurrency.save();
+
+>>>>>>> 2a874b6... fix default currency rates when api is broken
     return newCurrency;
   } catch (err) {
     console.error('getCurrency', { err });
