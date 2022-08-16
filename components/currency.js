@@ -14,9 +14,8 @@ module.exports = getCurrency = async (baseCurrency = 'USD') => {
 
   try {
     let response = await axios.get(
-      `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=${baseCurrency}`
+      `https://api.currencyapi.com/v3/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=${baseCurrency}`
     );
-
     let newCurrency = new Currency({
       baseCurrency,
       data: response.data.data,
