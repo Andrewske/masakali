@@ -378,7 +378,7 @@ img {
 }
 .review {
   display: flex;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 
   i {
     font-size: 1.25rem;
@@ -392,21 +392,32 @@ img {
     }
   }
 
-  img {
-    height: 4rem;
-    width: auto;
-    margin: auto 1rem;
-  }
-
   .review-info {
     display: flex;
     flex-direction: column;
 
-    .review-name {
-      font-weight: bold;
-    }
+    .review-info-heading {
+      display: flex;
+      margin-bottom: 0.25rem;
+      align-items: center;
+      img {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 50%;
+      }
 
-    .review-date {
+      .review-info-heading-text {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0.5rem;
+
+        .review-name {
+          font-weight: bold;
+        }
+
+        .review-date {
+        }
+      }
     }
 
     .review-rating > .star {
