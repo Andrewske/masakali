@@ -33,7 +33,7 @@ const Amenities = () => {
       <span className='extras-img'>
         <ImageContext>
           <IKImage
-            path='/surya-front-night_JpkSeqJUB.jpg'
+            path='/Main/masakali-amenities_l3CanW3Rq.webp'
             transformation={[{ height: '400px', width: '400px', dpr: 'auto' }]}
             lqip={{ active: true }}
             loading='lazy'

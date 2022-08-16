@@ -26,15 +26,34 @@ const responsive = {
   },
 };
 
-const images = [
-  { key: 1, path: '/surya-front-night_JpkSeqJUB.jpg' },
-  { key: 2, path: '/Home/navita_deck_lounge_1__KU5WS7eEkr.jpg' }, //{ key: 2, path: '/main-photo_p9l1NRPmw.jpg' },
-  { key: 3, path: '/Home/chandra_pool_LJbiUFrCC.jpg' }, // { key: 3, path: '/home-suzanne-pool-view_t5w4u2g3s.jpg' },
-  { key: 4, path: '/Home/sylvia_surya_view_-RPbEYyqjBU.jpg' }, //{ key: 4, path: '/pool-view_3wQpQqYjp.jpeg' },
-  { key: 5, path: '/Home/home-surya-bed_rqQoKi6or.jpg' },
-];
+const images = {
+  surya: [
+    { key: 1, path: '/Main/Surya/surya-front-main_yynphR5d1s.webp' },
+    { key: 2, path: '/Main/Surya/surya-bedroom_dQwz6JpPm.webp' },
+    { key: 3, path: '/Main/Surya/surya-pool-view_pjSJIpNVo.webp' },
+    { key: 4, path: '/Main/Surya/surya-bathroom_Ky01eDo6af.webp' },
+    { key: 5, path: '/Main/Surya/surya-front-second_u3xM608eAl.webp' },
+    { key: 6, path: '/Main/Surya/surya-interior_MVrSfX92I.webp' },
+  ],
+  chandra: [
+    { key: 1, path: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp' },
+    { key: 2, path: '/Main/Chandra/chandra-bedroom_JAH69CTiiF.webp' },
+    { key: 3, path: '/Main/Chandra/chandra-bathroom_7I5k2YbQst.webp' },
+    { key: 4, path: '/Main/Chandra/chandra-desk-accent-wall_NRYNSozay.webp' },
+    { key: 5, path: '/Main/Chandra/chandra-hammock-views_jWGp4vKQ5R.webp' },
+    { key: 6, path: '/Main/Chandra/chandra-sunset-views_mXTk4LDWy.webp' },
+  ],
+  jala: [
+    { key: 1, path: '/Main/Jala/jala-front-main_yJaEapAckn.webp' },
+    { key: 2, path: '/Main/Jala/jala-bedroom-interior_k4_8kia2c.webp' },
+    { key: 3, path: '/Main/Jala/jala-front-second_njtd4AHo_.webp' },
+    { key: 4, path: '/Main/Jala/jala-bathroom_MWnST_qRiv.webp' },
+    { key: 5, path: '/Main/Jala/jala-pool-views_XNtx-FF4aV.webp' },
+    { key: 6, path: '/Main/Jala/jala-porch-views_NNsVpcUUHy.webp' },
+  ],
+};
 
-const ImageCarousel = () => {
+const ImageCarousel = ({ name = 'surya' }) => {
   return (
     <Carousel
       swipeable={true}
@@ -50,12 +69,12 @@ const ImageCarousel = () => {
       transitionDuration={1000}
       containerClass='template-gallery'
     >
-      {images.map((d, i) => (
+      {images[name].map((d, i) => (
         <ImageContext key={d.key}>
           <IKImage
             className='template-gallery-item'
             path={d.path}
-            transformation={[{ height: 700, width: 'auto', dpr: 'auto' }]}
+            transformation={[{ height: 1000, width: 'auto', dpr: 'auto' }]}
             lqip={{ active: true }}
             loading={i > 0 ? 'lazy' : ''}
           />

@@ -254,7 +254,7 @@ const Template = ({
             />
           </ImageContext>
         </span> */}
-        <ImageCarousel />
+        <ImageCarousel name={villa} />
       </span>
     </span>
   );

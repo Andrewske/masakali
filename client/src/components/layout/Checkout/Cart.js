@@ -262,7 +262,6 @@ const Cart = ({
             <Login />
           </div>
         )}
-
         <div className=''>
           <p className='subtext'>
             Having troubles with checkout? Contact us at{' '}
