@@ -55,6 +55,7 @@ const Villas = () => {
 
   return (
     <div id='villas' className='villas-container'>
+      <div className='link-point' />
       <h2>Villas</h2>
       <span className='villas-text'>
         Each room is equipped with a private infinity pool overlooking the

@@ -30,6 +30,17 @@ const Header = ({ hide }) => {
     }
   });
 
+  const scrollToTarget = (el) => {
+    var headerOffset = 200;
+    var elPosition = el.getBoundingClientRect().top;
+    var offsetPosition = elPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className={hideHeader ? 'header-container' : 'header-container show'}>
       <span className='main'>
@@ -38,14 +49,25 @@ const Header = ({ hide }) => {
         </div>
         {!isSmall && (
           <span className='links'>
-            <Link to='/#home'>Home</Link>
-            <Link to='/#villas'>Villas</Link>
-            <Link to='/#dining'>Dining</Link>
-            <Link to='/#amenities'>Amenities</Link>
+            <Link smooth to='/#home'>
+              Home
+            </Link>
+            <Link to='/#villas' scroll={(el) => scrollToTarget(el)}>
+              Villas
+            </Link>
+            <Link to='/#dining' scroll={(el) => scrollToTarget(el)}>
+              Dining
+            </Link>
+            <Link to='/#amenities' scroll={(el) => scrollToTarget(el)}>
+              Amenities
+            </Link>
           </span>
         )}
         <div>
-          <button className='button white' onClick={() => navigate('/villas')}>
+          <button
+            className='button white'
+            onClick={() => navigate('/villas', { replace: true })}
+          >
             BOOK NOW
           </button>
         </div>

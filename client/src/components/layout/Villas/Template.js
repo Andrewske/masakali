@@ -15,6 +15,7 @@ import useCurrencyFormat from '../../../utils/useCurrencyFormat';
 import _ from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { getVillaRates } from '../../../actions/smoobu';
+import useScrollToTop from '../../../hooks/useScrollToTop';
 
 const ARRIVAL_DATE = 'ARRIVAL DATE';
 const DEPARTURE_DATE = 'DEPARTURE DATE';
@@ -69,6 +70,7 @@ const Template = ({
 
   const checkInRef = useRef(null);
   const checkOutRef = useRef(null);
+  const scrollRef = useScrollToTop();
 
   useOnClickOutside(checkInRef, () => setCheckInPickerOpen(false));
   useOnClickOutside(checkOutRef, () => setCheckOutPickerOpen(false));
@@ -162,7 +164,7 @@ const Template = ({
   };
 
   return (
-    <span className='container full'>
+    <span className='container full' ref={scrollRef}>
       <Header hide={false} />
       <span className='villa-template'>
         <div className='villa-template-details'>

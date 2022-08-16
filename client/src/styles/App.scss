@@ -651,6 +651,11 @@ h4 {
   }
 }
 
+.link-point {
+  display: none;
+  transform: translateY(-300px);
+}
+
 .about-container {
   background-color: #f2f2f2;
   width: 100vw;

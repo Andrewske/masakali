@@ -65,7 +65,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <PersistGate persistor={persistor}>
-          {/* <ScrollToTop /> */}
+          <ScrollToTop />
           {/* <CountryPicker /> */}
           <Fragment>
             {/* <Sidebar /> */}
