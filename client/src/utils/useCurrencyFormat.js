@@ -16,7 +16,7 @@ const useCurrencyFormat = (amount = null) => {
 
   useEffect(() => {
     if (amount && country) {
-      setTotal(formatter.format(amount * country.conversion));
+      setTotal(formatter.format(amount * country.conversion.value));
     }
   }, [amount, country, formatter]);
 
