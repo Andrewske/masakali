@@ -17,30 +17,21 @@ const Villas = () => {
         ref: suryaRef,
         path: '/Main/Surya/surya-front-main_yynphR5d1s.webp',
         isHovered: isSuryaHovered,
-        details: `Warm and elegant private pool villa, provides you with ample space
-        to rest and recharge. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua.`,
+        details: `Our largest villa is a warm and elegant choice with ample space to rest and recharge. It has an ensuite breakfast table and features a hand-carved outdoor dining table that can seat larger groups on the private patio. Inside you’ll find a luxury king-sized mattress with high-quality bedding as well as a couch that can serve as an additional bed for an additional guest.`,
       },
       {
         name: 'chandra',
         ref: chandraRef,
         path: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp',
         isHovered: isChandraHovered,
-        details: `Warm and elegant private pool villa, provides you with ample space
-        to rest and recharge. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua.`,
+        details: `One of our more popular villas for romantic getaways and honeymooners offers an enchanting sentiment. In addition to the luxury outdoor shower, this villa features a spacious and comfortable bath. Be sure to ask about our special flower petal bath for a romantic night with your partner. One of the favorite places to relax is the outdoor hammock that hangs over the rice fields, with a perfect view of the stars at night. This villa also has a work area with a comfortably sized desk, as well as a cozy ottoman where you can read a book or relax.`,
       },
       {
         name: 'jala',
         ref: jalaRef,
         path: '/Main/Jala/jala-front-main_yJaEapAckn.webp',
         isHovered: isJalaHovered,
-        details: `Warm and elegant private pool villa, provides you with ample space
-        to rest and recharge. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua.`,
+        details: `This traditional joglo villa is the perfect fit for a cozy stay. With a personal charm and attention to detail, this alluring villa has its own irresistible appeal. Jala offers a workstation with a large desk, comfy outdoor lounging areas, and a full private ensuite bathroom. The luxury bedding and linens offer a comfortable and restful sleep while the beautiful, handcrafted furniture and amenities will leave you in awe of the craftsmanship and detail. `,
       },
     ],
     [
@@ -58,9 +49,11 @@ const Villas = () => {
       <h2>Villas</h2>
       <span className='villas-text'>
         Each room is equipped with a private infinity pool overlooking the
-        Balinese rice fields, a private kitchenette fully stocked with cooking
-        ware and utensils, a luxury outdoor shower, with spa and meal services
-        available upon request.
+        Balinese rice fields, an ensuite kitchenette fully stocked with cooking
+        ware and utensils, a luxury outdoor shower, and high-quality mattresses
+        and bedding for a comfortable and relaxing stay. The private patios all
+        have comfortable lounge chairs for outdoor relaxation. Each villa has
+        access to spa and meal services available upon request.
       </span>
       <span className='villas-images'>
         {villaDetails.map((villa) => (

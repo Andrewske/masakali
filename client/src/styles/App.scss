@@ -135,6 +135,7 @@ img {
   padding: 0.65rem 1.75rem;
   margin: 1rem auto;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
 
   &.wide {
     letter-spacing: 0.5rem;
@@ -148,6 +149,12 @@ img {
   &.purple {
     color: white;
     background: var(--primary-color);
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    background: var(--secondary-color) !important;
+    color: white;
   }
 }
 
@@ -711,7 +718,7 @@ h4 {
       h3 {
         font-family: 'Baskerville, Regular';
         text-transform: Uppercase;
-        font-size: 1.5rem;
+        font-size: 1.15rem !important;
       }
 
       .why-feature-icon {
@@ -732,6 +739,7 @@ h4 {
   justify-content: space-evently;
   align-items: center;
   width: 100vw;
+  background: #f2f2f2;
 
   h2 {
     letter-spacing: 8.4px;
@@ -752,6 +760,7 @@ h4 {
     width: 100%;
     position: relative;
     padding: 1rem;
+    font-size: 0.75rem;
 
     .villas-img {
       max-height: 400px;
@@ -794,12 +803,23 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  &.reverse {
+    flex-wrap: wrap-reverse !important;
+  }
 
   .extras-img {
     width: calc(max(350px, 30vw));
-    height: calc(max(350px, 30vw));
+    height: auto;
+    min-height: 350px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      object-position: 100%;
+    }
 
     &.down {
       margin-top: 2rem;
@@ -875,10 +895,12 @@ h4 {
     span {
       margin: 2rem;
       padding-top: 1rem;
-      font-size: 0.75rem;
+      font-size: 1rem;
     }
 
     ul {
+      margin-top: 1rem;
+      columns: 2;
       margin-left: 2rem;
       font-size: 0.85rem;
       list-style: none;
@@ -891,11 +913,33 @@ h4 {
   }
 
   .extras-link {
+    display: flex;
+    align-items: center;
     text-transform: uppercase;
+    margin-left: 2rem;
+    cursor: pointer;
 
     i {
       position: relative;
       top: calc(50% - 12px);
+    }
+
+    a {
+      width: max-content;
+      text-align: center;
+      font-size: 0.75rem;
+
+      &:after {
+        display: block;
+        content: '';
+        border-bottom: 1px solid $purple;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+      }
+
+      &:hover:after {
+        transform: scaleX(1);
+      }
     }
   }
 }
@@ -1016,6 +1060,13 @@ h4 {
 .home-logo {
   height: 300px;
   width: auto;
+}
+
+.carousel-dots {
+  padding-bottom: 0.25rem !important;
+  button {
+    border: none !important;
+  }
 }
 
 .feature {

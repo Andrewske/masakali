@@ -12,24 +12,31 @@ const WhyChoose = () => {
           <Binoculars className='why-feature-icon' />
           <h3>Beautiful Views</h3>
           <p>
-            Overlook the famous Balinese rice fields with a glorious mountanious
-            view lipsum orem lipsum orem lipsum orem
+            Located just outside the small village of Kelusa, Masakali offers
+            extraordinary views of cascading Balinese rice fields, majestic
+            mountains, and a spectacular view of the dense and wild jungle
+            landscape. If you’re lucky may even see monkeys swinging in the
+            distant trees!
           </p>
         </span>
         <span className='why-feature'>
           <Pool className='why-feature-icon' />
           <h3>Private Infinity Pool</h3>
           <p>
-            Overlook the famous Balinese rice fields with a glorious mountanious
-            view lipsum orem lipsum orem lipsum orem
+            Each villa has its own private infinity pool overlooking the rice
+            fields, surrounded by beautiful gardens and vegetation for privacy.
+            The pools are built with luxury and relaxation in mind so that our
+            guests can enjoy a quiet dip in nature.
           </p>
         </span>
         <span className='why-feature'>
           <Spa className='why-feature-icon' />
           <h3>Spa Services</h3>
           <p>
-            Overlook the famous Balinese rice fields with a glorious mountanious
-            view lipsum orem lipsum orem lipsum orem
+            We offer a number of spa services to our guests including massages,
+            facials, manicures, and pedicures. The best part… you don’t have to
+            leave your villa as our staff will cater to your needs in the
+            privacy of your villa.
           </p>
         </span>
       </span>

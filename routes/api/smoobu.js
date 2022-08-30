@@ -19,7 +19,6 @@ let reqConfig = {
 
 router.get('/rates', async (req, res) => {
   let { startDate = null, endDate = null } = req.query;
-  console.log(startDate);
   try {
     reqConfig.params = {
       start_date: startDate || moment().format('YYYY-MM-DD'),

@@ -86,8 +86,8 @@ const Template = ({
     let pricePerNight =
       villas[villa].rates[moment(startDate).format('YYYY-MM-DD')].price;
 
-    setPrice(pricePerNight);
-    setNumDays(numDays);
+    //setPrice(pricePerNight);
+    //setNumDays(numDays);
     setTotal(calcTotal({ price: pricePerNight, numDays }));
   };
 
@@ -193,7 +193,7 @@ const Template = ({
                   <DayPickerSingleDateController
                     date={checkIn}
                     onDateChange={(date) => handleCheckIn(date)}
-                    focused={checkIn}
+                    focused={true}
                     onFocusChange={({ focused }) => setFocused(focused)}
                     isOutsideRange={(day) => day.isBefore(moment())}
                     isDayBlocked={(day) => isBlocked({ day, isCheckIn: true })}
@@ -218,8 +218,8 @@ const Template = ({
                   <DayPickerSingleDateController
                     initialVisibleMonth={() => moment(checkIn)}
                     date={checkOut}
+                    focused={true}
                     onDateChange={(date) => handleCheckOut(date)}
-                    focused
                     onFocusChange={({ focused }) => setFocused(focused)}
                     isOutsideRange={(day) => day.isBefore(moment(checkIn))}
                     isDayBlocked={(day) => isBlocked({ day })}
