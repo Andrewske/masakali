@@ -78,6 +78,7 @@ const MainImage = () => {
         swipeable={true}
         draggable={false}
         showDots={true}
+        dotListClass='carousel-dots'
         responsive={responsive}
         ssr={true} // means to render carousel on server-side.
         infinite={true}

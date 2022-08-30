@@ -16,19 +16,23 @@ const Dining = () => {
         </ImageContext>
       </span>
 
-      <span className='extras-details down'>
+      <span className='extras-details'>
         <span className='text'>
           <h2>Dining</h2>
           <span>
-            Warm and elegant private pool villa, provides you with ample space
-            to rest and recharge. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
+            Masakali offers a full range of options for dining all with the
+            taste and charm of fresh Balinese ingredients. Our curated selection
+            of savory cuisine options is will appeal to anyone, styled after all
+            types of international cuisines, including many local Balinese
+            dishes. Our staff will bring you breakfast, lunch, or dinner so you
+            can enjoy your meal in the privacy of your own suite.
           </span>
 
-          <span className='extras-link'>
-            See our menu <i className='icon-chevron-right' />
-          </span>
+          <div className='extras-link'>
+            <a>
+              See our menu <i className='icon-chevron-right' />
+            </a>
+          </div>
         </span>
       </span>
     </div>
