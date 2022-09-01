@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
-import useCurrencyFormat from '../../../utils/useCurrencyFormat';
+import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import { sendBookingConfirmation } from '../../../actions/sendgrid';
 import { percDiscount } from '../../../config';
 import { loadUser } from '../../../actions/auth';

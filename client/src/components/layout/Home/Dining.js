@@ -28,7 +28,7 @@ const Dining = () => {
             can enjoy your meal in the privacy of your own suite.
           </span>
 
-          <div className='extras-link'>
+          <div className='extras-link' style={{ marginLeft: '2rem' }}>
             <a>
               See our menu <i className='icon-chevron-right' />
             </a>

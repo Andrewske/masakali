@@ -14,6 +14,9 @@ const Container = styled.div`
   width: 100%;
   color: white;
   padding: 50px;
+  font-family: 'Avenir Book';
+  bottom: 0;
+  margin-bottom: 0;
 `;
 
 const Info = styled.div`
@@ -40,24 +43,37 @@ const IconImg = styled.img`
 
 const linkData = [
   { id: 'home', name: 'Home' },
-  { id: 'vision', name: 'Vision' },
-  { id: 'location', name: 'The Land' },
-  { id: 'facilities', name: 'Facilities' },
-  { id: 'landing-gallery', name: 'Gallery' },
-  { id: 'landing-video', name: 'Video' },
-  { id: 'experience', name: 'Experience' },
-  { id: 'community', name: 'Community' },
+  { id: 'availability', name: 'Availability' },
+  { id: 'about', name: 'About' },
+  { id: 'villas', name: 'Villas' },
+  { id: 'dining', name: 'Dining' },
   { id: 'amenities', name: 'Amenities' },
-  { id: 'team', name: 'Team' },
-  { id: 'contact', name: 'Contact' },
 ];
 
 const Footer = (props) => {
+  const scrollToTarget = (el) => {
+    var headerOffset = 200;
+    var elPosition = el.getBoundingClientRect().top;
+    var offsetPosition = elPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    });
+  };
+
   const linkItems = linkData.map((d) => (
-    <Link className='footer-link' to={`/#${d.id}`} smooth key={d.id}>
+    <Link
+      className='footer-link'
+      to={`/#${d.id}`}
+      smooth
+      key={d.id}
+      scroll={(el) => scrollToTarget(el)}
+    >
       {d.name}
     </Link>
   ));
+
   return (
     <Container className='background-purple'>
       <Info>
@@ -97,13 +113,7 @@ const Footer = (props) => {
       </Info>
       <Pages>
         {linkItems}
-        <Link to='/gallery' className='footer-link'>
-          Full Gallery
-        </Link>
-        <Link to='/investors' className='footer-link'>
-          Investors
-        </Link>
-        {/* <CountryPicker /> */}
+        <CountryPicker />
       </Pages>
     </Container>
   );

@@ -24,7 +24,18 @@ const Villas = () => {
         ref: chandraRef,
         path: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp',
         isHovered: isChandraHovered,
-        details: `One of our more popular villas for romantic getaways and honeymooners offers an enchanting sentiment. In addition to the luxury outdoor shower, this villa features a spacious and comfortable bath. Be sure to ask about our special flower petal bath for a romantic night with your partner. One of the favorite places to relax is the outdoor hammock that hangs over the rice fields, with a perfect view of the stars at night. This villa also has a work area with a comfortably sized desk, as well as a cozy ottoman where you can read a book or relax.`,
+        details: `One of our more popular villas for romantic getaways and honeymooners offers an enchanting
+        sentiment. In addition to the luxury outdoor shower, this villa featur
+        es a spacious and
+        comfortable bath
+        .
+        A favorite place
+        to relax is the outdoor hammock that hangs over the rice
+        fields
+        , with a perfect view of the stars at night
+        . This villa also
+        offers a work area with a beautiful
+        antique desk for those who need it.`,
       },
       {
         name: 'jala',

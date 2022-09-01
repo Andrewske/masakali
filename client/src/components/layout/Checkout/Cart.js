@@ -22,7 +22,7 @@ import {
   createPaymentMethodReq,
   confirmCardPayment,
 } from '../../../utils/stripe';
-import useCurrencyFormat from '../../../utils/useCurrencyFormat';
+import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import { percDiscount } from '../../../config';
 import { makeReservation } from '../../../actions/smoobu';
 import { compareSync } from 'bcryptjs';
@@ -30,7 +30,11 @@ import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 import Header from '../Header';
 
-//import {} from 'dotenv/config';
+const imageUrl = {
+  surya: '/Main/Surya/surya-front-main_yynphR5d1s.webp',
+  chandra: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp',
+  jala: '/Main/Jala/jala-front-main_yJaEapAckn.webp',
+};
 
 const Cart = ({
   isAuthenticated,
@@ -216,7 +220,7 @@ const Cart = ({
         <span className='row image'>
           <ImageContext>
             <IKImage
-              path={'/surya-front-night_JpkSeqJUB.jpg'}
+              path={imageUrl[reservations?.new?.name]}
               transformation={[{ width: '800px', dpr: 'auto' }]}
               lqip={{ active: true }}
               loading='lazy'

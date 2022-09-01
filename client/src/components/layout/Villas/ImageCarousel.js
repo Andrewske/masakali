@@ -59,6 +59,7 @@ const ImageCarousel = ({ name = 'surya' }) => {
       swipeable={true}
       draggable={false}
       showDots={true}
+      dotListClass='carousel-dots'
       responsive={responsive}
       ssr={true} // means to render carousel on server-side.
       infinite={true}
@@ -74,7 +75,7 @@ const ImageCarousel = ({ name = 'surya' }) => {
           <IKImage
             className='template-gallery-item'
             path={d.path}
-            transformation={[{ height: 1000, width: 'auto', dpr: 'auto' }]}
+            transformation={[{ height: '775px', width: 'auto', dpr: 'auto' }]}
             lqip={{ active: true }}
             loading={i > 0 ? 'lazy' : ''}
           />

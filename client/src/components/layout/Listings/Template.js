@@ -6,7 +6,7 @@ import FullScreenGallery from './FullScreenGallery';
 import BookingCardLg from './BookingCardLg';
 import BookingCardSm from './BookingCardSm';
 import useBreakpoint from '../../../utils/useBreakpoint';
-import useCurrencyFormat from '../../../utils/useCurrencyFormat';
+import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import { calcDiscount, calcTaxes, calcTotal } from '../../../utils/getPrices';
 import moment from 'moment';
 

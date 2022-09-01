@@ -161,15 +161,16 @@ img {
 /* Utilities */
 .container {
   width: 100vw;
+  height: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
   //padding-top: 50px;
   //padding-bottom: 50px;
 
-  &.full {
-    min-height: calc(100vh);
-  }
+  // &.full {
+  //   min-height: calc(100vh);
+  // }
 }
 
 .baskerville-spaced {
@@ -193,7 +194,7 @@ img {
   flex-wrap: wrap;
   min-height: calc(100vh - 150px);
   margin-top: 150px;
-  padding-top: 1.5rem;
+  //padding-top: 1.5rem;
 
   .villa-template-details {
     $base-font-size: 1.25rem;
@@ -203,6 +204,7 @@ img {
     align-items: flex-start;
     flex: 1 1 30%;
     padding: 0rem 2rem;
+    height: 100%;
 
     .villa-template-booking {
       flex: 1;
@@ -248,6 +250,7 @@ img {
             font-size: 1rem;
             line-height: 1.5rem;
             display: flex;
+            flex-wrap: nowrap;
 
             .day {
               font-family: 'Baskerville Regular';
@@ -263,6 +266,24 @@ img {
 
               .month-year {
                 text-transform: Uppercase;
+              }
+            }
+
+            .icons {
+              display: flex;
+              align-items: center;
+              margin: 0 0.25rem;
+
+              i {
+                border: 1px solid var(--purple-color);
+                border-radius: 5px;
+                margin: auto 0.25rem;
+                cursor: pointer;
+              }
+
+              i:active {
+                background-color: var(--purple-color);
+                color: white;
               }
             }
           }
@@ -313,6 +334,7 @@ img {
       min-width: calc(350px - 2rem);
       width: 100%;
       margin: 1rem;
+      height: 100%;
 
       .villa-template-info-options {
         display: flex;
@@ -324,9 +346,11 @@ img {
           text-transform: uppercase;
           cursor: pointer;
           opacity: 0.75;
+          color: var(--secondary-color);
 
           &.active {
             opacity: 1;
+            color: var(--primary-color);
           }
         }
       }
@@ -334,6 +358,13 @@ img {
       .villa-template-info-content {
         margin-top: 1rem;
         height: 100%;
+        width: 100%;
+
+        ul {
+          margin: 0 auto;
+          columns: 2;
+          list-style-position: inside;
+        }
       }
     }
   }
@@ -341,19 +372,18 @@ img {
   .template-gallery {
     flex: 1 1 65%;
     min-width: 350px;
-    max-height: 750px;
+    //max-height: 750px;
 
-    // img {
-    //   display: block;
-    //   object-fit: cover;
-    //   min-height: 350px;
-    //   height: 100%;
-    // }
+    img {
+      object-fit: cover;
+      min-height: 350px;
+      height: 100%;
+      width: auto !important;
+    }
 
     .template-gallery-item {
       width: 100%;
       height: 100%;
-      position: relative;
       object-fit: cover;
     }
   }
@@ -760,7 +790,7 @@ h4 {
     width: 100%;
     position: relative;
     padding: 1rem;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
 
     .villas-img {
       max-height: 400px;
@@ -893,15 +923,16 @@ h4 {
     }
 
     span {
-      margin: 2rem;
+      margin: 1rem;
       padding-top: 1rem;
       font-size: 1rem;
     }
 
     ul {
+      width: 100%;
       margin-top: 1rem;
       columns: 2;
-      margin-left: 2rem;
+      white-space: nowrap;
       font-size: 0.85rem;
       list-style: none;
 
@@ -916,7 +947,6 @@ h4 {
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    margin-left: 2rem;
     cursor: pointer;
 
     i {
@@ -926,7 +956,7 @@ h4 {
 
     a {
       width: max-content;
-      text-align: center;
+      text-align: left;
       font-size: 0.75rem;
 
       &:after {
@@ -1064,8 +1094,19 @@ h4 {
 
 .carousel-dots {
   padding-bottom: 0.25rem !important;
-  button {
-    border: none !important;
+
+  .react-multi-carousel-dot {
+    button {
+      border: none !important;
+      background: var(--secondary-color);
+    }
+
+    &.react-multi-carousel-dot--active {
+      button {
+        border: none !important;
+        background: var(--purple-color) !important;
+      }
+    }
   }
 }
 
@@ -2327,7 +2368,7 @@ $button-active-blue: #1669f2;
       height: 4rem;
       @extend .center-col;
       @extend .avenir-spaced;
-      background-color: rgba(163, 143, 159, 1);
+      background-color: var(--secondary-color);
       color: white;
     }
 
@@ -2692,16 +2733,16 @@ $button-active-blue: #1669f2;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: calc(min(90%, 900px));
+    width: 100%;
 
     .villa {
       display: flex;
-      height: 8rem;
-      width: 300px;
+      height: 10rem;
+      width: 340px;
       transform: scale(1);
       transition: scale 500ms ease-in-out;
       cursor: pointer;
-      border: 1px solid rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--purple-color);
       margin-bottom: 2rem;
 
       &:hover {
@@ -2710,12 +2751,21 @@ $button-active-blue: #1669f2;
 
       .villa-details {
         width: 100%;
-        @extend .center-col;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.75rem;
+        white-space: nowrap;
+
+        p {
+          font-size: 0.85rem;
+          font-family: 'Baskerville Regular';
+        }
       }
 
       img {
         object-fit: cover;
-        width: 8rem;
+        width: 10rem;
       }
     }
   }
