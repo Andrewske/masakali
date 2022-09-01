@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { serverUrl } from '../config';
 import moment from 'moment';
-import useCurrencyFormat from '../utils/useCurrencyFormat';
+import useCurrencyFormat from '../hooks/useCurrencyFormat';
 import { capitalize } from 'lodash';
 import { setAlert } from './alert';
 

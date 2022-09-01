@@ -15,7 +15,7 @@ const Amenities = () => {
             best experience to our guests.
             <ul>
               <li>Private infinity pool</li>
-              <li>Fully equipped kitchenette</li>
+              <li>Kitchenette</li>
               <li>Ensuite bathrooms</li>
               <li>Outdoor showers</li>
               <li>Tour packages</li>
@@ -27,7 +27,7 @@ const Amenities = () => {
               <li>Toiletries</li>
               <li>Bathrobes</li>
               <li>Free WIFI</li>
-              <li>Television(in select villas)</li>
+              <li>Television(select villas)</li>
               <li>Free parking</li>
               <li>Spa services</li>
               <li>Room service</li>

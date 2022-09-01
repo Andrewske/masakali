@@ -4,7 +4,7 @@ import { IKImage } from 'imagekitio-react';
 
 const About = () => {
   return (
-    <div className='about-container'>
+    <div id='about' className='about-container'>
       <span className='about-text'>
         <span className='main'>
           <h1>Masakali Retreat</h1>

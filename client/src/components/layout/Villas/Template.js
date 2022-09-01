@@ -11,11 +11,12 @@ import ImageCarousel from './ImageCarousel';
 import { getBlockedDates } from '../../../actions/smoobu';
 import CountryPicker from '../CountryPicker';
 import { calcDiscount, calcTaxes, calcTotal } from '../../../utils/getPrices';
-import useCurrencyFormat from '../../../utils/useCurrencyFormat';
+import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import _ from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { getVillaRates } from '../../../actions/smoobu';
 import useScrollToTop from '../../../hooks/useScrollToTop';
+import useVillaPricing from '../../../hooks/useVillaPricing';
 
 const ARRIVAL_DATE = 'ARRIVAL DATE';
 const DEPARTURE_DATE = 'DEPARTURE DATE';
@@ -44,21 +45,15 @@ const villaDetails = {
   },
 };
 
-const Template = ({
-  getBlockedDates,
-  villas,
-  country,
-  createReservation,
-  getVillaRates,
-}) => {
+const Template = ({ villas, country, createReservation }) => {
   const [checkIn, setCheckIn] = useState(moment());
   const [checkOut, setCheckOut] = useState(moment().add(1, 'd'));
-  const [focused, setFocused] = useState(null);
+  const [focused, setFocused] = useState(true);
   const [checkInPickerOpen, setCheckInPickerOpen] = useState(false);
   const [checkOutPickerOpen, setCheckOutPickerOpen] = useState(false);
-  const [price, setPrice] = useState(0);
-  const [numDays, setNumDays] = useState(checkOut.diff(checkIn, 'days'));
   const [total, setTotal] = useState(0);
+  const [adults, setAdults] = useState(2);
+  const [children, setChildren] = useState(0);
 
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
@@ -72,12 +67,10 @@ const Template = ({
   const checkOutRef = useRef(null);
   const scrollRef = useScrollToTop();
 
+  const villaPricing = useVillaPricing({ checkIn, checkOut });
+
   useOnClickOutside(checkInRef, () => setCheckInPickerOpen(false));
   useOnClickOutside(checkOutRef, () => setCheckOutPickerOpen(false));
-
-  useEffect(() => {
-    getVillaRates();
-  }, []);
 
   const setPrices = ({ startDate = checkIn, endDate = checkOut }) => {
     let numDays = endDate.diff(startDate, 'days');
@@ -85,9 +78,6 @@ const Template = ({
     // ADD A DEFAULT FOR EACH VILLA IF WE CANNOT GET RATES
     let pricePerNight =
       villas[villa].rates[moment(startDate).format('YYYY-MM-DD')].price;
-
-    //setPrice(pricePerNight);
-    //setNumDays(numDays);
     setTotal(calcTotal({ price: pricePerNight, numDays }));
   };
 
@@ -104,9 +94,25 @@ const Template = ({
     setCheckOutPickerOpen(false);
   };
 
-  useEffect(() => {
-    if (_.size(villas[villa]) === 0) getBlockedDates();
-  }, [villas, villa, getBlockedDates]);
+  const addGuest = (type) => {
+    if (type === 'adult') {
+      setAdults(adults >= 4 ? 4 : adults + 1);
+    }
+
+    if (type === 'child') {
+      setChildren(children >= 4 ? 4 : children + 1);
+    }
+  };
+
+  const removeGuest = (type) => {
+    if (type === 'adult') {
+      setAdults(adults > 1 ? adults - 1 : 1);
+    }
+
+    if (type === 'child') {
+      setChildren(children > 0 ? children - 1 : 0);
+    }
+  };
 
   const isBlocked = ({ day, isCheckIn = false }) => {
     day = moment(day).format('YYYY-MM-DD');
@@ -140,7 +146,7 @@ const Template = ({
       taxes: calcTaxes({ price, numDays }),
       total: calcTotal({ price, numDays }),
       name: villa,
-      //guests,
+      guests: adults + children,
       img: null,
     });
     navigate('/cart');
@@ -226,6 +232,38 @@ const Template = ({
                   />
                 </span>
               )}
+              <span className='checkin-date'>
+                <div className='title'>
+                  {[...'number of guests'].map((letter, index) => (
+                    <span key={letter + '-' + index}>{letter}</span>
+                  ))}
+                </div>
+                <span className='date'>
+                  {adults} adult(s){' '}
+                  <span className='icons'>
+                    <i
+                      className='icon-chevron-up'
+                      onClick={() => addGuest('adult')}
+                    />
+                    <i
+                      className='icon-chevron-down'
+                      onClick={() => removeGuest('adult')}
+                    />
+                  </span>{' '}
+                  {children} children
+                  <span className='icons'>
+                    <i
+                      className='icon-chevron-up'
+                      onClick={() => addGuest('child')}
+                    />
+                    <i
+                      className='icon-chevron-down'
+                      onClick={() => removeGuest('child')}
+                    />
+                  </span>
+                </span>
+              </span>
+
               <span className='villa-template-total'>
                 <p>TOTAL</p>
                 <span className='villa-template-total-price'>
@@ -246,16 +284,6 @@ const Template = ({
 
           <TemplateInfo villa={villa} />
         </div>
-        {/* <span className='template-gallery'>
-          <ImageContext>
-            <IKImage
-              className='template-gallery-image'
-              path={'/surya-front-night_JpkSeqJUB.jpg'}
-              transformation={[{ width: 'auto', dpr: 'auto' }]}
-              // loading='lazy'
-            />
-          </ImageContext>
-        </span> */}
         <ImageCarousel name={villa} />
       </span>
     </span>

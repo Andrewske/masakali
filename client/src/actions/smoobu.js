@@ -5,6 +5,7 @@ import { serverUrl } from '../config';
 import moment from 'moment';
 
 export const getVillaRates = () => async (dispatch) => {
+  console.log('getting villa rates');
   try {
     let { data } = await axios.get(serverUrl + '/smoobu/rates', {
       params: { startDate: moment.utc().format('YYYY-MM-DD') },
@@ -14,6 +15,8 @@ export const getVillaRates = () => async (dispatch) => {
       type: SET_VILLA_RATES,
       payload: data,
     });
+
+    return data;
   } catch (err) {
     console.error({ location: 'getRates', err });
   }

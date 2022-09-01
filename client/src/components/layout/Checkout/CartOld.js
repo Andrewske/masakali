@@ -19,7 +19,7 @@ import {
   createPaymentIntent,
   createPaymentMethodReq,
 } from '../../../utils/stripe';
-import useCurrencyFormat from '../../../utils/useCurrencyFormat';
+import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import { percDiscount } from '../../../config';
 import { makeReservation } from '../../../actions/smoobu';
 
