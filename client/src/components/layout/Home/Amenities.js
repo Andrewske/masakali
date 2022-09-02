@@ -35,7 +35,11 @@ const Amenities = () => {
           </span>
 
           <div className='extras-link'>
-            <a>
+            <a
+              href='https://drive.google.com/file/d/1EgcBzUUUESf0HoGBdN9JrRGs_ZIQexHL/view?usp=sharing'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               For a full list of services please See our guestbook{' '}
               <i className='icon-chevron-right' />
             </a>
