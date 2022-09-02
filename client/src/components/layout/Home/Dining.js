@@ -29,7 +29,11 @@ const Dining = () => {
           </span>
 
           <div className='extras-link' style={{ marginLeft: '2rem' }}>
-            <a>
+            <a
+              href='https://drive.google.com/file/d/1ngucJeZfvKcu8MvP2eqayTuWqhicGOkL/view?usp=sharing'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               See our menu <i className='icon-chevron-right' />
             </a>
           </div>
