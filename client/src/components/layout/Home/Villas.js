@@ -24,25 +24,14 @@ const Villas = () => {
         ref: chandraRef,
         path: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp',
         isHovered: isChandraHovered,
-        details: `One of our more popular villas for romantic getaways and honeymooners offers an enchanting
-        sentiment. In addition to the luxury outdoor shower, this villa featur
-        es a spacious and
-        comfortable bath
-        .
-        A favorite place
-        to relax is the outdoor hammock that hangs over the rice
-        fields
-        , with a perfect view of the stars at night
-        . This villa also
-        offers a work area with a beautiful
-        antique desk for those who need it.`,
+        details: `One of our more popular villas for romantic getaways and honeymooners offers an enchanting sentiment. In addition to the luxury outdoor shower, this villa features a spacious and comfortable bath. A favorite place to relax is the outdoor hammock that hangs over the rice fields, with a perfect view of the stars at night. This villa also offers a work area with a beautiful antique desk for those who need it.`,
       },
       {
         name: 'jala',
         ref: jalaRef,
         path: '/Main/Jala/jala-front-main_yJaEapAckn.webp',
         isHovered: isJalaHovered,
-        details: `This traditional joglo villa is the perfect fit for a cozy stay. With a personal charm and attention to detail, this alluring villa has its own irresistible appeal. Jala offers a workstation with a large desk, comfy outdoor lounging areas, and a full private ensuite bathroom. The luxury bedding and linens offer a comfortable and restful sleep while the beautiful, handcrafted furniture and amenities will leave you in awe of the craftsmanship and detail. `,
+        details: `This traditional joglo villa is the perfect fit for a cozy stay. With a personal charm and attention to detail, this alluring villa has its own irresistible appeal. Jala offers a workstation with a large desk, comfy outdoor lounging areas, and a full private ensuite bathroom. The luxury bedding and linens offer a comfortable and restful sleep while the beautiful, handcrafted furniture and amenities will leave you in awe of the craftsmanship and detail.`,
       },
     ],
     [

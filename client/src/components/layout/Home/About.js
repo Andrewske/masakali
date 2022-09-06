@@ -32,8 +32,8 @@ const About = () => {
       <ImageContext>
         <IKImage
           className='about-img'
-          path='/Main/masakali-main-view_rDdIWy6Nw.webp'
-          transformation={[{ height: '500px', width: 'auto', dpr: 'auto' }]}
+          path='/Main/masakali-about-main_3ej0c_QHK.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1662494112105'
+          transformation={[{ height: '700px', width: 'auto', dpr: 'auto' }]}
           lqip={{ active: true }}
           loading='lazy'
         />
