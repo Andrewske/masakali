@@ -2,13 +2,11 @@ import React from 'react';
 
 const Amenities = ({ villa }) => {
   return (
-    <div>
-      <ul>
-        {allAmenities[villa].map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {allAmenities[villa].map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
   );
 };
 
@@ -35,8 +33,9 @@ var allAmenities = {
     'Private pool',
     'Garden view',
     'Outdoor shower',
+    'Spacious bathtub',
     'Mosquito net',
-    'Bluetooth speaker system',
+    'Bluetooth speaker',
     'Suitable for events',
     'Ceiling & portable fans',
     'Dedicated workspace',
@@ -44,7 +43,6 @@ var allAmenities = {
     'Breakfast',
   ],
   jala: [
-    'BBQ Grill',
     'Wifi',
     'Private pool',
     'Garden view',
