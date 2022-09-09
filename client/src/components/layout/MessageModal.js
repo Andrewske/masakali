@@ -25,7 +25,7 @@ const MessageModal = () => {
       </span>
       <span className='primary-info'>
         <p>IMPORTANT INFORMATION on listings (pre-booking)</p>
-        <p styles={{ cursor: 'pointer' }}>
+        <p style={{ cursor: 'pointer' }}>
           Read More <i className='icon-chevron-down' />
         </p>
       </span>
@@ -44,6 +44,7 @@ const MessageModal = () => {
           complaints about the noise and loved staying at Masakali, we still
           want to inform you about the recent construction noise.
         </p>
+        <br />
         <p>
           As the owner, Suzanne has put her heart and soul into Masakali and she
           wants everyone to be 100% satisfied with their stay. It truly is a
