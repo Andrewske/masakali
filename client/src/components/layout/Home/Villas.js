@@ -31,7 +31,7 @@ const Villas = () => {
         ref: jalaRef,
         path: '/Main/Jala/jala-front-main_yJaEapAckn.webp',
         isHovered: isJalaHovered,
-        details: `This traditional joglo villa is the perfect fit for a cozy stay. With a personal charm and attention to detail, this alluring villa has its own irresistible appeal. Jala offers a workstation with a large desk, comfy outdoor lounging areas, and a full private ensuite bathroom. The luxury bedding and linens offer a comfortable and restful sleep while the beautiful, handcrafted furniture and amenities will leave you in awe of the craftsmanship and detail.`,
+        details: `This traditional Joglo villa is the perfect fit for a cozy stay. With personal charm and attention to detail, this alluring villa has an irresistible appeal. Jala offers a workstation with a large desk, comfy outdoor lounging areas, and a full private ensuite bathroom. The luxury bedding and linens offer a comfortable and restful sleep while the beautiful, handcrafted furniture and amenities will leave you in awe of the craftsmanship and detail.`,
       },
     ],
     [

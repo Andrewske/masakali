@@ -21,7 +21,7 @@ const WhyChoose = () => {
         </span>
         <span className='why-feature'>
           <Pool className='why-feature-icon' />
-          <h3>Private Infinity Pool</h3>
+          <h3>Private Infinity Pools</h3>
           <p>
             Each villa has its own private infinity pool overlooking the rice
             fields, surrounded by beautiful gardens and vegetation for privacy.
