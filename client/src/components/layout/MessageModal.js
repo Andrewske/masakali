@@ -1,13 +1,28 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { DISMISS_MESSAGE } from '../../actions/types';
 
 const MessageModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  //const [dismissed, setDismissed] = useState(false);
+  const dispatch = useDispatch();
+  const { messageDismissed } = useSelector((state) => state.auth);
+
+  console.log(messageDismissed);
+
+  if (messageDismissed) return <Fragment />;
 
   return (
     <span
       className={!isOpen ? 'message-modal' : 'message-modal active'}
       onClick={() => setIsOpen(!isOpen)}
     >
+      <span
+        className='message-modal-dismiss'
+        onClick={() => dispatch({ type: DISMISS_MESSAGE })}
+      >
+        Dismiss
+      </span>
       <p>IMPORTANT INFORMATION on listings (pre-booking)</p>
       <span className={!isOpen ? 'secondary-info' : 'secondary-info active'}>
         <p>

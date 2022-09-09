@@ -2820,7 +2820,6 @@ $button-active-blue: #1669f2;
   transform: translate(-50%, 0);
   font-size: 0.85rem;
 
-  height: 75px;
   width: calc(max(50%, 350px));
   background: var(--secondary-color);
   color: white;
@@ -2837,12 +2836,19 @@ $button-active-blue: #1669f2;
   overflow-y: scroll;
 
   &.active {
-    height: 500px;
+    height: auto;
     //transform: scaleY(1);
   }
 
   p {
     padding: 1rem 2rem;
+  }
+
+  .message-modal-dismiss {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
   }
 
   .secondary-info {
@@ -2853,6 +2859,7 @@ $button-active-blue: #1669f2;
     &.active {
       display: inline-block;
       transform: scaleY(1);
+      margin-top: 2rem;
     }
   }
 }

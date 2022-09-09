@@ -1,4 +1,6 @@
+/* eslint-disable import/no-anonymous-default-export */
 import {
+  DISMISS_MESSAGE,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGIN_SUCCESS,
@@ -13,6 +15,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
+  messageDismissed: false,
 };
 
 export default function (state = initialState, action) {
@@ -43,6 +46,11 @@ export default function (state = initialState, action) {
         ...state,
         isAuthenticated: false,
         loading: false,
+      };
+    case DISMISS_MESSAGE:
+      return {
+        ...state,
+        messageDismissed: true,
       };
     default:
       return state;
