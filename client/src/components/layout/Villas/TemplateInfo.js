@@ -4,19 +4,8 @@ import Amenities from './Amenities';
 
 const descriptions = {
   surya: `Our largest villa is a warm and elegant choice with ample space to rest and recharge. It has an ensuite breakfast table and features a hand-carved outdoor dining table that can seat larger groups on the private patio. Inside you’ll find a luxury king-sized mattress with high-quality bedding as well as a couch that can serve as an additional bed for an additional guest.`,
-  chandra: `One of our more popular villas for romantic getaways and honeymooners offers an enchanting
-  sentiment. In addition to the luxury outdoor shower, this villa featur
-  es a spacious and
-  comfortable bath
-  .
-  A favorite place
-  to relax is the outdoor hammock that hangs over the rice
-  fields
-  , with a perfect view of the stars at night
-  . This villa also
-  offers a work area with a beautiful
-  antique desk for those who need it.`,
-  jala: `This traditional joglo villa is the perfect fit for a cozy stay. With a personal charm and attention to detail, this alluring villa has its own irresistible appeal. Jala offers a workstation with a large desk, comfy outdoor lounging areas, and a full private ensuite bathroom. The luxury bedding and linens offer a comfortable and restful sleep while the beautiful, handcrafted furniture and amenities will leave you in awe of the craftsmanship and detail.`,
+  chandra: `One of our more popular villas for romantic getaways and honeymooners offers an enchanting sentiment. In addition to the luxury outdoor shower, this villa features a spacious and comfortable bath. A favorite place to relax is the outdoor hammock that hangs over the rice fields, with a perfect view of the stars at night. This villa also offers a work area with a beautiful antique desk for those who need it.`,
+  jala: `This traditional Joglo villa is the perfect fit for a cozy stay. With personal charm and attention to detail, this alluring villa has an irresistible appeal. Jala offers a workstation with a large desk, comfy outdoor lounging areas, and a full private ensuite bathroom. The luxury bedding and linens offer a comfortable and restful sleep while the beautiful, handcrafted furniture and amenities will leave you in awe of the craftsmanship and detail.`,
 };
 
 const TemplateInfo = ({ villa }) => {

@@ -2812,3 +2812,47 @@ $button-active-blue: #1669f2;
     }
   }
 }
+
+.message-modal {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 0.85rem;
+
+  height: 75px;
+  width: calc(max(50%, 350px));
+  background: var(--secondary-color);
+  color: white;
+  border: 1px solid var(--primary-color);
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.5s ease-in-out;
+
+  overflow-y: scroll;
+
+  &.active {
+    height: 500px;
+    //transform: scaleY(1);
+  }
+
+  p {
+    padding: 1rem 2rem;
+  }
+
+  .secondary-info {
+    display: none;
+    transform: scaleY(0);
+    transition: all 1s ease-in-out;
+
+    &.active {
+      display: inline-block;
+      transform: scaleY(1);
+    }
+  }
+}

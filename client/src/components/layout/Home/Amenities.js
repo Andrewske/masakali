@@ -40,7 +40,7 @@ const Amenities = () => {
               target='_blank'
               rel='noopener noreferrer'
             >
-              For a full list of services please See our guestbook{' '}
+              For a full list of services please see our guestbook{' '}
               <i className='icon-chevron-right' />
             </a>
           </div>

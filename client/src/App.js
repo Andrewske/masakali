@@ -43,6 +43,10 @@ import Success from './components/layout/Checkout/Success';
 
 import Footer from './components/layout/Footer';
 import CountryPicker from './components/layout/CountryPicker';
+import MessageModal from './components/layout/MessageModal';
+
+// News Page
+import News from './components/layout/News/News';
 
 // New Landing Page
 import Home from './components/layout/Home/Home';
@@ -140,6 +144,7 @@ const App = () => {
               {/* <Route exact path='/home' element={<Home />} /> */}
               <Route exact path='/reset-password' element={<ResetPassword />} />
               <Route path='/' element={<Home />} />
+              <Route path='/news' element={<News />} />
               {/* <Route
                 path='/home'
                 element={
@@ -158,6 +163,7 @@ const App = () => {
                 }
               />
             </Routes>
+            <MessageModal />
             <Footer />
           </Fragment>
         </PersistGate>

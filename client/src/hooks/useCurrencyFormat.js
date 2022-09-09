@@ -19,7 +19,6 @@ const useCurrencyFormat = (amount = null) => {
     if (amount && country) {
       setTotal(formatter.format(amount * value));
     }
-    console.log(amount, country);
   }, [amount, country, formatter]);
 
   return total;
