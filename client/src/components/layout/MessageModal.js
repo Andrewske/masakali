@@ -23,7 +23,13 @@ const MessageModal = () => {
       >
         Dismiss
       </span>
-      <p>IMPORTANT INFORMATION on listings (pre-booking)</p>
+      <span className='primary-info'>
+        <p>IMPORTANT INFORMATION on listings (pre-booking)</p>
+        <p styles={{ cursor: 'pointer' }}>
+          Read More <i className='icon-chevron-down' />
+        </p>
+      </span>
+
       <span className={!isOpen ? 'secondary-info' : 'secondary-info active'}>
         <p>
           Due to the construction of our new Joglo villa next to Surya, you
@@ -45,7 +51,7 @@ const MessageModal = () => {
           some of the words from our prior guests) but Suzanne does not want
           anyone who stays here to be unhappy so she will do anything in her
           power to ensure you are happy at Masakali if you still decide to stay
-          here regardless of the construction noise . Please consider this note
+          here regardless of the construction noise. Please consider this note
           before booking.
         </p>
       </span>

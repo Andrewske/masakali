@@ -2819,6 +2819,7 @@ $button-active-blue: #1669f2;
   left: 50%;
   transform: translate(-50%, 0);
   font-size: 0.85rem;
+  padding: 1rem 2rem;
 
   width: calc(max(50%, 350px));
   background: var(--secondary-color);
@@ -2840,13 +2841,19 @@ $button-active-blue: #1669f2;
     //transform: scaleY(1);
   }
 
-  p {
-    padding: 1rem 2rem;
+  .primary-info {
+    text-align: center;
+
+    i {
+      position: relative;
+      height: 100%;
+      margin: auto;
+    }
   }
 
   .message-modal-dismiss {
     position: absolute;
-    top: 1rem;
+    top: 1.5rem;
     right: 1rem;
     cursor: pointer;
   }
