@@ -98,14 +98,14 @@ var allReviews = {
     },
   ],
   chandra: [
-    {
-      key: 0,
-      name: 'Becky',
-      date: 'August 2022',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/user/af5d8f78-1cb9-42cb-b8fe-77b0300f5322.jpg?im_w=240',
-      text: 'Amazing place and amazing staff. All very helpful and friendly. Ira was a huge help and would support with all your needs. Had an amazing massage! Definitely worth a stay, however you will need to consider transport if you wish to go anywhere as you are a little out. However Ira is incredible at helping you sort everything out and is the perfect host ♥️The location is peaceful and over looking the rice fields. Absolutely divine 😀',
-    },
+    // {
+    //   key: 0,
+    //   name: 'Becky',
+    //   date: 'August 2022',
+    //   imgUrl:
+    //     'https://a0.muscache.com/im/pictures/user/af5d8f78-1cb9-42cb-b8fe-77b0300f5322.jpg?im_w=240',
+    //   text: 'Amazing place and amazing staff. All very helpful and friendly. Ira was a huge help and would support with all your needs. Had an amazing massage! Definitely worth a stay, however you will need to consider transport if you wish to go anywhere as you are a little out. However Ira is incredible at helping you sort everything out and is the perfect host ♥️The location is peaceful and over looking the rice fields. Absolutely divine 😀',
+    // },
     {
       key: 1,
       name: 'Raphaëlle',
