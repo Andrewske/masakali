@@ -160,7 +160,7 @@ const App = () => {
                 }
               />
             </Routes>
-            <MessageModal />
+            {/* <MessageModal /> */}
             <Footer />
           </Fragment>
         </PersistGate>
