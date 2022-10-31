@@ -2,6 +2,7 @@ const percDiscount = 0.1;
 const taxRate = 0.1;
 
 export const calcDiscount = ({ price, numDays }) => {
+  console.log({ price, numDays });
   return price * numDays * percDiscount;
 };
 export const calcTaxes = ({ price, numDays }) => {
