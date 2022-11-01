@@ -67,22 +67,40 @@ const Financials = () => {
               >
                 Land Acquisition Disclosure Statement.pdf
               </a>
+
               <a
+                href='https://ik.imagekit.io/4kpopox69zp/Files/class_b_term_sheet_phase_1_1qw08kbgl.pdf?ik-sdk-version=javascript-1.4.3&updatedAt=1667336230675'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='investor-link'
+              >
+                Class B Preferred Financing Term Sheet for Phase I investors
+              </a>
+              <a
+                href='https://ik.imagekit.io/4kpopox69zp/Files/class_b_term_sheet_phase_2_8llEjjU5h.pdf?ik-sdk-version=javascript-1.4.3&updatedAt=1667336230693'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='investor-link'
+              >
+                22-03-01 Class B Preferred Financing Term Sheet for Phase II
+                investors
+              </a>
+              {/* <a
                 href='https://ik.imagekit.io/4kpopox69zp/Files/Masakali_Pitchdeck__rUTIud2XF.pdf'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='investor-link'
               >
                 Pitch Deck.pdf
-              </a>
-              <a
+              </a> */}
+              {/* <a
                 href='https://docs.google.com/spreadsheets/d/1d_nDERIyOM4SP8U7-SGR7gFrWR1LFIt4kuhLzL3QzXA/edit?usp=sharing'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='investor-link'
               >
                 Akasha Financial Spreadsheet Google Sheets
-              </a>
+              </a> */}
             </Links>
           ) : (
             <CodeForm onSubmit={handleSubmit}>
