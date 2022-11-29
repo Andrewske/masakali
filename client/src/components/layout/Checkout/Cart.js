@@ -259,6 +259,10 @@ const Cart = ({
             <button className='btn submit' disabled={isProcessing || !stripe}>
               {isProcessing ? 'Processing...' : `Pay ${total}`}
             </button>
+            <p className='subtext'>
+              *Please be aware that booking through the website is
+              non-refundable.
+            </p>
           </form>
         ) : (
           <div className='row'>

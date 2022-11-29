@@ -14,9 +14,11 @@ const WhyChoose = () => {
           <p>
             Located just outside the small village of Kelusa, Masakali offers
             extraordinary views of cascading Balinese rice fields, majestic
-            mountains, and a spectacular view of the dense and wild jungle
-            landscape. If you’re lucky may even see monkeys swinging in the
-            distant trees!
+            mountains, and a spectacular view of the dense and tropical jungle.
+            If you’re lucky, you may even see monkeys swinging in the trees and
+            are sure to see the colorful butterflies and birds that inhabit this
+            magical place not to mention the fireflies that will encircle you at
+            night. These are just a few examples of the magic at Masakali.
           </p>
         </span>
         <span className='why-feature'>
@@ -24,19 +26,18 @@ const WhyChoose = () => {
           <h3>Private Infinity Pools</h3>
           <p>
             Each villa has its own private infinity pool overlooking the rice
-            fields, surrounded by beautiful gardens and vegetation for privacy.
-            The pools are built with luxury and relaxation in mind so that our
-            guests can enjoy a quiet dip in nature.
+            fields. The luxurious pools are surrounded by beautiful gardens to
+            ensure your privacy while enjoying a relaxing dip where you can also
+            enjoy an amazing floating breakfast.
           </p>
         </span>
         <span className='why-feature'>
           <Spa className='why-feature-icon' />
           <h3>Spa Services</h3>
           <p>
-            We offer a number of spa services to our guests including massages,
-            facials, manicures, and pedicures. The best part… you don’t have to
-            leave your villa as our staff will cater to your needs in the
-            privacy of your villa.
+            We offer a number of spa services to our guests. Rejuvenate your
+            body and mind with a Balinese massage, have a refreshing facial,
+            manicure or pedicure - all in the privacy of your own villa.
           </p>
         </span>
       </span>
