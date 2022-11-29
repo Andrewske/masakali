@@ -9,10 +9,18 @@ const Amenities = () => {
         <span className='text'>
           <h2>Amenities</h2>
           <span>
-            Masakali Retreat offers many amenities that you simply won’t find
-            with other accommodations. Our goal is to go above and beyond, not
-            because we have to, but because it truly makes us happy to offer the
-            best experience to our guests.
+            <p>
+              At Masakali, our goal is to go above and beyond your expectations
+              and to make your stay exceptional. The owner put her heart and
+              soul into every aspect of this place and her vision is to share
+              this gift with the rest of the world and it is truly our honor to
+              offer our guests the best experience imaginable.
+            </p>
+            <br />
+            <p className='small'>
+              That’s why we are offering a full range of services and amenities
+              such as:
+            </p>
             <ul>
               <li>Private infinity pool</li>
               <li>Kitchenette</li>
@@ -26,8 +34,7 @@ const Amenities = () => {
               <li>Onsite security</li>
               <li>Toiletries</li>
               <li>Bathrobes</li>
-              <li>Free WIFI</li>
-              <li>Television(select villas)</li>
+              <li>Free WiFi</li>
               <li>Free parking</li>
               <li>Spa services</li>
               <li>Room service</li>

@@ -48,12 +48,13 @@ const Villas = () => {
     <div id='villas' className='villas-container'>
       <h2>Villas</h2>
       <span className='villas-text'>
-        Each room is equipped with a private infinity pool overlooking the
-        Balinese rice fields, an ensuite kitchenette fully stocked with cooking
-        ware and utensils, a luxury outdoor shower, and high-quality mattresses
-        and bedding for a comfortable and relaxing stay. The private patios all
-        have comfortable lounge chairs for outdoor relaxation. Each villa has
-        access to spa and meal services available upon request.
+        All the villas have their own private infinity pools overlooking the
+        Balinese rice fields, fully equipped kitchenettes, luxurious outdoor
+        showers, high-quality mattresses and bedding to make sure you have a
+        restful sleep. On the patios you will find lounge chairs inviting you to
+        sit back and relax outside as well as tables and chairs for eating a
+        delicious meal on your deck or inside your villa. And some of the villas
+        have bathtubs.
       </span>
       <span className='villas-images'>
         {villaDetails.map((villa) => (

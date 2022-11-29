@@ -897,6 +897,7 @@ h4 {
         .small {
           margin: 0;
           padding: 0;
+          font-size: 0.85rem;
         }
 
         h3 {
@@ -2361,9 +2362,8 @@ $button-active-blue: #1669f2;
   }
 
   .subtext {
-    min-width: 100vw;
     padding: 2rem;
-    font-size: 0.75rem;
+    font-size: 0.75rem !important;
     text-align: center;
   }
 
@@ -2553,7 +2553,7 @@ $button-active-blue: #1669f2;
 .country-dropdown {
   position: relative;
   width: max-content;
-  z-index: 200000;
+  z-index: 20;
 
   .selected {
     height: 40px;

@@ -23,8 +23,8 @@ const Location = () => {
           <h2>Location & Contacts</h2>
           <span className='distance'>
             <p>
-              <span className='large'>12km</span>
-              <span className='small'>/7.5 miles</span>
+              <span className='large'>9km</span>
+              <span className='small'>/5.6 miles</span>
             </p>
             <h3>Distance to Ubud</h3>
           </span>
@@ -55,6 +55,8 @@ const Location = () => {
               facebook.com/masakaliretreat
               <br />
               instagram.com/masakaliretreat
+              <br />
+              +1 (832) 853-9399
             </p>
           </span>
         </span>

@@ -57,7 +57,7 @@ const Availability = ({ setAlert }) => {
   };
 
   return (
-    <div className='availability-container'>
+    <div id='availability' className='availability-container'>
       <span className='date-selection'>
         <span className='checkin-date' ref={checkInRef}>
           <div className='title'>

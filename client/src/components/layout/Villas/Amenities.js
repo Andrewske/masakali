@@ -14,9 +14,8 @@ export default Amenities;
 
 var allAmenities = {
   surya: [
-    '40" HDTV with Netflix',
-    'Wifi',
-    'Private pool',
+    'Wifi 100 mb/s',
+    'Private infinity pool',
     'Garden view',
     'Outdoor shower',
     'Mosquito net',
@@ -25,12 +24,12 @@ var allAmenities = {
     'Ceiling & portable fans',
     'Dedicated workspace',
     'Full kitchenette',
-    'Breakfast',
+    'Breakfast included',
   ],
   chandra: [
     'Hammock',
-    'Wifi',
-    'Private pool',
+    'Wifi 100 mb/s',
+    'Private infinity pool',
     'Garden view',
     'Outdoor shower',
     'Spacious bathtub',
@@ -40,11 +39,11 @@ var allAmenities = {
     'Ceiling & portable fans',
     'Dedicated workspace',
     'Full kitchenette',
-    'Breakfast',
+    'Breakfast included',
   ],
   jala: [
-    'Wifi',
-    'Private pool',
+    'Wifi 100 mb/s',
+    'Private infinity pool',
     'Garden view',
     'Outdoor shower',
     'Mosquito net',
@@ -53,6 +52,6 @@ var allAmenities = {
     'Portable fans',
     'Dedicated workspace',
     'Full kitchenette',
-    'Breakfast',
+    'Breakfast included',
   ],
 };

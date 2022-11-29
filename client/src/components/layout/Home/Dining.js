@@ -20,12 +20,13 @@ const Dining = () => {
         <span className='text'>
           <h2>Dining</h2>
           <span>
-            Masakali offers a full range of options for dining all with the
+            Masakali offers a full range of options for dining, all with the
             taste and charm of fresh Balinese ingredients. Our curated selection
-            of savory cuisine options is will appeal to anyone, styled after all
-            types of international cuisines, including many local Balinese
-            dishes. Our staff will bring you breakfast, lunch, or dinner so you
-            can enjoy your meal in the privacy of your own suite.
+            of savory cuisine includes many local Balinese dishes as well as
+            international dishes. Our staff will prepare you breakfast which is
+            included in the price of your villa from select items on the menu as
+            well as offer lunch and dinner so you can enjoy your meal in the
+            privacy of your own villa.
           </span>
 
           <div className='extras-link' style={{ marginLeft: '2rem' }}>
