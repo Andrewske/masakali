@@ -9,19 +9,6 @@ const WhyChoose = () => {
       <h2>Why Choose Masakali Retreat</h2>
       <span className='why-features'>
         <span className='why-feature'>
-          <Binoculars className='why-feature-icon' />
-          <h3>Beautiful Views</h3>
-          <p>
-            Located just outside the small village of Kelusa, Masakali offers
-            extraordinary views of cascading Balinese rice fields, majestic
-            mountains, and a spectacular view of the dense and tropical jungle.
-            If you’re lucky, you may even see monkeys swinging in the trees and
-            are sure to see the colorful butterflies and birds that inhabit this
-            magical place not to mention the fireflies that will encircle you at
-            night. These are just a few examples of the magic at Masakali.
-          </p>
-        </span>
-        <span className='why-feature'>
           <Pool className='why-feature-icon' />
           <h3>Private Infinity Pools</h3>
           <p>
@@ -31,6 +18,18 @@ const WhyChoose = () => {
             enjoy an amazing floating breakfast.
           </p>
         </span>
+        <span className='why-feature'>
+          <Binoculars className='why-feature-icon' />
+          <h3>Beautiful Views</h3>
+          <p>
+            Cascading Balinese rice fields, majestic mountains, and a
+            spectacular view of the dense and wild jungle. If you’re lucky, you
+            may even see monkeys swinging in the trees! Make sure you experience
+            the magic of Masakali at sunset and then the fire flies that light
+            up the rice terraces at night.
+          </p>
+        </span>
+
         <span className='why-feature'>
           <Spa className='why-feature-icon' />
           <h3>Spa Services</h3>
