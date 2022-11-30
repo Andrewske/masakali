@@ -37,7 +37,7 @@ const Landing = () => {
       <Vision />
       <Location height={height} width={width} />
       <Facilities />
-      <Booking />
+      {/* <Booking /> */}
       <Gallery width={width} />
       <div id='landing-video' className='header' style={{ paddingTop: '50px' }}>
         <p>MASAKALI</p>
