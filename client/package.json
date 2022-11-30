@@ -70,14 +70,10 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "compression-webpack-plugin": "^8.0.0"
-=======
     "compression-webpack-plugin": "^8.0.0",
     "sass": "^1.52.3",
     "sass-loader": "^12.3.0",
     "webpack": "^5.73.0"
->>>>>>> 000979d... updates to redesign
   },
   "browser": {
     "crypto": false,
