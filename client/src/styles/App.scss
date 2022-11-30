@@ -15,7 +15,7 @@
 $light-purple-5: rgba(163, 143, 159, 0.5);
 
 @font-face {
-  font-family: 'Avenir, Book';
+  font-family: 'Avenir Book';
   src: url('../../public/fonts/AvenirLTStd-Book.otf');
   font-weight: normal;
   font-style: normal;
@@ -41,9 +41,9 @@ $light-purple-5: rgba(163, 143, 159, 0.5);
 }
 
 body {
-  font-family: 'RuckSack', sans-serif;
+  font-family: 'Avenir Book';
   font-display: auto;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
   background-color: #fff;
@@ -87,7 +87,7 @@ font-weight: 700;
 font-style: normal; */
 
 a {
-  color: var(--primary-color);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -149,10 +149,11 @@ img {
 }
 
 .button {
-  font-family: 'Avenir, Book';
+  font-family: 'Avenir Book';
   border: none;
   font-size: 1.25rem;
-  //line-height: 1.5rem;
+  line-height: 1.5rem;
+  letter-spacing: 2px;
   text-transform: Uppercase;
   padding: 0.75rem 1.5rem;
   margin: 1rem auto;
@@ -188,7 +189,7 @@ img {
 }
 
 .villa-template {
-  font-family: 'Avenir, Book';
+  font-family: 'Avenir Book';
   display: flex;
   flex-wrap: wrap;
   min-height: calc(100vh - 150px);
@@ -204,10 +205,6 @@ img {
     flex: 1 1 30%;
     padding: 0rem 2rem;
 
-    h1 {
-      letter-spacing: 0.5rem;
-    }
-
     .villa-template-booking {
       flex: 1;
       min-width: calc(350px - 2rem);
@@ -215,6 +212,20 @@ img {
       height: max-content;
       display: flex;
       flex-flow: column wrap;
+
+      .villa-template-header {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        h1 {
+          letter-spacing: 0.5rem;
+        }
+
+        i {
+          font-size: 2rem;
+          cursor: pointer;
+        }
+      }
 
       .villa-template-date-container {
         background: rgba(242, 242, 242, 1) !important;
@@ -240,7 +251,7 @@ img {
             display: flex;
 
             .day {
-              font-family: Baskerville;
+              font-family: 'Baskerville Regular';
               text-align: left;
               margin-right: 0.5rem;
             }
@@ -486,7 +497,7 @@ h4 {
 }
 
 .header-container {
-  font-family: 'Avenir, Book' !important;
+  font-family: 'Avenir Book' !important;
   height: 150px;
   width: 100%;
   display: flex;
@@ -496,7 +507,7 @@ h4 {
   background-color: var(--purple-color);
   position: fixed;
   color: white;
-  z-index: 100;
+  z-index: 10000;
   padding: 1.5rem 1rem;
   transform: translateY(-100%);
   transition: all 500ms ease-in-out;
@@ -534,8 +545,8 @@ h4 {
     border-bottom: 1;
     gap: 2rem;
 
-    span {
-      width: 100px;
+    a {
+      width: max-content;
       text-align: center;
 
       &:after {
@@ -567,21 +578,24 @@ h4 {
   }
 
   .expanded-content {
-    @extend .center-col;
+    justify-content: space-evenly;
     padding-top: 0;
     height: 0;
     opacity: 0;
     transition: all 0.5s ease-in-out;
+    width: 100%;
 
     &.true {
       height: 75px;
       opacity: 1;
-      padding-top: 1rem;
+      padding: 1rem 0rem;
     }
 
     .links {
-      justify-content: center;
-      gap: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      max-width: 100vw;
     }
   }
 }
@@ -592,9 +606,10 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  font-family: 'Avenir', 'Book';
+  font-family: 'Avenir Book';
 
   .about-text {
+    font-family: 'Avenir Book';
     max-width: 500px;
     flex: 1 1 50%;
     margin: 2rem;
@@ -603,14 +618,14 @@ h4 {
     justify-content: space-between;
 
     h1 {
-      font-family: 'Baskerville', 'Regular';
+      font-family: 'Baskerville, Regular';
       line-height: 4rem;
       font-size: 3rem;
     }
 
     .main {
-      font-size: 1.25rem;
-      line-height: 2rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
     }
 
     .secondary {
@@ -626,6 +641,7 @@ h4 {
 }
 
 .why-container {
+  font-family: 'Avenir Book';
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -635,7 +651,8 @@ h4 {
   padding: 3rem;
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    letter-spacing: 5.6px;
     width: 100%;
     text-align: center;
     text-transform: Uppercase;
@@ -654,6 +671,7 @@ h4 {
       margin-left: 2.5rem;
 
       h3 {
+        font-family: 'Baskerville, Regular';
         text-transform: Uppercase;
         font-size: 1.5rem;
       }
@@ -670,16 +688,19 @@ h4 {
 }
 
 .villas-container {
+  font-family: 'Avenir Book';
   display: flex;
   flex-direction: column;
   justify-content: space-evently;
   align-items: center;
   width: 100vw;
-  padding: 3rem;
 
-  // h2 {
-  //   padding-top: 3rem;
-  // }
+  h2 {
+    letter-spacing: 8.4px;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    padding-top: 3rem;
+  }
 
   .villas-text {
     max-width: calc(min(600px, 90%));
@@ -691,16 +712,17 @@ h4 {
     flex-wrap: wrap;
     justify-content: space-evently;
     width: 100%;
-    padding: 3rem;
     position: relative;
+    padding: 1rem;
 
     .villas-img {
       max-height: 400px;
-      width: auto;
+      max-width: 400px;
+      width: 100%;
+      min-width: calc(350px - 2rem);
       margin: 2rem auto;
       position: relative;
       box-shadow: 0 0 15px #3a1b49;
-      object-fit: fill;
 
       .hover-details {
         @extend .center-col;
@@ -713,11 +735,12 @@ h4 {
         transition: all 0.5s ease-in-out;
         z-index: 2;
         background: rgba(243, 243, 243, 0.9);
-        margin: 2rem;
-        padding: 2rem;
+        margin: 1rem;
+        padding: 1rem;
 
         h2 {
           text-transform: uppercase;
+          margin-bottom: 1rem;
         }
 
         &.active {
@@ -748,7 +771,7 @@ h4 {
   .extras-details {
     width: calc(max(350px, 30vw));
     min-height: calc(max(350px, 30vw));
-
+    font-family: 'Avenir Book';
     background-color: #f2f2f2;
     position: relative;
     display: flex;
@@ -808,11 +831,13 @@ h4 {
 
     h2 {
       text-transform: uppercase;
+      letter-spacing: 0.5rem;
     }
 
     span {
-      margin-left: 2rem;
+      margin: 2rem;
       padding-top: 1rem;
+      font-size: 0.75rem;
     }
 
     ul {
@@ -2467,7 +2492,7 @@ $button-active-blue: #1669f2;
         //justify-content: space-evenly;
 
         .day {
-          font-family: Baskerville;
+          font-family: 'Baskerville Regular';
           font-size: 3 * $base-font-size;
           text-align: left;
           line-height: 2.5 * $base-line-height;
@@ -2481,7 +2506,7 @@ $button-active-blue: #1669f2;
           margin: 0 auto;
 
           .month-year {
-            font-family: Baskerville;
+            font-family: 'Baskerville Regular';
             font-size: $base-font-size;
             line-height: $base-line-height;
             text-transform: Uppercase;

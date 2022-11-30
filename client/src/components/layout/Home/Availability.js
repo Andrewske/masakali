@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { DayPickerSingleDateController } from 'react-dates';
 import useOnClickOutside from '../../../utils/useOnClickOutside';
-//import getDaysBetweenDates from '../../../utils/getDaysBetweenDates';
 import { setAlert } from '../../../actions/alert';
 import { loadVillas } from '../../../actions/villas';
 import { getBlockedDates } from '../../../actions/smoobu';
@@ -10,7 +9,6 @@ import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 import Alert from '../Alert';
 import moment from 'moment';
-import _ from 'lodash';
 
 const Availability = ({
   setAlert,
@@ -50,11 +48,12 @@ const Availability = ({
     setCheckOutPickerOpen(false);
   };
 
-  const handleClick = async () => {
+  const handleClick = () => {
     if (checkIn > checkOut) {
       setAlert('Departure Date must be later than Arrival Date', 'danger');
       return;
     }
+
     // List the dates that the user would like to stay
     const getDaysBetweenDates = (startDate, endDate) => {
       let dates = [];
@@ -73,13 +72,10 @@ const Availability = ({
     let availability = isAvailable;
 
     for (const villa in villas) {
-      let blockedDates = Array(
-        ...new Set(
-          villas[villa].datesReserved.flatMap((d) =>
-            getDaysBetweenDates(d.startDate, d.endDate)
-          )
-        )
-      );
+      let blockedDates = [
+        ...villas[villa].blockedDates,
+        ...villas[villa].checkOutDates,
+      ];
 
       availability =
         dates.filter((d) => !blockedDates.includes(d)).length === dates.length
@@ -87,6 +83,10 @@ const Availability = ({
           : { ...availability, [villa]: false };
     }
     setIsAvailable(availability);
+    if (Object.values(availability).every((x) => x === false)) {
+      setAlert('Sorry, no villas are available on these dates', 'danger');
+      return;
+    }
   };
 
   useEffect(() => {
@@ -95,7 +95,7 @@ const Availability = ({
 
   useEffect(() => {
     getBlockedDates();
-  }, []);
+  }, [getBlockedDates]);
 
   return (
     <div className='availability-container'>

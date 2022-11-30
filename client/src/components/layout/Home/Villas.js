@@ -80,7 +80,7 @@ const Villas = () => {
             >
               <h2>{villa.name}</h2>
               <p>{villa.details}</p>
-              <button className='btn'>View Details</button>
+              <button className='button purple'>View Details</button>
             </span>
           </span>
         ))}

@@ -9,25 +9,44 @@ import { DayPickerSingleDateController } from 'react-dates';
 import TemplateInfo from './TemplateInfo';
 import ImageCarousel from './ImageCarousel';
 import { getReviews } from '../../../actions/google';
+import { getBlockedDates } from '../../../actions/smoobu';
+import _ from 'lodash';
 
 const ARRIVAL_DATE = 'ARRIVAL DATE';
 const DEPARTURE_DATE = 'DEPARTURE DATE';
 
 const villaDetails = {
   surya: {
-    name: 'Surya',
+    name: 'surya',
+    title: 'Surya Villa',
+    description:
+      'Surya Villa is equipped with a king-size luxury mattress and a sofa. Look forward to a serene outdoor view as you plunge into your private infinity pool and listen to the gentle breeze of Bali.',
+    ammenities: { bed: 'King' },
+  },
+  chandra: {
+    name: 'chandra',
+    title: 'Chandra Villa',
+    description:
+      'Surya Villa is equipped with a king-size luxury mattress and a sofa. Look forward to a serene outdoor view as you plunge into your private infinity pool and listen to the gentle breeze of Bali.',
+    ammenities: { bed: 'King' },
+  },
+  jala: {
+    name: 'jala',
+    title: 'Jala Villa',
     description:
       'Surya Villa is equipped with a king-size luxury mattress and a sofa. Look forward to a serene outdoor view as you plunge into your private infinity pool and listen to the gentle breeze of Bali.',
     ammenities: { bed: 'King' },
   },
 };
 
-const Template = ({ reviews, getReviews }) => {
+const Template = ({ reviews, getReviews, getBlockedDates, villas }) => {
   const [checkIn, setCheckIn] = useState(moment());
   const [checkOut, setCheckOut] = useState(moment().add(1, 'd'));
   const [focused, setFocused] = useState(null);
   const [checkInPickerOpen, setCheckInPickerOpen] = useState(false);
   const [checkOutPickerOpen, setCheckOutPickerOpen] = useState(false);
+
+  const [villa, setVilla] = useState('surya');
 
   const checkInRef = useRef(null);
   const checkOutRef = useRef(null);
@@ -46,10 +65,46 @@ const Template = ({ reviews, getReviews }) => {
   };
 
   useEffect(() => {
-    if (!reviews) {
-      getReviews();
+    if (!reviews) getReviews();
+  }, [reviews, getReviews]);
+
+  useEffect(() => {
+    if (_.size(villas[villa]) === 0) getBlockedDates();
+  }, [villas, villa, getBlockedDates]);
+
+  const isBlocked = ({ day, isCheckIn = false }) => {
+    day = moment(day).format('YYYY-MM-DD');
+
+    if (isCheckIn) {
+      return [
+        ...villas[villa].checkInDates,
+        ...villas[villa].blockedDates,
+      ].includes(day);
+    } else {
+      let next = villas[villa].checkInDates.filter(
+        (d) => d > moment(checkIn).format('YYYY-MM-DD')
+      )[0];
+
+      return day <= moment(checkIn).format('YYYY-MM-DD') || day > next;
     }
-  }, []);
+  };
+
+  const nextVilla = () => {
+    switch (villa) {
+      case 'surya':
+        setVilla('chandra');
+        break;
+      case 'chandra':
+        setVilla('jala');
+        break;
+      case 'jala':
+        setVilla('surya');
+        break;
+      default:
+        setVilla('surya');
+        break;
+    }
+  };
 
   return (
     <span className='container full'>
@@ -57,7 +112,11 @@ const Template = ({ reviews, getReviews }) => {
       <span className='villa-template'>
         <div className='villa-template-details'>
           <span className='villa-template-booking'>
-            <h1>Surya Villa</h1>
+            <span className='villa-template-header'>
+              <h1>{villaDetails[villa].title}</h1>
+              <i className='icon-chevron-right' onClick={() => nextVilla()} />
+            </span>
+
             <div className='villa-template-date-container'>
               <span className='checkin-date' ref={checkInRef}>
                 <div className='title'>
@@ -79,6 +138,8 @@ const Template = ({ reviews, getReviews }) => {
                     onDateChange={(date) => handleCheckIn(date)}
                     focused={focused}
                     onFocusChange={({ focused }) => setFocused(focused)}
+                    isOutsideRange={(day) => day.isBefore(moment())}
+                    isDayBlocked={(day) => isBlocked({ day, isCheckIn: true })}
                   />
                 </span>
               )}
@@ -104,11 +165,17 @@ const Template = ({ reviews, getReviews }) => {
                     focused
                     onFocusChange={({ focused }) => setFocused(focused)}
                     isOutsideRange={(day) => day.isBefore(moment(checkIn))}
+                    isDayBlocked={(day) => isBlocked({ day })}
                   />
                 </span>
               )}
             </div>
-            <button className='button purple wide'>Book Surya</button>
+            <button
+              className='button purple wide'
+              onClick={() => getBlockedDates()}
+            >
+              {`Book ${villaDetails[villa].name}`}
+            </button>
           </span>
 
           <TemplateInfo />
@@ -130,7 +197,10 @@ const Template = ({ reviews, getReviews }) => {
 };
 
 const mapStateToProps = (state) => ({
+  villas: state.villas,
   reviews: state.villas.reviews,
 });
 
-export default connect(mapStateToProps, { getReviews })(Template);
+export default connect(mapStateToProps, { getReviews, getBlockedDates })(
+  Template
+);

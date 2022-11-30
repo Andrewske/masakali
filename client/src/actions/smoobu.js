@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { SET_BLOCKED_DATES, SET_VILLA_RATES } from './types';
+import getDaysBetweenDates from '../utils/getDaysBetweenDates';
 import { serverUrl } from '../config';
 import moment from 'moment';
 
@@ -22,9 +23,46 @@ export const getBlockedDates = () => async (dispatch) => {
   try {
     let { data } = await axios.get(serverUrl + '/smoobu/bookings/bookedDates');
 
+    // Map through the startDates and endDates provided by Smoobu and create
+    // checkInDates, checkoutDates, and blockedDates for each
+
+    let results = {
+      surya: {
+        checkInDates: [],
+        checkOutDates: [],
+        blockedDates: [],
+      },
+      chandra: {
+        checkInDates: [],
+        checkOutDates: [],
+        blockedDates: [],
+      },
+      jala: {
+        checkInDates: [],
+        checkOutDates: [],
+        blockedDates: [],
+      },
+    };
+
+    for (const [name, dates] of Object.entries(data)) {
+      dates.forEach((date) => {
+        results[name] = {
+          checkInDates: [...results[name].checkInDates, date.startDate],
+          checkOutDates: [...results[name].checkOutDates, date.endDate],
+          blockedDates: [
+            ...results[name].blockedDates,
+            ...getDaysBetweenDates({
+              startDate: date.startDate,
+              endDate: date.endDate,
+            }),
+          ],
+        };
+      });
+    }
+
     dispatch({
       type: SET_BLOCKED_DATES,
-      payload: data,
+      payload: results,
     });
   } catch (err) {
     console.error({ location: 'getBlockedDates', err });

@@ -65,10 +65,10 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <PersistGate persistor={persistor}>
-          <ScrollToTop />
-          <CountryPicker />
+          {/* <ScrollToTop /> */}
+          {/* <CountryPicker /> */}
           <Fragment>
-            <Sidebar />
+            {/* <Sidebar /> */}
             <Routes>
               <Route exact path='/' element={<Landing />} />
               <Route exact path='/login' element={<Login />} />
@@ -112,7 +112,7 @@ const App = () => {
                 }
               />
               <Route
-                path='/home/surya'
+                path='/villas'
                 element={
                   <PrivateRoute>
                     <NewSurya />
