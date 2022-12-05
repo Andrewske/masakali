@@ -81,7 +81,7 @@ const Footer = (props) => {
           <p>Masakali</p>
           <p>Br. Ayah Kelusa Payangan</p>
           <p>Gianyar Bali 80572</p>
-          <p>+1 (832) 853-9399</p>
+          <p>+62 821-4635-5565</p>
         </a>
         <a
           className='footer-link'

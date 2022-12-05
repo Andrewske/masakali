@@ -41,7 +41,7 @@ const Amenities = () => {
             </ul>
           </span>
 
-          <div className='extras-link'>
+          {/* <div className='extras-link'>
             <a
               href='https://drive.google.com/file/d/1EgcBzUUUESf0HoGBdN9JrRGs_ZIQexHL/view?usp=sharing'
               target='_blank'
@@ -50,7 +50,7 @@ const Amenities = () => {
               For a full list of services please see our guestbook{' '}
               <i className='icon-chevron-right' />
             </a>
-          </div>
+          </div> */}
         </span>
       </span>
       <span className='extras-img'>

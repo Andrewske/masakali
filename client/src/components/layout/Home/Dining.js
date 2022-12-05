@@ -29,7 +29,7 @@ const Dining = () => {
             privacy of your own villa.
           </span>
 
-          <div className='extras-link' style={{ marginLeft: '2rem' }}>
+          {/* <div className='extras-link' style={{ marginLeft: '2rem' }}>
             <a
               href='https://drive.google.com/file/d/1ngucJeZfvKcu8MvP2eqayTuWqhicGOkL/view?usp=sharing'
               target='_blank'
@@ -37,7 +37,7 @@ const Dining = () => {
             >
               See our menu <i className='icon-chevron-right' />
             </a>
-          </div>
+          </div> */}
         </span>
       </span>
     </div>
