@@ -74,7 +74,7 @@ const EmailLogin = ({ login, setToggle, setAlert }) => {
       >
         <p className='small'>{showPassword ? 'Hide' : 'Show'} Password</p>
       </span>
-      <span onClick={handleSubmit} className='button purple'>
+      <span id='cart_login' onClick={handleSubmit} className='button purple'>
         Login
       </span>
       <p className='sub-text'>

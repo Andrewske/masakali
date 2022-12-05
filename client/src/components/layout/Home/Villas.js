@@ -78,6 +78,7 @@ const Villas = () => {
               <p>{villa.details}</p>
               <button
                 className='button purple'
+                id={`home_${villa.name}_view_details`}
                 onClick={() => navigate(`/villas?villa=${villa.name}`)}
               >
                 View Details

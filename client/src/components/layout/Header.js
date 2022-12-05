@@ -67,6 +67,7 @@ const Header = ({ hide }) => {
         )}
         <div>
           <button
+            id='header_book_now'
             className='button white'
             onClick={() => navigate('/villas', { replace: true })}
           >

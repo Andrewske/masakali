@@ -116,7 +116,11 @@ const Availability = ({ setAlert }) => {
           )}
         </span>
         <span className='checkin-button'>
-          <span className='button purple' onClick={handleClick}>
+          <span
+            id='home_check_availability'
+            className='button purple'
+            onClick={handleClick}
+          >
             Check Availability
           </span>
         </span>

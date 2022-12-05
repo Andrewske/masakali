@@ -275,6 +275,7 @@ const Template = ({ villas, country, createReservation }) => {
               </span>
             </div>
             <button
+              id={`listing_book_${villa}`}
               className='button purple wide'
               onClick={() => reserveDates()}
             >

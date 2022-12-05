@@ -6,7 +6,7 @@ const GoogleLoginButton = () => {
     window.open(`${serverUrl}/auth/google?redirect=cart`, '_self');
   };
   return (
-    <div className='google-btn' onClick={handleClick}>
+    <div className='google-btn' onClick={handleClick} id='cart_google'>
       <div className='google-icon-wrapper'>
         <img
           className='google-icon'

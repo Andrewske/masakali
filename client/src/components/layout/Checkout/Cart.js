@@ -256,7 +256,11 @@ const Cart = ({
             </span>
             {checkoutError && <CheckoutError>{checkoutError}</CheckoutError>}
 
-            <button className='btn submit' disabled={isProcessing || !stripe}>
+            <button
+              id='cart_complete_payment'
+              className='btn submit'
+              disabled={isProcessing || !stripe}
+            >
               {isProcessing ? 'Processing...' : `Pay ${total}`}
             </button>
             <p className='subtext'>
