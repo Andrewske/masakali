@@ -38,7 +38,7 @@ router.post(
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     try {
       const msg = {
-        to: 'admin@masakaliretreat.com',
+        to: ['andrewskevin92@gmail.com', 'admin@masakaliretreat.com'],
         from: 'admin@masakaliretreat.com',
         templateId: 'd-56beee67bc0245539a249c95b72c11a9',
         dynamicTemplateData: req.body,
