@@ -18,6 +18,7 @@ import {
 } from '../../../actions/user';
 import { serverUrl } from '../../../config';
 import {
+  stripeCheckout,
   createPaymentIntent,
   createPaymentMethodReq,
   confirmCardPayment,
@@ -28,7 +29,14 @@ import { makeReservation } from '../../../actions/smoobu';
 import { compareSync } from 'bcryptjs';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
+import moment from 'moment';
+import { capitalize } from 'lodash';
 import Header from '../Header';
+
+import {
+  sendAdminBookingConfirmation,
+  sendBookingConfirmation,
+} from '../../../actions/sendgrid';
 
 const imageUrl = {
   surya: '/Main/Surya/surya-front-main_yynphR5d1s.webp',
@@ -56,17 +64,26 @@ const Cart = ({
   const stripe = useStripe();
   const elements = useElements();
 
-  const [price, setPrice] = useState(0);
+  //const [price, setPrice] = useState(0);
   const [numDays, setNumDays] = useState(0);
 
-  useEffect(() => {
-    if (reservations?.new) {
-      setPrice(reservations.new.total);
-      setNumDays(reservations.new.numDays);
-    }
-  }, [reservations]);
+  let price = useCurrencyFormat(reservations?.new?.amount);
+  let discount = useCurrencyFormat(reservations?.new?.discount);
+  let total = useCurrencyFormat(reservations?.new?.total);
+  let taxes = useCurrencyFormat(reservations?.new?.taxes);
 
-  let total = useCurrencyFormat(price);
+  // useEffect(() => {
+  //   if (reservations?.new) {
+  //     setPrice(reservations.new.total);
+  //     setNumDays(reservations.new.numDays);
+  //   }
+  // }, [reservations]);
+
+  //let total = useCurrencyFormat(price);
+
+  useEffect(() => {
+    console.log({ price, discount, total, taxes });
+  }, [price, discount, total, taxes]);
 
   useEffect(() => {
     async function loginSuccess() {
@@ -103,11 +120,11 @@ const Cart = ({
     let adminCode = process.env.REACT_APP_ADMIN_TEST_CODE;
     let customerCode = process.env.REACT_APP_CUSTOMER_COUPON;
 
-    if (e.target?.value == adminCode) {
+    if (e.target?.value === adminCode) {
       console.log('discount added');
       updatePricing({ price: 1.2, numDays, res: reservations?.new });
     }
-    if (e.target?.value == customerCode) {
+    if (e.target?.value === customerCode) {
       console.log('discount added');
       updatePricing({ price: 92.05, numDays, res: reservations?.new }); // finalPrice = 100
     }
@@ -122,8 +139,6 @@ const Cart = ({
 
     let firstName = e.target.firstName.value;
     let lastName = e.target.lastName.value;
-
-    console.log({ country: e.target.country.value });
 
     const billingDetails = {
       name: firstName + ' ' + lastName,
@@ -148,37 +163,46 @@ const Cart = ({
     });
 
     try {
-      // Create the Payment Intent
-      let finalPrice = price * 100;
+      // // Create the Payment Intent
+      // let finalPrice = price * 100;
 
-      const { clientSecret, paymentIntentError } = await createPaymentIntent({
-        price: finalPrice,
+      // const { clientSecret, paymentIntentError } = await createPaymentIntent({
+      //   price: finalPrice,
+      // });
+
+      // //console.log({ clientSecret, paymentIntentError });
+
+      // if (paymentIntentError) {
+      //   throw paymentIntentError;
+      // }
+
+      // // Create the Payment Method Request
+      // const { paymentMethodReqId, paymentMethodReqError } =
+      //   await createPaymentMethodReq({ stripe, cardElement, billingDetails });
+
+      // console.log({ paymentMethodReqError });
+      // if (paymentMethodReqError) {
+      //   throw paymentMethodReqError;
+      // }
+
+      // // Confirm the card payment
+      // const { paymentIntent, confirmCardPaymentError } =
+      //   await confirmCardPayment({ stripe, clientSecret, paymentMethodReqId });
+
+      // if (confirmCardPaymentError) {
+      //   throw confirmCardPaymentError;
+      // }
+
+      const { paymentIntent, error } = await stripeCheckout({
+        price: reservations?.new?.total * 100,
+        stripe,
+        cardElement,
+        billingDetails,
       });
 
-      //console.log({ clientSecret, paymentIntentError });
+      if (error) throw error;
 
-      if (paymentIntentError) {
-        throw paymentIntentError;
-      }
-
-      // Create the Payment Method Request
-      const { paymentMethodReqId, paymentMethodReqError } =
-        await createPaymentMethodReq({ stripe, cardElement, billingDetails });
-
-      console.log({ paymentMethodReqError });
-      if (paymentMethodReqError) {
-        throw paymentMethodReqError;
-      }
-
-      // Confirm the card payment
-      const { paymentIntent, confirmCardPaymentError } =
-        await confirmCardPayment({ stripe, clientSecret, paymentMethodReqId });
-
-      if (confirmCardPaymentError) {
-        throw confirmCardPaymentError;
-      }
-
-      // Create the booking in Smoobu
+      //Create the booking in Smoobu
       const { smoobuId } = await makeReservation({
         startDate: reservations.new.startDate,
         endDate: reservations.new.endDate,
@@ -191,11 +215,34 @@ const Cart = ({
         address: billingDetails.address,
       });
 
-      // Update the reservation with reservationId and stripeId & SmoobuId
+      //Update the reservation with reservationId and stripeId & SmoobuId
       if (reservationId && paymentIntent?.id && smoobuId) {
         await updateReservation({ reservationId, stripeId: paymentIntent.id });
       }
-      //console.log({ stripeId: paymentIntent.id });
+
+      let emailData = {
+        name: billingDetails.name,
+        email: billingDetails.email,
+        country: billingDetails.address.country,
+        villaName: capitalize(reservations.new.name),
+        startDate: moment
+          .utc(reservations.new.startDate)
+          .format('ddd MMM DD YYYY')
+          .toString(),
+        endDate: moment
+          .utc(reservations.new.endDate)
+          .format('ddd MMM DD YYYY')
+          .toString(),
+        numDays: reservations.new.numDays,
+        pricePerNight: price,
+        discount,
+        total,
+        taxes,
+        id: reservationId,
+      };
+
+      await sendBookingConfirmation(emailData);
+      await sendAdminBookingConfirmation(emailData);
 
       setIsProcessing(false);
       navigate('/success');
@@ -230,7 +277,7 @@ const Cart = ({
 
         {reservations?.new && (
           <div className='row'>
-            <CartDetails reservation={reservations.new} />
+            <CartDetails reservation={reservations?.new} />
           </div>
         )}
 

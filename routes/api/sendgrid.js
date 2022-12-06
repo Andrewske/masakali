@@ -4,41 +4,20 @@ const sgMail = require('@sendgrid/mail');
 const Reservation = require('../../models/Reservation');
 const User = require('../../models/User');
 
-router.post('/sendConfirmation', express.json(), async (req, res) => {
+router.post('/sendBookingConfirmation', express.json(), async (req, res) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  console.log(req.body);
   try {
-    const {
-      id,
-      email,
-      name,
-      villaName,
-      startDate,
-      endDate,
-      price,
-      numDays,
-      discount,
-      total,
-    } = req.body;
-
     const msg = {
-      to: email,
+      to: req.body.email,
       from: 'admin@masakaliretreat.com',
       templateId: 'd-df670819866341e3b360ea6a373e429e',
-      dynamicTemplateData: {
-        name,
-        villaName,
-        startDate,
-        endDate,
-        price,
-        numDays,
-        discount,
-        total,
-      },
+      dynamicTemplateData: req.body,
     };
 
     let response = await sgMail.send(msg);
 
-    let reservation = await Reservation.findOne({ _id: id });
+    let reservation = await Reservation.findOne({ _id: req.body.id });
 
     if (reservation) {
       reservation.sentEmail = true;
@@ -51,6 +30,29 @@ router.post('/sendConfirmation', express.json(), async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
+
+router.post(
+  '/sendAdminBookingConfirmation',
+  express.json(),
+  async (req, res) => {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    try {
+      const msg = {
+        to: 'andrewskevin92@gmail.com',
+        from: 'admin@masakaliretreat.com',
+        templateId: 'd-56beee67bc0245539a249c95b72c11a9',
+        dynamicTemplateData: req.body,
+      };
+
+      let response = await sgMail.send(msg);
+
+      res.status(200).send({ data: response });
+    } catch (err) {
+      console.log('sendGrid', { err });
+      res.status(400).json({ error: err.message });
+    }
+  }
+);
 
 router.post('/sendPasswordReset', express.json(), async (req, res) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);

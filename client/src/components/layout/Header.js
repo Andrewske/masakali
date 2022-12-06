@@ -27,6 +27,11 @@ const Header = ({ hide }) => {
         window.pageYOffset === 0 ? setHideHeader(true) : setHideHeader(false);
 
       return () => (window.onscroll = null);
+    } else {
+      window.onscroll = () =>
+        window.pageYOffset <= 75 ? setHideHeader(false) : setHideHeader(true);
+
+      return () => (window.onscroll = null);
     }
   });
 

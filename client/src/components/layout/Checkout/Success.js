@@ -5,13 +5,11 @@ import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import { sendBookingConfirmation } from '../../../actions/sendgrid';
-import { percDiscount } from '../../../config';
+
 import { loadUser } from '../../../actions/auth';
 
-const Success = ({ reservations, user, sendBookingConfirmation, loadUser }) => {
+const Success = ({ reservations }) => {
   const [reservation, setReservation] = useState(null);
-  const [amounts, setAmounts] = useState([0, 0]);
-  const [isSending, setIsSending] = useState(true);
 
   let price = useCurrencyFormat(reservation?.amount);
   let discount = useCurrencyFormat(reservation?.discount);
@@ -27,35 +25,34 @@ const Success = ({ reservations, user, sendBookingConfirmation, loadUser }) => {
     res.numDays =
       (moment(res.endDate) - moment(res.startDate)) / (60 * 60 * 24 * 1000);
     setReservation(res);
-    setAmounts([res.amount / res.numDays, res.numDays]);
   }, [reservations]);
 
-  useEffect(() => {
-    const sendEmail = async () => {
-      let { _id, numDays, startDate, endDate, name } = reservation;
-      let data = {
-        id: _id,
-        email: user.email,
-        name: user?.firstName || user.name,
-        villaName: name,
-        startDate: startDate,
-        endDate: endDate,
-        price: price,
-        numDays: numDays,
-        discount: discount,
-        taxes: taxes,
-        total: total,
-      };
-      await sendBookingConfirmation(data);
-      loadUser(user._id);
-      setIsSending(false);
-    };
+  // useEffect(() => {
+  //   const sendEmail = async () => {
+  //     let { _id, numDays, startDate, endDate, name } = reservation;
+  //     let data = {
+  //       id: _id,
+  //       email: user.email,
+  //       name: user?.firstName || user.name,
+  //       villaName: name,
+  //       startDate: startDate,
+  //       endDate: endDate,
+  //       price: price,
+  //       numDays: numDays,
+  //       discount: discount,
+  //       taxes: taxes,
+  //       total: total,
+  //     };
+  //     await sendBookingConfirmation(data);
+  //     loadUser(user._id);
+  //     setIsSending(false);
+  //   };
 
-    if (isSending && price && reservation && !reservation.sentEmail) {
-      console.log('Sending');
-      sendEmail();
-    }
-  }, [price, reservation, isSending]);
+  //   if (isSending && price && reservation && !reservation.sentEmail) {
+  //     console.log('Sending');
+  //     sendEmail();
+  //   }
+  // }, [price, reservation, isSending]);
 
   return (
     <div className='success-container'>
