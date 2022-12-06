@@ -72,14 +72,12 @@ const Cart = ({
   let total = useCurrencyFormat(reservations?.new?.total);
   let taxes = useCurrencyFormat(reservations?.new?.taxes);
 
-  // useEffect(() => {
-  //   if (reservations?.new) {
-  //     setPrice(reservations.new.total);
-  //     setNumDays(reservations.new.numDays);
-  //   }
-  // }, [reservations]);
-
-  //let total = useCurrencyFormat(price);
+  useEffect(() => {
+    if (reservations?.new) {
+      //setPrice(reservations.new.total);
+      setNumDays(reservations.new.numDays);
+    }
+  }, [reservations]);
 
   useEffect(() => {
     console.log({ price, discount, total, taxes });

@@ -15,6 +15,7 @@ export const calcTotal = ({ price, numDays }) => {
   let total = price * numDays;
   let discount = price * percDiscount * numDays;
   let taxes = (total - discount) * taxRate;
+  console.log({ price, numDays, total, discount, taxes });
 
   return total - discount + taxes;
 };
