@@ -58,6 +58,22 @@ var allReviews = {
   surya: [
     {
       key: 0,
+      name: 'Isabella',
+      date: 'December 2022',
+      imgUrl:
+        'https://a0.muscache.com/im/pictures/user/4f5338fa-49ca-4fb1-b81f-32aa268a9f5c.jpg?im_w=240',
+      text: 'Our stay at Masakali could not have been better. The pictures don’t justify how beautiful the villa was, or the incredible view it had of the rice fields. The entrance was just as beautiful… the whole environment couldn’t have been more calming and scenic. The villa itself was very clean and had an amazing outdoor shower. The staff were incredibly responsive and could not have treated us better. They went above and beyond, bringing us breakfast every morning and even arranging taxis wherever we wanted to go. This is the best accomodation I have ever stayed in!!!',
+    },
+    {
+      key: 1,
+      name: 'Jason',
+      date: 'November 2022',
+      imgUrl:
+        'https://a0.muscache.com/im/pictures/user/fbdc893b-2563-4baa-9226-865ac368c2ed.jpg?im_w=240',
+      text: 'We had an amazing stay at Masakali. Would recommend to anyone. Looks exactly like the pictures. Located perfectly outside of but not too far from the main city center. Natural beauty of the area of the retreat and handcraftsmanship of the villas is stunning. But, the best part of everything was the friendliness of and care that the entire staff provides its guests. They truly went above and beyond.',
+    },
+    {
+      key: 2,
       name: 'Betül',
       date: 'August 2022',
       imgUrl:
@@ -65,7 +81,7 @@ var allReviews = {
       text: 'Definitely the right place if you want to spend a dreamy time and experience paradise on earth. All of the employees are very concerned, very hospitable. thanks for everything',
     },
     {
-      key: 1,
+      key: 3,
       name: 'Rebecca',
       date: 'June 2022',
       imgUrl:
@@ -73,41 +89,34 @@ var allReviews = {
       text: 'SIMPLY SPECTACULAR! This was the most incredible place I have ever had the pleasure of spending a few nights at! I hardly know where to begin, every aspect of this incredible place has been so thoughtfully considered to make your stay feel like a dream. The staff are incredible, so friendly, warm and helpful, the massage in-villa was absolutely amazing, the food served in your villa is scrumptious and the view is unbelievable. If you need to treat yourself, rejuvenate, contemplate the world of natural beauty, you simply must stay here for a personal sanctuary stay. I am immensely grateful to experience my too-short stay here!',
     },
     {
-      key: 2,
+      key: 4,
       name: 'Milot',
       date: 'June 2022',
       imgUrl:
         'https://a0.muscache.com/im/pictures/user/7726f526-630c-4737-8c07-091df884e083.jpg?im_w=240',
       text: 'We couldn’t have been happier to have chosen this place. Our only regret was that we were only able to book one night. The staff was super receptive and the in house massage we received was done by a very skilled massage staff and the kitchen staff was exceptionally accommodating. We look forward to booking here again.',
     },
-    {
-      key: 3,
-      name: 'Felix',
-      date: 'June 2022',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/user/c955181d-ee0e-4c3a-a17c-2ba54175ed21.jpg?im_w=240',
-      text: 'It was a great stay, we had rented a scooter through the Masakali retreat and it was available within 20 minutes! Masakali Retreat is located just 20 minutes by scooter from ubud and other adventures like buggie tours, makes it a great hub to start any tour. You really live in the jungle and feel it with every breath you take, it is truely amazing and so much fun! It is super clean but dont forget, its in the jungle and the shower is basically outside, so is the living room, as there are open windows that have no glass and therefore cant be shut... and thats why we loved it!',
-    },
-    {
-      key: 4,
-      name: 'Olivia',
-      date: 'June 2022',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/user/5b8e15b8-9a44-47ac-a544-91f93b85c184.jpg?im_w=240',
-      text: 'We absolutely loved this villa! The open area and wonderful view really encapsulated Bali and the nature experience, making this a very relaxing and enjoyable part of our Bali trip. The outdoor space, the bedroom, and the bathroom were all well-kept and high quality, and the friendly staff were accommodating of any requests. The villa is more remote, which was exactly what we were looking for with this stay. As a result, restaurants and convenience stores were not walkable, but the villa offered a driver as well as motorbikes or bicycles. We mostly ate the food prepared by the hotel, and it was great and a good price! If I ever make it back to Ubud, I will definitely stay here again, and I recommend this place to anyone looking for a relaxing, nature-oriented stay in Bali.',
-    },
   ],
   chandra: [
-    // {
-    //   key: 0,
-    //   name: 'Becky',
-    //   date: 'August 2022',
-    //   imgUrl:
-    //     'https://a0.muscache.com/im/pictures/user/af5d8f78-1cb9-42cb-b8fe-77b0300f5322.jpg?im_w=240',
-    //   text: 'Amazing place and amazing staff. All very helpful and friendly. Ira was a huge help and would support with all your needs. Had an amazing massage! Definitely worth a stay, however you will need to consider transport if you wish to go anywhere as you are a little out. However Ira is incredible at helping you sort everything out and is the perfect host ♥️The location is peaceful and over looking the rice fields. Absolutely divine 😀',
-    // },
+    {
+      key: 0,
+      name: 'Briana',
+      date: 'December 2022',
+      imgUrl:
+        'https://a0.muscache.com/im/users/4516977/profile_pic/1430938726/original.jpg?im_w=240',
+      text: `If you are on your eat, pray, love trip or want to retreat into nature, 
+      Masakali is the place to be. It’s surrounded by rice fields and is a completely private Villa with a pool and view. The perfect place to relax and ground yourself. The staff at Masakali really makes this place. They take such good care of you and are very helpful. You can order breakfast, lunch or dinner to your room, massages, a flower bath, laundry service and they will help plan out your day and transportation if needed. Just note that if you plan to use grab or gojek, it is a 20 minute drive/scooter ride out of the main part of ubud. Thank you to the entire team at Masakali! Can’t wait to come back.`,
+    },
     {
       key: 1,
+      name: 'Skyler',
+      date: 'November 2022',
+      imgUrl:
+        'https://a0.muscache.com/im/pictures/user/a2930fb0-ddbe-4351-82d9-278d98ebdcb7.jpg?im_w=240',
+      text: `Absolutely gorgeous property! We enjoyed our stay and highly recommend. Really thoughtfully designed villa with obvious attention to detail. I honestly don't know what else you could want for a villa in the jungle hills/rice paddies of Bali. The staff were amazing and helped us with everything we needed. I only wish we stayed longer.`,
+    },
+    {
+      key: 2,
       name: 'Raphaëlle',
       date: 'July 2022',
       imgUrl:
@@ -119,7 +128,7 @@ var allReviews = {
       Suksma 🙏`,
     },
     {
-      key: 2,
+      key: 3,
       name: 'Karolína',
       date: 'July 2022',
       imgUrl:
@@ -127,7 +136,7 @@ var allReviews = {
       text: 'This place was just amazing. From start to finish. Me and my husband travel a lot. We’ve visited many places around the world but this experience was far the best of all. So peacful place with unbelievable sights. Direct view to incredible ricefields and absolutely perfect staff members made our stay unforgettable. We hope to come back someday and relived one more time! Karolina & Petr',
     },
     {
-      key: 3,
+      key: 4,
       name: 'Beatriz',
       date: 'July 2022',
       imgUrl:
@@ -136,18 +145,26 @@ var allReviews = {
 
       Overall, our stay was a dream thanks to Suzanne, Ira and all the lovely staff!`,
     },
-    {
-      key: 4,
-      name: 'Jasmijn',
-      date: 'May 2022',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/user/d2507211-487c-476e-aa0f-f698c65770b7.jpg?im_w=240',
-      text: `10 out of 10 for our stay at Masakali! We've stayed in all 3 villas and each time we've been amazed by the beauty of it. Everything is just perfect! The attention spent on all the details of the interior + exterior of the villas makes them even more beautiful! You'll definitely feel one with nature, which makes it even more serene and special. The staff is the best staff you can find in Bali. They are such nice people who'd go the extra mile to make your stay out of this world. You just have to go & stay at this little piece of paradise on earth!!!!`,
-    },
   ],
   jala: [
     {
       key: 0,
+      name: 'Frances',
+      date: 'November 2022',
+      imgUrl:
+        'https://a0.muscache.com/im/pictures/user/745dc931-b8ed-41a2-8132-d204d06bcc6d.jpg?im_w=240',
+      text: `My stay at Malasaki was wonderful! I was feeling quite unwell from heatstroke, but I was so well looked after, I still enjoyed my stay very much :) Ira and Suzanne made sure I had everything I needed and went above and beyond, all the staff were so friendly and accommodating. I'd be back in a heartbeat, beautiful villa and view which surpassed my expectations! Incredible view of Mt Batur and rice paddies. So peaceful, super clean, extensive information on check in and available before as well, and very comfortable bed. I couldn't fault anything. I will hopefully be back in future, thank you XX`,
+    },
+    {
+      key: 1,
+      name: 'Michael',
+      date: 'September 2022',
+      imgUrl:
+        'https://a0.muscache.com/im/pictures/user/c5e39c12-cd17-49b2-a1cb-7e879fd8a392.jpg?im_w=240',
+      text: `This is the best place we stayed during our stay in Bali. We love everything about the place especially the interior design, location, pool, food and the environment. We love the fact that the place has kitchen where you can cook your food. The staffs are so accommodating and warm. The host is very passionate and responsive. If you want to have a very peaceful and marvelous then book this accommodation for more than two nights because one day isn’t enough. We had sepanx after leaving the place because it really felt like home even we just stay for a night so we highly suggest to book at least three days or more. We will definitely go back and book this place for a week!`,
+    },
+    {
+      key: 2,
       name: 'Heidi',
       date: 'May 2022',
       imgUrl:
@@ -160,18 +177,9 @@ var allReviews = {
       
       Will definitely be coming back soon again and wpuld reccommend staying here for anyone who is looking for a super relaxing and peaceful stay.`,
     },
+
     {
-      key: 1,
-      name: 'Vincent',
-      date: 'June 2022',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/user/bfc26c3e-684c-49b7-b51c-5647e29a7be9.jpg?im_w=240',
-      text: `Excellent little villa, ideal for single travellers or a couple. Beautiful traditional design with careful thought into all the lovely little details. The use of timber everywhere gives an amazing effect and separates this place from the usual boring concrete villas.
-      Wonderful private pool overlooking the rice fields and jungle. Staff are kind, friendly and provide an excellent service if you want to order food and drinks.
-      We had such a nice time here we upgraded to the larger villa 'Surya' next door!`,
-    },
-    {
-      key: 2,
+      key: 3,
       name: 'Kirsty',
       date: 'July 2022',
       imgUrl:
@@ -179,12 +187,14 @@ var allReviews = {
       text: 'We loved our stay, was very quite & relaxing, beautiful area. Friendly helpful staff, lush gardens, cosy bed & we loved the traditional joglo building. Working rice fields right next door. Close enough to ride on the bike to Ubud for a day trip.',
     },
     {
-      key: 3,
-      name: 'Jasmijn',
-      date: 'May 2022',
+      key: 4,
+      name: 'Vincent',
+      date: 'June 2022',
       imgUrl:
-        'https://a0.muscache.com/im/pictures/user/d2507211-487c-476e-aa0f-f698c65770b7.jpg?im_w=240',
-      text: `The staff are such friendly, warm and loving people. They don't do anything because they have to, but they do it because they want to with their heart and soul. They want to make your stay memorable and let you have the time of your life. The property is in such gorgeous state, so clean, so lush and green. All thanks to the wonderful staff. When we set foot on this property it just made us so emotional, because of it's beauty. We can literally see locals working on the rice terraces while having a swim. They are also so friendly and are happy to see tourists and meet you. The food was delicious, healthy, everything you need and want can be arranged. They also offer massages in your own villa and other special treatments. We've had a flowerbath and floating breakfast! So lovely!!!! This place just deserves to be known by everyone and you're truely missing out if you didn't stay here!!! The location is a little bit out of Ubud, but you can go anywhere with the scooter. The rides itself are so pleasant and beautiful, so you just have to rent a scooter! Which can also be arranged at the property for very good prices! I just can't say anything bad about this place. It's heaven on earth! I want to go back already!!!! ♥♥♥`,
+        'https://a0.muscache.com/im/pictures/user/bfc26c3e-684c-49b7-b51c-5647e29a7be9.jpg?im_w=240',
+      text: `Excellent little villa, ideal for single travellers or a couple. Beautiful traditional design with careful thought into all the lovely little details. The use of timber everywhere gives an amazing effect and separates this place from the usual boring concrete villas.
+      Wonderful private pool overlooking the rice fields and jungle. Staff are kind, friendly and provide an excellent service if you want to order food and drinks.
+      We had such a nice time here we upgraded to the larger villa 'Surya' next door!`,
     },
   ],
 };
