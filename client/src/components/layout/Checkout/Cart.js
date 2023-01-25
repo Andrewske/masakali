@@ -134,9 +134,9 @@ const Cart = ({
 
     setIsProcessing(true);
     const cardElement = elements.getElement(CardElement);
-
-    let firstName = e.target.firstName.value;
-    let lastName = e.target.lastName.value;
+    const firstName = e.target.firstName.value;
+    const lastName = e.target.lastName.value;
+    const totalAsInt = reservations?.new?.total;
 
     const billingDetails = {
       name: firstName + ' ' + lastName,
@@ -191,32 +191,32 @@ const Cart = ({
       //   throw confirmCardPaymentError;
       // }
 
-      const { paymentIntent, error } = await stripeCheckout({
-        price: reservations?.new?.total * 100,
-        stripe,
-        cardElement,
-        billingDetails,
-      });
+      // const { paymentIntent, error } = await stripeCheckout({
+      //   price: totalAsInt * 100,
+      //   stripe,
+      //   cardElement,
+      //   billingDetails,
+      // });
 
-      if (error) throw error;
+      // if (error) throw error;
 
-      //Create the booking in Smoobu
-      const { smoobuId } = await makeReservation({
-        startDate: reservations.new.startDate,
-        endDate: reservations.new.endDate,
-        name: reservations.new.name,
-        firstName,
-        lastName,
-        email: billingDetails.email,
-        guests: reservations.new.guests,
-        price: parseFloat(price * (1 - percDiscount) * numDays),
-        address: billingDetails.address,
-      });
+      // //Create the booking in Smoobu
+      // const { smoobuId } = await makeReservation({
+      //   startDate: reservations.new.startDate,
+      //   endDate: reservations.new.endDate,
+      //   name: reservations.new.name,
+      //   firstName,
+      //   lastName,
+      //   email: billingDetails.email,
+      //   guests: reservations.new.guests,
+      //   price: parseFloat(totalAsInt),
+      //   address: billingDetails.address,
+      // });
 
-      //Update the reservation with reservationId and stripeId & SmoobuId
-      if (reservationId && paymentIntent?.id && smoobuId) {
-        await updateReservation({ reservationId, stripeId: paymentIntent.id });
-      }
+      // //Update the reservation with reservationId and stripeId & SmoobuId
+      // if (reservationId && paymentIntent?.id && smoobuId) {
+      //   await updateReservation({ reservationId, stripeId: paymentIntent.id });
+      // }
 
       let emailData = {
         name: billingDetails.name,
@@ -240,7 +240,9 @@ const Cart = ({
       };
 
       await sendBookingConfirmation(emailData);
-      await sendAdminBookingConfirmation(emailData);
+      //await sendAdminBookingConfirmation(emailData);
+
+      window.dataLayer.push({ conversionValue: totalAsInt });
 
       setIsProcessing(false);
       navigate('/success');
