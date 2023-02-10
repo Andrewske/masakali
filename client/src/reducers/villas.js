@@ -10,6 +10,7 @@ const initialState = {
   surya: {},
   chandra: {},
   jala: {},
+  akasha: {},
   reviews: null,
 };
 
@@ -23,6 +24,7 @@ export default function (state = initialState, action) {
         surya: { ...payload.surya },
         chandra: { ...payload.chandra },
         jala: { ...payload.jala },
+        akasha: { ...payload.akasha },
       };
     case SET_BLOCKED_DATES:
       return {
@@ -39,6 +41,10 @@ export default function (state = initialState, action) {
           ...state.jala,
           ...payload.jala,
         },
+        akasha: {
+          ...state.akasha,
+          ...payload.akasha,
+        },
       };
     case SET_VILLA_RATES:
       return {
@@ -54,6 +60,10 @@ export default function (state = initialState, action) {
         jala: {
           ...state.jala,
           rates: payload.jala,
+        },
+        akasha: {
+          ...state.akasha,
+          rates: payload.akasha,
         },
       };
     case SET_REVIEWS:

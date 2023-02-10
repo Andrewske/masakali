@@ -43,6 +43,13 @@ const villaDetails = {
       'Surya Villa is equipped with a king-size luxury mattress and a sofa. Look forward to a serene outdoor view as you plunge into your private infinity pool and listen to the gentle breeze of Bali.',
     ammenities: { bed: 'King' },
   },
+  akasha: {
+    name: 'akasha',
+    title: 'Akasha: 3 bedroom luxury villa',
+    description:
+      'Join us at Masakali Retreat just north of Ubud surrounded by the most astonishing landscape and rich culture. A true paradise. Our antique luxury villas offer the most blissful get away. Relax by your private infinity pool overlooking the beautiful Bali rice fields, jungle and mountains or find adventure in nearby Ubud. Equipped with kitchens. Spa services and meals available in private suites.',
+    ammenities: { bed: 'King' },
+  },
 };
 
 const Template = ({ villas, country, createReservation }) => {

@@ -7,6 +7,7 @@ const apiKey = process.env.SMOOBU_API_KEY;
 const suryaId = config.get('SMOOBU_SURYA_ID');
 const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
+const akashaId = config.get('SMOOBU_AKASHA_ID');
 const moment = require('moment');
 const getCurrency = require('../../components/currency');
 const qs = require('qs');
@@ -23,7 +24,7 @@ router.get('/rates', async (req, res) => {
     reqConfig.params = {
       start_date: startDate || moment().format('YYYY-MM-DD'),
       end_date: endDate || moment().add(2, 'years').format('YYYY-MM-DD'),
-      apartments: [suryaId, chandraId, jalaId],
+      apartments: [suryaId, chandraId, jalaId, akashaId],
     };
 
     let {
@@ -33,10 +34,12 @@ router.get('/rates', async (req, res) => {
     data['surya'] = data[suryaId];
     data['chandra'] = data[chandraId];
     data['jala'] = data[jalaId];
+    data['akasha'] = data[akashaId];
 
     delete data[suryaId];
     delete data[chandraId];
     delete data[jalaId];
+    delete data[akashaId];
 
     // let response = await axios.get(
     //   `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=IDR`
@@ -86,6 +89,9 @@ router.get('/bookings/bookedDates', async (req, res) => {
         .map((b) => ({ startDate: b.arrival, endDate: b.departure })),
       jala: bookings
         .filter((b) => b.apartment.id === jalaId)
+        .map((b) => ({ startDate: b.arrival, endDate: b.departure })),
+      askasha: bookings
+        .filter((b) => b.apartment.id === akashaId)
         .map((b) => ({ startDate: b.arrival, endDate: b.departure })),
     };
 
@@ -166,6 +172,15 @@ router.get('/bookings/delete', async (req, res) => {
   } catch (error) {
     console.error({ error });
     res.status(422).send({ error });
+  }
+});
+
+router.post('/hook', express.json(), async (req, res) => {
+  try {
+    console.log(req.body);
+    res.status(200).end();
+  } catch (err) {
+    console.error(err);
   }
 });
 

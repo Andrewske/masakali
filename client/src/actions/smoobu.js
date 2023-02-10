@@ -45,6 +45,11 @@ export const getBlockedDates = () => async (dispatch) => {
         checkOutDates: [],
         blockedDates: [],
       },
+      akasha: {
+        checkInDates: [],
+        checkOutDates: [],
+        blockedDates: [],
+      },
     };
 
     for (const [name, dates] of Object.entries(data)) {
@@ -91,6 +96,7 @@ export const makeReservation =
       surya: 1115674,
       chandra: 1115668,
       jala: 1115671,
+      akasha: 1574678,
     };
 
     // Add Children
