@@ -90,14 +90,20 @@ module.exports = updateRates = async (data) => {
 
 module.exports = blockVillas = async ({ startDate, endDate, villas }) => {
   try {
-    reqConfig.params = {
-      arrivalDate: startDate,
-      departureDate: endDate,
-      apartments: villas,
-    };
+    for (let i = 0; i < villas.length; i++) {
+      reqConfig.params = {
+        arrivalDate: startDate,
+        departureDate: endDate,
+        apartmentId: villas[i],
+        channelId: blockedId,
+        notice: 'Akasha Booked',
+      };
 
-    let {
-      data: { data },
-    } = await axios.get('https://login.smoobu.com/api/rates', reqConfig);
-  } catch (err) {}
+      console.log(reqConfig);
+
+      await axios.get('https://login.smoobu.com/api/rates', reqConfig);
+    }
+  } catch (err) {
+    console.error({ err });
+  }
 };

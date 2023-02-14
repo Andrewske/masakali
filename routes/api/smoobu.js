@@ -8,6 +8,7 @@ const suryaId = config.get('SMOOBU_SURYA_ID');
 const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
 const akashaId = config.get('SMOOBU_AKASHA_ID');
+const lakshmiId = config.get('SMOOBU_LAKSHMI_ID');
 const moment = require('moment');
 const getCurrency = require('../../components/currency');
 const qs = require('qs');
@@ -250,7 +251,7 @@ router.post('/hook', express.json(), async (req, res) => {
       default:
         if (data.apartment?.id === akashaId) {
           blockVillas({
-            villas: [suryaId],
+            villas: [lakshmiId],
             startDate: data.startDate,
             endDate: data.endDate,
           });
