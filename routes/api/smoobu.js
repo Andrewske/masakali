@@ -11,6 +11,15 @@ const akashaId = config.get('SMOOBU_AKASHA_ID');
 const moment = require('moment');
 const getCurrency = require('../../components/currency');
 const qs = require('qs');
+const SmoobuReservation = require('../../models/SmoobuReservation');
+const VillaRates = require('../../models/VillaRates');
+const {
+  getRates,
+  updateRates,
+  blockVillas,
+} = require('../../components/smoobu');
+
+let smoobuBookings = require('../../smoobuBookings.json');
 
 let reqConfig = {
   headers: {
@@ -41,6 +50,35 @@ router.get('/rates', async (req, res) => {
     delete data[jalaId];
     delete data[akashaId];
 
+    let updates = [];
+    for (const [villa, dates] of Object.entries(data)) {
+      for (const [date, rates] of Object.entries(dates)) {
+        let update = updates.findIndex((e) => e.date === date);
+        if (update >= 0) {
+          updates[update][villa] = rates.price;
+        } else {
+          updates.push({ date, [villa]: rates.price });
+        }
+      }
+    }
+
+    let dbRes = await VillaRates.collection.bulkWrite(
+      updates.map((u) => ({
+        updateOne: {
+          filter: { date: u.date },
+          update: {
+            $set: {
+              date: u.date,
+              surya: u.surya,
+              chandra: u.chandra,
+              jala: u.jala,
+              akasha: u.akasha,
+            },
+          },
+          upsert: true,
+        },
+      }))
+    );
     // let response = await axios.get(
     //   `https://freecurrencyapi.net/api/v2/latest?apikey=${process.env.CURRENCY_API_KEY}&base_currency=IDR`
     // );
@@ -175,12 +213,115 @@ router.get('/bookings/delete', async (req, res) => {
   }
 });
 
+const formatBookingData = (data) => {
+  return {
+    smoobuId: data.id,
+    type: data.type,
+    startDate: data.arrival,
+    endDate: data.departure,
+    createdAt: data['created-at'],
+    updatedAt: data.modifiedAt,
+    cancelled: data.type === 'cancellation',
+    villaId: data.apartment?.id,
+    channelId: data.channel?.id,
+    guestName: data['guest-name'],
+    email: data.email,
+    phone: data.phone,
+    adults: data.adults,
+    children: data.children,
+    total: data.price,
+    commission: data['commission-included'],
+    notice: data.notice,
+    extraNotice: data.assistantNotice,
+  };
+};
+
 router.post('/hook', express.json(), async (req, res) => {
   try {
     console.log(req.body);
+    let action = req.body?.action;
+    let data = formatBookingData(req.body?.data);
+    let dbRes = null;
+
+    switch (action) {
+      case 'updateRates':
+        let rates = getRates();
+        dbRes = updateRates(rates);
+      default:
+        if (data.apartment?.id === akashaId) {
+          blockVillas({
+            villas: [suryaId],
+            startDate: data.startDate,
+            endDate: data.endDate,
+          });
+        }
+        dbRes = await SmoobuReservation.updateOne(
+          { smoobuId: data.smoobuId },
+          data,
+          { upsert: true }
+        );
+    }
+
+    console.log(dbRes);
+
     res.status(200).end();
   } catch (err) {
     console.error(err);
+  }
+});
+
+router.post('/populateBookings', express.json(), async (req, res) => {
+  try {
+    let bookings = smoobuBookings?.bookings;
+
+    if (bookings) {
+      let bulkList = bookings.map((b) => ({
+        updateOne: {
+          filter: { smoobuId: b.id },
+          update: {
+            $set: {
+              smoobuId: b.id,
+              type: b.type,
+              startDate: b.arrival,
+              endDate: b.departure,
+              createdAt: b['created-at'],
+              updatedAt: b.modifiedAt,
+              cancelled: b.type === 'cancellation',
+              villaId: b.apartment?.id,
+              channelId: b.channel?.id,
+              guestName: b['guest-name'],
+              email: b.email,
+              phone: b.phone,
+              adults: b.adults,
+              children: b.children,
+              total: b.price,
+              commission: b['commission-included'],
+              notice: b.notice,
+              extraNotice: b.assistantNotice,
+            },
+          },
+          upsert: true,
+        },
+      }));
+
+      let dbres = await SmoobuReservation.collection.bulkWrite(bulkList);
+
+      res.status(200).send(dbres);
+    }
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+router.get('/populateRates', express.json(), async (req, res) => {
+  try {
+    let data = getRates(reqConfig);
+
+    let dbRes = updateRates(data);
+
+    res.status(200).send(dbRes);
+  } catch (err) {
+    console.error('populate rates error', err.message);
   }
 });
 
