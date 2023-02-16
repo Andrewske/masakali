@@ -29,13 +29,58 @@ let reqConfig = {
 };
 
 router.get('/rates', async (req, res) => {
-  let { startDate = null, endDate = null } = req.query;
+  let { startDate = null, endDate = null} = req.query;
+  let today = moment().format('YYYY-MM-DD')
   try {
+    // this needs to change since now I store the rates on a per day basis then per villa
+    // first I need to check the database for the most recent prices
+
+    let lastUpdated = VillaRates.findOne({date: moment().format('YYYY-MM-DD')})?.updatedAt
+
+    // if they were not updated today then we need to get new rates and send that data
+    // depending on what the format the db retruns, I may need to update the format that getRates() returns
+
+    if (lastUpdated < today) {
+      let currentRates = getRates()
+      res.status(422).send(currentRates)
+    }
+
+    // else get all the dates for the next two years and send that
+
+    let rates = VillaRates.findAll(date >= startDate ?? today & date <= endDate)
+
+    res.status(422).send(rates)
+
+    // so this should return data like this (not sure how it will return from the database)
+    // {
+    //   {
+    //    'date': '2023-02-16',
+    //    'surya': 1200000,
+    //    'chandra': 1200000,
+    //    'jala': 1000000,
+    //    'akasha': 2000000,
+    //   },
+    //   {
+    //    'date': '2023-02-17',
+    //    'surya': 1200000,
+    //    'chandra': 1200000,
+    //    'jala': 1000000,
+    //    'akasha': 2000000,
+    //   }, 
+    // }
+    // so the main reason for doing this would be that it is easier to check for a certain date range in one query
+    // however, unless a specific date range is specified then there will always be 730(1) records returned with 4 lines each.
+    // so if we are checking for the prices when a guest is booking we would check each day for rates[date][villa] for date in dates
+
+
+
     reqConfig.params = {
       start_date: startDate || moment().format('YYYY-MM-DD'),
       end_date: endDate || moment().add(2, 'years').format('YYYY-MM-DD'),
       apartments: [suryaId, chandraId, jalaId, akashaId],
     };
+
+    
 
     let {
       data: { data },
@@ -248,14 +293,26 @@ router.post('/hook', express.json(), async (req, res) => {
       case 'updateRates':
         let rates = getRates();
         dbRes = updateRates(rates);
-      default:
-        if (data.apartment?.id === akashaId) {
+      case 'newReservation':
+        //if Akasha then book Lakshmi
+        if (data.villaId === akashaId) {
           blockVillas({
             villas: [lakshmiId],
             startDate: data.startDate,
             endDate: data.endDate,
           });
         }
+        //if Lakshmi then book Akasha and open Prishma
+        if (data.villaId === lakshmiId) {
+          blockVillas({
+            villas: [akashaId],
+            startDate: data.startDate,
+            endDate: data.endDate,
+          });
+        }
+
+      //if Isvara
+      default:
         dbRes = await SmoobuReservation.updateOne(
           { smoobuId: data.smoobuId },
           data,
@@ -263,7 +320,7 @@ router.post('/hook', express.json(), async (req, res) => {
         );
     }
 
-    console.log(dbRes);
+    //console.log(dbRes);
 
     res.status(200).end();
   } catch (err) {
@@ -316,7 +373,7 @@ router.post('/populateBookings', express.json(), async (req, res) => {
 
 router.get('/populateRates', express.json(), async (req, res) => {
   try {
-    let data = getRates(reqConfig);
+    let data = getRates();
 
     let dbRes = updateRates(data);
 

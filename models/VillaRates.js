@@ -5,6 +5,7 @@ const VillaRatesSchema = new mongoose.Schema(
     date: {
       type: String,
       required: true,
+      unique: true,
     },
     surya: {
       type: Number,

@@ -2,14 +2,18 @@ const axios = require('axios');
 const VillaRates = require('../models/VillaRates');
 const config = require('config');
 const blockedId = config.get('SMOOBU_BLOCKED_ID');
+const apiKey = config.get('SMOOBU_API_KEY');
+const moment = require('moment');
 
 let reqConfig = {
   headers: {
-    'Api-Key': process.env.SMOOBU_API_KEY,
+    'Api-Key': apiKey,
+    'Content-Type': 'appication/json',
+    'Cache-Control': 'no-cache',
   },
 };
 
-module.exports = getBookings = async () => {
+module.exports.getBookings = async () => {
   try {
     const res = await axios.get(
       'https://login.smoobu.com/api/reservations',
@@ -21,7 +25,7 @@ module.exports = getBookings = async () => {
   }
 };
 
-module.exports = getRates = async () => {
+module.exports.getRates = async () => {
   try {
     reqConfig.params = {
       start_date: moment().format('YYYY-MM-DD'),
@@ -50,7 +54,7 @@ module.exports = getRates = async () => {
   }
 };
 
-module.exports = updateRates = async (data) => {
+module.exports.updateRates = async (data) => {
   try {
     let updates = [];
     for (const [villa, dates] of Object.entries(data)) {
@@ -88,22 +92,37 @@ module.exports = updateRates = async (data) => {
   }
 };
 
-module.exports = blockVillas = async ({ startDate, endDate, villas }) => {
+module.exports.blockVillas = async ({ startDate, endDate, villas }) => {
   try {
     for (let i = 0; i < villas.length; i++) {
-      reqConfig.params = {
+      let body = {
         arrivalDate: startDate,
         departureDate: endDate,
-        apartmentId: villas[i],
         channelId: blockedId,
+        apartmentId: villas[i],
         notice: 'Akasha Booked',
+        firstName: 'Masakali',
+        lastName: 'Blocked',
+        email: 'admin@masakaliretreat.com',
       };
 
-      console.log(reqConfig);
+      
 
-      await axios.get('https://login.smoobu.com/api/rates', reqConfig);
+      console.log({ reqConfig, body });
+
+      let res = await axios.post(
+        'https://login.smoobu.com/api/reservations',
+        body,
+        reqConfig
+      );
+      console.log({ res });
     }
   } catch (err) {
-    console.error({ err });
+    console.error({
+      response: err.response,
+      data: err.response.data,
+      headers: err.response.error,
+      firstName: err.data.validation_messages,
+    });
   }
 };
