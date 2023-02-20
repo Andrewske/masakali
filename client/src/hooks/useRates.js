@@ -13,6 +13,8 @@ const useRates = () => {
         return data
     }
   },[rates])
+
+  return rates
   
 }
 
