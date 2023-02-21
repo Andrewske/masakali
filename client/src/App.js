@@ -18,6 +18,13 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store';
+
+import {QueryClient, QueryClientProvider} from 'react-query';
+
+
+
+
+
 import setAuthToken from './utils/setAuthToken';
 //import { loadUser } from './actions/auth';
 
@@ -61,9 +68,13 @@ if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
+    
     <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
       <Router>
         <PersistGate persistor={persistor}>
           <ScrollToTop />
@@ -165,6 +176,7 @@ const App = () => {
           </Fragment>
         </PersistGate>
       </Router>
+      </QueryClientProvider>
     </Provider>
   );
 };

@@ -1,8 +1,10 @@
 const Currency = require('../models/Currency');
 const axios = require('axios');
+const moment = require('moment');
 
 module.exports = getCurrency = async (baseCurrency = 'USD') => {
   console.log('getCurrency', baseCurrency);
+  
   let last = await Currency.findOne({ baseCurrency })
     .sort({ _id: -1 })
     .limit(1);
@@ -10,7 +12,8 @@ module.exports = getCurrency = async (baseCurrency = 'USD') => {
   let today = new Date();
   let prev = new Date(last?.createdAt);
 
-  if (today.toDateString() == prev.toDateString()) return last;
+
+  if (moment(today).format('YYYY-MM-DD') === moment(prev).format('YYYY-MM-DD') ) return last;
 
   try {
     let response = await axios.get(

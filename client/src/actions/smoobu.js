@@ -29,6 +29,8 @@ export const getBlockedDates = () => async (dispatch) => {
     // Map through the startDates and endDates provided by Smoobu and create
     // checkInDates, checkoutDates, and blockedDates for each
 
+    console.log({data})
+
     let results = {
       surya: {
         checkInDates: [],

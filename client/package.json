@@ -25,10 +25,10 @@
     "react-download-link": "^2.3.0",
     "react-moment": "^1.0.0",
     "react-multi-carousel": "^2.6.3",
+    "react-query": "^3.39.3",
     "react-redux": "^7.2.1",
     "react-router-dom": "^6.3.0",
     "react-router-hash-link": "^2.4.3",
-    "react-scripts": "5.0.1",
     "react-scroll": "^1.8.2",
     "react-select": "^5.3.2",
     "react-select-country-list": "^2.2.3",
@@ -71,6 +71,7 @@
   },
   "devDependencies": {
     "compression-webpack-plugin": "^8.0.0",
+    "react-scripts": "^5.0.1",
     "webpack": "^5.74.0"
   },
   "browser": {

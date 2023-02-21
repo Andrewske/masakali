@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Errors from './Errors';
 
 const Dashboard = ({ users, errors, getUsers, getErrors }) => {
+
   useEffect(() => {
     getUsers();
     getErrors();

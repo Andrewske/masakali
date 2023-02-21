@@ -4,6 +4,11 @@ const config = require('config');
 const blockedId = config.get('SMOOBU_BLOCKED_ID');
 const apiKey = config.get('SMOOBU_API_KEY');
 const moment = require('moment');
+const suryaId = config.get('SMOOBU_SURYA_ID');
+const chandraId = config.get('SMOOBU_CHANDRA_ID');
+const jalaId = config.get('SMOOBU_JALA_ID');
+const akashaId = config.get('SMOOBU_AKASHA_ID');
+
 
 let reqConfig = {
   headers: {
