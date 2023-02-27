@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react'
 import {useQuery} from 'react-query'
 import { serverUrl } from '../config';
 import axios from 'axios'

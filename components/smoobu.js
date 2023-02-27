@@ -9,6 +9,8 @@ const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
 const akashaId = config.get('SMOOBU_AKASHA_ID');
 
+let villas = [suryaId, chandraId, jalaId, akashaId]
+
 
 let reqConfig = {
   headers: {
@@ -29,6 +31,42 @@ module.exports.getBookings = async () => {
     console.error({ err });
   }
 };
+
+const getDaysBetweenDates = (startDate, endDate) => {
+  let dates = [];
+  let now = moment(startDate);
+  while (now.isSameOrBefore(moment(endDate).subtract(1, 'days'))) {
+    dates.push(now.format('YYYY-MM-DD'));
+    now.add(1, 'days');
+  }
+  return dates;
+};
+
+module.exports.formatBlockedDates = (bookings) => {
+  let blockedDates = {}
+
+  for (const villaId of villas) {
+    let villaBookings = bookings.filter(b => b.apartment.id === villaId)
+
+    let name = villaBookings[0].apartment.name.toLowerCase()
+
+    let checkInDates = Array(...new Set(villaBookings.map(b => b.arrival)))
+    let checkOutDates = Array(...new Set(villaBookings.map(b => b.departure)))
+    let betweenDates = Array(...new Set(villaBookings.map(b => getDaysBetweenDates(b.arrival, b.departure)).flat()))
+    console.log(name, checkInDates)
+
+
+    blockedDates[name] = {checkInDates, checkOutDates, betweenDates}
+
+  }
+
+
+  return blockedDates;
+
+
+}
+
+
 
 module.exports.getRates = async () => {
   try {

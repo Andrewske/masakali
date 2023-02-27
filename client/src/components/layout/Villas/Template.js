@@ -17,6 +17,8 @@ import { useNavigate } from 'react-router-dom';
 import { getVillaRates } from '../../../actions/smoobu';
 import useScrollToTop from '../../../hooks/useScrollToTop';
 import useVillaPrice from '../../../hooks/useVillaPrice';
+import useBlockedDates from '../../../hooks/useBlockedDates';
+
 
 
 const ARRIVAL_DATE = 'ARRIVAL DATE';
@@ -65,6 +67,9 @@ const Template = ({ villas, country, createReservation }) => {
   const [numDays, setNumDays] = useState(1);
 
 
+  const dates = useBlockedDates()
+
+
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
@@ -87,7 +92,7 @@ const Template = ({ villas, country, createReservation }) => {
     let numDays = endDate.diff(startDate, 'days');
 
     // ADD A DEFAULT FOR EACH VILLA IF WE CANNOT GET RATES
-    //let pricePerNight = villas[villa].rates[moment(startDate).format('YYYY-MM-DD')].price;
+    //let pricePerNight = villas[villa].rates[moment(startDate).format('YYYY-MM-DD')].price;a
     setTotal(calcTotal({ price: villaPrice, numDays }));
   };
 

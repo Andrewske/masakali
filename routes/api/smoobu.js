@@ -18,6 +18,7 @@ const {
   getRates,
   updateRates,
   blockVillas,
+  formatBlockedDates
 } = require('../../components/smoobu');
 
 let smoobuBookings = require('../../smoobuBookings.json');
@@ -182,12 +183,15 @@ router.get('/bookings/bookedDates', async (req, res) => {
         'https://login.smoobu.com/api/reservations',
         reqConfig
       );
-
+      console.log('calling smoobu')
       pageCount = data?.page_count;
       bookings = [...bookings, ...data?.bookings];
 
       pageNumber += 1;
     }
+
+    let blockedDates = formatBlockedDates(bookings);
+    
 
     let bookedDates = {
       surya: bookings
@@ -204,7 +208,7 @@ router.get('/bookings/bookedDates', async (req, res) => {
         .map((b) => ({ startDate: b.arrival, endDate: b.departure })),
     };
 
-    res.status(200).send(bookedDates);
+    res.status(200).send(blockedDates);
   } catch (error) {
     console.error({ error });
     res.status(422).send('Sorry there was a problem');
