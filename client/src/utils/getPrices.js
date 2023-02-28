@@ -1,19 +1,18 @@
 const percDiscount = 0.1;
 const taxRate = 0.1;
 
-export const calcDiscount = ({ price, numDays }) => {
-  console.log({ price, numDays });
-  return price * numDays * percDiscount;
+export const calcDiscount = ({ villaPrice, numDays }) => {
+  return villaPrice * numDays * percDiscount;
 };
-export const calcTaxes = ({ price, numDays }) => {
-  let total = price * numDays;
-  let discount = price * percDiscount * numDays;
+export const calcTaxes = ({ villaPrice, numDays }) => {
+  let total = villaPrice * numDays;
+  let discount = villaPrice * percDiscount * numDays;
   return (total - discount) * taxRate;
 };
 
-export const calcTotal = ({ price, numDays }) => {
-  let total = price * numDays;
-  let discount = price * percDiscount * numDays;
+export const calcTotal = ({ villaPrice, numDays }) => {
+  let total = villaPrice * numDays;
+  let discount = villaPrice * percDiscount * numDays;
   let taxes = (total - discount) * taxRate;
 
   return total - discount + taxes;

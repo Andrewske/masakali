@@ -18,7 +18,7 @@ const {
   getRates,
   updateRates,
   blockVillas,
-  formatBlockedDates
+  formatBlockedDates,
 } = require('../../components/smoobu');
 
 let smoobuBookings = require('../../smoobuBookings.json');
@@ -30,42 +30,40 @@ let reqConfig = {
 };
 
 router.get('/rates_new', async (req, res) => {
-  const today = moment()
-  
-  let { startDate = today, endDate = today.clone().add(2,'y')} = req.query;
+  const today = moment();
+
+  let { startDate = today, endDate = today.clone().add(2, 'y') } = req.query;
   try {
-        // this needs to change since now I store the rates on a per day basis then per villa
+    // this needs to change since now I store the rates on a per day basis then per villa
     // first I need to check the database for the most recent prices
 
-    console.log(startDate, endDate)
+    console.log(startDate, endDate);
 
-
-    let lastUpdated = await VillaRates.findOne({date: moment(startDate).format('YYYY-MM-DD')})
+    let lastUpdated = await VillaRates.findOne({
+      date: moment(startDate).format('YYYY-MM-DD'),
+    });
 
     // if they were not updated today then we need to get new rates and send that data
     // depending on what the format the db retruns, I may need to update the format that getRates() returns
 
-    console.log('lastUpdated', lastUpdated)
-
+    console.log('lastUpdated', lastUpdated);
 
     if (lastUpdated?.updatedAt < today) {
-      let currentRates = await getRates()
-      return res.status(200).send(currentRates)
+      let currentRates = await getRates();
+      return res.status(200).send(currentRates);
     }
 
     // else get all the dates for the next two years and send that
 
     // let rates = VillaRates.findAll(date >= startDate ?? today & date <= endDate)
 
-    let rates = await VillaRates.find()
-
-
+    let rates = await VillaRates.find();
 
     //console.log('rates', rates)
-    
-    
 
-    return res.status(200).send(rates.sort((a,b) => moment(a.date) - moment(b.date)))
+    return res
+      .status(200)
+      .send(rates.sort((a, b) => moment(a.date) - moment(b.date)));
 
     // so this should return data like this (not sure how it will return from the database)
     // {
@@ -82,31 +80,27 @@ router.get('/rates_new', async (req, res) => {
     //    'chandra': 1200000,
     //    'jala': 1000000,
     //    'akasha': 2000000,
-    //   }, 
+    //   },
     // }
     // so the main reason for doing this would be that it is easier to check for a certain date range in one query
     // however, unless a specific date range is specified then there will always be 730(1) records returned with 4 lines each.
     // so if we are checking for the prices when a guest is booking we would check each day for rates[date][villa] for date in dates
   } catch (error) {
-    console.error(error)
-    res.status(500).send(error)
+    console.error(error);
+    res.status(500).send(error);
   }
-})
+});
 
 router.get('/rates', async (req, res) => {
-  
-  const today = moment()
-  
-  let { startDate = today, endDate = today.clone().add(2,'y')} = req.query;
-  try {
+  const today = moment();
 
+  let { startDate = today, endDate = today.clone().add(2, 'y') } = req.query;
+  try {
     reqConfig.params = {
       start_date: moment(startDate).format('YYYY-MM-DD'),
       end_date: moment(endDate).format('YYYY-MM-DD'),
       apartments: [suryaId, chandraId, jalaId, akashaId],
     };
-
-    
 
     let {
       data: { data },
@@ -166,8 +160,8 @@ router.get('/rates', async (req, res) => {
 
     res.status(200).send(data);
   } catch (err) {
-    console.error({err});
-    res.status(422).send({err});
+    console.error({ err });
+    res.status(422).send({ err });
   }
 });
 
@@ -183,7 +177,8 @@ router.get('/bookings/bookedDates', async (req, res) => {
         'https://login.smoobu.com/api/reservations',
         reqConfig
       );
-      console.log('calling smoobu')
+      console.log('calling smoobu');
+
       pageCount = data?.page_count;
       bookings = [...bookings, ...data?.bookings];
 
@@ -191,22 +186,6 @@ router.get('/bookings/bookedDates', async (req, res) => {
     }
 
     let blockedDates = formatBlockedDates(bookings);
-    
-
-    let bookedDates = {
-      surya: bookings
-        .filter((b) => b.apartment.id === suryaId)
-        .map((b) => ({ startDate: b.arrival, endDate: b.departure })),
-      chandra: bookings
-        .filter((b) => b.apartment.id === chandraId)
-        .map((b) => ({ startDate: b.arrival, endDate: b.departure })),
-      jala: bookings
-        .filter((b) => b.apartment.id === jalaId)
-        .map((b) => ({ startDate: b.arrival, endDate: b.departure })),
-      akasha: bookings
-        .filter((b) => b.apartment.id === akashaId)
-        .map((b) => ({ startDate: b.arrival, endDate: b.departure })),
-    };
 
     res.status(200).send(blockedDates);
   } catch (error) {

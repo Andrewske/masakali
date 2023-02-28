@@ -9,8 +9,7 @@ const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
 const akashaId = config.get('SMOOBU_AKASHA_ID');
 
-let villas = [suryaId, chandraId, jalaId, akashaId]
-
+let villas = [suryaId, chandraId, jalaId, akashaId];
 
 let reqConfig = {
   headers: {
@@ -43,30 +42,30 @@ const getDaysBetweenDates = (startDate, endDate) => {
 };
 
 module.exports.formatBlockedDates = (bookings) => {
-  let blockedDates = {}
+  let data = {};
 
   for (const villaId of villas) {
-    let villaBookings = bookings.filter(b => b.apartment.id === villaId)
+    let villaBookings = bookings.filter((b) => b.apartment.id === villaId);
 
-    let name = villaBookings[0].apartment.name.toLowerCase()
+    let name = villaBookings[0].apartment.name.toLowerCase();
 
-    let checkInDates = Array(...new Set(villaBookings.map(b => b.arrival)))
-    let checkOutDates = Array(...new Set(villaBookings.map(b => b.departure)))
-    let betweenDates = Array(...new Set(villaBookings.map(b => getDaysBetweenDates(b.arrival, b.departure)).flat()))
-    console.log(name, checkInDates)
+    // checkInDates are when a guest arrives and are available for booking checkOutDates
+    let checkInDates = Array(...new Set(villaBookings.map((b) => b.arrival)));
 
+    // checkInDates < blockedDates < checkOutDates
+    let blockedDates = Array(
+      ...new Set(
+        villaBookings
+          .map((b) => getDaysBetweenDates(b.arrival, b.departure))
+          .flat()
+      )
+    );
 
-    blockedDates[name] = {checkInDates, checkOutDates, betweenDates}
-
+    data[name] = { checkInDates, blockedDates };
   }
 
-
-  return blockedDates;
-
-
-}
-
-
+  return data;
+};
 
 module.exports.getRates = async () => {
   try {
@@ -148,8 +147,6 @@ module.exports.blockVillas = async ({ startDate, endDate, villas }) => {
         lastName: 'Blocked',
         email: 'admin@masakaliretreat.com',
       };
-
-      
 
       console.log({ reqConfig, body });
 

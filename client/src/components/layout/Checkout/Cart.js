@@ -65,23 +65,13 @@ const Cart = ({
   const elements = useElements();
 
   //const [price, setPrice] = useState(0);
-  const [numDays, setNumDays] = useState(0);
+  //const [numDays, setNumDays] = useState(reservations?.new?.numDays);
 
+  let numDays = reservations?.new?.numDays;
   let price = useCurrencyFormat(reservations?.new?.amount);
   let discount = useCurrencyFormat(reservations?.new?.discount);
   let total = useCurrencyFormat(reservations?.new?.total);
   let taxes = useCurrencyFormat(reservations?.new?.taxes);
-
-  useEffect(() => {
-    if (reservations?.new) {
-      //setPrice(reservations.new.total);
-      setNumDays(reservations.new.numDays);
-    }
-  }, [reservations]);
-
-  useEffect(() => {
-    console.log({ price, discount, total, taxes });
-  }, [price, discount, total, taxes]);
 
   useEffect(() => {
     async function loginSuccess() {
@@ -258,32 +248,32 @@ const Cart = ({
   };
 
   return (
-    <div className='container full'>
+    <div className="container full">
       <Header hide={false} />
-      <div className='cart-container'>
+      <div className="cart-container">
         <header>
           <h1>Check out</h1>
         </header>
-        <span className='row image'>
+        <span className="row image">
           <ImageContext>
             <IKImage
               path={imageUrl[reservations?.new?.name]}
               transformation={[{ width: '800px', dpr: 'auto' }]}
               lqip={{ active: true }}
-              loading='lazy'
+              loading="lazy"
             />
           </ImageContext>
         </span>
 
         {reservations?.new && (
-          <div className='row'>
+          <div className="row">
             <CartDetails reservation={reservations?.new} />
           </div>
         )}
 
         {isAuthenticated ? (
           <form
-            className='billing-form'
+            className="billing-form"
             onSubmit={handleSubmit}
             onChange={(e) => discountPrice(e)}
           >
@@ -292,7 +282,7 @@ const Cart = ({
               isDefault={isDefault}
               setIsDefault={setIsDefault}
             />
-            <div className='card-element-container'>
+            <div className="card-element-container">
               <CardElement
                 options={cardElementOptions}
                 onChange={handleCardDetailsChange}
@@ -304,27 +294,27 @@ const Cart = ({
             {checkoutError && <CheckoutError>{checkoutError}</CheckoutError>}
 
             <button
-              id='cart_complete_payment'
-              className='btn submit'
+              id="cart_complete_payment"
+              className="btn submit"
               disabled={isProcessing || !stripe}
             >
               {isProcessing ? 'Processing...' : `Pay ${total}`}
             </button>
-            <p className='subtext'>
+            <p className="subtext">
               *Please be aware that booking through the website is
               non-refundable.
             </p>
           </form>
         ) : (
-          <div className='row'>
-            <h2 className='cart-login-header'>Log in or sign up to book</h2>
+          <div className="row">
+            <h2 className="cart-login-header">Log in or sign up to book</h2>
             <Login />
           </div>
         )}
-        <div className=''>
-          <p className='subtext'>
+        <div className="">
+          <p className="subtext">
             Having troubles with checkout? Contact us at{' '}
-            <a href='mailto:admin@masakaliretreat.com'>
+            <a href="mailto:admin@masakaliretreat.com">
               admin@masakaliretreat.com
             </a>
           </p>
