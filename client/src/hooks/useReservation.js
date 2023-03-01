@@ -7,6 +7,7 @@ const useReservation = ({ villa = 'surya', checkIn, checkOut, guests }) => {
   const numDays = checkOut.diff(checkIn, 'days');
 
   return {
+    villa,
     numDays,
     amount: villaPrice,
     discount: calcDiscount({ villaPrice, numDays }),

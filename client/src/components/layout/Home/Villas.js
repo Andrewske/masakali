@@ -8,6 +8,7 @@ const Villas = () => {
   const [suryaRef, isSuryaHovered] = useHover();
   const [chandraRef, isChandraHovered] = useHover();
   const [jalaRef, isJalaHovered] = useHover();
+  const [akashaRef, isAkashaHovered] = useHover();
   const navigate = useNavigate();
 
   const villaDetails = useMemo(
@@ -33,6 +34,14 @@ const Villas = () => {
         isHovered: isJalaHovered,
         details: `This traditional Joglo villa is the perfect fit for a cozy stay. With personal charm and attention to detail, this alluring villa has an irresistible appeal. Jala offers a workstation with a large desk, comfy outdoor lounging areas, and a full private ensuite bathroom. The luxury bedding and linens offer a comfortable and restful sleep while the beautiful, handcrafted furniture and amenities will leave you in awe of the craftsmanship and detail.`,
       },
+      {
+        name: 'akasha',
+        ref: akashaRef,
+        path: '/Main/Akasha/akasha-front_knBEIm9Huj.webp',
+        isHovered: isAkashaHovered,
+        details:
+          'Join us at Masakali Retreat just north of Ubud surrounded by the most astonishing landscape and rich culture. A true paradise. Our antique luxury villas offer the most blissful get away. Relax by your private infinity pool overlooking the beautiful Bali rice fields, jungle and mountains or find adventure in nearby Ubud. Equipped with kitchens. Spa services and meals available in private suites.',
+      },
     ],
     [
       suryaRef,
@@ -41,13 +50,18 @@ const Villas = () => {
       isChandraHovered,
       jalaRef,
       isJalaHovered,
+      akashaRef,
+      isAkashaHovered,
     ]
   );
 
   return (
-    <div id='villas' className='villas-container'>
+    <div
+      id="villas"
+      className="villas-container"
+    >
       <h2>Villas</h2>
-      <span className='villas-text'>
+      <span className="villas-text">
         All the villas have their own private infinity pools overlooking the
         Balinese rice fields, fully equipped kitchenettes, luxurious outdoor
         showers, high-quality mattresses and bedding to make sure you have a
@@ -56,9 +70,13 @@ const Villas = () => {
         delicious meal on your deck or inside your villa. And some of the villas
         have bathtubs.
       </span>
-      <span className='villas-images'>
+      <span className="villas-images">
         {villaDetails.map((villa) => (
-          <span className='villas-img' ref={villa.ref} key={villa.name}>
+          <span
+            className="villas-img"
+            ref={villa.ref}
+            key={villa.name}
+          >
             <ImageContext>
               <IKImage
                 path={villa.path}
@@ -66,7 +84,7 @@ const Villas = () => {
                   { height: '400px', width: '400px', dpr: 'auto' },
                 ]}
                 lqip={{ active: true }}
-                loading='lazy'
+                loading="lazy"
               />
             </ImageContext>
             <span
@@ -77,7 +95,7 @@ const Villas = () => {
               <h2>{villa.name}</h2>
               <p>{villa.details}</p>
               <button
-                className='button purple'
+                className="button purple"
                 id={`home_${villa.name}_view_details`}
                 onClick={() => navigate(`/villas?villa=${villa.name}`)}
               >

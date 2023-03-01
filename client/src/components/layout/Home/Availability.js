@@ -45,19 +45,21 @@ const Availability = ({ setAlert }) => {
     setCheckInPickerOpen(false);
   };
 
+  console.log(blockedDates);
+
   const isAvailable = (checkIn, checkOut, villa = null) => {
     let dates = getDaysBetweenDates(checkIn, checkOut);
 
     return dates.every((date) => {
       if (!villa) {
         return villas.some((v) => {
-          return blockedDates[v]?.blockedDates.includes(
+          return !blockedDates[v]?.blockedDates.includes(
             moment(date).format('YYYY-MM-DD')
           );
         });
       }
 
-      return blockedDates[villa]?.blockedDates.includes(
+      return !blockedDates[villa]?.blockedDates.includes(
         moment(date).format('YYYY-MM-DD')
       );
     });
