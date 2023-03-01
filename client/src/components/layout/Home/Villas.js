@@ -40,7 +40,7 @@ const Villas = () => {
         path: '/Main/Akasha/akasha-front_knBEIm9Huj.webp',
         isHovered: isAkashaHovered,
         details:
-          'Join us at Masakali Retreat just north of Ubud surrounded by the most astonishing landscape and rich culture. A true paradise. Our antique luxury villas offer the most blissful get away. Relax by your private infinity pool overlooking the beautiful Bali rice fields, jungle and mountains or find adventure in nearby Ubud. Equipped with kitchens. Spa services and meals available in private suites.',
+          'Luxury meets comfort in our newest villa, Akasha. With 3 bedrooms and 3.5 baths, this spacious home is great for families or couples traveling. This villa features a beautiful waterfall pool, large deck, full kitchen and bar, entertainment room, outdoor living room, large dining area, and breathtaking views. This space is also great for hosting celebrations such as weddings and birthday parties.',
       },
     ],
     [
