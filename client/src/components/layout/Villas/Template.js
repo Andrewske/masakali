@@ -22,9 +22,13 @@ const Template = ({ country, createReservation }) => {
   const scrollRef = useScrollToTop();
   const navigate = useNavigate();
 
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+
+  const [villa, setVilla] = useState(params.villa || 'surya');
+
   const {
-    villa,
-    setVilla,
     amount: villaPrice,
     total,
     discount,
@@ -33,6 +37,7 @@ const Template = ({ country, createReservation }) => {
     checkIn,
     checkOut,
     guests,
+    villa,
   });
 
   const handleDateChange = ({ isCheckIn, day }) => {
@@ -69,6 +74,9 @@ const Template = ({ country, createReservation }) => {
         setVilla('jala');
         break;
       case 'jala':
+        setVilla('akasha');
+        break;
+      case 'akasha':
         setVilla('surya');
         break;
       default:

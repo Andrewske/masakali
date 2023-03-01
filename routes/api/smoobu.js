@@ -37,16 +37,12 @@ router.get('/rates', async (req, res) => {
     // this needs to change since now I store the rates on a per day basis then per villa
     // first I need to check the database for the most recent prices
 
-    console.log(startDate, endDate);
-
     let lastUpdated = await VillaRates.findOne({
       date: moment(startDate).format('YYYY-MM-DD'),
     });
 
     // if they were not updated today then we need to get new rates and send that data
     // depending on what the format the db retruns, I may need to update the format that getRates() returns
-
-    console.log('lastUpdated', lastUpdated);
 
     if (lastUpdated?.updatedAt < today) {
       let currentRates = await getRates();
@@ -177,7 +173,6 @@ router.get('/bookings/bookedDates', async (req, res) => {
         'https://login.smoobu.com/api/reservations',
         reqConfig
       );
-      console.log('calling smoobu');
 
       pageCount = data?.page_count;
       bookings = [...bookings, ...data?.bookings];
@@ -314,7 +309,6 @@ const formatBookingData = (data) => {
 
 router.post('/hook', express.json(), async (req, res) => {
   try {
-    console.log(req.body);
     let action = req.body?.action;
     let data = formatBookingData(req.body?.data);
     let dbRes = null;
@@ -347,8 +341,6 @@ router.post('/hook', express.json(), async (req, res) => {
           { upsert: true }
         );
     }
-
-    //console.log(dbRes);
 
     res.status(200).end();
   } catch (err) {

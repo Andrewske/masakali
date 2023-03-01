@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 const Reviews = ({ villa }) => {
   const [index, setIndex] = useState(0);
 
-  const reviews = allReviews[villa];
+  const reviews = allReviews[villa] ?? null;
 
   const next = () => {
     index === reviews.length - 1 ? setIndex(0) : setIndex(index + 1);
@@ -15,40 +15,42 @@ const Reviews = ({ villa }) => {
     index === 0 ? setIndex(reviews.length - 1) : setIndex(index - 1);
   };
 
-  // useEffect(() => {
-  //   if (!reviews) getReviews();
-
-  //   return () => getReviews();
-  // }, [reviews, getReviews]);
-
   return (
-    <div className='review'>
-      <i className='icon icon-chevron-left' onClick={() => prev()} />
+    reviews && (
+      <div className="review">
+        <i
+          className="icon icon-chevron-left"
+          onClick={() => prev()}
+        />
 
-      <div className='review-info'>
-        <div className='review-info-heading'>
-          <img
-            className='review-image'
-            src={reviews[index].imgUrl}
-            alt={reviews[index].name}
-          />
-          <span className='review-info-heading-text'>
-            <span className='review-name'>{reviews[index].name}</span>
-            <span className='review-date'>{reviews[index].date}</span>
-          </span>
-        </div>
+        <div className="review-info">
+          <div className="review-info-heading">
+            <img
+              className="review-image"
+              src={reviews[index].imgUrl}
+              alt={reviews[index].name}
+            />
+            <span className="review-info-heading-text">
+              <span className="review-name">{reviews[index].name}</span>
+              <span className="review-date">{reviews[index].date}</span>
+            </span>
+          </div>
 
-        {/* <span className='review-rating'>
+          {/* <span className='review-rating'>
           {[...Array(reviews[index].rating)].map((star, i) => (
             <span className='star' key={`star-${i}`}>
               &#9733;
             </span>
           ))}
         </span> */}
-        <span className='review-text'>{reviews[index].text}</span>
+          <span className="review-text">{reviews[index].text}</span>
+        </div>
+        <i
+          className="icon icon-chevron-right"
+          onClick={() => next()}
+        />
       </div>
-      <i className='icon icon-chevron-right' onClick={() => next()} />
-    </div>
+    )
   );
 };
 

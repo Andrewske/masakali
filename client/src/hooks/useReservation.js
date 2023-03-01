@@ -2,14 +2,11 @@ import { useState } from 'react';
 import useVillaPrice from './useVillaPrice';
 import { calcDiscount, calcTaxes, calcTotal } from '../utils/getPrices';
 
-const useReservation = ({ checkIn, checkOut, guests }) => {
-  const [villa, setVilla] = useState('surya');
+const useReservation = ({ villa = 'surya', checkIn, checkOut, guests }) => {
   const villaPrice = useVillaPrice(checkIn, checkOut, villa);
   const numDays = checkOut.diff(checkIn, 'days');
 
   return {
-    villa,
-    setVilla,
     numDays,
     amount: villaPrice,
     discount: calcDiscount({ villaPrice, numDays }),
