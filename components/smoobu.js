@@ -148,21 +148,18 @@ module.exports.blockVillas = async ({ startDate, endDate, villas }) => {
         email: 'admin@masakaliretreat.com',
       };
 
-      console.log({ reqConfig, body });
-
       let res = await axios.post(
         'https://login.smoobu.com/api/reservations',
         body,
         reqConfig
       );
-      console.log({ res });
     }
   } catch (err) {
     console.error({
-      response: err.response,
-      data: err.response.data,
-      headers: err.response.error,
-      firstName: err.data.validation_messages,
+      response: err?.response,
+      data: err?.response?.data,
+      headers: err?.response?.error,
+      mssages: err?.data?.validation_messages,
     });
   }
 };
