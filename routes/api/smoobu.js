@@ -14,6 +14,7 @@ const getCurrency = require('../../components/currency');
 const qs = require('qs');
 const SmoobuReservation = require('../../models/SmoobuReservation');
 const VillaRates = require('../../models/VillaRates');
+const SmoobuWebHook = require('../../models/SmoobuWebHook');
 const {
   getRates,
   updateRates,
@@ -227,28 +228,6 @@ Example Body
 */
 
 router.post('/bookings/add', express.json(), async (req, res) => {
-  // body = {
-  //   arrivalDate: startDate,
-  //   departureDate: endDate,
-  //   channelId: 1466467,
-  //   apartmentId: apartmentIds[name],
-  //   arrivalTime: '14:00',
-  //   departureTime: '11:00',
-  //   firstName: firstName,
-  //   lastName: lastName,
-  //   adults: guests,
-  //   price: price,
-  //   priceStatus: 1,
-  //   address: {
-  //     street: line1,
-  //     postalCode: postal_code,
-  //     location: city + ', ' + state,
-  //   },
-  //   country: country,
-  //   email: email,
-  //   phone: phone,
-  //   language: language,
-  // };
   console.log('adding a booking');
   try {
     reqConfig.headers = {
@@ -341,6 +320,10 @@ router.post('/hook', express.json(), async (req, res) => {
           { upsert: true }
         );
     }
+
+    let hook = new SmoobuWebHook({ action, data });
+
+    await hook.save();
 
     res.status(200).end();
   } catch (err) {
