@@ -45,21 +45,22 @@ const Availability = ({ setAlert }) => {
     setCheckInPickerOpen(false);
   };
 
-  const isAvailable = (villa, checkIn, checkOut) => {
+  const isAvailable = (checkIn, checkOut, villa = null) => {
     let dates = getDaysBetweenDates(checkIn, checkOut);
-    let available = true;
 
-    for (const date of dates) {
-      if (
-        blockedDates[villa]?.blockedDates.includes(
-          moment(date).format('YYYY-MM-DD')
-        )
-      ) {
-        available = false;
+    return dates.every((date) => {
+      if (!villa) {
+        return villas.some((v) => {
+          return blockedDates[v]?.blockedDates.includes(
+            moment(date).format('YYYY-MM-DD')
+          );
+        });
       }
-    }
 
-    return available;
+      return blockedDates[villa]?.blockedDates.includes(
+        moment(date).format('YYYY-MM-DD')
+      );
+    });
   };
 
   const handleCheckOut = (date) => {
@@ -111,6 +112,9 @@ const Availability = ({ setAlert }) => {
                 onDateChange={(date) => handleCheckIn(date)}
                 focused={true}
                 onFocusChange={({ focused }) => setFocused(focused)}
+                isDayHighlighted={(day) =>
+                  isAvailable(day, moment(day).add(1, 'days'))
+                }
               />
             </span>
           )}
@@ -160,7 +164,7 @@ const Availability = ({ setAlert }) => {
       <span className="villas">
         {villas.map(
           (villa) =>
-            isAvailable(villa, checkIn, checkOut) && (
+            isAvailable(checkIn, checkOut, villa) && (
               <AvailableVilla
                 key={villa}
                 name={villa}
