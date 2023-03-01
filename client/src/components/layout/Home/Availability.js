@@ -4,11 +4,9 @@ import { DayPickerSingleDateController } from 'react-dates';
 import useOnClickOutside from '../../../utils/useOnClickOutside';
 import { setAlert } from '../../../actions/alert';
 import { loadVillas } from '../../../actions/villas';
-import { getBlockedDates, getVillaRates } from '../../../actions/smoobu';
 import AvailableVilla from './AvailableVilla';
 import Alert from '../Alert';
 import moment from 'moment';
-import useVillaPricing from '../../../hooks/useVillaPricing';
 import useBlockedDates from '../../../hooks/useBlockedDates';
 const villas = ['surya', 'chandra', 'jala', 'akasha'];
 
@@ -30,11 +28,6 @@ const Availability = ({ setAlert }) => {
   const [checkOutPickerOpen, setCheckOutPickerOpen] = useState(false);
   const blockedDates = useBlockedDates();
 
-  let villaPricing = useVillaPricing({
-    checkIn,
-    checkOut,
-  });
-
   const ARRIVAL_DATE = 'ARRIVAL DATE';
   const DEPARTURE_DATE = 'DEPARTURE DATE';
 
@@ -52,6 +45,23 @@ const Availability = ({ setAlert }) => {
     setCheckInPickerOpen(false);
   };
 
+  const isAvailable = (villa, checkIn, checkOut) => {
+    let dates = getDaysBetweenDates(checkIn, checkOut);
+    let available = true;
+
+    for (const date of dates) {
+      if (
+        blockedDates[villa]?.blockedDates.includes(
+          moment(date).format('YYYY-MM-DD')
+        )
+      ) {
+        available = false;
+      }
+    }
+
+    return available;
+  };
+
   const handleCheckOut = (date) => {
     setCheckOut(date);
     setCheckOutPickerOpen(false);
@@ -63,30 +73,10 @@ const Availability = ({ setAlert }) => {
       return;
     }
 
-    if (Object.values(villaPricing).every((x) => x.isAvailable === false)) {
+    if (villas.every((x) => isAvailable(x, checkIn, checkOut) === false)) {
       setAlert('Sorry, no villas are available on these dates', 'danger');
       return;
     }
-  };
-
-  // So for each day between checkIn and checkOut, we check if it's available for each villa.
-
-  console.log({ blockedDates });
-  const isAvailable = (villa, checkIn, checkOut) => {
-    let dates = getDaysBetweenDates(checkIn, checkOut);
-    let available = true;
-
-    for (const date of dates) {
-      if (
-        blockedDates[villa].blockedDates.includes(
-          moment(date).format('YYYY-MM-DD')
-        )
-      ) {
-        available = false;
-      }
-    }
-
-    return available;
   };
 
   return (
@@ -166,20 +156,6 @@ const Availability = ({ setAlert }) => {
             Check Availability
           </span>
         </span>
-      </span>
-      <span className="villas">
-        {Object.entries(villaPricing).map(
-          ([key, value]) =>
-            value.isAvailable && (
-              <AvailableVilla
-                key={key}
-                name={key}
-                price={value.pricePerNight}
-                checkIn={checkIn}
-                checkOut={checkOut}
-              />
-            )
-        )}
       </span>
       <span className="villas">
         {villas.map(

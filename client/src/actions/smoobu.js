@@ -7,7 +7,7 @@ import moment from 'moment';
 export const getVillaRates = () => async (dispatch) => {
   console.log('getting villa rates');
   try {
-    let { data } = await axios.get(serverUrl + '/smoobu/rates', {
+    let { data } = await axios.get(serverUrl + '/smoobu/rates_old', {
       params: { startDate: moment.utc().format('YYYY-MM-DD') },
     });
 
@@ -29,7 +29,7 @@ export const getBlockedDates = () => async (dispatch) => {
     // Map through the startDates and endDates provided by Smoobu and create
     // checkInDates, checkoutDates, and blockedDates for each
 
-    console.log({data})
+    console.log({ data });
 
     let results = {
       surya: {

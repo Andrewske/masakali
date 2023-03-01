@@ -29,7 +29,7 @@ let reqConfig = {
   },
 };
 
-router.get('/rates_new', async (req, res) => {
+router.get('/rates', async (req, res) => {
   const today = moment();
 
   let { startDate = today, endDate = today.clone().add(2, 'y') } = req.query;
@@ -91,7 +91,7 @@ router.get('/rates_new', async (req, res) => {
   }
 });
 
-router.get('/rates', async (req, res) => {
+router.get('/rates_old', async (req, res) => {
   const today = moment();
 
   let { startDate = today, endDate = today.clone().add(2, 'y') } = req.query;
