@@ -59,10 +59,10 @@ export const updatePricing =
   async (dispatch) => {
     console.log('updatePricing', res);
     try {
-      let discount = calcDiscount({ price, numDays });
+      let discount = calcDiscount({ villaPrice: price, numDays });
       let amount = price;
-      let taxes = calcTaxes({ price, numDays });
-      let total = calcTotal({ price, numDays });
+      let taxes = calcTaxes({ villaPrice: price, numDays });
+      let total = calcTotal({ villaPrice: price, numDays });
 
       dispatch({
         type: UPDATE_PRICING,

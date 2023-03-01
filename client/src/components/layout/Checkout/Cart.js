@@ -112,21 +112,24 @@ const Cart = ({
       console.log('discount added');
       updatePricing({ price: 1.2, numDays, res: reservations?.new });
     }
-    if (e.target?.value === customerCode) {
-      console.log('discount added');
-      updatePricing({ price: 92.05, numDays, res: reservations?.new }); // finalPrice = 100
-    }
+    // if (e.target?.value === customerCode) {
+    //   console.log('discount added');
+    //   updatePricing({ price: 92.05, numDays, res: reservations?.new }); // finalPrice = 100
+    // }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     e.persist();
+    const totalAsInt = reservations?.new?.total;
+    console.log(totalAsInt);
+    return;
 
     setIsProcessing(true);
     const cardElement = elements.getElement(CardElement);
     const firstName = e.target.firstName.value;
     const lastName = e.target.lastName.value;
-    const totalAsInt = reservations?.new?.total;
+    //const totalAsInt = reservations?.new?.total;
 
     const billingDetails = {
       name: firstName + ' ' + lastName,
