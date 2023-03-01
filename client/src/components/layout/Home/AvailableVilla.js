@@ -2,34 +2,58 @@ import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import { useNavigate } from 'react-router-dom';
+import useVillaPrice from '../../../hooks/useVillaPrice';
 
-const imageUrl = {
-  surya: '/Main/Surya/surya-front-main_yynphR5d1s.webp',
-  chandra: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp',
-  jala: '/Main/Jala/jala-front-main_yJaEapAckn.webp',
+const villaDetails = {
+  surya: {
+    imgUrl: '/Main/Surya/surya-front-main_yynphR5d1s.webp',
+    adults: 2,
+    children: 1,
+  },
+  chandra: {
+    imgUrl: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp',
+    adults: 2,
+    children: 1,
+  },
+  jala: {
+    imgUrl: '/Main/Jala/jala-front-main_yJaEapAckn.webp',
+    adults: 2,
+    children: 1,
+  },
+  akasha: {
+    imgUrl: '/Main/Surya/surya-front-main_yynphR5d1s.webp',
+    adults: 4,
+    children: 2,
+  },
 };
 
-const AvailableVilla = ({ name, price }) => {
-  let formattedPrice = useCurrencyFormat(price);
+const AvailableVilla = ({ name, checkIn, checkOut }) => {
   const navigate = useNavigate();
+  const price = useVillaPrice(checkIn, checkOut, name);
+  let formattedPrice = useCurrencyFormat(price);
 
   return (
     <span
-      className='villa'
+      className="villa"
       key={name}
       onClick={() => navigate(`/villas?villa=${name}`)}
     >
       <ImageContext>
         <IKImage
-          path={imageUrl[name]}
-          width='200px'
+          path={villaDetails[name].imgUrl}
+          width="200px"
           lqip={{ active: true }}
-          loading='lazy'
+          loading="lazy"
         />
       </ImageContext>
-      <span className='villa-details'>
+      <span className="villa-details">
         <h3>{name}</h3>
-        <p>2 adults, 1 child</p>
+        <p>
+          {villaDetails[name].adults} adults,{' '}
+          {villaDetails[name].children === 1
+            ? '1 child'
+            : villaDetails[name].children + ' children'}
+        </p>
         <p>Private Pool</p>
         <p>Ensuite kitchenette</p>
         <p style={{ paddingTop: '1rem' }}>{formattedPrice}/night</p>

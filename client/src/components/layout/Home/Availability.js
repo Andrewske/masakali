@@ -9,6 +9,18 @@ import AvailableVilla from './AvailableVilla';
 import Alert from '../Alert';
 import moment from 'moment';
 import useVillaPricing from '../../../hooks/useVillaPricing';
+import useBlockedDates from '../../../hooks/useBlockedDates';
+const villas = ['surya', 'chandra', 'jala', 'akasha'];
+
+const getDaysBetweenDates = (startDate, endDate) => {
+  let dates = [];
+  let now = moment(startDate);
+  while (now.isSameOrBefore(moment(endDate).subtract(1, 'days'))) {
+    dates.push(now.format('YYYY-MM-DD'));
+    now.add(1, 'days');
+  }
+  return dates;
+};
 
 const Availability = ({ setAlert }) => {
   const [checkIn, setCheckIn] = useState(moment());
@@ -16,6 +28,7 @@ const Availability = ({ setAlert }) => {
   const [focused, setFocused] = useState(null);
   const [checkInPickerOpen, setCheckInPickerOpen] = useState(false);
   const [checkOutPickerOpen, setCheckOutPickerOpen] = useState(false);
+  const blockedDates = useBlockedDates();
 
   let villaPricing = useVillaPricing({
     checkIn,
@@ -56,27 +69,53 @@ const Availability = ({ setAlert }) => {
     }
   };
 
+  // So for each day between checkIn and checkOut, we check if it's available for each villa.
+
+  console.log({ blockedDates });
+  const isAvailable = (villa, checkIn, checkOut) => {
+    let dates = getDaysBetweenDates(checkIn, checkOut);
+    let available = true;
+
+    for (const date of dates) {
+      if (
+        blockedDates[villa].blockedDates.includes(
+          moment(date).format('YYYY-MM-DD')
+        )
+      ) {
+        available = false;
+      }
+    }
+
+    return available;
+  };
+
   return (
-    <div id='availability' className='availability-container'>
-      <span className='date-selection'>
-        <span className='checkin-date' ref={checkInRef}>
-          <div className='title'>
+    <div
+      id="availability"
+      className="availability-container"
+    >
+      <span className="date-selection">
+        <span
+          className="checkin-date"
+          ref={checkInRef}
+        >
+          <div className="title">
             {[...ARRIVAL_DATE].map((letter, index) => (
               <span key={letter + '-' + index}>{letter}</span>
             ))}
           </div>
           <span
-            className='date'
+            className="date"
             onClick={() => setCheckInPickerOpen(!checkInPickerOpen)}
           >
-            <span className='day'>{checkIn.format('DD')}</span>
-            <span className='small'>
-              <span className='month-year'>{checkIn.format('MMM, YYYY')}</span>
-              <span className='weekday'>{checkIn.format('dddd')}</span>
+            <span className="day">{checkIn.format('DD')}</span>
+            <span className="small">
+              <span className="month-year">{checkIn.format('MMM, YYYY')}</span>
+              <span className="weekday">{checkIn.format('dddd')}</span>
             </span>
           </span>
           {checkInPickerOpen && (
-            <span className='day-picker'>
+            <span className="day-picker">
               <DayPickerSingleDateController
                 date={checkIn}
                 onDateChange={(date) => handleCheckIn(date)}
@@ -86,24 +125,27 @@ const Availability = ({ setAlert }) => {
             </span>
           )}
         </span>
-        <span className='checkin-date' ref={checkOutRef}>
-          <div className='title'>
+        <span
+          className="checkin-date"
+          ref={checkOutRef}
+        >
+          <div className="title">
             {[...DEPARTURE_DATE].map((letter, index) => (
               <span key={letter + '-' + index}>{letter}</span>
             ))}
           </div>
           <span
-            className='date'
+            className="date"
             onClick={() => setCheckOutPickerOpen(!checkOutPickerOpen)}
           >
-            <span className='day'>{checkOut.format('DD')}</span>
-            <span className='small'>
-              <span className='month-year'>{checkOut.format('MMM, YYYY')}</span>
-              <span className='weekday'>{checkOut.format('dddd')}</span>
+            <span className="day">{checkOut.format('DD')}</span>
+            <span className="small">
+              <span className="month-year">{checkOut.format('MMM, YYYY')}</span>
+              <span className="weekday">{checkOut.format('dddd')}</span>
             </span>
           </span>
           {checkOutPickerOpen && (
-            <span className='day-picker'>
+            <span className="day-picker">
               <DayPickerSingleDateController
                 initialVisibleMonth={() => moment(checkIn)}
                 date={checkOut}
@@ -115,17 +157,17 @@ const Availability = ({ setAlert }) => {
             </span>
           )}
         </span>
-        <span className='checkin-button'>
+        <span className="checkin-button">
           <span
-            id='home_check_availability'
-            className='button purple'
+            id="home_check_availability"
+            className="button purple"
             onClick={handleClick}
           >
             Check Availability
           </span>
         </span>
       </span>
-      <span className='villas'>
+      <span className="villas">
         {Object.entries(villaPricing).map(
           ([key, value]) =>
             value.isAvailable && (
@@ -133,6 +175,21 @@ const Availability = ({ setAlert }) => {
                 key={key}
                 name={key}
                 price={value.pricePerNight}
+                checkIn={checkIn}
+                checkOut={checkOut}
+              />
+            )
+        )}
+      </span>
+      <span className="villas">
+        {villas.map(
+          (villa) =>
+            isAvailable(villa, checkIn, checkOut) && (
+              <AvailableVilla
+                key={villa}
+                name={villa}
+                checkIn={checkIn}
+                checkOut={checkOut}
               />
             )
         )}

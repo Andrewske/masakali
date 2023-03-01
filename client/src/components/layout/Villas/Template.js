@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header';
 import { useNavigate } from 'react-router-dom';
@@ -11,10 +11,8 @@ import villaDetails from './villaDetails.json';
 import DatePicker from './DatePicker';
 import Guests from './Guests';
 
-import { calcDiscount, calcTaxes, calcTotal } from '../../../utils/getPrices';
 import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import useScrollToTop from '../../../hooks/useScrollToTop';
-import useVillaPrice from '../../../hooks/useVillaPrice';
 import useReservation from '../../../hooks/useReservation';
 
 const Template = ({ country, createReservation }) => {
@@ -36,8 +34,6 @@ const Template = ({ country, createReservation }) => {
     checkOut,
     guests,
   });
-
-  //const villaPrice = useVillaPrice(checkIn, checkOut, villa);
 
   const handleDateChange = ({ isCheckIn, day }) => {
     let arrival = isCheckIn ? day : checkIn;
