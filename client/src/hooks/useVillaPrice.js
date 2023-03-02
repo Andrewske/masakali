@@ -24,8 +24,6 @@ const useVillaPrice = (startDate = null, endDate = null, villa) => {
     axios.get(serverUrl + '/smoobu/rates').then((res) => res.data)
   );
 
-  console.log({ data });
-
   if (isLoading) return null;
 
   if (data && startDate && endDate) {
@@ -39,6 +37,8 @@ const useVillaPrice = (startDate = null, endDate = null, villa) => {
       }, {});
 
     let maxRate = Math.max(...Object.values(rates).map((r) => r.price));
+
+    console.log({ maxRate, rates });
 
     return maxRate / conversionRate.value;
   }

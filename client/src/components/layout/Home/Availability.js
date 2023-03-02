@@ -45,8 +45,6 @@ const Availability = ({ setAlert }) => {
     setCheckInPickerOpen(false);
   };
 
-  console.log(blockedDates);
-
   const isAvailable = (checkIn, checkOut, villa = null) => {
     let dates = getDaysBetweenDates(checkIn, checkOut);
 
