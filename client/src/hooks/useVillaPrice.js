@@ -20,6 +20,9 @@ const getDaysBetweenDates = (startDate, endDate) => {
 const useVillaPrice = (startDate = null, endDate = null, villa) => {
   const conversionRate = useConversionRate('IDR');
 
+  startDate = moment('2023-02-28');
+  endDate = moment('2023-03-01');
+
   const { isLoading, isError, error, data } = useQuery('rates', () =>
     axios.get(serverUrl + '/smoobu/rates').then((res) => res.data)
   );
@@ -40,7 +43,7 @@ const useVillaPrice = (startDate = null, endDate = null, villa) => {
 
     //Fixes timezone issues that should be fixed another way in the future
     if (maxRate < 0) {
-      maxRate = Object.values(rates)[0].price;
+      maxRate = Object.values(data[villa])[0].price;
     }
 
     return maxRate / conversionRate.value;
