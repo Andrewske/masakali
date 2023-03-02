@@ -24,6 +24,8 @@ const useVillaPrice = (startDate = null, endDate = null, villa) => {
     axios.get(serverUrl + '/smoobu/rates').then((res) => res.data)
   );
 
+  console.log({ data });
+
   if (isLoading) return null;
 
   if (data && startDate && endDate) {
