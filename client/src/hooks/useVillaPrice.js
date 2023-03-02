@@ -38,7 +38,10 @@ const useVillaPrice = (startDate = null, endDate = null, villa) => {
 
     let maxRate = Math.max(...Object.values(rates).map((r) => r.price));
 
-    console.log({ maxRate, rates });
+    //Fixes timezone issues that should be fixed another way in the future
+    if (maxRate < 0) {
+      maxRate = Object.values(rates)[0].price;
+    }
 
     return maxRate / conversionRate.value;
   }
