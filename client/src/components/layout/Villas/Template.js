@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header';
 import { useNavigate } from 'react-router-dom';
@@ -10,14 +10,18 @@ import ImageCarousel from './ImageCarousel';
 import villaDetails from './villaDetails.json';
 import DatePicker from './DatePicker';
 import Guests from './Guests';
+import Packages from './Packages';
 
 import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import useScrollToTop from '../../../hooks/useScrollToTop';
 import useReservation from '../../../hooks/useReservation';
 
-const Template = ({ country, createReservation }) => {
+import { pickBy } from 'lodash';
+
+const Template = ({ country, createReservation, packages }) => {
   const [checkIn, setCheckIn] = useState(moment());
   const [checkOut, setCheckOut] = useState(moment().add(1, 'days'));
+  const [packageCost, setPackageCost] = useState(0);
   const [guests, setGuests] = useState(1);
   const scrollRef = useScrollToTop();
   const navigate = useNavigate();
@@ -39,6 +43,16 @@ const Template = ({ country, createReservation }) => {
     guests,
     villa,
   });
+
+  useEffect(() => {
+    let selectedPackages = pickBy(packages, (v, k) => v.isSelected);
+    let cost = Object.values(selectedPackages).reduce(
+      (x, { price }) => x + price,
+      0
+    );
+
+    setPackageCost(cost);
+  }, [packages]);
 
   const handleDateChange = ({ isCheckIn, day }) => {
     let arrival = isCheckIn ? day : checkIn;
@@ -140,7 +154,8 @@ const Template = ({ country, createReservation }) => {
 
           <TemplateInfo villa={villa} />
         </div>
-        <ImageCarousel name={villa} />
+        {/* <ImageCarousel name={villa} /> */}
+        <Packages />
       </span>
     </span>
   );
@@ -148,6 +163,7 @@ const Template = ({ country, createReservation }) => {
 
 const mapStateToProps = (state) => ({
   country: state.country,
+  packages: state.packages,
 });
 
 const mapDispatchToProps = (dispatch) => {
