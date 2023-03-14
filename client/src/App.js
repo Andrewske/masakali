@@ -51,6 +51,9 @@ import Home from './components/layout/Home/Home';
 // New Listing Pages
 import Villas from './components/layout/Villas/Template';
 
+// Retreats Pages
+import Retreat from './components/layout/Retreats/RetreatTemplate';
+
 // Auth Pages
 import Login from './components/auth/Login';
 import ResetPassword from './components/auth/ResetPassword';
@@ -191,6 +194,10 @@ const App = () => {
                 <Route
                   path="/villas"
                   element={<Villas />}
+                />
+                <Route
+                  path="/retreats/shanti"
+                  element={<Retreat name="shanti" />}
                 />
                 <Route
                   path="/dashboard"
