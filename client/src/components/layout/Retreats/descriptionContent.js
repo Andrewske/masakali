@@ -1,6 +1,7 @@
 export const descriptions = [
   {
-    imgUrl: '/Main/Akasha/akasha-front_knBEIm9Huj.webp',
+    imgUrl:
+      '/Retreats/Shanti/CACAO_CEREMONY_zZBH2joJU.webp?updatedAt=1678838432429',
     heading: 'Your Transformational Retreat Includes:',
     content: (
       <ul>
@@ -25,7 +26,8 @@ export const descriptions = [
     ),
   },
   {
-    imgUrl: '/Main/Akasha/akasha-front_knBEIm9Huj.webp',
+    imgUrl:
+      '/Retreats/Shanti/BREATHWORK_fYSqVcnaW.webp?updatedAt=1678838433319',
     heading: 'What you can expect during our 5 days together:',
     content: (
       <ul>
@@ -60,7 +62,8 @@ export const descriptions = [
     ),
   },
   {
-    imgUrl: '/Main/Akasha/akasha-front_knBEIm9Huj.webp',
+    imgUrl:
+      '/Retreats/Shanti/BREATHWORK-3_KgQyeWw6Gq.webp?updatedAt=1678838433147',
     heading:
       'Learn to use your Breath and Body to Ignite your power and true authentic self!',
     content: (
@@ -102,7 +105,8 @@ export const descriptions = [
     ),
   },
   {
-    imgUrl: '/Main/Akasha/akasha-front_knBEIm9Huj.webp',
+    imgUrl:
+      '/Retreats/Shanti/YOGA_WITH_MAYA-2_i4gxAgUfUA.webp?updatedAt=1678838432910',
     heading: 'Who This Retreat Is For',
     content: (
       <p>

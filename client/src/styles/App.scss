@@ -2857,9 +2857,11 @@ $button-active-blue: #1669f2;
   .details-container {
     display: flex;
     align-items: flex-start;
+    width: 100%;
     min-height: 0.25vh;
     gap: 4rem;
     padding: 4rem;
+    flex-wrap: wrap;
 
     .title {
       width: 100%;
@@ -2871,7 +2873,12 @@ $button-active-blue: #1669f2;
     .left {
       display: flex;
       justify-content: flex-end;
-      width: 50%;
+      flex: 1;
+      min-width: 250px;
+
+      @media screen and (max-width: calc(500px + 12rem)) {
+        justify-content: flex-start;
+      }
 
       .when {
         display: flex;
@@ -2896,7 +2903,8 @@ $button-active-blue: #1669f2;
 
     .right {
       display: flex;
-      width: 50%;
+      flex: 1;
+      min-width: 250px;
 
       .where {
         display: flex;
@@ -2907,12 +2915,17 @@ $button-active-blue: #1669f2;
         .sub-title {
           font-size: 1.125rem !important;
         }
+
+        p {
+          max-width: 600px;
+        }
       }
     }
   }
 
   .why-choose-container {
     @extend .center-col;
+    width: 100%;
     background-color: $purple;
     color: white;
     padding: 4rem;
@@ -2926,9 +2939,13 @@ $button-active-blue: #1669f2;
 
   .description-container {
     @extend .center-col;
-    padding: 4rem;
+    width: 100%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 
     .about {
+      max-width: 80%;
+      min-width: calc(min(80%, 350px));
       h2 {
         text-align: center;
         padding: 1rem;
@@ -2944,19 +2961,24 @@ $button-active-blue: #1669f2;
       flex-direction: row;
       margin-top: 1.5rem;
       margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      max-width: 80%;
 
       &.reverse {
         flex-direction: row-reverse;
       }
 
       .description-image {
-        width: calc(max(350px, 40vw));
+        flex: 1 1 50%;
+        min-width: calc(min(80%, 350px));
         min-height: calc(max(350px, 30vw));
+        max-height: 500px;
         object-fit: cover;
       }
 
       .description-content {
-        width: calc(max(350px, 40vw));
+        flex: 1 1 50%;
+        min-width: calc(min(80%, 350px));
         min-height: calc(max(350px, 30vw));
         background-color: #f2f2f2;
         padding: 2rem;
@@ -2981,9 +3003,54 @@ $button-active-blue: #1669f2;
 
           li {
             padding-left: 0.5rem;
+            padding-bottom: 0.25rem;
             flex-grow: 1;
             text-align: justify;
           }
+        }
+      }
+    }
+  }
+
+  .facilitators-container {
+    @extend .center-col;
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 4rem;
+
+    .facilitator {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: calc(max(350px, 75vw));
+      margin-top: 1rem;
+
+      .details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem;
+
+        .facilitator-image {
+          width: 150px;
+          height: 150px;
+        }
+
+        .icon {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+
+      .bio {
+        margin: 1rem;
+        font-size: 0.85rem;
+        max-width: 750px;
+        min-width: 350px;
+        flex: 3;
+
+        p {
+          padding-bottom: 0.5rem;
         }
       }
     }
