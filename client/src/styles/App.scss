@@ -3058,6 +3058,19 @@ $button-active-blue: #1669f2;
       }
     }
   }
+
+  .the-space-container {
+    @extend .center-col;
+    width: 100%;
+    background: $purple;
+    color: white;
+    padding: 4rem;
+    gap: 2rem;
+
+    p {
+      max-width: calc(min(800px, 80vw));
+    }
+  }
 }
 
 .retreats-booking-container {

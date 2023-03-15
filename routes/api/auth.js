@@ -33,6 +33,7 @@ router.get('/', auth, async (req, res) => {
       console.log('reservation');
       user.reservations = { past: reservation };
     }
+    console.log(user);
 
     res.json(user);
   } catch (err) {

@@ -23,6 +23,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/retreats', async (req, res) => {
+  try {
+    const { name } = req.query;
+    res.status(200).send({ message: name });
+  } catch (error) {
+    console.log({ err });
+    res.status(400).send({ err });
+  }
+});
+
 // Add reservation
 router.post('/add', express.json(), async (req, res) => {
   try {
@@ -37,17 +47,30 @@ router.post('/add', express.json(), async (req, res) => {
       guests,
       source = null,
       userId = null,
+      retreat = null,
     } = req.body;
 
     name = name.toLowerCase();
 
-    const data = { startDate, endDate, name, amount, discount, taxes, total, source, userId, guests };
+    const data = {
+      startDate,
+      endDate,
+      name,
+      amount,
+      discount,
+      taxes,
+      total,
+      source,
+      userId,
+      guests,
+      retreat,
+    };
 
-    let reservation = await new Reservation(data);
+    let reservation = new Reservation(data);
 
     await reservation.save();
 
-    await Villa.update(
+    await Villa.updateOne(
       { name },
       { $push: { datesReserved: { startDate, endDate } } }
     );

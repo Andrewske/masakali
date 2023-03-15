@@ -6,6 +6,8 @@ import Details from './Details';
 import WhyChoose from './WhyChoose';
 import Description from './Description';
 import Facilitators from './Facilitators';
+import TheSpace from './TheSpace';
+import Packages from './Packages';
 
 const RetreatTemplate = () => {
   const startDate = moment('2023-04-23').format('M/DD/YYYY');
@@ -25,6 +27,8 @@ const RetreatTemplate = () => {
       <WhyChoose />
       <Description />
       <Facilitators />
+      <TheSpace />
+      <Packages />
     </div>
   );
 };

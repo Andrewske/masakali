@@ -19,12 +19,12 @@ export const createReservation =
       startDate,
       endDate,
       name,
-      amount,
-      discount,
-      taxes,
+      amount = 0,
+      discount = 0,
+      taxes = 0,
       total,
-      numDays,
       guests,
+      retreat = null,
     },
   }) =>
   async (dispatch) => {
@@ -39,6 +39,7 @@ export const createReservation =
       guests,
       source: 'website',
       userId,
+      retreat,
     };
 
     try {

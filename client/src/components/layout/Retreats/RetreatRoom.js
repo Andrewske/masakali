@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
@@ -12,7 +13,11 @@ const images = [
   '/Main/Akasha/akasha-front_knBEIm9Huj.webp',
 ];
 
-const RetreatRoom = ({ room }) => {
+const RetreatRoom = ({ room, createBooking }) => {
+  const handleSubmit = () => {
+    createBooking(room.name);
+  };
+
   return (
     <div className="retreat-room">
       <div className="retreat-room-content">
@@ -29,7 +34,12 @@ const RetreatRoom = ({ room }) => {
             <p>Total: {room.priceIDR}</p>
             <p>Spots Available: {room.available}</p>
           </span>
-          <button className="button purple">Book Now</button>
+          <button
+            className="button purple"
+            onClick={handleSubmit}
+          >
+            Book Now
+          </button>
         </div>
       </div>
 
