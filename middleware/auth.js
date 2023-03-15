@@ -18,7 +18,9 @@ module.exports = function (req, res, next) {
     }
 
     try {
-      const decoded = jwt.verify(token, config.get('jwtSecret'));
+      const decoded = jwt.verify(token, config.get('jwtSecret'), {
+        algorithms: ['HS256', 'RS256'],
+      });
       console.log({ decoded });
       req.user = decoded.user;
       next();
