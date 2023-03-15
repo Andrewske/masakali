@@ -6,32 +6,37 @@
       "isvara": {
         "name": "isvara",
         "title": "Isvara - Shared Room",
-        "priceIDR": 1520000,
-        "available": 2
+        "pricePerRoomIDR": 1520000,
+        "available": 2,
+        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
       },
       "priya": {
         "name": "priya",
         "title": "Priya - Shared Room",
-        "priceIDR": 1980000,
-        "available": 2
+        "pricePerRoomIDR": 1980000,
+        "available": 2,
+        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
       },
       "joglo": {
         "name": "joglo",
         "title": "Joglo - Private Villa for 3",
-        "priceIDR": 2400000,
-        "available": 1
+        "pricePerRoomIDR": 2400000,
+        "available": 1,
+        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
       },
       "surya": {
         "name": "surya",
         "title": "Surya - Private Villa for 2",
-        "priceIDR": 3400000,
-        "available": 1
+        "pricePerRoomIDR": 3400000,
+        "available": 1,
+        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
       },
       "jala": {
         "name": "jala",
         "title": "Jala - Private Villa for 2",
-        "priceIDR": 2600000,
-        "available": 1
+        "pricePerRoomIDR": 2600000,
+        "available": 1,
+        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
       }
     }
   }

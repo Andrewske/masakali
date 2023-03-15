@@ -16,6 +16,8 @@ $purple: rgba(55, 33, 55, 1);
 $light-purple-7: rgba(55, 33, 55, 0.75);
 $light-purple-5: rgba(163, 143, 159, 0.5);
 
+$container-padding: 4rem;
+
 @font-face {
   font-family: 'Avenir Book';
   src: url('../../public/fonts/AvenirLTStd-Book.otf');
@@ -3069,6 +3071,77 @@ $button-active-blue: #1669f2;
 
     p {
       max-width: calc(min(800px, 80vw));
+    }
+  }
+
+  .packages-container {
+    @extend .center-col;
+    background-color: #f2f2f2;
+    padding: $container-padding;
+
+    .rooms {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      max-width: calc(min(80%, 100vw));
+
+      .retreat-room {
+        display: flex;
+        flex-direction: column;
+        max-width: 80%;
+        background-color: #f2f2f2;
+        margin: 1rem;
+
+        .retreat-room-content {
+          flex: 1 1 50%;
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .retreat-room-amenities {
+            ul {
+              width: 100%;
+              font-size: 0.85rem;
+              list-style: '-';
+              display: flex;
+              flex-direction: column;
+              height: 80%;
+
+              li {
+                padding-left: 0.5rem;
+                padding-bottom: 0.25rem;
+                flex-grow: 1;
+                text-align: justify;
+              }
+            }
+          }
+
+          .booking-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+
+        .retreat-room-images {
+          min-width: 300px;
+          flex: 1 1 50%;
+          object-fit: contain;
+          line-height: 0 !important;
+          display: flex;
+          flex-wrap: wrap;
+
+          .retreat-room-image {
+            flex: 1 1;
+            width: 150px;
+            z-index: 1;
+            transition: transform 0.25s ease-in;
+            object-fit: cover;
+            gap: 0.25rem;
+          }
+        }
+      }
     }
   }
 }
