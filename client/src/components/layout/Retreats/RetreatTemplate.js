@@ -10,6 +10,7 @@ import Facilitators from './Facilitators';
 const RetreatTemplate = () => {
   const startDate = moment('2023-04-23').format('M/DD/YYYY');
   const endDate = moment('2023-04-27').format('M/DD/YYYY');
+
   return (
     <div className="retreats">
       <Header hide={false} />

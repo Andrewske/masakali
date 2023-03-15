@@ -53,6 +53,7 @@ import Villas from './components/layout/Villas/Template';
 
 // Retreats Pages
 import Retreat from './components/layout/Retreats/RetreatTemplate';
+import RetreatBooking from './components/layout/Retreats/Booking';
 
 // Auth Pages
 import Login from './components/auth/Login';
@@ -198,6 +199,10 @@ const App = () => {
                 <Route
                   path="/retreats/shanti"
                   element={<Retreat name="shanti" />}
+                />
+                <Route
+                  path="/retreats/booking"
+                  element={<RetreatBooking />}
                 />
                 <Route
                   path="/dashboard"

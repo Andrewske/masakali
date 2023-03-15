@@ -1,0 +1,38 @@
+{
+  "shanti": {
+    "startDate": "2023-04-23",
+    "endDate": "2023-04-27",
+    "rooms": {
+      "isvara": {
+        "name": "isvara",
+        "title": "Isvara - Shared Room",
+        "priceIDR": 1520000,
+        "available": 2
+      },
+      "priya": {
+        "name": "priya",
+        "title": "Priya - Shared Room",
+        "priceIDR": 1980000,
+        "available": 2
+      },
+      "joglo": {
+        "name": "joglo",
+        "title": "Joglo - Private Villa for 3",
+        "priceIDR": 2400000,
+        "available": 1
+      },
+      "surya": {
+        "name": "surya",
+        "title": "Surya - Private Villa for 2",
+        "priceIDR": 3400000,
+        "available": 1
+      },
+      "jala": {
+        "name": "jala",
+        "title": "Jala - Private Villa for 2",
+        "priceIDR": 2600000,
+        "available": 1
+      }
+    }
+  }
+}

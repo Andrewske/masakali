@@ -26,6 +26,7 @@ const Banner = ({ startDate, endDate }) => {
           {startDate} - {endDate}
         </p>
       </span>
+      <button className="button">Get Started</button>
     </div>
   );
 };
