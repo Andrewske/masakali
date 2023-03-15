@@ -122,8 +122,6 @@ const Cart = ({
     e.preventDefault();
     e.persist();
     const totalAsInt = reservations?.new?.total;
-    console.log(totalAsInt);
-    return;
 
     setIsProcessing(true);
     const cardElement = elements.getElement(CardElement);
