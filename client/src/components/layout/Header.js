@@ -48,32 +48,52 @@ const Header = ({ hide }) => {
 
   return (
     <nav className={hideHeader ? 'header-container' : 'header-container show'}>
-      <div className='main'>
+      <div className="main">
         <div>
-          <Link smooth to='/#home'>
-            <img src={Logo} alt='Masakali Logo' className='logo' />
+          <Link
+            smooth
+            to="/#home"
+          >
+            <img
+              src={Logo}
+              alt="Masakali Logo"
+              className="logo"
+            />
           </Link>
         </div>
         {!isSmall && (
-          <span className='links'>
-            <Link smooth to='/#home'>
+          <span className="links">
+            <Link
+              smooth
+              to="/#home"
+            >
               Home
             </Link>
-            <Link to='/#villas' scroll={(el) => scrollToTarget(el)}>
+            <Link
+              to="/#villas"
+              scroll={(el) => scrollToTarget(el)}
+            >
               Villas
             </Link>
-            <Link to='/#dining' scroll={(el) => scrollToTarget(el)}>
+            <Link
+              to="/#dining"
+              scroll={(el) => scrollToTarget(el)}
+            >
               Dining
             </Link>
-            <Link to='/#amenities' scroll={(el) => scrollToTarget(el)}>
+            <Link
+              to="/#amenities"
+              scroll={(el) => scrollToTarget(el)}
+            >
               Amenities
             </Link>
+            <Link to="/retreats/shanti">Retreats</Link>
           </span>
         )}
         <div>
           <button
-            id='header_book_now'
-            className='button white'
+            id="header_book_now"
+            className="button white"
             onClick={() => navigate('/villas', { replace: true })}
           >
             BOOK NOW
@@ -83,11 +103,14 @@ const Header = ({ hide }) => {
       </div>
 
       {isSmall && (
-        <span className='expander' onClick={() => setIsExpanded(!isExpanded)}>
+        <span
+          className="expander"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
           {isExpanded ? (
-            <i className='icon-chevron-up' />
+            <i className="icon-chevron-up" />
           ) : (
-            <i className='icon-chevron-down' />
+            <i className="icon-chevron-down" />
           )}
         </span>
       )}
@@ -95,11 +118,11 @@ const Header = ({ hide }) => {
       <span
         className={isExpanded ? 'expanded-content true' : 'expanded-content'}
       >
-        <span className='links'>
-          <Link to='#home'>Home</Link>
-          <Link to='#villas'>Villas</Link>
-          <Link to='#dining'>Dining</Link>
-          <Link to='#amenities'>Amenities</Link>
+        <span className="links">
+          <Link to="#home">Home</Link>
+          <Link to="#villas">Villas</Link>
+          <Link to="#dining">Dining</Link>
+          <Link to="#amenities">Amenities</Link>
         </span>
       </span>
     </nav>

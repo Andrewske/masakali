@@ -2867,13 +2867,15 @@ $button-active-blue: #1669f2;
     position: relative;
     justify-content: space-evenly;
 
-    .title {
-      padding-top: 10%;
+    .banner-title {
+      margin-top: 10%;
+      padding: 4rem;
       color: $white;
       text-align: center;
       text-transform: uppercase;
       font-size: 1.5rem;
       z-index: 2;
+      background-color: $purple;
     }
   }
 

@@ -19,7 +19,7 @@ const Banner = ({ startDate, endDate }) => {
           loading={'lazy'}
         />
       </ImageContext>
-      <span className="title">
+      <span className="banner-title">
         <p>Masakali Presents</p>
         <h1>Shanti Retreat</h1>
         <p>
