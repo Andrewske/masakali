@@ -26,8 +26,8 @@ $container-padding: 4rem;
   font-display: block;
 }
 @font-face {
-  font-family: 'Baskerville Regular';
-  src: url('../../public/fonts/LibreBaskerville-Regular.ttf');
+  font-family: 'Baskerville';
+  src: url('../../public/fonts/Baskerville-Regular.ttf');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -54,6 +54,24 @@ body {
   color: #333;
   min-width: 100vw;
   overflow-x: hidden;
+}
+
+.custom-list {
+  ul {
+    max-width: max-content;
+    font-size: 0.85rem;
+    list-style: '-';
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+
+    li {
+      padding-left: 0.5rem;
+      padding-bottom: 0.25rem;
+      flex-grow: 1;
+      text-align: justify;
+    }
+  }
 }
 
 ::-webkit-scrollbar {
@@ -2998,21 +3016,23 @@ $button-active-blue: #1669f2;
           text-align: justify;
         }
 
-        ul {
-          width: 100%;
-          font-size: 0.85rem;
-          list-style: '-';
-          display: flex;
-          flex-direction: column;
-          height: 80%;
+        @extend .custom-list;
 
-          li {
-            padding-left: 0.5rem;
-            padding-bottom: 0.25rem;
-            flex-grow: 1;
-            text-align: justify;
-          }
-        }
+        // ul {
+        //   width: 100%;
+        //   font-size: 0.85rem;
+        //   list-style: '-';
+        //   display: flex;
+        //   flex-direction: column;
+        //   height: 80%;
+
+        //   li {
+        //     padding-left: 0.5rem;
+        //     padding-bottom: 0.25rem;
+        //     flex-grow: 1;
+        //     text-align: justify;
+        //   }
+        // }
       }
     }
   }
@@ -3079,25 +3099,52 @@ $button-active-blue: #1669f2;
     background-color: #f2f2f2;
     padding: $container-padding;
 
+    .packages-description {
+      @extend .center-col;
+      @extend .custom-list;
+      width: calc(min(750px, 80vw));
+      padding: 1rem;
+      text-align: center;
+      gap: 1rem;
+    }
+
     .rooms {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      max-width: calc(min(80%, 100vw));
 
       .retreat-room {
         display: flex;
         flex-direction: column;
-        max-width: 80%;
+        justify-content: center;
+
         background-color: #f2f2f2;
         margin: 1rem;
 
         .retreat-room-content {
+          @extend .center-col;
+          @extend .custom-list;
           flex: 1 1 50%;
           padding: 2rem;
-          display: flex;
-          flex-direction: column;
+
           justify-content: space-between;
+
+          h2 {
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1rem;
+            margin-bottom: 1rem;
+          }
+
+          .retreat-room-price {
+            @extend .center-col;
+
+            p {
+              font-size: 2rem;
+              font-family: 'Baskerville Regular';
+              font-weight: 400;
+            }
+          }
 
           .retreat-room-amenities {
             ul {
@@ -3117,16 +3164,14 @@ $button-active-blue: #1669f2;
             }
           }
 
-          .booking-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          .booking-buttons {
+            @extend .center-col;
+            min-height: 150px;
           }
         }
 
         .retreat-room-images {
           min-width: 300px;
-          flex: 1 1 50%;
           object-fit: contain;
           line-height: 0 !important;
           display: flex;
@@ -3134,7 +3179,8 @@ $button-active-blue: #1669f2;
 
           .retreat-room-image {
             flex: 1 1;
-            width: 150px;
+            width: 300px;
+            height: 300px;
             z-index: 1;
             transition: transform 0.25s ease-in;
             object-fit: cover;

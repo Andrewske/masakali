@@ -6,37 +6,47 @@
       "isvara": {
         "name": "isvara",
         "title": "Isvara - Shared Room",
-        "pricePerRoomIDR": 1520000,
+        "pricePerRoomIDR": 12472259,
+        "pricePerPersonIDR": 10907259,
         "available": 2,
-        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
+        "imgUrl": "/Main/Akasha/IMG_7679-67_8kMIzr1Dk.webp?updatedAt=1678998374628",
+        "amenities": ["Shared Room", "2 queen beds"]
       },
       "priya": {
         "name": "priya",
         "title": "Priya - Shared Room",
-        "pricePerRoomIDR": 1980000,
+        "pricePerRoomIDR": 13347259,
+        "pricePerPersonIDR": 11367259,
         "available": 2,
-        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
+        "imgUrl": "/Main/Akasha/IMG_7728-107_UjLs8nAnQ.webp?updatedAt=1678998374702",
+        "amenities": ["Shared Room", "2 queen beds"]
       },
       "joglo": {
         "name": "joglo",
         "title": "Joglo - Private Villa for 3",
-        "pricePerRoomIDR": 2400000,
+        "pricePerRoomIDR": 16587259,
+        "pricePerPersonIDR": 11787259,
         "available": 1,
-        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
+        "imgUrl": "/Main/Akasha/akasha-bed_ooi_robeB.webp?updatedAt=1676067908399",
+        "amenities": ["Shared Room", "1 king bed, 1 queen bed"]
       },
       "surya": {
         "name": "surya",
         "title": "Surya - Private Villa for 2",
-        "pricePerRoomIDR": 3400000,
+        "pricePerRoomIDR": 16187259,
+        "pricePerPersonIDR": 12787259,
         "available": 1,
-        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
+        "imgUrl": "/Main/Surya/surya-bedroom_dQwz6JpPm.webp?updatedAt=1660671469037",
+        "amenities": ["Private Room", "1 king bed"]
       },
       "jala": {
         "name": "jala",
         "title": "Jala - Private Villa for 2",
-        "pricePerRoomIDR": 2600000,
+        "pricePerRoomIDR": 14587259,
+        "pricePerPersonIDR": 11987259,
         "available": 1,
-        "imgUrl": "/Main/Akasha/akasha-front_knBEIm9Huj.webp"
+        "imgUrl": "/Main/Jala/jala-bedroom-interior_k4_8kia2c.webp?updatedAt=1660671440924",
+        "amenities": ["Private Room", "1 king bed"]
       }
     }
   }

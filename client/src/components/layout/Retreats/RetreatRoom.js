@@ -1,10 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
+import useConversionRate from '../../../hooks/useConversionRate';
+import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
+
 const RetreatRoom = ({ room, createBooking }) => {
+  const { value: conversionRate } = useConversionRate('IDR');
+
+  const currency = useSelector((state) => state.country.currency);
+
+  const pricePerRoom = useCurrencyFormat(room.pricePerRoomIDR / conversionRate);
+  const pricePerPerson = useCurrencyFormat(
+    room.pricePerPersonIDR / conversionRate
+  );
+
   const handleSubmit = () => {
     createBooking(room.name);
   };
@@ -23,24 +35,38 @@ const RetreatRoom = ({ room, createBooking }) => {
         </ImageContext>
       </div>
       <div className="retreat-room-content">
-        <h2>{room.title}</h2>
-
-        <div className="retreat-room-amenities">
-          <ul>
-            <li>King Bed</li>
+        <h2>{room.name}</h2>
+        {room.amenities && (
+          <ul className="retreat-room-amenities">
+            {room.amenities.map((x, i) => (
+              <li key={room.name + '-amenity-' + i}>{x}</li>
+            ))}
           </ul>
+        )}
+
+        <div className="retreat-room-price">
+          <h4>Price Per Room</h4>
+          {pricePerRoom && <p>{pricePerRoom + ' ' + currency}</p>}
+        </div>
+        <div className="retreat-room-price">
+          <h4>Price Per Person</h4>
+          {pricePerPerson && <p>{pricePerPerson + ' ' + currency}</p>}
         </div>
 
-        <div className="booking-info">
-          <span>
-            <p>Total: {room.priceIDR}</p>
-            <p>Spots Available: {room.available}</p>
-          </span>
+        <div className="booking-buttons">
+          {room.available > 1 && (
+            <button
+              className="button purple"
+              onClick={handleSubmit}
+            >
+              Book for One
+            </button>
+          )}
           <button
             className="button purple"
             onClick={handleSubmit}
           >
-            Book Now
+            Book Entire Room
           </button>
         </div>
       </div>
