@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Logo from '../../img/masakali-home-logo.png';
 import useBreakpoint from '../../utils/useBreakpoint';
-import CountryPicker from './CountryPicker';
 import { useNavigate } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 

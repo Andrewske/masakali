@@ -83,7 +83,7 @@ export const facilitatorData = {
     ),
   },
   antonella: {
-    name: 'Antomella',
+    name: 'Antonella',
     focus: 'Ecstatic Dance',
     facebookUrl: 'https://www.facebook.com/',
     imgUrl:

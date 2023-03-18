@@ -5,7 +5,7 @@ import { IKImage } from 'imagekitio-react';
 
 import useWindowSize from '../../../utils/useWindowSize';
 
-const Banner = ({ startDate, endDate }) => {
+const Banner = ({ startDate, endDate, scroll }) => {
   const { width, height } = useWindowSize();
 
   return (
@@ -26,7 +26,12 @@ const Banner = ({ startDate, endDate }) => {
           {startDate} - {endDate}
         </p>
       </span>
-      <button className="button">Get Started</button>
+      <button
+        onClick={() => scroll()}
+        className="button purple"
+      >
+        Get Started
+      </button>
     </div>
   );
 };

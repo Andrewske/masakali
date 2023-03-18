@@ -18,7 +18,8 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store';
 
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from './queryClient';
 
 import setAuthToken from './utils/setAuthToken';
 //import { loadUser } from './actions/auth';
@@ -54,6 +55,7 @@ import Villas from './components/layout/Villas/Template';
 // Retreats Pages
 import Retreat from './components/layout/Retreats/RetreatTemplate';
 import RetreatBooking from './components/layout/Retreats/Booking';
+import useRetreat from './hooks/useRetreat';
 
 // Auth Pages
 import Login from './components/auth/Login';
@@ -64,8 +66,6 @@ import ResetPassword from './components/auth/ResetPassword';
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
-
-const queryClient = new QueryClient();
 
 const App = () => {
   return (

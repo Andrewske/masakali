@@ -3,26 +3,20 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 import CountryPicker from '../CountryPicker';
+import { calcTaxes } from '../../../utils/getPrices';
+import useRetreat from '../../../hooks/useRetreat';
 
-const CartDetails = ({
-  reservation,
-  removeReservation,
-  success = false,
-  country,
-}) => {
+const RetreatCartDetails = ({ reservation, country }) => {
   const {
-    startDate = null,
-    endDate = null,
-    numDays = 0,
-    name,
-    guests,
-    img = null,
-  } = reservation;
+    retreatData: { startDate, endDate },
+  } = useRetreat(reservation.retreatName);
 
-  const discount = useCurrencyFormat(reservation.discount);
-  const total = useCurrencyFormat(reservation.total);
-  const amount = useCurrencyFormat(reservation.amount);
-  const taxes = useCurrencyFormat(reservation.taxes);
+  const { villaName, retreatName, totalUSD } = reservation;
+
+  let tax = calcTaxes({ villaPrice: totalUSD, hasDiscount: false });
+  let total = useCurrencyFormat(totalUSD + tax);
+  let taxes = useCurrencyFormat(tax);
+  let amount = useCurrencyFormat(totalUSD);
 
   return (
     <div className="cart-details">
@@ -33,7 +27,8 @@ const CartDetails = ({
         />
       )} */}
       <span className="details-header">
-        <h3>{name} Villa</h3>
+        <h3>{retreatName} Retreat</h3>
+        <h3>{villaName} Villa</h3>
       </span>
       <span className="details">
         <span className="detail">
@@ -45,20 +40,8 @@ const CartDetails = ({
           <p>{moment.utc(endDate).format('MMM DD YYYY')} at 11:00am</p>
         </span>
         <span className="detail">
-          <p className="detail-title light">Number of Guests</p>
-          <p>{guests || 0}</p>
-        </span>
-        <span className="detail">
-          <p className="detail-title light">Number of Nights</p>
-          <p>{numDays}</p>
-        </span>
-        <span className="detail">
           <p className="detail-title light">Price</p>
           <p>{amount}/night</p>
-        </span>
-        <span className="detail">
-          <p className="detail-title light">Discount</p>
-          <p>{discount}</p>
         </span>
         <span className="detail">
           <p className="detail-title light">Taxes</p>
@@ -78,15 +61,9 @@ const CartDetails = ({
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    removeReservation: (payload) =>
-      dispatch({ type: 'REMOVE_RESERVATION', payload }),
-  };
-};
-
 const mapStateToProps = (state) => ({
   country: state.country,
+  reservation: state.retreatReservation,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartDetails);
+export default connect(mapStateToProps, null)(RetreatCartDetails);

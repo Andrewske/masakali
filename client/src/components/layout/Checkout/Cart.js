@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import BillingDetails from '../../forms/BillingDetails';
 import CartDetails from './CartDetails';
+import RetreatCartDetails from './RetreatCartDetails';
 import CheckoutError from './CheckoutError';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -33,12 +34,14 @@ import moment from 'moment';
 import { capitalize } from 'lodash';
 import Header from '../Header';
 
+import useRetreat from '../../../hooks/useRetreat';
+
 import {
   sendAdminBookingConfirmation,
   sendBookingConfirmation,
 } from '../../../actions/sendgrid';
 
-const imageUrl = {
+const images = {
   surya: '/Main/Surya/surya-front-main_yynphR5d1s.webp',
   chandra: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp',
   jala: '/Main/Jala/jala-front-main_yJaEapAckn.webp',
@@ -61,6 +64,14 @@ const Cart = ({
   const [isDefault, setIsDefault] = useState(false);
   const navigate = useNavigate();
 
+  const { retreatName, villaName } = useSelector(
+    (state) => state.retreatReservation
+  );
+
+  let { retreatData } = useRetreat(retreatName);
+
+  console.log({ retreatData });
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -72,6 +83,7 @@ const Cart = ({
   let discount = useCurrencyFormat(reservations?.new?.discount);
   let total = useCurrencyFormat(reservations?.new?.total);
   let taxes = useCurrencyFormat(reservations?.new?.taxes);
+  const imgUrl = images[reservations?.new?.name ?? villaName];
 
   useEffect(() => {
     async function loginSuccess() {
@@ -262,7 +274,7 @@ const Cart = ({
         <span className="row image">
           <ImageContext>
             <IKImage
-              path={imageUrl[reservations?.new?.name]}
+              path={imgUrl}
               transformation={[{ width: '800px', dpr: 'auto' }]}
               lqip={{ active: true }}
               loading="lazy"
@@ -273,6 +285,12 @@ const Cart = ({
         {reservations?.new && (
           <div className="row">
             <CartDetails reservation={reservations?.new} />
+          </div>
+        )}
+
+        {retreatName && (
+          <div className="row">
+            <RetreatCartDetails />
           </div>
         )}
 

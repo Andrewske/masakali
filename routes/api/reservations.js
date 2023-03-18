@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const Reservation = require('../../models/Reservation');
+const RetreatReservation = require('../../models/RetreatReservation');
 const Villa = require('../../models/Villa');
 
 // Get all reservations by name
@@ -18,16 +19,6 @@ router.get('/', async (req, res) => {
 
     res.status(200).send(reservations);
   } catch (err) {
-    console.log({ err });
-    res.status(400).send({ err });
-  }
-});
-
-router.get('/retreats', async (req, res) => {
-  try {
-    const { name } = req.query;
-    res.status(200).send({ message: name });
-  } catch (error) {
     console.log({ err });
     res.status(400).send({ err });
   }
@@ -102,6 +93,40 @@ router.post('/update', express.json(), async (req, res) => {
   }
 });
 
-// Delete reservation
+// Retreats
+
+// Get all reservations for a given retreat
+router.get('/retreats', async (req, res) => {
+  try {
+    const { name } = req.query;
+
+    let reservations = await RetreatReservation.find({ retreatName: name });
+
+    res.status(200).send(reservations);
+  } catch (error) {
+    console.error({ error });
+    res.status(422).send({ error });
+  }
+});
+
+// Add a retreat reservation
+router.post('/retreats/add', express.json(), async (req, res) => {
+  try {
+    // const {
+    //   retreatName,
+    //   villaName,
+    //   guests,
+    //   total,
+    //   stripeId,
+    // }
+
+    //let reservation = new RetreatReservation()
+    console.log(data);
+    res.statusCode(200);
+  } catch (error) {
+    console.error({ error });
+    res.status(422).send({ error });
+  }
+});
 
 module.exports = router;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
@@ -9,16 +10,20 @@ import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
 
 const RetreatRoom = ({ room, createBooking }) => {
   const { value: conversionRate } = useConversionRate('IDR');
+  const navigate = useNavigate();
 
   const currency = useSelector((state) => state.country.currency);
 
-  const pricePerRoom = useCurrencyFormat(room.pricePerRoomIDR / conversionRate);
-  const pricePerPerson = useCurrencyFormat(
-    room.pricePerPersonIDR / conversionRate
-  );
+  const priceForOne = useCurrencyFormat(room.priceForOne);
+  const priceForTwo = useCurrencyFormat(room.priceForTwo);
 
-  const handleSubmit = () => {
-    createBooking(room.name);
+  const handleSubmit = ({ numberOfGuests }) => {
+    createBooking({
+      villaName: room.name,
+      numberOfGuests,
+      totalUSD: numberOfGuests === 2 ? room.priceForTwo : room.priceForOne,
+    });
+    navigate('/cart');
   };
 
   return (
@@ -44,31 +49,31 @@ const RetreatRoom = ({ room, createBooking }) => {
           </ul>
         )}
 
-        <div className="retreat-room-price">
-          <h4>Price Per Room</h4>
-          {pricePerRoom && <p>{pricePerRoom + ' ' + currency}</p>}
-        </div>
-        <div className="retreat-room-price">
-          <h4>Price Per Person</h4>
-          {pricePerPerson && <p>{pricePerPerson + ' ' + currency}</p>}
-        </div>
-
-        <div className="booking-buttons">
-          {room.available > 1 && (
+        {priceForOne && (
+          <div className="retreat-room-price">
+            <h4>Price for One</h4>
+            <p>{priceForOne + ' ' + currency}</p>
             <button
               className="button purple"
-              onClick={handleSubmit}
+              onClick={() => handleSubmit({ numberOfGuests: 1 })}
             >
-              Book for One
+              Book For One
             </button>
-          )}
-          <button
-            className="button purple"
-            onClick={handleSubmit}
-          >
-            Book Entire Room
-          </button>
-        </div>
+          </div>
+        )}
+        {priceForTwo && (
+          <div className="retreat-room-price">
+            <h4>Price for Two</h4>
+            <p>{priceForTwo + ' ' + currency}</p>
+
+            <button
+              className="button purple"
+              onClick={() => handleSubmit({ numberOfGuests: 2 })}
+            >
+              Book for two
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

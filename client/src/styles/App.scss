@@ -59,7 +59,7 @@ body {
 .custom-list {
   ul {
     max-width: max-content;
-    font-size: 0.85rem;
+    font-size: 1rem;
     list-style: '-';
     display: flex;
     flex-direction: column;
@@ -3007,7 +3007,7 @@ $button-active-blue: #1669f2;
         min-height: calc(max(350px, 30vw));
         background-color: #f2f2f2;
         padding: 2rem;
-        font-size: 0.85rem;
+        font-size: 1rem;
 
         h3 {
           margin-bottom: 1rem;

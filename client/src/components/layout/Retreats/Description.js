@@ -2,7 +2,7 @@ import React from 'react';
 import DescriptionItem from './DescriptionItem';
 import { descriptions } from './descriptionContent';
 
-const Description = () => {
+const Description = ({ scroll }) => {
   return (
     <div className="description-container">
       <div className="about">
@@ -25,7 +25,12 @@ const Description = () => {
           />
         ))}
 
-      <button className="button purple">Get Started</button>
+      <button
+        className="button purple"
+        onClick={scroll}
+      >
+        Get Started
+      </button>
     </div>
   );
 };

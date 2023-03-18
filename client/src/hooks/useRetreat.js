@@ -1,29 +1,44 @@
 // This hook contains the availability information for each retreat
 
+import { useState, useEffect } from 'react';
+
 import { useQuery } from 'react-query';
-import { useSelector, useDispatch } from 'react-redux';
+
 import axios from 'axios';
 import { serverUrl } from '../config';
-import { createReservation } from '../actions/user';
 
-const useRetreat = ({ name }) => {
+import { useSelector, useDispatch } from 'react-redux';
+
+import retreats from '../components/layout/Retreats/retreats.json';
+import { CREATE_RETREAT_RESERVATION } from '../actions/types';
+
+const useRetreat = (retreatName) => {
+  const reservation = useSelector((state) => state.retreatReservation);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
   const { isLoading, data, isError, error } = useQuery('getRetreat', () =>
-    axios.get(serverUrl + `/reservations/retreats?name=${name}`)
+    axios.get(serverUrl + `/reservations/retreats?name=${retreatName}`)
   );
 
-  const createBooking = (villaName) => {
-    //createReservation();
-    console.log('create booking');
+  let retreatData = { reservation, ...retreats[retreatName], data };
+
+  const createBooking = ({ villaName, numberOfGuests, totalUSD }) => {
+    dispatch({
+      type: CREATE_RETREAT_RESERVATION,
+      payload: {
+        retreatName,
+        villaName,
+        numberOfGuests,
+        totalUSD,
+      },
+    });
   };
 
-  if (error) {
-    console.error({ error });
-  }
+  // useEffect(() => {
+  //   console.log(reservation);
+  // }, [reservation]);
 
-  return { createBooking, data: data ?? null };
+  return { retreatData, createBooking };
 };
 
 export default useRetreat;

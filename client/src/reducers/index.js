@@ -9,6 +9,7 @@ import auth from './auth';
 import villas from './villas';
 import user from './user';
 import country from './country';
+import retreatReservation from './retreatReservation';
 
 const persistConfig = {
   key: 'root',
@@ -23,6 +24,7 @@ const appReducer = combineReducers({
   villas,
   user,
   country,
+  retreatReservation,
 });
 
 const rootReducer = (state, action) => {
