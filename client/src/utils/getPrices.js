@@ -11,9 +11,9 @@ export const calcTaxes = ({ villaPrice, numDays = 1, hasDiscount = true }) => {
   return (total - discount) * taxRate;
 };
 
-export const calcTotal = ({ villaPrice, numDays }) => {
+export const calcTotal = ({ villaPrice, numDays = 1, hasDiscount = true }) => {
   let total = villaPrice * numDays;
-  let discount = villaPrice * percDiscount * numDays;
+  let discount = hasDiscount ? villaPrice * percDiscount * numDays : 0;
   let taxes = (total - discount) * taxRate;
 
   return total - discount + taxes;

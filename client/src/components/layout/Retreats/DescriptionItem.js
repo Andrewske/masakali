@@ -2,7 +2,13 @@ import React from 'react';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 
-const DescriptionItem = ({ heading, content, imgUrl, imgLeft }) => {
+const DescriptionItem = ({
+  heading,
+  content,
+  imgUrl,
+  imgLeft,
+  documentLink,
+}) => {
   return (
     <div className={imgLeft ? 'description-item' : 'description-item reverse'}>
       <ImageContext>
@@ -17,6 +23,7 @@ const DescriptionItem = ({ heading, content, imgUrl, imgLeft }) => {
       <div className="description-content">
         <h3>{heading}</h3>
         {content}
+        {documentLink && documentLink}
       </div>
     </div>
   );

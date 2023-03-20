@@ -1,9 +1,14 @@
 import React from 'react';
 import retreats from './retreats.json';
 import RetreatRoom from './RetreatRoom';
+import useRetreatAvailability from '../../../hooks/useRetreatAvailability';
 
 const Packages = ({ packageRef, createBooking, retreatData }) => {
   const retreat = retreats['shanti'];
+
+  const { data } = useRetreatAvailability('shanti');
+
+  const reservations = data?.data ?? null;
 
   return (
     <div
@@ -21,21 +26,31 @@ const Packages = ({ packageRef, createBooking, retreatData }) => {
         </p>
         <h4>Included with all rooms</h4>
         <ul>
-          <li>5 days + 4 nights</li>
-          <li>All Activities (Tours + Healing)</li>
-          <li>3 meals per day (option for detox meals)</li>
+          <li>5 days + 4 nights accommodation</li>
+          <li>All Activities (Tours + Healings + Cultural Activites)</li>
+          <li>3 meals per day</li>
+          <li>2 spa services</li>
         </ul>
       </div>
 
       <div className="rooms">
         {retreat &&
-          Object.entries(retreat.rooms).map(([name, room]) => (
-            <RetreatRoom
-              key={name}
-              room={room}
-              createBooking={createBooking}
-            />
-          ))}
+          reservations &&
+          Object.entries(retreat.rooms).map(([name, room]) => {
+            let isReserved =
+              reservations?.filter((res) => res.villaName === name).length >=
+              retreat.rooms[name].available;
+
+            return (
+              !isReserved && (
+                <RetreatRoom
+                  key={name}
+                  room={room}
+                  createBooking={createBooking}
+                />
+              )
+            );
+          })}
       </div>
     </div>
   );

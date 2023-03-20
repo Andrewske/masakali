@@ -14,7 +14,7 @@ import retreatReservation from './retreatReservation';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'user', 'country', 'villas'],
+  whitelist: ['auth', 'user', 'country', 'villas', 'retreatReservation'],
 };
 
 const appReducer = combineReducers({

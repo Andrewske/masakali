@@ -35,14 +35,14 @@ const RetreatTemplate = ({ name }) => {
         endDate={endDate}
       />
       <WhyChoose />
-      <Description scroll={scroll} />
-      <Facilitators />
-      <TheSpace />
       <Packages
         packageRef={packageRef}
         retreatData={retreatData}
         createBooking={createBooking}
       />
+      <Description scroll={scroll} />
+      {/* <Facilitators /> */}
+      <TheSpace />
     </div>
   );
 };

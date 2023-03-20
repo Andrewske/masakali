@@ -4,14 +4,23 @@ const sgMail = require('@sendgrid/mail');
 const Reservation = require('../../models/Reservation');
 const User = require('../../models/User');
 
+const retreatBookingEmailTemplate = 'd-60fce1dc0ea0423c92948e59fb505a6e';
+const villaBookingEmailTemplate = 'd-df670819866341e3b360ea6a373e429e';
+
 router.post('/sendBookingConfirmation', express.json(), async (req, res) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  console.log(req.body);
+
+  console.log('sending email confirmation');
+
+  let templateId = req.body.isRetreat
+    ? retreatBookingEmailTemplate
+    : villaBookingEmailTemplate;
+
   try {
     const msg = {
       to: req.body.email,
       from: 'admin@masakaliretreat.com',
-      templateId: 'd-df670819866341e3b360ea6a373e429e',
+      templateId,
       dynamicTemplateData: req.body,
     };
 

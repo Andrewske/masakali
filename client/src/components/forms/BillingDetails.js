@@ -2,57 +2,60 @@ import React, { useState, useMemo } from 'react';
 import FormField from './FormField';
 import CountrySelector from './CountrySelector';
 
-const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
+const BillingDetails = ({ user = null, isDefault, setIsDefault, retreat }) => {
+  const {
+    retreatData: { numberOfGuests },
+  } = retreat;
   return (
     <>
-      <span className='billing-form-name'>
+      <span className="billing-form-name">
         <FormField
-          name='firstName'
+          name="firstName"
           //label='First Name'
-          type='text'
-          placeholder='First Name'
+          type="text"
+          placeholder="First Name"
           initialValue={user?.firstName}
           required
         />
         <FormField
-          name='lastName'
+          name="lastName"
           //label='Last Name'
-          type='text'
-          placeholder='Last Name'
+          type="text"
+          placeholder="Last Name"
           initialValue={user?.lastName}
           required
         />
       </span>
 
       <FormField
-        name='email'
+        name="email"
         //label='Email'
-        type='email'
-        placeholder='Email'
+        type="email"
+        placeholder="Email"
         initialValue={user?.email}
         required
       />
       <FormField
-        name='address'
+        name="address"
         //label='Address'
-        type='text'
-        placeholder='Address'
+        type="text"
+        placeholder="Address"
         initialValue={user?.address?.line1}
         required
       />
       <FormField
-        name='city'
+        name="city"
         //label='City'
-        type='text'
-        placeholder='City'
+        type="text"
+        placeholder="City"
         initialValue={user?.address?.city}
         required
       />
       <FormField
-        name='state'
+        name="state"
         //label='State'
-        type='text'
-        placeholder='State'
+        type="text"
+        placeholder="State"
         initialValue={user?.address?.state}
         required
       />
@@ -66,25 +69,48 @@ const BillingDetails = ({ user = null, isDefault, setIsDefault }) => {
       /> */}
       <CountrySelector initialValue={user?.address?.country} />
       <FormField
-        name='zip'
+        name="zip"
         //label='ZIP'
-        type='text'
-        placeholder='ZIP'
+        type="text"
+        placeholder="ZIP"
         initialValue={user?.address?.postal_code}
         required
       />
       {user?.admin && (
         <FormField
-          name='discount'
+          name="discount"
           //label='discount'
-          type='text'
-          placeholder='code?'
+          type="text"
+          placeholder="code?"
           //initialValue={user?.address?.postal_code}
           //required
         />
       )}
-      <div className='form-field-container'>
-        <label htmlFor={'isDefault'} className='checkbox'>
+      {numberOfGuests === 2 && (
+        <div className="guests">
+          <p className="subtext">
+            Please provide name and email for the second guest
+          </p>
+          <FormField
+            name="guestName"
+            //label='First Name'
+            type="text"
+            placeholder="Guest Name"
+            required
+          />
+          <FormField
+            name="guestEmail"
+            type="email"
+            placeholder="Guest Email"
+            required
+          />
+        </div>
+      )}
+      <div className="form-field-container">
+        <label
+          htmlFor={'isDefault'}
+          className="checkbox"
+        >
           Set as default billing address
         </label>
         <input

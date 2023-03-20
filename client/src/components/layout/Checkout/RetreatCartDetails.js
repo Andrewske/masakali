@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
@@ -6,10 +6,10 @@ import CountryPicker from '../CountryPicker';
 import { calcTaxes } from '../../../utils/getPrices';
 import useRetreat from '../../../hooks/useRetreat';
 
-const RetreatCartDetails = ({ reservation, country }) => {
+const RetreatCartDetails = ({ reservation, country, user, retreat }) => {
   const {
     retreatData: { startDate, endDate },
-  } = useRetreat(reservation.retreatName);
+  } = retreat;
 
   const { villaName, retreatName, totalUSD } = reservation;
 
@@ -26,42 +26,43 @@ const RetreatCartDetails = ({ reservation, country }) => {
           onClick={() => removeReservation(reservation)}
         />
       )} */}
-      <span className="details-header">
+      <div className="details-header">
         <h3>{retreatName} Retreat</h3>
         <h3>{villaName} Villa</h3>
-      </span>
-      <span className="details">
-        <span className="detail">
+      </div>
+      <div className="details">
+        <div className="detail">
           <p className="detail-title light">Arrival Date</p>
           <p>{moment.utc(startDate).format('MMM DD YYYY')} at 2:00pm</p>
-        </span>
-        <span className="detail">
+        </div>
+        <div className="detail">
           <p className="detail-title light">Departure Date</p>
           <p>{moment.utc(endDate).format('MMM DD YYYY')} at 11:00am</p>
-        </span>
-        <span className="detail">
+        </div>
+        <div className="detail">
           <p className="detail-title light">Price</p>
-          <p>{amount}/night</p>
-        </span>
-        <span className="detail">
+          <p>{amount}</p>
+        </div>
+        <div className="detail">
           <p className="detail-title light">Taxes</p>
           <p>{taxes}</p>
-        </span>
-      </span>
-      <span className="details-footer">
+        </div>
+      </div>
+      <div className="details-footer">
         <p>Total</p>
-        <span className="details-footer-total-price">
-          <span className="price">
+        <div className="details-footer-total-price">
+          <div className="price">
             {total} {country.currency}
-          </span>
+          </div>
           <CountryPicker />
-        </span>
-      </span>
+        </div>
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
+  user: state.user,
   country: state.country,
   reservation: state.retreatReservation,
 });

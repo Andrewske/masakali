@@ -62,26 +62,37 @@ const Cart = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState(null);
   const [isDefault, setIsDefault] = useState(false);
+  const [discountCode, setDiscountCode] = useState(null);
   const navigate = useNavigate();
 
   const { retreatName, villaName } = useSelector(
     (state) => state.retreatReservation
   );
 
-  let { retreatData } = useRetreat(retreatName);
+  const isRetreat = retreatName !== null;
 
-  console.log({ retreatData });
+  const retreat = useRetreat(retreatName);
+
+  const {
+    retreatData: { totalUSD, taxesUSD },
+    guest: { setGuestName, setGuestEmail },
+    sendConfirmationEmail,
+    confirmBooking,
+  } = retreat;
 
   const stripe = useStripe();
   const elements = useElements();
 
-  //const [price, setPrice] = useState(0);
-  //const [numDays, setNumDays] = useState(reservations?.new?.numDays);
+  let adminCode = process.env.REACT_APP_ADMIN_TEST_CODE;
 
-  let numDays = reservations?.new?.numDays;
   let price = useCurrencyFormat(reservations?.new?.amount);
   let discount = useCurrencyFormat(reservations?.new?.discount);
-  let total = useCurrencyFormat(reservations?.new?.total);
+  let total =
+    discountCode === adminCode
+      ? 1.2
+      : reservations?.new?.total ?? totalUSD + taxesUSD;
+  let formattedTotal = useCurrencyFormat(total);
+
   let taxes = useCurrencyFormat(reservations?.new?.taxes);
   const imgUrl = images[reservations?.new?.name ?? villaName];
 
@@ -117,29 +128,21 @@ const Cart = ({
   };
 
   const discountPrice = (e) => {
-    let adminCode = process.env.REACT_APP_ADMIN_TEST_CODE;
-    let customerCode = process.env.REACT_APP_CUSTOMER_COUPON;
-
-    if (e.target?.value === adminCode) {
-      console.log('discount added');
-      updatePricing({ price: 1.2, numDays, res: reservations?.new });
-    }
-    // if (e.target?.value === customerCode) {
-    //   console.log('discount added');
-    //   updatePricing({ price: 92.05, numDays, res: reservations?.new }); // finalPrice = 100
-    // }
+    setDiscountCode(e.target?.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     e.persist();
-    const totalAsInt = reservations?.new?.total;
 
     setIsProcessing(true);
+    setGuestName(e.target?.guestName?.value ?? null);
+    setGuestEmail(e.target?.guestEmail?.value ?? null);
+
     const cardElement = elements.getElement(CardElement);
     const firstName = e.target.firstName.value;
     const lastName = e.target.lastName.value;
-    //const totalAsInt = reservations?.new?.total;
+    const totalAsInt = total;
 
     const billingDetails = {
       name: firstName + ' ' + lastName,
@@ -157,43 +160,7 @@ const Cart = ({
     // Update the user
     updateUser({ userId: user._id, billingDetails, isDefault });
 
-    // Create the reservation in the DB to get the Id
-    const { reservationId } = await createReservation({
-      userId: user._id,
-      reservation: reservations.new,
-    });
-
     try {
-      // // Create the Payment Intent
-      // // let finalPrice = price * 100;
-
-      // const { clientSecret, paymentIntentError } = await createPaymentIntent({
-      //   price: finalPrice,
-      // });
-
-      // //console.log({ clientSecret, paymentIntentError });
-
-      // if (paymentIntentError) {
-      //   throw paymentIntentError;
-      // }
-
-      // // Create the Payment Method Request
-      // const { paymentMethodReqId, paymentMethodReqError } =
-      //   await createPaymentMethodReq({ stripe, cardElement, billingDetails });
-
-      // console.log({ paymentMethodReqError });
-      // if (paymentMethodReqError) {
-      //   throw paymentMethodReqError;
-      // }
-
-      // // Confirm the card payment
-      // const { paymentIntent, confirmCardPaymentError } =
-      //   await confirmCardPayment({ stripe, clientSecret, paymentMethodReqId });
-
-      // if (confirmCardPaymentError) {
-      //   throw confirmCardPaymentError;
-      // }
-
       const { paymentIntent, error } = await stripeCheckout({
         price: totalAsInt * 100,
         stripe,
@@ -203,48 +170,77 @@ const Cart = ({
 
       if (error) throw error;
 
-      //Create the booking in Smoobu
-      const { smoobuId } = await makeReservation({
-        startDate: reservations.new.startDate,
-        endDate: reservations.new.endDate,
-        name: reservations.new.name,
-        firstName,
-        lastName,
-        email: billingDetails.email,
-        guests: reservations.new.guests,
-        price: parseFloat(totalAsInt),
-        address: billingDetails.address,
-      });
-
-      //Update the reservation with reservationId and stripeId & SmoobuId
-      if (reservationId && paymentIntent?.id && smoobuId) {
-        await updateReservation({ reservationId, stripeId: paymentIntent.id });
-      } else {
-        console.log({ reservationId, smoobuId, paymentIntent });
-      }
-
+      let reservationId;
       let emailData = {
         name: billingDetails.name,
         email: billingDetails.email,
         country: billingDetails.address.country,
-        villaName: capitalize(reservations.new.name),
-        startDate: moment
-          .utc(reservations.new.startDate)
-          .format('ddd MMM DD YYYY')
-          .toString(),
-        endDate: moment
-          .utc(reservations.new.endDate)
-          .format('ddd MMM DD YYYY')
-          .toString(),
-        numDays: reservations.new.numDays,
-        pricePerNight: price,
-        discount,
-        total,
-        taxes,
-        id: reservationId,
       };
 
-      await sendBookingConfirmation(emailData);
+      if (!isRetreat) {
+        //Create the booking in Smoobu
+        const { smoobuId } = await makeReservation({
+          startDate: reservations.new.startDate,
+          endDate: reservations.new.endDate,
+          name: reservations.new.name,
+          firstName,
+          lastName,
+          email: billingDetails.email,
+          guests: reservations.new.guests,
+          price: parseFloat(totalAsInt),
+          address: billingDetails.address,
+        });
+
+        // Create the reservation in the DB to get the Id
+        const dbRes = await createReservation({
+          userId: user._id,
+          reservation: reservations.new,
+        });
+
+        reservationId = dbRes.reservationId;
+        //Update the reservation with reservationId and stripeId & SmoobuId
+        if (reservationId && paymentIntent?.id && smoobuId) {
+          await updateReservation({
+            reservationId,
+            stripeId: paymentIntent.id,
+          });
+        } else {
+          console.log({ reservationId, smoobuId, paymentIntent });
+        }
+
+        emailData = {
+          ...emailData,
+          villaName: capitalize(reservations.new.name),
+          startDate: moment
+            .utc(reservations.new.startDate)
+            .format('ddd MMM DD YYYY')
+            .toString(),
+          endDate: moment
+            .utc(reservations.new.endDate)
+            .format('ddd MMM DD YYYY')
+            .toString(),
+          numDays: reservations.new.numDays,
+          price,
+          discount,
+          taxes,
+          total,
+          id: reservationId,
+        };
+
+        await sendBookingConfirmation(emailData);
+      } else {
+        emailData = {
+          ...emailData,
+          isRetreat: true,
+        };
+
+        sendConfirmationEmail(emailData);
+        confirmBooking({
+          userId: user._id,
+          name: billingDetails.name,
+          email: billingDetails.email,
+        });
+      }
 
       if (process.env.NODE_ENV === 'production') {
         await sendAdminBookingConfirmation(emailData);
@@ -290,7 +286,7 @@ const Cart = ({
 
         {retreatName && (
           <div className="row">
-            <RetreatCartDetails />
+            <RetreatCartDetails retreat={retreat} />
           </div>
         )}
 
@@ -304,6 +300,7 @@ const Cart = ({
               user={user}
               isDefault={isDefault}
               setIsDefault={setIsDefault}
+              retreat={retreat}
             />
             <div className="card-element-container">
               <CardElement
@@ -321,7 +318,7 @@ const Cart = ({
               className="btn submit"
               disabled={isProcessing || !stripe}
             >
-              {isProcessing ? 'Processing...' : `Pay ${total}`}
+              {isProcessing ? 'Processing...' : `Pay ${formattedTotal}`}
             </button>
             <p className="subtext">
               *Please be aware that booking through the website is

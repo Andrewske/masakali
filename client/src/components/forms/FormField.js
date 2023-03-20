@@ -10,13 +10,7 @@ const FormField = ({
   initialValue,
 }) => {
   const [errors, setErrors] = useState(null);
-  const [value, setValue] = useState('');
-
-  useEffect(() => {
-    if (initialValue) {
-      setValue(initialValue);
-    }
-  }, [initialValue]);
+  const [value, setValue] = useState(initialValue ?? '');
 
   const validate = (e) => {
     e.preventDefault();
@@ -31,7 +25,7 @@ const FormField = ({
   };
 
   return (
-    <div className='form-field-container'>
+    <div className="form-field-container">
       {/* <label htmlFor={name}>{label}</label> */}
       <input
         name={name}
@@ -41,7 +35,7 @@ const FormField = ({
         onChange={(e) => validate(e)}
         value={value}
       />
-      <p className='error'>{errors}</p>
+      <p className="error">{errors}</p>
     </div>
   );
 };

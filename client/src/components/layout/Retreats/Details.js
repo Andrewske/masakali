@@ -24,7 +24,7 @@ const Details = ({ startDate, endDate }) => {
       <div className="right">
         <div className="where">
           <h3 className="title">WHERE</h3>
-          <h4 className="sub-title">Hotel Address</h4>
+          <h4 className="sub-title">Resort Address</h4>
           <address>
             Masakali Retreat <br />
             Br. Ayah Kelusa Payangan <br />
@@ -33,10 +33,11 @@ const Details = ({ startDate, endDate }) => {
 
           <h4 className="sub-title">Description</h4>
           <p>
-            Masakali Retreat is located about 8km outside of Ubud. The land was
-            specifically selected for its beauty, oneness with nature, and
-            peacefulness. Overlooking the Balinese rice fields, with a beautiful
-            volcano backdrop.
+            ​​Masakali Retreat is located about 8km outside of Ubud. The land
+            was specifically selected for its beauty, oneness with nature, and
+            peacefulness. Relax and enjoy your stay while overlooking the
+            Balinese rice fields, lush tropical jungle, and a beautiful mountain
+            backdrop.
           </p>
         </div>
       </div>

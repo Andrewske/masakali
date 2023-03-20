@@ -6,6 +6,7 @@ const initialState = {
   numberOfGuests: 1,
   guests: [],
   totalUSD: null,
+  taxesUSD: null,
   stripeId: null,
 };
 
@@ -22,10 +23,7 @@ export default function (state = initialState, action) {
       const { retreatName, villaName, numberOfGuests, totalUSD } = payload;
       return {
         ...state,
-        retreatName,
-        villaName,
-        numberOfGuests,
-        totalUSD,
+        ...payload,
       };
     default:
       return state;

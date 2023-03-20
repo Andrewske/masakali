@@ -2305,7 +2305,7 @@ $button-active-blue: #1669f2;
     border-radius: 4px;
     margin: 2rem;
     min-width: 350px;
-    height: 650px;
+    height: 700px;
     background: rgba(242, 242, 242, 1);
     //width: calc(max(350px, 25%));
 
@@ -2333,7 +2333,7 @@ $button-active-blue: #1669f2;
     margin: 2rem;
     padding: 2rem;
     min-width: 350px;
-    height: 650px;
+    height: 700px;
     background: rgba(242, 242, 242, 1);
 
     .billing-form-name {
@@ -2343,7 +2343,7 @@ $button-active-blue: #1669f2;
   }
 
   .subtext {
-    padding: 2rem;
+    padding: 1rem;
     font-size: 0.75rem !important;
     text-align: center;
   }
@@ -2400,6 +2400,15 @@ $button-active-blue: #1669f2;
 
       .total {
         font-size: 1.25rem;
+      }
+    }
+
+    .guests {
+      @extend .center-col;
+      padding: 1rem 0;
+
+      .subtext {
+        padding: 1rem !important;
       }
     }
 
@@ -2477,8 +2486,6 @@ $button-active-blue: #1669f2;
     .error {
       font-size: 0.75rem;
       color: var(--danger-color);
-      position: absolute;
-      right: 5px;
     }
   }
 
@@ -3020,6 +3027,37 @@ $button-active-blue: #1669f2;
 
         @extend .custom-list;
 
+        .extras-link {
+          display: flex;
+          align-items: center;
+          text-transform: uppercase;
+          padding-top: 1rem;
+          cursor: pointer;
+
+          i {
+            position: relative;
+            top: calc(50% - 12px);
+          }
+
+          a {
+            width: max-content;
+            text-align: left;
+            font-size: 0.75rem;
+
+            &:after {
+              display: block;
+              content: '';
+              border-bottom: 1px solid $purple;
+              transform: scaleX(0);
+              transition: transform 250ms ease-in-out;
+            }
+
+            &:hover:after {
+              transform: scaleX(1);
+            }
+          }
+        }
+
         // ul {
         //   width: 100%;
         //   font-size: 0.85rem;
@@ -3128,8 +3166,13 @@ $button-active-blue: #1669f2;
           @extend .custom-list;
           flex: 1 1 50%;
           padding: 2rem;
+          gap: 1rem;
 
           justify-content: space-between;
+
+          ul > li {
+            flex-grow: 0 !important;
+          }
 
           h2 {
             text-transform: uppercase;
@@ -3155,13 +3198,12 @@ $button-active-blue: #1669f2;
               list-style: '-';
               display: flex;
               flex-direction: column;
-              height: 80%;
 
               li {
                 padding-left: 0.5rem;
                 padding-bottom: 0.25rem;
-                flex-grow: 1;
                 text-align: justify;
+                flex-grow: none !important;
               }
             }
           }

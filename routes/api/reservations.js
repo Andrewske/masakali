@@ -112,17 +112,18 @@ router.get('/retreats', async (req, res) => {
 // Add a retreat reservation
 router.post('/retreats/add', express.json(), async (req, res) => {
   try {
-    // const {
+    // {
     //   retreatName,
     //   villaName,
     //   guests,
-    //   total,
+    //   totalUSD,
     //   stripeId,
-    // }
+    // } = req.body
 
-    //let reservation = new RetreatReservation()
-    console.log(data);
-    res.statusCode(200);
+    let reservation = new RetreatReservation(req.body);
+    reservation.save();
+
+    res.status(200).send(reservation);
   } catch (error) {
     console.error({ error });
     res.status(422).send({ error });
