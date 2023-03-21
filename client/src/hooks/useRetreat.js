@@ -7,7 +7,10 @@ import { serverUrl } from '../config';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { CREATE_RETREAT_RESERVATION } from '../actions/types';
+import {
+  CREATE_RETREAT_RESERVATION,
+  UPDATE_RETREAT_RESERVATION,
+} from '../actions/types';
 import { calcTaxes } from '../utils/getPrices';
 import { sendBookingConfirmation } from '../actions/sendgrid';
 import useCurrencyFormat from './useCurrencyFormat';
@@ -20,14 +23,28 @@ const useRetreat = (retreatName) => {
   const [guestEmail, setGuestEmail] = useState(null);
   const dispatch = useDispatch();
 
-  const { totalUSD, taxesUSD, villaName, startDate, endDate } = reservation;
+  const {
+    priceUSD,
+    taxesUSD,
+    totalUSD,
+    villaName,
+    startDate,
+    endDate,
+    addOns,
+    addOnsTotalUSD,
+  } = reservation;
 
-  const formattedPrice = useCurrencyFormat(totalUSD);
+  const formattedTotal = useCurrencyFormat(totalUSD);
   const formattedTaxes = useCurrencyFormat(taxesUSD);
-  const formattedTotal = useCurrencyFormat(totalUSD + taxesUSD);
+  const formattedPrice = useCurrencyFormat(priceUSD);
+  const formattedAddOns = useCurrencyFormat(addOnsTotalUSD);
 
   let retreatData = {
     ...reservation,
+    formattedTotal,
+    formattedTaxes,
+    formattedPrice,
+    formattedAddOns,
   };
 
   let guest = {
@@ -37,15 +54,39 @@ const useRetreat = (retreatName) => {
     setGuestEmail,
   };
 
-  const createBooking = ({ villaName, numberOfGuests, totalUSD }) => {
+  const createBooking = ({ villaName, numberOfGuests, priceUSD }) => {
+    const taxes = calcTaxes({ villaPrice: priceUSD, hasDiscount: false });
+    const totalUSD = priceUSD + taxes;
     dispatch({
       type: CREATE_RETREAT_RESERVATION,
       payload: {
         retreatName,
         villaName,
         numberOfGuests,
-        totalUSD,
+        priceUSD,
         taxesUSD: calcTaxes({ villaPrice: totalUSD, hasDiscount: false }),
+        totalUSD,
+        addOns,
+      },
+    });
+  };
+
+  const updateBooking = ({ addOns }) => {
+    const addOnsTotalUSD = addOns
+      .filter((x) => x.selected)
+      .reduce((a, b) => a + b.priceUSD, 0);
+    const taxesUSD = calcTaxes({
+      villaPrice: priceUSD + addOnsTotalUSD,
+      hasDiscount: false,
+    });
+
+    dispatch({
+      type: UPDATE_RETREAT_RESERVATION,
+      payload: {
+        addOnsTotalUSD,
+        addOns,
+        taxesUSD,
+        totalUSD: priceUSD + addOnsTotalUSD + taxesUSD,
       },
     });
   };
@@ -55,11 +96,15 @@ const useRetreat = (retreatName) => {
       retreatName,
       villaName,
       guests: [
-        { name, email },
+        { userId, name, email },
         guestName && guestEmail && { guestName, guestEmail },
       ],
-      totalUSD: totalUSD + taxesUSD,
+      priceUSD,
+      taxesUSD,
+      addOnsTotalUSD,
+      totalUSD,
       stripeId,
+      addOns,
     };
     axios.post(serverUrl + '/reservations/retreats/add', body);
   };
@@ -97,6 +142,7 @@ const useRetreat = (retreatName) => {
     guest,
     createBooking,
     sendConfirmationEmail,
+    updateBooking,
     confirmBooking,
   };
 };

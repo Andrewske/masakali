@@ -19,6 +19,7 @@ const Description = ({ scroll }) => {
       {descriptions &&
         descriptions.map((d, i) => (
           <DescriptionItem
+            key={i}
             content={d.content}
             heading={d.heading}
             documentLink={d?.documentLink}

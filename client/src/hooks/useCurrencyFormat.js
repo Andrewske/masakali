@@ -1,8 +1,8 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-const useCurrencyFormat = (amount = null) => {
-  const [total, setTotal] = useState(null);
+const useCurrencyFormat = (amount = 0) => {
+  const [total, setTotal] = useState('');
   const country = useSelector((state) => state.country);
 
   const formatter = useMemo(
@@ -16,7 +16,7 @@ const useCurrencyFormat = (amount = null) => {
 
   useEffect(() => {
     let value = country.conversion?.value ?? country.conversion;
-    if (amount && country) {
+    if (country) {
       setTotal(formatter.format(amount * value));
     }
   }, [amount, country, formatter]);

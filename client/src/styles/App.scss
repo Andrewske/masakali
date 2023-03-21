@@ -2403,12 +2403,22 @@ $button-active-blue: #1669f2;
       }
     }
 
-    .guests {
+    .add-ons {
       @extend .center-col;
-      padding: 1rem 0;
+      padding: 1rem 2rem;
+      width: 100%;
 
       .subtext {
         padding: 1rem !important;
+      }
+
+      .add-on {
+        width: 100%;
+
+        label {
+          display: flex;
+          justify-content: space-between;
+        }
       }
     }
 
@@ -3006,6 +3016,7 @@ $button-active-blue: #1669f2;
         min-height: calc(max(350px, 30vw));
         max-height: 500px;
         object-fit: cover;
+        margin: auto;
       }
 
       .description-content {

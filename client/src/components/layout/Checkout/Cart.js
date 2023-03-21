@@ -74,7 +74,7 @@ const Cart = ({
   const retreat = useRetreat(retreatName);
 
   const {
-    retreatData: { totalUSD, taxesUSD },
+    retreatData: { totalUSD },
     guest: { setGuestName, setGuestEmail },
     sendConfirmationEmail,
     confirmBooking,
@@ -88,9 +88,7 @@ const Cart = ({
   let price = useCurrencyFormat(reservations?.new?.amount);
   let discount = useCurrencyFormat(reservations?.new?.discount);
   let total =
-    discountCode === adminCode
-      ? 1.2
-      : reservations?.new?.total ?? totalUSD + taxesUSD;
+    discountCode === adminCode ? 1.2 : reservations?.new?.total ?? totalUSD;
   let formattedTotal = useCurrencyFormat(total);
 
   let taxes = useCurrencyFormat(reservations?.new?.taxes);
@@ -161,14 +159,20 @@ const Cart = ({
     updateUser({ userId: user._id, billingDetails, isDefault });
 
     try {
-      const { paymentIntent, error } = await stripeCheckout({
-        price: totalAsInt * 100,
-        stripe,
-        cardElement,
-        billingDetails,
-      });
+      let paymentIntent, error;
+      if (process.env.NODE_ENV === 'production') {
+        let stripeData = await stripeCheckout({
+          price: totalAsInt * 100,
+          stripe,
+          cardElement,
+          billingDetails,
+        });
 
-      if (error) throw error;
+        paymentIntent = stripeData.paymentIntent;
+        error = stripeData.error;
+
+        if (error) throw error;
+      }
 
       let reservationId;
       let emailData = {
@@ -239,6 +243,7 @@ const Cart = ({
           userId: user._id,
           name: billingDetails.name,
           email: billingDetails.email,
+          stripeId: paymentIntent?.id,
         });
       }
 

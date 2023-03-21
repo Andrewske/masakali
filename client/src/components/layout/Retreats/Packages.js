@@ -19,10 +19,25 @@ const Packages = ({ packageRef, createBooking, retreatData }) => {
       <h2>PACKAGES</h2>
       <div className="packages-description">
         <p>
-          Each room is equipped with a private infinity pool overlooking the
-          Balinese rice fields, a private kitchenette fully stocked with cooking
-          ware and utensils, a luxury outdoor shower, with spa and meal services
-          available upon request.
+          Each room is a comfortable and luxurious choice for relaxation and
+          rejuvenation during the retreat.
+        </p>
+
+        <p>
+          We recommend booking a private room (Surya or Jala) if you are
+          traveling with a partner or friend whom you do not mind sharing a bed
+          with. These two villas are also great for singles who prefer privacy
+          and extra luxuries during their stay. Surya and Jala both have their
+          own private infinity pools and kitchenettes in addition to the shared
+          spaces you may use to mingle with other retreat guests.
+        </p>
+        <p>
+          If you are traveling solo and would like to make new friends or if you
+          are traveling with a friend and don’t want to share a bed, we
+          recommend choosing one of our shared rooms (Priya or Isvara) which has
+          twin configurations. These rooms have their own gardens and easy
+          access to communal spaces with a kitchen, living room, dining, and a
+          beautiful luxury pool.
         </p>
         <h4>Included with all rooms</h4>
         <ul>

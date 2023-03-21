@@ -40,9 +40,9 @@ const RetreatTemplate = ({ name }) => {
         retreatData={retreatData}
         createBooking={createBooking}
       />
+      <TheSpace />
       <Description scroll={scroll} />
       {/* <Facilitators /> */}
-      <TheSpace />
     </div>
   );
 };

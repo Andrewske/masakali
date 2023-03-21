@@ -25,10 +25,28 @@ const RetreatReservationSchema = new mongoose.Schema(
         },
       },
     ],
+    priceUSD: {
+      type: Number,
+    },
+    taxesUSD: {
+      type: Number,
+    },
     totalUSD: {
       type: Number,
-      required: true,
     },
+    addOnsTotalUSD: {
+      type: Number,
+    },
+    addOns: [
+      {
+        name: {
+          type: String,
+        },
+        cost: {
+          type: Number,
+        },
+      },
+    ],
     stripeId: {
       type: String,
     },

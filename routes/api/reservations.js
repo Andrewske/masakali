@@ -118,6 +118,7 @@ router.post('/retreats/add', express.json(), async (req, res) => {
     //   guests,
     //   totalUSD,
     //   stripeId,
+    //   addOns
     // } = req.body
 
     let reservation = new RetreatReservation(req.body);

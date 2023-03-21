@@ -8,7 +8,7 @@
         "title": "Isvara - Shared Room",
         "priceForOne": 1150,
         "available": 2,
-        "imgUrl": "/Main/Akasha/IMG_7679-67_8kMIzr1Dk.webp?updatedAt=1678998374628",
+        "imgUrl": "/Retreats/Shanti/ISVARA_Fojz5UWIF.webp",
         "amenities": ["Shared Room", "2 twin beds"]
       },
       "priya": {
@@ -17,7 +17,7 @@
         "priceForOne": 1250,
 
         "available": 2,
-        "imgUrl": "/Main/Akasha/IMG_7728-107_UjLs8nAnQ.webp?updatedAt=1678998374702",
+        "imgUrl": "/Retreats/Shanti/PRIYA_4Lx65E20vQ.webp",
         "amenities": ["Shared Room", "2 twin beds", "Private Bath tub"]
       },
       "surya": {
@@ -27,7 +27,12 @@
         "priceForTwo": 2350,
         "available": 1,
         "imgUrl": "/Main/Surya/surya-bedroom_dQwz6JpPm.webp?updatedAt=1660671469037",
-        "amenities": ["Private Room (Max 2 people)", "1 king bed"]
+        "amenities": [
+          "Private Room (Max 2 people)",
+          "1 king bed",
+          "Private Infinity Pool",
+          "Private Kitchenette"
+        ]
       },
       "jala": {
         "name": "jala",
@@ -36,7 +41,12 @@
         "priceForTwo": 2200,
         "available": 1,
         "imgUrl": "/Main/Jala/jala-bedroom-interior_k4_8kia2c.webp?updatedAt=1660671440924",
-        "amenities": ["Private Room (Max 2 people)", "1 queen bed"]
+        "amenities": [
+          "Private Room (Max 2 people)",
+          "1 queen bed",
+          "Private Infinity Pool",
+          "Private Kitchenette"
+        ]
       }
     }
   }

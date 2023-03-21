@@ -21,7 +21,7 @@ const RetreatRoom = ({ room, createBooking }) => {
     createBooking({
       villaName: room.name,
       numberOfGuests,
-      totalUSD: numberOfGuests === 2 ? room.priceForTwo : room.priceForOne,
+      priceUSD: numberOfGuests === 2 ? room.priceForTwo : room.priceForOne,
     });
     navigate('/cart');
   };
@@ -49,7 +49,7 @@ const RetreatRoom = ({ room, createBooking }) => {
           </ul>
         )}
 
-        {priceForOne && (
+        {room.priceForOne && (
           <div className="retreat-room-price">
             <h4>Price for One</h4>
             <p>{priceForOne + ' ' + currency}</p>
@@ -61,7 +61,7 @@ const RetreatRoom = ({ room, createBooking }) => {
             </button>
           </div>
         )}
-        {priceForTwo && (
+        {room.priceForTwo && (
           <div className="retreat-room-price">
             <h4>Price for Two</h4>
             <p>{priceForTwo + ' ' + currency}</p>

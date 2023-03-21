@@ -15,7 +15,7 @@ const DescriptionItem = ({
         <IKImage
           className="description-image"
           path={imgUrl}
-          transformation={[{ height: '500px', width: 'auto', dpr: 'auto' }]}
+          transformation={[{ width: '1000', height: 'auto' }]}
           lqip={{ active: true }}
           loading={'lazy'}
         />

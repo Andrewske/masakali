@@ -1,7 +1,7 @@
 export const descriptions = [
   {
     imgUrl:
-      '/Retreats/Shanti/CACAO_CEREMONY_zZBH2joJU.webp?updatedAt=1678838432429',
+      '/Retreats/Shanti/Tea_Ceremony_2__ggSNvXx7k.webp?updatedAt=1679439243805',
     heading: 'Your Transformational Retreat includes:',
     documentLink: (
       <div className="extras-link">
@@ -49,7 +49,7 @@ export const descriptions = [
   },
   {
     imgUrl:
-      '/Retreats/Shanti/BREATHWORK_fYSqVcnaW.webp?updatedAt=1678838433319',
+      '/Retreats/Shanti/BREATHWORK_QYqV8EisC.webp?updatedAt=1679439676898',
     heading: 'What you can expect during our 5 days together:',
     documentLink: (
       <div className="extras-link">
@@ -96,7 +96,7 @@ export const descriptions = [
   },
   {
     imgUrl:
-      '/Retreats/Shanti/BREATHWORK-3_KgQyeWw6Gq.webp?updatedAt=1678838433147',
+      '/Retreats/Shanti/PHOTO_FOR_MORNING___YIN_YOGA_TC8LA3L3Bg.webp?updatedAt=1679439242971',
     heading:
       'Learn to use your Breath and Body to Ignite your power and true authentic self!',
     content: (
@@ -138,7 +138,7 @@ export const descriptions = [
   },
   {
     imgUrl:
-      '/Retreats/Shanti/YOGA_WITH_MAYA-2_i4gxAgUfUA.webp?updatedAt=1678838432910',
+      '/Retreats/Shanti/SOUND_HEALING_X8OiILtONN.webp?updatedAt=1679439242870',
     heading: 'Who This Retreat Is For',
     content: (
       <p>
