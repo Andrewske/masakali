@@ -18,16 +18,9 @@ import {
   updatePricing,
 } from '../../../actions/user';
 import { serverUrl } from '../../../config';
-import {
-  stripeCheckout,
-  createPaymentIntent,
-  createPaymentMethodReq,
-  confirmCardPayment,
-} from '../../../utils/stripe';
+import { stripeCheckout } from '../../../utils/stripe';
 import useCurrencyFormat from '../../../hooks/useCurrencyFormat';
-import { percDiscount } from '../../../config';
 import { makeReservation } from '../../../actions/smoobu';
-import { compareSync } from 'bcryptjs';
 import ImageContext from '../../../utils/ImageContext';
 import { IKImage } from 'imagekitio-react';
 import moment from 'moment';
@@ -57,7 +50,6 @@ const Cart = ({
   updateReservation,
   makeReservation,
   createError,
-  updatePricing,
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState(null);

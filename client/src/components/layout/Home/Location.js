@@ -1,7 +1,4 @@
 import React from 'react';
-import ImageContext from '../../../utils/ImageContext';
-import { IKImage } from 'imagekitio-react';
-// temp comment
 
 const Location = () => {
   return (
