@@ -12,7 +12,10 @@ import {
   UPDATE_RETREAT_RESERVATION,
 } from '../actions/types';
 import { calcTaxes } from '../utils/getPrices';
-import { sendBookingConfirmation } from '../actions/sendgrid';
+import {
+  sendBookingConfirmation,
+  sendAdminBookingConfirmation,
+} from '../actions/sendgrid';
 import useCurrencyFormat from './useCurrencyFormat';
 import { capitalize } from 'lodash';
 import moment from 'moment';
@@ -119,6 +122,7 @@ const useRetreat = (retreatName) => {
       price: formattedPrice,
       taxes: formattedTaxes,
       total: formattedTotal,
+      addOnsTotal: formattedAddOns,
     };
     try {
       await sendBookingConfirmation(emailData);
@@ -129,9 +133,10 @@ const useRetreat = (retreatName) => {
           name: guestName,
           email: guestEmail,
         };
-        console.log({ name: 'guestTwo', emailData });
         await sendBookingConfirmation(emailData);
       }
+
+      await sendAdminBookingConfirmation(emailData);
     } catch (error) {
       console.error(error);
     }

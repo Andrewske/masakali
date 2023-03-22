@@ -232,6 +232,11 @@ const Cart = ({
         };
 
         await sendBookingConfirmation(emailData);
+
+        if (process.env.NODE_ENV === 'production') {
+          await sendAdminBookingConfirmation(emailData);
+          window.dataLayer.push({ conversionValue: totalAsInt });
+        }
       } else {
         emailData = {
           ...emailData,
@@ -245,11 +250,6 @@ const Cart = ({
           email: billingDetails.email,
           stripeId: paymentIntent?.id,
         });
-      }
-
-      if (process.env.NODE_ENV === 'production') {
-        await sendAdminBookingConfirmation(emailData);
-        window.dataLayer.push({ conversionValue: totalAsInt });
       }
 
       setIsProcessing(false);
