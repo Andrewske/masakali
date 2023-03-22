@@ -58,14 +58,13 @@ const RetreatCartDetails = ({ reservation, country, retreat }) => {
       </div>
       <div className="add-ons">
         <h3>Add Ons</h3>
-        {addOns.length > 1 &&
-          addOns?.map((x) => (
-            <AddOn
-              id={x.id}
-              addOns={addOns}
-              updateBooking={updateBooking}
-            />
-          ))}
+        {addOns?.map((x) => (
+          <AddOn
+            id={x.id}
+            addOns={addOns}
+            updateBooking={updateBooking}
+          />
+        ))}
       </div>
     </div>
   );

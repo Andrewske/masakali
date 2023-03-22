@@ -3,6 +3,7 @@ import React from 'react';
 //import { Link, animateScroll as scroll } from 'react-scroll';
 import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 
 import insta from '../../img/instagram-64.ico';
 import facebook from '../../img/facebook.png';
@@ -51,6 +52,8 @@ const linkData = [
 ];
 
 const Footer = (props) => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const scrollToTarget = (el) => {
     var headerOffset = 200;
     var elPosition = el.getBoundingClientRect().top;
@@ -64,7 +67,7 @@ const Footer = (props) => {
 
   const linkItems = linkData.map((d) => (
     <Link
-      className='footer-link'
+      className="footer-link"
       to={`/#${d.id}`}
       smooth
       key={d.id}
@@ -75,17 +78,20 @@ const Footer = (props) => {
   ));
 
   return (
-    <Container className='background-purple'>
+    <Container className="background-purple">
       <Info>
-        <a className='footer-link' href='https://goo.gl/maps/VaiXjJZuJp4stygE9'>
+        <a
+          className="footer-link"
+          href="https://goo.gl/maps/VaiXjJZuJp4stygE9"
+        >
           <p>Masakali</p>
           <p>Br. Ayah Kelusa Payangan</p>
           <p>Gianyar Bali 80572</p>
           <p>+62 821-4635-5565</p>
         </a>
         <a
-          className='footer-link'
-          href='https://www.instagram.com/masakaliretreat'
+          className="footer-link"
+          href="https://www.instagram.com/masakaliretreat"
         >
           <div style={{ display: 'flex', width: 'max-content' }}>
             <IconImg src={insta} />
@@ -93,8 +99,8 @@ const Footer = (props) => {
           </div>
         </a>
         <a
-          className='footer-link'
-          href='https://www.facebook.com/masakaliretreat'
+          className="footer-link"
+          href="https://www.facebook.com/masakaliretreat"
         >
           <div
             style={{
@@ -106,15 +112,21 @@ const Footer = (props) => {
             <p>/masakaliretreat</p>
           </div>
         </a>
-        <a className='footer-link' href='mailto: info@masakaliretreat.com'>
+        <a
+          className="footer-link"
+          href="mailto: info@masakaliretreat.com"
+        >
           <p>
-            <span className='icon-email footer-icon' /> info@masakaliretreat.com
+            <span className="icon-email footer-icon" /> info@masakaliretreat.com
           </p>
         </a>
       </Info>
       <Pages>
         {linkItems}
         {/* <CountryPicker /> */}
+        {user.name && (
+          <span onClick={() => dispatch({ type: 'LOGOUT' })}>Log Out</span>
+        )}
       </Pages>
     </Container>
   );
