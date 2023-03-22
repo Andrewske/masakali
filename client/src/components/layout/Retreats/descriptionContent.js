@@ -6,7 +6,7 @@ export const descriptions = [
     documentLink: (
       <div className="extras-link">
         <a
-          href="https://drive.google.com/file/d/1EgcBzUUUESf0HoGBdN9JrRGs_ZIQexHL/view?usp=sharing"
+          href="https://drive.google.com/file/d/1GeU92Z1qAWlMzBfx2Gucz2_Cf3dXKvdm/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -54,7 +54,7 @@ export const descriptions = [
     documentLink: (
       <div className="extras-link">
         <a
-          href="https://drive.google.com/file/d/1EgcBzUUUESf0HoGBdN9JrRGs_ZIQexHL/view?usp=sharing"
+          href="https://drive.google.com/file/d/1RGGLcMk_J7jEJnS_0NVT-_GVWvhuunwE/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >

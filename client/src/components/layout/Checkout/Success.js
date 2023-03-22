@@ -93,7 +93,7 @@ const Success = ({ reservations, retreat }) => {
               </div>
             </div>
             <p>Number of guests: {numberOfGuests}</p>
-            <p>Price: {price}/night</p>
+            <p>Price: {price}</p>
             {addOnsTotalUSD > 0 && <p>Addons: {addOnsTotal}</p>}
             <p>Taxes: {taxes}</p>
             <p>Total: {total}</p>
