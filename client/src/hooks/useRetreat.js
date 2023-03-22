@@ -20,22 +20,18 @@ import useCurrencyFormat from './useCurrencyFormat';
 import { capitalize } from 'lodash';
 import moment from 'moment';
 
+import retreatInfo from '../components/layout/Retreats/retreats';
+
 const useRetreat = (retreatName) => {
   const reservation = useSelector((state) => state.retreatReservation);
   const [guestName, setGuestName] = useState(null);
   const [guestEmail, setGuestEmail] = useState(null);
   const dispatch = useDispatch();
 
-  const {
-    priceUSD,
-    taxesUSD,
-    totalUSD,
-    villaName,
-    startDate,
-    endDate,
-    addOns,
-    addOnsTotalUSD,
-  } = reservation;
+  const { startDate, endDate } = retreatInfo[retreatName];
+
+  const { priceUSD, taxesUSD, totalUSD, villaName, addOns, addOnsTotalUSD } =
+    reservation;
 
   const formattedTotal = useCurrencyFormat(totalUSD);
   const formattedTaxes = useCurrencyFormat(taxesUSD);
@@ -48,6 +44,8 @@ const useRetreat = (retreatName) => {
     formattedTaxes,
     formattedPrice,
     formattedAddOns,
+    startDate,
+    endDate,
   };
 
   let guest = {
