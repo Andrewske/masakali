@@ -635,7 +635,7 @@ h4 {
     flex-grow: 6;
     cursor: pointer;
     border-bottom: 1;
-    gap: 2rem;
+    gap: 1rem;
 
     a {
       width: max-content;
@@ -676,18 +676,20 @@ h4 {
     opacity: 0;
     transition: all 0.5s ease-in-out;
     width: 100%;
+    max-width: 100vw;
 
     &.true {
-      height: 75px;
+      height: 150px;
       opacity: 1;
-      padding: 1rem 0rem;
+      padding: 0.5rem 0rem;
     }
 
     .links {
       display: flex;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       justify-content: space-evenly;
       max-width: 100vw;
+      height: 100%;
     }
   }
 }

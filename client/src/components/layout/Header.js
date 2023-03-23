@@ -118,10 +118,11 @@ const Header = ({ hide }) => {
         className={isExpanded ? 'expanded-content true' : 'expanded-content'}
       >
         <span className="links">
-          <Link to="#home">Home</Link>
-          <Link to="#villas">Villas</Link>
-          <Link to="#dining">Dining</Link>
-          <Link to="#amenities">Amenities</Link>
+          <Link to="/#home">Home</Link>
+          <Link to="/#villas">Villas</Link>
+          <Link to="/#dining">Dining</Link>
+          <Link to="/#amenities">Amenities</Link>
+          <Link to="/retreats/shanti">Retreats</Link>
         </span>
       </span>
     </nav>
