@@ -21,7 +21,7 @@ const Banner = ({ startDate, endDate, scroll }) => {
       </ImageContext>
       <span className="banner-title">
         <p>Masakali Presents</p>
-        <h1>Shanti Retreat</h1>
+        <h1>Shanti Breathwork and Yoga Retreat</h1>
         <p>
           {startDate} - {endDate}
         </p>

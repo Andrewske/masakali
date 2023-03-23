@@ -1,7 +1,7 @@
 export const descriptions = [
   {
     imgUrl:
-      '/Retreats/Shanti/Tea_Ceremony_2__ggSNvXx7k.webp?updatedAt=1679439243805',
+      '/Retreats/Shanti/Tea_Ceremony_1__OxTItQwLIb.webp?updatedAt=1679439243949',
     heading: 'Your Transformational Retreat includes:',
     documentLink: (
       <div className="extras-link">
@@ -96,15 +96,15 @@ export const descriptions = [
   },
   {
     imgUrl:
-      '/Retreats/Shanti/PHOTO_FOR_MORNING___YIN_YOGA_TC8LA3L3Bg.webp?updatedAt=1679439242971',
+      '/Retreats/Shanti/EMBODIMENT_sBu7o2jrSZ.webp?updatedAt=1679439238415',
     heading:
       'Learn to use your Breath and Body to Ignite your power and true authentic self!',
     content: (
       <span>
         <p>
-          Join your facilitators and many other inspiring facilitators for a
-          transformative journey into oneself to relax, decompress, and awaken
-          your life force to joy, connections, and mindset changes!
+          Join your facilitators for a transformative journey into oneself to
+          relax, decompress, and awaken your life force to joy, connections, and
+          mindset changes!
         </p>
         <p>
           Shanti in Sanskrit means calmness, peace, tranquility, quietness,

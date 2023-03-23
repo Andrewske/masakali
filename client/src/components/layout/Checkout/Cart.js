@@ -38,6 +38,8 @@ const images = {
   surya: '/Main/Surya/surya-front-main_yynphR5d1s.webp',
   chandra: '/Main/Chandra/chandra-front-main_ohrGHDvTvf.webp',
   jala: '/Main/Jala/jala-front-main_yJaEapAckn.webp',
+  priya: '/Retreats/Shanti/PRIYA_4Lx65E20vQ.webp',
+  isvara: '/Retreats/Shanti/ISVARA_Fojz5UWIF.webp',
 };
 
 const Cart = ({

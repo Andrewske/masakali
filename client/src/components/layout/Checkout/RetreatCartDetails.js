@@ -22,7 +22,7 @@ const RetreatCartDetails = ({ reservation, country, retreat }) => {
   return (
     <div className="cart-details">
       <div className="details-header">
-        <h3>{retreatName} Retreat</h3>
+        <h3>{retreatName} Breathwork and Yoga Retreat</h3>
         <h3>{villaName} Villa</h3>
       </div>
       <div className="details">
