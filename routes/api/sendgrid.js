@@ -40,16 +40,17 @@ router.post('/sendBookingConfirmation', express.json(), async (req, res) => {
   }
 });
 
-const retreatAdminConfirmationTemplateId = 'd-56beee67bc0245539a249c95b72c11a9';
-const villaAdminBookingEmailTemplate = 'd-160be2ec97de4fe8bd9a0702c9d3383f';
+const retreatAdminConfirmationTemplate = 'd-160be2ec97de4fe8bd9a0702c9d3383f';
+const villaAdminBookingEmailTemplate = 'd-56beee67bc0245539a249c95b72c11a9';
 
 router.post(
   '/sendAdminBookingConfirmation',
   express.json(),
   async (req, res) => {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    console.log(req?.body);
     let templateId = req.body.isRetreat
-      ? retreatAdminConfirmationTemplateId
+      ? retreatAdminConfirmationTemplate
       : villaAdminBookingEmailTemplate;
     try {
       const msg = {
