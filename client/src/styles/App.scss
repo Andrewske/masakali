@@ -2356,11 +2356,12 @@ $button-active-blue: #1669f2;
 
     .details-header {
       width: 100%;
-      height: 4rem;
+      min-height: 4rem;
       @extend .center-col;
       @extend .avenir-spaced;
       background-color: var(--secondary-color);
       color: white;
+      text-align: center;
     }
 
     .details-footer {
