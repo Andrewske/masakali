@@ -20,7 +20,10 @@ const Success = ({ reservations, retreat }) => {
     priceUSD,
     numberOfGuests,
   } = retreat;
-  const { startDate, endDate } = retreatData[retreatName];
+
+  const { startDate, endDate } = retreatName
+    ? retreatData[retreatName]
+    : { startDate: null, endDate: null };
 
   let price = useCurrencyFormat(reservation?.amount ?? priceUSD);
   let discount = useCurrencyFormat(reservation?.discount);
