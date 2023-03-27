@@ -28,7 +28,9 @@ const useRetreat = (retreatName) => {
   const [guestEmail, setGuestEmail] = useState(null);
   const dispatch = useDispatch();
 
-  const { startDate, endDate } = retreatInfo[retreatName];
+  const { startDate, endDate } = retreatName
+    ? retreatInfo[retreatName]
+    : { startDate: null, endDate: null };
 
   const { priceUSD, taxesUSD, totalUSD, villaName, addOns, addOnsTotalUSD } =
     reservation;
