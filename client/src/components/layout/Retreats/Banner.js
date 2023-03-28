@@ -22,16 +22,17 @@ const Banner = ({ startDate, endDate, scroll }) => {
       <span className="banner-title">
         <p>Masakali Presents</p>
         <h1>Shanti Breathwork and Yoga Retreat</h1>
-        <p>
+        {/* <p>
           {startDate} - {endDate}
-        </p>
+        </p> */}
+        <p>Coming Soon</p>
       </span>
-      <button
+      {/* <button
         onClick={() => scroll()}
         className="button purple"
       >
         Get Started
-      </button>
+      </button> */}
     </div>
   );
 };

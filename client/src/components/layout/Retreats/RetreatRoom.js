@@ -49,7 +49,7 @@ const RetreatRoom = ({ room, createBooking }) => {
           </ul>
         )}
 
-        {room.priceForOne && (
+        {/* {room.priceForOne && (
           <div className="retreat-room-price">
             <h4>Price for One</h4>
             <p>{priceForOne + ' ' + currency}</p>
@@ -73,7 +73,7 @@ const RetreatRoom = ({ room, createBooking }) => {
               Book for two
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
