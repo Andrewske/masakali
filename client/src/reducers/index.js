@@ -9,12 +9,20 @@ import auth from './auth';
 import villas from './villas';
 import user from './user';
 import country from './country';
+import booking from './booking';
 import retreatReservation from './retreatReservation';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'user', 'country', 'villas', 'retreatReservation'],
+  whitelist: [
+    'auth',
+    'user',
+    'country',
+    'villas',
+    'retreatReservation',
+    'booking',
+  ],
 };
 
 const appReducer = combineReducers({
@@ -24,6 +32,7 @@ const appReducer = combineReducers({
   villas,
   user,
   country,
+  booking,
   retreatReservation,
 });
 
