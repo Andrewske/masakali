@@ -20,8 +20,8 @@ const getDaysBetweenDates = (startDate, endDate) => {
 const useVillaPrice = (startDate = null, endDate = null, villa) => {
   const conversionRate = useConversionRate('IDR');
 
-  startDate = startDate ?? moment('2023-02-28');
-  endDate = endDate ?? moment('2023-03-01');
+  startDate = startDate ?? moment().add(1, 'year');
+  endDate = endDate ?? moment().add(1, 'year').add(1, 'day');
 
   const { isLoading, isError, error, data } = useQuery('rates', () =>
     axios.get(serverUrl + '/smoobu/rates').then((res) => res.data)
@@ -38,8 +38,6 @@ const useVillaPrice = (startDate = null, endDate = null, villa) => {
         obj[key] = data[villa][key];
         return obj;
       }, {});
-
-    console.log({ startDate, endDate, dates, data });
 
     let maxRate = Math.max(...Object.values(rates).map((r) => r.price));
 

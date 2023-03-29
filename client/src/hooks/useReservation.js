@@ -5,7 +5,6 @@ import { calcDiscount, calcTaxes, calcTotal } from '../utils/getPrices';
 const useReservation = ({ villa = 'surya', checkIn, checkOut, guests }) => {
   const villaPrice = useVillaPrice(checkIn, checkOut, villa);
   const numDays = checkOut.diff(checkIn, 'days');
-  console.log({ checkIn, checkOut });
 
   return {
     villa,
