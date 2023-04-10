@@ -221,7 +221,7 @@ const Cart = ({
           price,
           discount,
           taxes,
-          total,
+          total: formattedTotal,
           id: reservationId,
         };
 
