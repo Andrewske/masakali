@@ -134,7 +134,13 @@ module.exports.updateRates = async (data) => {
   }
 };
 
-module.exports.blockVillas = async ({ startDate, endDate, villas }) => {
+module.exports.blockVillas = async ({
+  startDate,
+  endDate,
+  villas,
+  reservationId,
+}) => {
+  console.log({ startDate, endDate, villas, reservationId });
   try {
     for (let i = 0; i < villas.length; i++) {
       let body = {
@@ -142,7 +148,7 @@ module.exports.blockVillas = async ({ startDate, endDate, villas }) => {
         departureDate: endDate,
         channelId: blockedId,
         apartmentId: villas[i],
-        notice: 'Akasha Booked',
+        notice: reservationId,
         firstName: 'Masakali',
         lastName: 'Blocked',
         email: 'admin@masakaliretreat.com',
@@ -156,10 +162,45 @@ module.exports.blockVillas = async ({ startDate, endDate, villas }) => {
     }
   } catch (err) {
     console.error({
-      response: err?.response,
       data: err?.response?.data,
-      headers: err?.response?.error,
-      mssages: err?.data?.validation_messages,
+    });
+  }
+};
+
+module.exports.updateBooking = async ({ smoobuId, startDate, endDate }) => {
+  console.log('updateBooking');
+  try {
+    reqConfig.headers = {
+      ...reqConfig.headers,
+      'Content-Type': 'application/json',
+    };
+    let body = {
+      arrivalDate: startDate,
+      departureDate: endDate,
+    };
+
+    let res = await axios.put(
+      `https://login.smoobu.com/api/reservations/${smoobuId}`,
+      body,
+      reqConfig
+    );
+  } catch (err) {
+    console.error('error updateBooking', {
+      data: err?.response?.data,
+    });
+  }
+};
+
+module.exports.cancelBooking = async ({ smoobuId }) => {
+  console.log('cancelBooking');
+  try {
+    let res = await axios.delete(
+      `https://login.smoobu.com/api/reservations/${smoobuId}`,
+      reqConfig
+    );
+  } catch (err) {
+    console.error('error cancelBooking', {
+      data: err?.response?.data,
     });
   }
 };

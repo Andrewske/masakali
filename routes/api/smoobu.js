@@ -9,6 +9,7 @@ const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
 const akashaId = config.get('SMOOBU_AKASHA_ID');
 const lakshmiId = config.get('SMOOBU_LAKSHMI_ID');
+const blockedId = config.get('SMOOBU_BLOCKED_ID');
 const moment = require('moment');
 const getCurrency = require('../../components/currency');
 const qs = require('qs');
@@ -20,6 +21,8 @@ const {
   updateRates,
   blockVillas,
   formatBlockedDates,
+  updateBooking,
+  cancelBooking,
 } = require('../../components/smoobu');
 
 let smoobuBookings = require('../../smoobuBookings.json');
@@ -243,7 +246,7 @@ router.post('/bookings/add', express.json(), async (req, res) => {
     res.status(200).send(data);
   } catch (error) {
     console.error(error.response.data);
-    res.status(422).send({ error });
+    res.status(422).send({ error: error.response.data });
   }
 });
 
@@ -286,16 +289,75 @@ const formatBookingData = (data) => {
   };
 };
 
+router.get('/bookings/test', async (req, res) => {
+  try {
+    res.status(200).send('Hello there');
+  } catch (err) {
+    console.error(err);
+    res.status(422).send({ err });
+  }
+});
+
+const findBlockedReservationForVilla = async (smoobuId) => {
+  try {
+    reqConfig.params = {
+      from: moment().format('YYYY-MM-DD'),
+      showCancellation: false,
+    };
+
+    let reservation = undefined;
+    let page = 1;
+    let pageCount = 1;
+
+    while (page <= pageCount && !reservation) {
+      const { data } = await axios.get(
+        `https://login.smoobu.com/api/reservations?page=${page}`,
+        reqConfig
+      );
+
+      pageCount = data.page_count;
+
+      reservation = data.bookings.find((booking) =>
+        booking.notice.includes(smoobuId)
+      );
+
+      page++;
+    }
+
+    return reservation;
+  } catch (error) {
+    console.error(error.response.data);
+  }
+};
+
+// From this hook do these tasks:
+// - update the villa rates in the db
+// - if there is a newReservation for Akasha then block Lakshmi
+// - if there is a newReservation for Lakshmi then block Akasha
+// - if a reservation for Akasah is changed then update Lakshmi
+// - if a reservation for Lakshmi is changed then update Akasha
+
+// This hook receives an action, user, and data
+// actions: updateRates, newReservation, cancelReservation, updateReservation
 router.post('/hook', express.json(), async (req, res) => {
+  console.log('hook');
   try {
     let action = req.body?.action;
     let data = formatBookingData(req.body?.data);
     let dbRes = null;
 
+    if (data.guestName === 'Masakali Blocked') return;
+
+    const blockedReservation = await findBlockedReservationForVilla(
+      data.smoobuId
+    );
+
     switch (action) {
       case 'updateRates':
+        // if villaRates are updated in Smoobu, update them in the database
         let rates = getRates();
         dbRes = updateRates(rates);
+        break;
       case 'newReservation':
         //if Akasha then book Lakshmi
         if (data.villaId === akashaId) {
@@ -303,6 +365,7 @@ router.post('/hook', express.json(), async (req, res) => {
             villas: [lakshmiId],
             startDate: data.startDate,
             endDate: data.endDate,
+            reservationId: data.smoobuId,
           });
         }
         //if Lakshmi then book Akasha and open Prishma
@@ -311,23 +374,39 @@ router.post('/hook', express.json(), async (req, res) => {
             villas: [akashaId],
             startDate: data.startDate,
             endDate: data.endDate,
+            reservationId: data.smoobuId,
           });
         }
+        break;
+      case 'updateReservation':
+        if (blockedReservation) {
+          const { smoobuId } = formatBookingData(blockedReservation);
+          updateBooking({
+            smoobuId,
+            startDate: data.startDate,
+            endDate: data.endDate,
+          });
+        }
+        break;
+      case 'cancelReservation':
+        if (blockedReservation) {
+          const { smoobuId } = formatBookingData(blockedReservation);
+          cancelBooking({
+            smoobuId,
+          });
+        }
+        break;
       default:
-        dbRes = await SmoobuReservation.updateOne(
-          { smoobuId: data.smoobuId },
-          data,
-          { upsert: true }
-        );
+        break;
     }
 
-    let hook = new SmoobuWebHook({ action, data });
+    // let hook = new SmoobuWebHook({ action, data });
 
-    await hook.save();
-
-    res.status(200).end();
+    // await hook.save();
   } catch (err) {
     console.error(err);
+  } finally {
+    res.status(200).end();
   }
 });
 
