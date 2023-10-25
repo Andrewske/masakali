@@ -32,15 +32,8 @@ const MessageModal = () => {
 
       <span className={!isOpen ? 'secondary-info' : 'secondary-info active'}>
         <p>
-          Due to the construction of our new Joglo villa next to Surya, you
-          might experience construction noises during your stay between 9-5. In
-          addition to that, we are at full capacity every day and as such, need
-          to construct a permanent water tank which will be near Jala – this
-          construction is expected to occur until mid to end October. For this
-          reason, we have already discounted the room rates significantly for
-          all of the villas at Masakali (especially Surya and Jala). We have
-          received nothing but 5-star reviews until the construction began on
-          our latest antique Joglo. While 98% of our guests have had no
+          Due to the construction of our new cafe, you
+          might experience construction noises during your stay between 9-5. While 98% of our guests have had no
           complaints about the noise and loved staying at Masakali, we still
           want to inform you about the recent construction noise.
         </p>

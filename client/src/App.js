@@ -60,6 +60,7 @@ import useRetreat from './hooks/useRetreat';
 // Auth Pages
 import Login from './components/auth/Login';
 import ResetPassword from './components/auth/ResetPassword';
+import MessageModal from './components/layout/MessageModal';
 
 //imageKitId = 4kpopox69zpcd
 
@@ -213,7 +214,7 @@ const App = () => {
                   }
                 />
               </Routes>
-              {/* <MessageModal /> */}
+              <MessageModal />
               <Footer />
             </Fragment>
           </PersistGate>
