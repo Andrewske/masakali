@@ -67,4 +67,17 @@ var allAmenities = {
     'Full kitchenette',
     'Breakfast included',
   ],
+  lakshmi: [
+    'Wifi 100 mb/s',
+    'Private infinity pool',
+    'Garden view',
+    'Outdoor shower',
+    'Mosquito net',
+    'Bluetooth speaker system',
+    'Suitable for events',
+    'Portable fans',
+    'Dedicated workspace',
+    'Full kitchenette',
+    'Breakfast included',
+  ],
 };

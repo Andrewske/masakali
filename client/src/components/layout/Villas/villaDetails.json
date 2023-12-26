@@ -22,5 +22,11 @@
     "title": "Akasha: 3 bedroom luxury villa",
     "description": "Luxury meets comfort in our newest villa, Akasha. With 3 bedrooms and 3.5 baths, this spacious home is great for families or couples traveling. This villa features a beautiful waterfall pool, large deck, full kitchen and bar, entertainment room, outdoor living room, large dining area, and breathtaking views. This space is also great for hosting celebrations such as weddings and birthday parties.",
     "ammenities": { "bed": "King" }
+  },
+  "lakshmi": {
+    "name": "laskshmi",
+    "title": "Lakshmi: Luxury 2 bedroom villa",
+    "description": "Luxury meets comfort in our newest villa, Akasha. With 3 bedrooms and 3.5 baths, this spacious home is great for families or couples traveling. This villa features a beautiful waterfall pool, large deck, full kitchen and bar, entertainment room, outdoor living room, large dining area, and breathtaking views. This space is also great for hosting celebrations such as weddings and birthday parties.",
+    "ammenities": { "bed": "King" }
   }
 }

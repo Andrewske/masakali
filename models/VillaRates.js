@@ -23,6 +23,10 @@ const VillaRatesSchema = new mongoose.Schema(
       type: Number,
       default: null,
     },
+    laskshmi: {
+      type: Number,
+      default: null,
+    },
   },
   { timestamps: true }
 );

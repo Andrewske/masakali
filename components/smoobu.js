@@ -8,8 +8,9 @@ const suryaId = config.get('SMOOBU_SURYA_ID');
 const chandraId = config.get('SMOOBU_CHANDRA_ID');
 const jalaId = config.get('SMOOBU_JALA_ID');
 const akashaId = config.get('SMOOBU_AKASHA_ID');
+const lakshmiId = config.get('SMOOBU_LAKSHMI_ID');
 
-let villas = [suryaId, chandraId, jalaId, akashaId];
+let villas = [suryaId, chandraId, jalaId, akashaId, lakshmiId];
 
 let reqConfig = {
   headers: {
@@ -72,7 +73,7 @@ module.exports.getRates = async () => {
     reqConfig.params = {
       start_date: moment().format('YYYY-MM-DD'),
       end_date: moment().add(2, 'years').format('YYYY-MM-DD'),
-      apartments: [suryaId, chandraId, jalaId, akashaId],
+      apartments: [suryaId, chandraId, jalaId, akashaId, lakshmiId],
     };
 
     let {
@@ -83,11 +84,13 @@ module.exports.getRates = async () => {
     data['chandra'] = data[chandraId];
     data['jala'] = data[jalaId];
     data['akasha'] = data[akashaId];
+    data['lakshmi'] = data[lakshmiId];
 
     delete data[suryaId];
     delete data[chandraId];
     delete data[jalaId];
     delete data[akashaId];
+    delete data[lakshmiId];
 
     return data;
   } catch (err) {
@@ -97,6 +100,7 @@ module.exports.getRates = async () => {
 };
 
 module.exports.updateRates = async (data) => {
+  console.log(data)
   try {
     let updates = [];
     for (const [villa, dates] of Object.entries(data)) {
@@ -121,6 +125,7 @@ module.exports.updateRates = async (data) => {
               chandra: u.chandra,
               jala: u.jala,
               akasha: u.akasha,
+              laskhmi: u.laskhmi,
             },
           },
           upsert: true,

@@ -59,6 +59,14 @@ const images = {
     { key: 5, path: '/Main/Akasha/akasha-bathroom_gnqrBW7O-.webp' },
     { key: 6, path: '/Main/Akasha/akasha-kitchen_mPlpOGx9R.webp' },
   ],
+  lakshmi: [
+    { key: 1, path: '/Main/Akasha/akasha-front_knBEIm9Huj.webp' },
+    { key: 2, path: '/Main/Akasha/akasha-views_UXU47lMRAI.webp' },
+    { key: 3, path: '/Main/Akasha/akasha-bed_ooi_robeB.webp' },
+    { key: 4, path: '/Main/Akasha/akasha-pool_LtvX76vxwo.webp' },
+    { key: 5, path: '/Main/Akasha/akasha-bathroom_gnqrBW7O-.webp' },
+    { key: 6, path: '/Main/Akasha/akasha-kitchen_mPlpOGx9R.webp' },
+  ],
 };
 
 const ImageCarousel = ({ name = 'surya' }) => {

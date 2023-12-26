@@ -110,11 +110,13 @@ router.get('/rates_old', async (req, res) => {
     data['chandra'] = data[chandraId];
     data['jala'] = data[jalaId];
     data['akasha'] = data[akashaId];
+    data['lakshmi'] = data[lakshmiId];
 
     delete data[suryaId];
     delete data[chandraId];
     delete data[jalaId];
     delete data[akashaId];
+    delete data[lakshmiId];
 
     let updates = [];
     for (const [villa, dates] of Object.entries(data)) {
@@ -455,9 +457,10 @@ router.post('/populateBookings', express.json(), async (req, res) => {
 
 router.get('/populateRates', express.json(), async (req, res) => {
   try {
-    let data = getRates();
+    let data = await getRates();
+    console.log(data)
 
-    let dbRes = updateRates(data);
+    let dbRes = await updateRates(data);
 
     res.status(200).send(dbRes);
   } catch (err) {

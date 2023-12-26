@@ -26,6 +26,7 @@ const useVillaPrice = (startDate = null, endDate = null, villa) => {
   const { isLoading, isError, error, data } = useQuery('rates', () =>
     axios.get(serverUrl + '/smoobu/rates').then((res) => res.data)
   );
+  console.log(data);
 
   if (isLoading) return null;
 

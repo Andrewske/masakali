@@ -77,6 +77,9 @@ const Template = ({ country, createReservation }) => {
         setVilla('akasha');
         break;
       case 'akasha':
+        setVilla('laskshmi');
+        break;
+      case 'lakshmi':
         setVilla('surya');
         break;
       default:
