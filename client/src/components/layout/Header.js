@@ -86,7 +86,7 @@ const Header = ({ hide }) => {
             >
               Amenities
             </Link>
-            <Link to="/retreats/shanti">Retreats</Link>
+            <Link to="#yoga" scroll={(el) => scrollToTarget(el)}>Yoga</Link>
           </span>
         )}
         <div>
