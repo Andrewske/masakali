@@ -122,7 +122,8 @@ const Header = ({ hide }) => {
           <Link to="/#villas">Villas</Link>
           <Link to="/#dining">Dining</Link>
           <Link to="/#amenities">Amenities</Link>
-          <Link to="/retreats/shanti">Retreats</Link>
+          {/* <Link to="/retreats/shanti">Retreats</Link> */}
+          <Link to="/#yoga">Yoga</Link>
         </span>
       </span>
     </nav>

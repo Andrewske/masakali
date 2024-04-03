@@ -8,6 +8,7 @@ import Villas from './Villas';
 import Dining from './Dining';
 import Amenities from './Amenities';
 import Location from './Location';
+import Yoga from './Yoga';
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <Villas />
       <Dining />
       <Amenities />
+      <Yoga />
       <Location />
     </div>
   );

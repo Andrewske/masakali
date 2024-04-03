@@ -9,7 +9,7 @@ const Dining = () => {
         <ImageContext>
           <IKImage
             path='/Main/masakali-dining_wZNNBopbm.webp'
-            transformation={[{ height: '400px', width: '400px', dpr: 'auto' }]}
+            transformation={[{ height: '400px', width: '400px', dpr: 'auto', fo: 'auto' }]}
             lqip={{ active: true }}
             loading='lazy'
           />
